@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Shop View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ShopViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TossPay Example Shop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSH-Od-XXS">
+                                <rect key="frame" x="52" y="30" width="217" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상품명" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qS1-FU-YP0">
+                                <rect key="frame" x="30" y="96" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dm3-i5-gWE">
+                                <rect key="frame" x="30" y="137" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XgT-Ns-oUl">
+                                <rect key="frame" x="460" y="100" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ksS-0U-4XA">
+                                <rect key="frame" x="105" y="92" width="185" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYA-39-0aZ">
+                                <rect key="frame" x="105" y="133" width="185" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Sc-Nj-hye">
+                                <rect key="frame" x="30" y="188" width="260" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Toss로 결제하기">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTossPayButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="c9B-gu-Ahy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aYA-39-0aZ" firstAttribute="trailing" secondItem="ksS-0U-4XA" secondAttribute="trailing" id="2o5-IC-gQW"/>
+                            <constraint firstItem="1Sc-Nj-hye" firstAttribute="leading" secondItem="qS1-FU-YP0" secondAttribute="leading" id="4ro-yr-f4C"/>
+                            <constraint firstItem="qS1-FU-YP0" firstAttribute="top" secondItem="YSH-Od-XXS" secondAttribute="bottom" constant="40" id="5E7-Mt-khL"/>
+                            <constraint firstItem="YSH-Od-XXS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="B31-dr-3KG"/>
+                            <constraint firstItem="Dm3-i5-gWE" firstAttribute="top" secondItem="qS1-FU-YP0" secondAttribute="bottom" constant="20" id="Ebx-M3-qbr"/>
+                            <constraint firstItem="aYA-39-0aZ" firstAttribute="leading" secondItem="ksS-0U-4XA" secondAttribute="leading" id="F4Y-me-Ff8"/>
+                            <constraint firstAttribute="trailing" secondItem="ksS-0U-4XA" secondAttribute="trailing" constant="30" id="GRA-S7-v3F"/>
+                            <constraint firstItem="qS1-FU-YP0" firstAttribute="trailing" secondItem="Dm3-i5-gWE" secondAttribute="trailing" id="HT9-eg-Iza"/>
+                            <constraint firstItem="1Sc-Nj-hye" firstAttribute="top" secondItem="Dm3-i5-gWE" secondAttribute="bottom" constant="30" id="Xc4-Rs-3Cb"/>
+                            <constraint firstItem="ksS-0U-4XA" firstAttribute="centerY" secondItem="qS1-FU-YP0" secondAttribute="centerY" id="XxZ-vH-N2v"/>
+                            <constraint firstItem="YSH-Od-XXS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="33" id="ZNd-mC-qqU"/>
+                            <constraint firstItem="qS1-FU-YP0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="30" id="ZaM-ke-qxm"/>
+                            <constraint firstAttribute="centerX" secondItem="YSH-Od-XXS" secondAttribute="centerX" id="caf-3i-uEp"/>
+                            <constraint firstItem="ksS-0U-4XA" firstAttribute="leading" secondItem="qS1-FU-YP0" secondAttribute="trailing" constant="30" id="eoU-y6-5IT"/>
+                            <constraint firstItem="aYA-39-0aZ" firstAttribute="centerY" secondItem="Dm3-i5-gWE" secondAttribute="centerY" id="kpy-ub-6UZ"/>
+                            <constraint firstItem="qS1-FU-YP0" firstAttribute="leading" secondItem="Dm3-i5-gWE" secondAttribute="leading" id="lZH-bN-Fki"/>
+                            <constraint firstItem="1Sc-Nj-hye" firstAttribute="trailing" secondItem="ksS-0U-4XA" secondAttribute="trailing" id="yyW-za-zSm"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ZNd-mC-qqU"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="amountTextField" destination="aYA-39-0aZ" id="z6F-0q-c9Y"/>
+                        <outlet property="productNameTextField" destination="ksS-0U-4XA" id="xdH-tc-lqf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585" y="382"/>
+        </scene>
+    </scenes>
+</document>

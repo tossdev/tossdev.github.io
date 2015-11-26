@@ -1,0 +1,903 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1756B3A41B723DD600A4ABF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1756B3A31B723DD600A4ABF5 /* main.m */; };
+		1756B3A71B723DD600A4ABF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1756B3A61B723DD600A4ABF5 /* AppDelegate.m */; };
+		1756B3AA1B723DD600A4ABF5 /* WebShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1756B3A91B723DD600A4ABF5 /* WebShopViewController.m */; };
+		1756B3AD1B723DD600A4ABF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1756B3AB1B723DD600A4ABF5 /* Main.storyboard */; };
+		1756B3AF1B723DD600A4ABF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1756B3AE1B723DD600A4ABF5 /* Images.xcassets */; };
+		1756B3B21B723DD600A4ABF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1756B3B01B723DD600A4ABF5 /* LaunchScreen.xib */; };
+		1756B3CE1B723DE600A4ABF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1756B3CD1B723DE600A4ABF5 /* main.m */; };
+		1756B3D11B723DE600A4ABF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1756B3D01B723DE600A4ABF5 /* AppDelegate.m */; };
+		1756B3D41B723DE600A4ABF5 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1756B3D31B723DE600A4ABF5 /* ShopViewController.m */; };
+		1756B3D71B723DE600A4ABF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1756B3D51B723DE600A4ABF5 /* Main.storyboard */; };
+		1756B3D91B723DE600A4ABF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1756B3D81B723DE600A4ABF5 /* Images.xcassets */; };
+		1756B3DC1B723DE600A4ABF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1756B3DA1B723DE600A4ABF5 /* LaunchScreen.xib */; };
+		176F4B0C1B74B213000E26AE /* TossPay.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 176F4B0B1B74B213000E26AE /* TossPay.h */; };
+		176F4B0E1B74B213000E26AE /* TossPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 176F4B0D1B74B213000E26AE /* TossPay.m */; };
+		176F4B141B74B213000E26AE /* libTossPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 176F4B091B74B213000E26AE /* libTossPay.a */; };
+		176F4B201B74B253000E26AE /* libTossPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 176F4B091B74B213000E26AE /* libTossPay.a */; };
+		176F4B211B74B271000E26AE /* libTossPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 176F4B091B74B213000E26AE /* libTossPay.a */; };
+		176F4B281B74D9BE000E26AE /* NoTossAppUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 176F4B271B74D9BE000E26AE /* NoTossAppUserViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		176F4B151B74B213000E26AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1756B3591B723CFF00A4ABF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 176F4B081B74B213000E26AE;
+			remoteInfo = TossPay;
+		};
+		17F53CBF1B78B5AD00C73DF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1756B3591B723CFF00A4ABF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 176F4B081B74B213000E26AE;
+			remoteInfo = TossPay;
+		};
+		17F53CC11B78B5B300C73DF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1756B3591B723CFF00A4ABF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 176F4B081B74B213000E26AE;
+			remoteInfo = TossPay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1756B4301B7240F500A4ABF5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		176F4B071B74B213000E26AE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				176F4B0C1B74B213000E26AE /* TossPay.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1756B39E1B723DD600A4ABF5 /* TossPayExampleForWebShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TossPayExampleForWebShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1756B3A21B723DD600A4ABF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1756B3A31B723DD600A4ABF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1756B3A51B723DD600A4ABF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1756B3A61B723DD600A4ABF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1756B3A81B723DD600A4ABF5 /* WebShopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebShopViewController.h; sourceTree = "<group>"; };
+		1756B3A91B723DD600A4ABF5 /* WebShopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebShopViewController.m; sourceTree = "<group>"; };
+		1756B3AC1B723DD600A4ABF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1756B3AE1B723DD600A4ABF5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1756B3B11B723DD600A4ABF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		1756B3C91B723DE600A4ABF5 /* TossPayExampleForNativeShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TossPayExampleForNativeShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1756B3CC1B723DE600A4ABF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1756B3CD1B723DE600A4ABF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1756B3CF1B723DE600A4ABF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1756B3D01B723DE600A4ABF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1756B3D21B723DE600A4ABF5 /* ShopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
+		1756B3D31B723DE600A4ABF5 /* ShopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
+		1756B3D61B723DE600A4ABF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1756B3D81B723DE600A4ABF5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1756B3DB1B723DE600A4ABF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		176F4B091B74B213000E26AE /* libTossPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTossPay.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		176F4B0B1B74B213000E26AE /* TossPay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TossPay.h; sourceTree = "<group>"; };
+		176F4B0D1B74B213000E26AE /* TossPay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TossPay.m; sourceTree = "<group>"; };
+		176F4B131B74B213000E26AE /* TossPayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TossPayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		176F4B191B74B213000E26AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		176F4B261B74D9BE000E26AE /* NoTossAppUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoTossAppUserViewController.h; sourceTree = "<group>"; };
+		176F4B271B74D9BE000E26AE /* NoTossAppUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoTossAppUserViewController.m; sourceTree = "<group>"; };
+		17F53CC31B78D8E800C73DF4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1756B39B1B723DD600A4ABF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				176F4B201B74B253000E26AE /* libTossPay.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1756B3C61B723DE600A4ABF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				176F4B211B74B271000E26AE /* libTossPay.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		176F4B061B74B213000E26AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		176F4B101B74B213000E26AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				176F4B141B74B213000E26AE /* libTossPay.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1756B3581B723CFF00A4ABF5 = {
+			isa = PBXGroup;
+			children = (
+				17F53CC31B78D8E800C73DF4 /* README.md */,
+				1756B3A01B723DD600A4ABF5 /* TossPayExampleForWebShop */,
+				1756B3CA1B723DE600A4ABF5 /* TossPayExampleForNativeShop */,
+				176F4B0A1B74B213000E26AE /* TossPay */,
+				176F4B171B74B213000E26AE /* TossPayTests */,
+				1756B39F1B723DD600A4ABF5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1756B39F1B723DD600A4ABF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1756B39E1B723DD600A4ABF5 /* TossPayExampleForWebShop.app */,
+				1756B3C91B723DE600A4ABF5 /* TossPayExampleForNativeShop.app */,
+				176F4B091B74B213000E26AE /* libTossPay.a */,
+				176F4B131B74B213000E26AE /* TossPayTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1756B3A01B723DD600A4ABF5 /* TossPayExampleForWebShop */ = {
+			isa = PBXGroup;
+			children = (
+				1756B3A51B723DD600A4ABF5 /* AppDelegate.h */,
+				1756B3A61B723DD600A4ABF5 /* AppDelegate.m */,
+				1756B3A81B723DD600A4ABF5 /* WebShopViewController.h */,
+				1756B3A91B723DD600A4ABF5 /* WebShopViewController.m */,
+				1756B3AB1B723DD600A4ABF5 /* Main.storyboard */,
+				1756B3AE1B723DD600A4ABF5 /* Images.xcassets */,
+				1756B3B01B723DD600A4ABF5 /* LaunchScreen.xib */,
+				1756B3A11B723DD600A4ABF5 /* Supporting Files */,
+			);
+			path = TossPayExampleForWebShop;
+			sourceTree = "<group>";
+		};
+		1756B3A11B723DD600A4ABF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1756B3A21B723DD600A4ABF5 /* Info.plist */,
+				1756B3A31B723DD600A4ABF5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1756B3CA1B723DE600A4ABF5 /* TossPayExampleForNativeShop */ = {
+			isa = PBXGroup;
+			children = (
+				1756B3CF1B723DE600A4ABF5 /* AppDelegate.h */,
+				1756B3D01B723DE600A4ABF5 /* AppDelegate.m */,
+				1756B3D21B723DE600A4ABF5 /* ShopViewController.h */,
+				1756B3D31B723DE600A4ABF5 /* ShopViewController.m */,
+				1756B3D51B723DE600A4ABF5 /* Main.storyboard */,
+				1756B3D81B723DE600A4ABF5 /* Images.xcassets */,
+				1756B3DA1B723DE600A4ABF5 /* LaunchScreen.xib */,
+				1756B3CB1B723DE600A4ABF5 /* Supporting Files */,
+			);
+			path = TossPayExampleForNativeShop;
+			sourceTree = "<group>";
+		};
+		1756B3CB1B723DE600A4ABF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1756B3CC1B723DE600A4ABF5 /* Info.plist */,
+				1756B3CD1B723DE600A4ABF5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		176F4B0A1B74B213000E26AE /* TossPay */ = {
+			isa = PBXGroup;
+			children = (
+				176F4B0B1B74B213000E26AE /* TossPay.h */,
+				176F4B0D1B74B213000E26AE /* TossPay.m */,
+				176F4B261B74D9BE000E26AE /* NoTossAppUserViewController.h */,
+				176F4B271B74D9BE000E26AE /* NoTossAppUserViewController.m */,
+			);
+			path = TossPay;
+			sourceTree = "<group>";
+		};
+		176F4B171B74B213000E26AE /* TossPayTests */ = {
+			isa = PBXGroup;
+			children = (
+				176F4B181B74B213000E26AE /* Supporting Files */,
+			);
+			path = TossPayTests;
+			sourceTree = "<group>";
+		};
+		176F4B181B74B213000E26AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				176F4B191B74B213000E26AE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1756B39D1B723DD600A4ABF5 /* TossPayExampleForWebShop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1756B3BF1B723DD600A4ABF5 /* Build configuration list for PBXNativeTarget "TossPayExampleForWebShop" */;
+			buildPhases = (
+				1756B39A1B723DD600A4ABF5 /* Sources */,
+				1756B39B1B723DD600A4ABF5 /* Frameworks */,
+				1756B39C1B723DD600A4ABF5 /* Resources */,
+				1756B4301B7240F500A4ABF5 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17F53CC01B78B5AD00C73DF4 /* PBXTargetDependency */,
+			);
+			name = TossPayExampleForWebShop;
+			productName = TossPayExampleForWebShop;
+			productReference = 1756B39E1B723DD600A4ABF5 /* TossPayExampleForWebShop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1756B3C81B723DE600A4ABF5 /* TossPayExampleForNativeShop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1756B3E91B723DE600A4ABF5 /* Build configuration list for PBXNativeTarget "TossPayExampleForNativeShop" */;
+			buildPhases = (
+				1756B3C51B723DE600A4ABF5 /* Sources */,
+				1756B3C61B723DE600A4ABF5 /* Frameworks */,
+				1756B3C71B723DE600A4ABF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17F53CC21B78B5B300C73DF4 /* PBXTargetDependency */,
+			);
+			name = TossPayExampleForNativeShop;
+			productName = TossPayExampleForNativeShop;
+			productReference = 1756B3C91B723DE600A4ABF5 /* TossPayExampleForNativeShop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		176F4B081B74B213000E26AE /* TossPay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 176F4B1A1B74B213000E26AE /* Build configuration list for PBXNativeTarget "TossPay" */;
+			buildPhases = (
+				176F4B051B74B213000E26AE /* Sources */,
+				176F4B061B74B213000E26AE /* Frameworks */,
+				176F4B071B74B213000E26AE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TossPay;
+			productName = TossPay;
+			productReference = 176F4B091B74B213000E26AE /* libTossPay.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		176F4B121B74B213000E26AE /* TossPayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 176F4B1D1B74B213000E26AE /* Build configuration list for PBXNativeTarget "TossPayTests" */;
+			buildPhases = (
+				176F4B0F1B74B213000E26AE /* Sources */,
+				176F4B101B74B213000E26AE /* Frameworks */,
+				176F4B111B74B213000E26AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				176F4B161B74B213000E26AE /* PBXTargetDependency */,
+			);
+			name = TossPayTests;
+			productName = TossPayTests;
+			productReference = 176F4B131B74B213000E26AE /* TossPayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1756B3591B723CFF00A4ABF5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				TargetAttributes = {
+					1756B39D1B723DD600A4ABF5 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					1756B3C81B723DE600A4ABF5 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					176F4B081B74B213000E26AE = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					176F4B121B74B213000E26AE = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 1756B35C1B723CFF00A4ABF5 /* Build configuration list for PBXProject "TossPayExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1756B3581B723CFF00A4ABF5;
+			productRefGroup = 1756B39F1B723DD600A4ABF5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1756B39D1B723DD600A4ABF5 /* TossPayExampleForWebShop */,
+				1756B3C81B723DE600A4ABF5 /* TossPayExampleForNativeShop */,
+				176F4B081B74B213000E26AE /* TossPay */,
+				176F4B121B74B213000E26AE /* TossPayTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1756B39C1B723DD600A4ABF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1756B3AD1B723DD600A4ABF5 /* Main.storyboard in Resources */,
+				1756B3B21B723DD600A4ABF5 /* LaunchScreen.xib in Resources */,
+				1756B3AF1B723DD600A4ABF5 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1756B3C71B723DE600A4ABF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1756B3D71B723DE600A4ABF5 /* Main.storyboard in Resources */,
+				1756B3DC1B723DE600A4ABF5 /* LaunchScreen.xib in Resources */,
+				1756B3D91B723DE600A4ABF5 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		176F4B111B74B213000E26AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1756B39A1B723DD600A4ABF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1756B3AA1B723DD600A4ABF5 /* WebShopViewController.m in Sources */,
+				1756B3A71B723DD600A4ABF5 /* AppDelegate.m in Sources */,
+				1756B3A41B723DD600A4ABF5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1756B3C51B723DE600A4ABF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1756B3D41B723DE600A4ABF5 /* ShopViewController.m in Sources */,
+				1756B3D11B723DE600A4ABF5 /* AppDelegate.m in Sources */,
+				1756B3CE1B723DE600A4ABF5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		176F4B051B74B213000E26AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				176F4B0E1B74B213000E26AE /* TossPay.m in Sources */,
+				176F4B281B74D9BE000E26AE /* NoTossAppUserViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		176F4B0F1B74B213000E26AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		176F4B161B74B213000E26AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 176F4B081B74B213000E26AE /* TossPay */;
+			targetProxy = 176F4B151B74B213000E26AE /* PBXContainerItemProxy */;
+		};
+		17F53CC01B78B5AD00C73DF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 176F4B081B74B213000E26AE /* TossPay */;
+			targetProxy = 17F53CBF1B78B5AD00C73DF4 /* PBXContainerItemProxy */;
+		};
+		17F53CC21B78B5B300C73DF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 176F4B081B74B213000E26AE /* TossPay */;
+			targetProxy = 17F53CC11B78B5B300C73DF4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1756B3AB1B723DD600A4ABF5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1756B3AC1B723DD600A4ABF5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1756B3B01B723DD600A4ABF5 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1756B3B11B723DD600A4ABF5 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		1756B3D51B723DE600A4ABF5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1756B3D61B723DE600A4ABF5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1756B3DA1B723DE600A4ABF5 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1756B3DB1B723DE600A4ABF5 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1756B35D1B723CFF00A4ABF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		1756B35E1B723CFF00A4ABF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		1756B3C01B723DD600A4ABF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = TossPayExampleForWebShop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1756B3C11B723DD600A4ABF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = TossPayExampleForWebShop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1756B3EA1B723DE600A4ABF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = TossPayExampleForNativeShop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1756B3EB1B723DE600A4ABF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = TossPayExampleForNativeShop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		176F4B1B1B74B213000E26AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		176F4B1C1B74B213000E26AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		176F4B1E1B74B213000E26AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = TossPayTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		176F4B1F1B74B213000E26AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = TossPayTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1756B35C1B723CFF00A4ABF5 /* Build configuration list for PBXProject "TossPayExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1756B35D1B723CFF00A4ABF5 /* Debug */,
+				1756B35E1B723CFF00A4ABF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1756B3BF1B723DD600A4ABF5 /* Build configuration list for PBXNativeTarget "TossPayExampleForWebShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1756B3C01B723DD600A4ABF5 /* Debug */,
+				1756B3C11B723DD600A4ABF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1756B3E91B723DE600A4ABF5 /* Build configuration list for PBXNativeTarget "TossPayExampleForNativeShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1756B3EA1B723DE600A4ABF5 /* Debug */,
+				1756B3EB1B723DE600A4ABF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		176F4B1A1B74B213000E26AE /* Build configuration list for PBXNativeTarget "TossPay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				176F4B1B1B74B213000E26AE /* Debug */,
+				176F4B1C1B74B213000E26AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		176F4B1D1B74B213000E26AE /* Build configuration list for PBXNativeTarget "TossPayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				176F4B1E1B74B213000E26AE /* Debug */,
+				176F4B1F1B74B213000E26AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1756B3591B723CFF00A4ABF5 /* Project object */;
+}

@@ -1,0 +1,346 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+
+body {
+    font-family: 'Spoqa Han Sans', Malgun Gothic, dotum, sans-serif;
+}
+
+/* common header */
+#tossdev-header {
+    position: fixed;
+    margin:0;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(255,255,255,0.9);
+    border-bottom: 1px solid #ededed;
+    z-index: 99;
+}
+    #tossdev-header .logo {
+        height: 29px;
+        margin-top: 24px;
+        margin-left: 20px;
+    }
+
+/* for offsetting anchor */
+:target:before {
+content:"";
+display:block;
+height:90px; /* fixed header height*/
+margin:-90px 0 0; /* negative fixed header height */
+}
+
+/* front page */
+#frontpage {
+    height: 100%
+}
+    #frontpage .tagline {
+        margin-top: 180px;
+        margin-bottom: 30px;
+        font-size: 42px;
+        font-weight: lighter;
+        line-height: 54px;
+    }
+    #frontpage .wrapper {
+        min-height: 100%;
+        height: auto;
+        margin-bottom: -60px;
+        padding-bottom: 60px;
+    }
+        #frontpage .menu-container .menu {
+            padding: 0;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+            #frontpage .menu-container .menu li {
+                list-style-type: none;
+                min-height: 128px;
+                margin-top: 0;
+                margin-bottom: 30px;
+            }
+                #frontpage .menu-container .menu li a:hover {
+                    text-decoration: none;
+                }
+                #frontpage .menu-container .menu li img {
+                    float: left;
+                    width: 228px;
+                }
+                #frontpage .menu-container .menu li h3 {
+                    padding-top: 4px;
+                    margin-left: 248px;
+                    color: #3a3a3a;
+                    font-size: 22px;
+                }
+                #frontpage .menu-container .menu li p {
+                    margin-left: 248px;
+                    color: #535353;
+                    font-size: 15px;
+                }
+    #frontpage footer {
+/*
+        position: fixed;
+        bottom: 0;
+*/
+        width: 100%;
+        height: 60px;
+        background-color: #53585E;
+        color: #cfcfcf;
+        font-size: 16px;
+        padding-top: 18px;
+        }
+        #frontpage footer .copyright {
+            
+        }
+        #frontpage footer ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            float: right;
+        }
+            #frontpage footer ul li {
+                display: inline;
+                float: right;
+                margin-left: 30px;
+            }
+                #frontpage footer ul li a {
+                    color: #cfcfcf;
+                }
+    #frontpage .inquiry {
+        text-align: center;
+        margin-top: 77px;
+        margin-bottom: 60px;
+    }
+        #frontpage .inquiry h5 {
+            font-size: 15px;
+            color: #3A3A3A;
+            margin-bottom: 10px;
+        }
+        #frontpage .inquiry a {
+            font-size: 22px;
+            color: #4e7bfa;
+        }
+
+/* media queries for 'front page' */
+    @media screen and (max-width: 580px) {
+        #tossdev-header {
+            position: relative;
+            height: 60px;
+        }
+            #tossdev-header .logo {
+                height: 22px;
+                margin-top: 20px;
+                margin-left: 20px;
+            }
+        #frontpage .tagline {
+            margin-top: 30px;
+            font-size: 24px;
+            line-height: 30px;
+        }
+        #frontpage .menu-container .menu {
+            
+        }
+            #frontpage .menu-container .menu li {
+                padding: 0 60px;
+            }
+                #frontpage .menu-container .menu li img {
+                    float: none;
+                    width: 100%;
+                }
+                #frontpage .menu-container .menu li h3 {
+                    margin-left: 0;
+                    font-size: 18px;
+                }
+                #frontpage .menu-container .menu li p {
+                    margin-left: 0;
+                }
+    }
+
+/* 토스 결제 시작하기 */
+#gettingstarted {
+    margin: 80px auto 200px auto;
+}
+    #gettingstarted .sidebar {
+        position: fixed;
+        width: 270px;
+    }
+    
+    #gettingstarted #guide {
+        background: #ffffff;
+        margin-top: 20px;
+        z-index: 25;
+    }
+    #gettingstarted #guide .logo {
+        margin-top: 0;
+        font-size: 24px;
+        font-weight: lighter;
+    }
+      #gettingstarted #guide .logo a {
+        color: #000;
+        padding: 20px 0 15px 23px;
+        display: block;
+        border-bottom: 1px solid #D6DCE0;
+        box-shadow: 0px 1px #FFF;
+        -webkit-transition: color 0.15s linear;
+        -moz-transition: color 0.15s linear;
+        -ms-transition: color 0.15s linear;
+        -o-transition: color 0.15s linear;
+        transition: color 0.15s linear; }
+        #gettingstarted #guide .logo a:hover {
+          color: #858585;
+          text-decoration: none; }
+    #gettingstarted #guide .menu > li.active > .nav {
+        display: block;
+    }
+        #gettingstarted #guide .menu > li.active > .nav  a {
+            font-size: 14px;
+        }
+    #gettingstarted #guide .menu > li.active > a {
+      background: #DEEAF1; }
+    #gettingstarted #guide .menu > li a {
+      color: #3391C9;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 10px 15px 10px 25px;
+      -webkit-transition: all 0.15s linear;
+      -moz-transition: all 0.15s linear;
+      -ms-transition: all 0.15s linear;
+      -o-transition: all 0.15s linear;
+      transition: all 0.15s linear; }
+      #gettingstarted #guide .menu > li a:hover {
+        background: #DEEAF1; }
+    #gettingstarted #guide .menu > li > .nav {
+      margin-bottom: 7px;
+      display: none; }
+      #gettingstarted #guide .menu > li > .nav li a {
+        font-weight: 400;
+        color: #48A0D6;
+        padding: 6px 15px 5px 35px; }
+  
+    #gettingstarted #contents {
+        background: #FFF;
+        margin-left: 270px;
+    }
+    #gettingstarted #contents #methods {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+        #gettingstarted #contents #methods .method:first-child .method-description {
+            margin-top: 70px;
+            padding-top: 0px;
+            border-top: 0px; }
+        #gettingstarted #contents #methods .method:last-child {
+            padding-bottom: 70px; }
+        #gettingstarted #contents #methods .method .method-description {
+            border-top: 1px solid #E5E7EB;
+            margin-top: 30px;
+            padding-top: 80px; }
+          #gettingstarted #contents #methods .method .method-description h3 {
+                font-size: 37px;
+                margin-top: 0px;
+                margin-bottom: 29px;
+                font-weight: lighter;}
+          #gettingstarted #contents #methods .method .method-description h4 {
+                margin-top: 38px;
+                margin-bottom: 10px;
+                font-size: 20px;
+                line-height: 26px;
+                margin-left: 10px;
+                color: #333;
+                }
+          #gettingstarted #contents #methods .method .method-description p, #gettingstarted #contents #methods .method .method-description ul, #gettingstarted #contents #methods .method .method-description ol,#gettingstarted #contents #methods .method .method-description>div {
+            font-size: 14px;
+            color: #666;
+            line-height: 26px;
+            margin-left: 34px;
+            margin-bottom: 8px; }
+          #gettingstarted #contents #methods .method .method-description>div.well {
+              padding: 7px 24px;
+              margin-top: 12px;
+              margin-bottom: 16px;
+          }
+          #gettingstarted #contents #methods .method .method-description table {
+              font-size: 14px;
+              color: #666;
+              margin-left: 54px;
+              max-width: 500px;
+          }
+          #gettingstarted #contents #methods .method .method-description .info {
+            margin-top: 45px;
+            margin-bottom: 40px; }
+            #gettingstarted #contents #methods .method .method-description .info h4 {
+              font-size: 14px;
+              border-bottom: 1px solid #E4E4E4;
+              padding-bottom: 15px; }
+            #gettingstarted #contents #methods .method .method-description .info .field {
+              margin-top: 17px;
+              font-size: 13px; }
+              #gettingstarted #contents #methods .method .method-description .info .field .key {
+                width: 40%;
+                float: left;
+                text-align: right;
+                padding-right: 10px;
+                font-weight: bold;
+                color: #333; }
+              #gettingstarted #contents #methods .method .method-description .info .field .desc {
+                width: 60%;
+                float: right;
+                padding-left: 10px;
+                color: #555;
+                line-height: 21px; }
+                #gettingstarted #contents #methods .method .method-description .info .field .desc strong {
+                  display: block;
+                  color: #333;
+                  margin-bottom: 5px; }
+        #gettingstarted #contents #methods .method .method-example {
+            border-top: 1px solid #000;
+            box-shadow: inset 0px 1px rgba(255, 255, 255, 0.17);
+            color: #fff;
+            margin-top: 14px;
+            margin-left: 34px;
+            margin-bottom: 16px;
+        }
+            #gettingstarted #contents #methods .method .method-example .languages {
+            position: relative;
+            width: 100%;
+            padding: 5px 0 5px 20px;
+            background: #3B4249;
+            }
+            #gettingstarted #contents #methods .languages .language {
+                display: inline-block;
+                color: #C0CEDD;
+                padding: 5px 15px;
+                font-size: 13px;
+            }
+              #gettingstarted #contents #methods .languages .language.selected {
+                color: #fff; }
+          #gettingstarted #contents #methods .method .method-example pre {
+              background: #292E33;
+              margin: 0;
+              padding: 20px 30px 24px 30px;
+              border: none;
+              border-radius: 0;
+            }
+            #gettingstarted #contents #methods .method .method-example pre code {
+              background: none;
+              display: none;
+            }
+              #gettingstarted #contents #methods .method .method-example pre code.always-visible {
+                display: block !important; }
+              #gettingstarted #contents #methods .method .method-example pre code.language-bash {
+                display: block; }
+              #gettingstarted #contents #methods .method .method-example pre code > * {
+                line-height: 20px; }
+
+/* media queries for 'getting started' */
+    @media screen and (max-width: 780px) {
+        #gettingstarted .sidebar {
+            position: relative;
+            width: 100%;
+        }
+        #gettingstarted #guide a{
+            margin-left: 20px;
+        }
+        #gettingstarted #contents {
+            background: #FFF;
+            margin-left: 0;
+        }
+    }
