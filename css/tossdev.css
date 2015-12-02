@@ -4,6 +4,10 @@ body {
     font-family: 'Spoqa Han Sans', Malgun Gothic, dotum, sans-serif;
 }
 
+pre[class*="language-"] {
+	box-shadow: none;
+}
+
 /* common header */
 #tossdev-header {
     position: fixed;
@@ -292,7 +296,6 @@ margin:-90px 0 0; /* negative fixed header height */
                   margin-bottom: 5px; }
         #gettingstarted #contents #methods .method .method-example {
             border-top: 1px solid #000;
-            box-shadow: inset 0px 1px rgba(255, 255, 255, 0.17);
             color: #fff;
             margin-top: 14px;
             margin-left: 34px;
@@ -347,7 +350,7 @@ margin:-90px 0 0; /* negative fixed header height */
 
 /* API 문서 */
 #docs {
-  font-family: "Apple SD Gothic Neo", "Nanum Barun Gothic", "Malgun Gothic", "돋움", Dotum, sans-serif }
+}
   #docs #guide {
     background: #F4F8FA;
     border-right: 1px solid #DADFE5;
@@ -361,10 +364,9 @@ margin:-90px 0 0; /* negative fixed header height */
     height: 100%; }
     #docs #guide .logo {
       margin-top: 0;
-      font-size: 26px; }
+      font-size: 22px; }
       #docs #guide .logo a {
         color: #000;
-        font-family: Myriad Pro, Lato, Helvetica Neue, Arial;
         padding: 20px 0 15px 23px;
         display: block;
         border-bottom: 1px solid #D6DCE0;
@@ -377,6 +379,9 @@ margin:-90px 0 0; /* negative fixed header height */
         #docs #guide .logo a:hover {
           color: #858585;
           text-decoration: none; }
+        #docs #guide .logo img {
+            height: 26px;
+        }
     #docs #guide .menu h5 {
       padding: 20px 15px 0px 25px;
       color: #3E63BC;
@@ -523,7 +528,6 @@ margin:-90px 0 0; /* negative fixed header height */
             padding: 0; }
             #docs #api-docs #methods .method .method-section .method-example pre code {
               background: none;
-              font-family: Monaco, Consolas, Menlo;
               font-size: 12px;
               display: none; }
               #docs #api-docs #methods .method .method-section .method-example pre code.always-visible {

@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>토스 결제 시작하기</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://toss.im/assets/img/favicon.ico">
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/tossdev.css" />
     <link rel="stylesheet" type="text/css" href="css/prism.css" />
+    <link rel="stylesheet" type="text/css" href="css/tossdev.css" />
 
     <!-- javascript -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
@@ -103,6 +104,13 @@
                                 <li><a href="#checkstatus-2">필수 Parameters</a></li>
                                 <li><a href="#checkstatus-3">결제 상태 확인 요청에 대한 응답</a></li>
                                 <li><a href="#checkstatus-4">결제 상태 목록</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#escrow">에스크로 결제 진행</a>
+                            <ul class="nav">
+                                <li><a href="#escrow-1">API Endpoint</a></li>
+                                <li><a href="#escrow-2">필수 Parameters</a></li>
                             </ul>
                         </li>
                         <li>
@@ -344,6 +352,7 @@ echo "Response: ".$result;</code></pre>
                             <p>에스크로 결제는 일종의 '구매자 보호 정책'입니다. 온라인 상에서 실물거래를 하는 경우, 구매자가 판매자에게 입금은 하였으나 물품을 받지 못하거나 원치 않는 물품을 받았을 경우 금전적 손실이 발생할 수 있는데, 이를 방지하기 위한 것입니다.</p>
                             <p>결제가 완료되면 결제 금액만큼 구매자의 계좌에서 출금되지만, 구매자가 물품을 정상적으로 받았다고 확정(구매확정)하기 전까지는 정산되지 않습니다. 따라서 구매자는 좀 더 안심하고 물품을 구매할 수 있습니다.</p>
                             <p class="alert alert-warning" role="alert">온라인상에서 실물을 판매하는 경우, 구매자에게 '에스크로 결제'를 선택할 수 있는 권한을 필수적으로 제공해야합니다.</p>
+                            <p class="alert alert-warning" role="alert">에스크로 결제 생성 및 승인 완료 후, 반드시 '진행' 처리를 해주어야 합니다. <a href="#escrow">'에스크로 결제 진행'</a> 문서를 꼭 확인하세요.</p>
                         </div>
                     </div>
                     <div class="method" id="cancel">
@@ -503,6 +512,50 @@ echo "Response: ".$result;</code></pre>
                                     <td>환불 정산 완료</td>
                                 </tr>
                             </table>
+                        </div>
+                    </div>
+                    <div class="method" id="escrow">
+                        <div class="method-description">
+                            <h3>에스크로 결제 진행</h3>
+                            <p>
+                                에스크로 결제는 아래와 같은 흐름으로 진행됩니다.<br>
+                                <img src="images/flow_escrow.png" alt="에스크로 결제 흐름">
+                            </p>
+                            <ol>
+                                <li>에스크로 결제 생성 및 구매자의 승인 완료</li>
+                                <li>에스크로 요청 : 결제 대금 보호를 시작한 상태입니다. 판매자가 물품 배송을 완료한 후, '배송 등록'을 하면 '에스크로 해제' 상태로 변경됩니다.</li>
+                                <li>에스크로 해제 : 구매자의 '구매 확정'을 기다리는 상태입니다. 이 때 구매자는 '구매 확정' 또는 '지급 거부'할 수 있습니다. 구매 확정하면 결제가 완료되고 판매자는 대금을 정산받을 수 있으나, 지급 거부하면 '에스크로 거부' 상태가 되며, 대금 정산이 진행되지 않습니다.</li>
+                            </ol>
+                            <p>위와 같은 에스크로 결제 진행 과정에서 판매자가 반드시 조치해야하는 두 가지 상황이 있습니다.</p>
+                            <ol>
+                                <li>에스크로 요청 상태에서 물품 배송 후 <strong>'배송 등록'하기</strong></li>
+                                <li>에스크로 거부 상태에 빠졌을 때 문제를 해결하고 <strong>'구매확정 재요청'하기</strong></li>
+                            </ol>
+                            <p>위 두 상황에서 조치를 취하지 않으면 결제 및 대금 지급이 이루어지지 않으므로 잊지말고 진행해야 합니다. '배송 등록'과 '구매확정 재요청' 처리 시 사용하는 API가 지금부터 소개할 '에스크로 결제 진행 API'입니다.</p>
+                            <p>아래 예제는 에스크로 결제 진행 API의 예제 코드입니다.</p>
+                            <div class="method-example">
+                                <div class="languages">
+                                    <a class="language selected" data-lang="language-bash" href="#">curl</a>
+                                </div>
+                                <pre><code class="language-bash">curl "https://toss.im/tosspay/api/v1/escrow" \
+    -H "content-Type: application/json" \
+    -d '{
+        "payToken":"7he9aYt0keNr",                  # 결제 고유 번호
+        "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O"     # 상점의 API Key
+        }'
+</code></pre>
+                            </div>
+                            <ul>
+                                <li>'에스크로 요청' 상태인 결제 건에 대해 위 요청을 보내면 '배송 등록' 처리됩니다.</li>
+                                <li>'에스크로 거부' 상태인 결제 건에 대해 위 요청을 보내면 '구매확정 재요청' 처리됩니다.</li>
+                            </ul>
+                            <h4 id="escrow-1">결제 환불 API의 Endpoint</h4>
+                            <div class="well">POST https://toss.im/tosspay/api/v1/escrow</div>
+                            <h4 id="escrow-2">필수 Parameters</h4>
+                            <ol>
+                                <li><strong>상점 API Key</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
+                                <li><strong>결제 고유 토큰 (payToken)</strong> : 결제 생성 완료 후 받은 결제 고유번호</li>
+                            </ol>
                         </div>
                     </div>
                     <div class="method" id="iOS">
