@@ -344,3 +344,194 @@ margin:-90px 0 0; /* negative fixed header height */
             margin-left: 0;
         }
     }
+
+/* API 문서 */
+#docs {
+  font-family: "Apple SD Gothic Neo", "Nanum Barun Gothic", "Malgun Gothic", "돋움", Dotum, sans-serif }
+  #docs #guide {
+    background: #F4F8FA;
+    border-right: 1px solid #DADFE5;
+    left: 0;
+    top: 0;
+    position: fixed;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 210px;
+    z-index: 25;
+    height: 100%; }
+    #docs #guide .logo {
+      margin-top: 0;
+      font-size: 26px; }
+      #docs #guide .logo a {
+        color: #000;
+        font-family: Myriad Pro, Lato, Helvetica Neue, Arial;
+        padding: 20px 0 15px 23px;
+        display: block;
+        border-bottom: 1px solid #D6DCE0;
+        box-shadow: 0px 1px #FFF;
+        -webkit-transition: color 0.15s linear;
+        -moz-transition: color 0.15s linear;
+        -ms-transition: color 0.15s linear;
+        -o-transition: color 0.15s linear;
+        transition: color 0.15s linear; }
+        #docs #guide .logo a:hover {
+          color: #858585;
+          text-decoration: none; }
+    #docs #guide .menu h5 {
+      padding: 20px 15px 0px 25px;
+      color: #3E63BC;
+    }
+    #docs #guide .menu > li.active > .nav {
+      display: block; }
+    #docs #guide .menu > li.active > a {
+      background: #DEEAF1; }
+    #docs #guide .menu > li a {
+      color: #334152;
+      font-weight: 500;
+      font-size: 17px;
+      padding: 10px 15px 10px 25px;
+      -webkit-transition: all 0.15s linear;
+      -moz-transition: all 0.15s linear;
+      -ms-transition: all 0.15s linear;
+      -o-transition: all 0.15s linear;
+      transition: all 0.15s linear; }
+      #docs #guide .menu > li a:hover {
+        background: #DEEAF1; }
+    #docs #guide .menu > li > .nav {
+      margin-bottom: 7px;
+      display: none; }
+      #docs #guide .menu > li > .nav li a {
+        font-weight: 400;
+        color: #506070;
+        font-size: 14px;
+        padding: 6px 15px 5px 35px; }
+  #docs #api-docs {
+    background: #FFF;
+    margin-left: 210px;
+    min-width: 750px; }
+    #docs #api-docs #methods {
+      background: #292E33;
+      position: relative;
+      margin-left: 50%; }
+      #docs #api-docs #methods .languages {
+        position: fixed;
+        top: 0;
+		margin: 0 0 0 -5px;
+        width: 100%;
+        padding: 5px 0 5px 20px;
+        background: #3B4249;
+        box-shadow: 2px 1px 3px #000;
+        z-index: 999; }
+        #docs #api-docs #methods .languages .language {
+          display: inline-block;
+          color: #C0CEDD;
+          padding: 5px 15px;
+          font-size: 13px; }
+          #docs #api-docs #methods .languages .language.selected {
+            color: #fff; }
+      #docs #api-docs #methods .method:nth-child(2) .method-section .method-description {
+        padding-top: 0px;
+        border-top: 0px; }
+      #docs #api-docs #methods .method:nth-child(2) .method-section .method-example {
+        padding-top: 35px;
+        border-top: 0;
+        box-shadow: none; }
+      #docs #api-docs #methods .method:last-child .method-section {
+        padding-bottom: 70px; }
+      #docs #api-docs #methods .method .method-section {
+        margin-left: -100%;
+        position: relative;
+        padding-top: 50px; }
+        #docs #api-docs #methods .method .method-section .method-description {
+          width: 50%;
+          float: left;
+          padding: 0 24px 0 30px;
+          border-top: 1px solid #E5E7EB;
+          padding-top: 40px; }
+          #docs #api-docs #methods .method .method-section .method-description h3 {
+            font-size: 21px;
+            margin-top: 0;
+            margin-bottom: 20px; }
+          #docs #api-docs #methods .method .method-section .method-description p {
+            font-size: 13px;
+            color: #666;
+            line-height: 21px;
+            margin-bottom: 20px; }
+          #docs #api-docs #methods .method .method-section .method-description .info {
+            margin-top: 45px;
+            margin-bottom: 40px; }
+            #docs #api-docs #methods .method .method-section .method-description .info h4 {
+              text-transform: uppercase;
+              font-size: 13px;
+              /*border-bottom: 1px solid #E4E4E4;*/
+              background-color: #f4f4f4;
+              color: #777;
+              padding: 8px 8px;}
+            #docs #api-docs #methods .method .method-section .method-description .info .field {
+              /*margin-top: 17px;*/
+              padding: 12px;
+              font-size: 14px;
+              border-bottom: 1px solid #f6f6f6;
+            }
+              #docs #api-docs #methods .method .method-section .method-description .info .field .key {
+                  position: relative;
+                  color: #333;
+                  font-weight: bold;
+                  float: left;
+                  overflow-wrap: break-word;
+                  text-align: right;
+                  width: 30%;
+              }
+                #docs #api-docs #methods .method .method-section .method-description .info .field .key span {
+                    display: block;
+                    padding-left: 10px;
+                    color: #999;
+                    line-height: 21px;
+                    font-size: 12px;
+                  /*margin-bottom: 5px; */
+                }
+                #docs #api-docs #methods .method .method-section .method-description .info .field .key .required:before{
+                    color: #c25300;
+                    content: '필수';
+                }
+                #docs #api-docs #methods .method .method-section .method-description .info .field .key .use-only{
+                  color: #c25300;
+                }
+              #docs #api-docs #methods .method .method-section .method-description .info .field .desc {
+                width: 65%;
+                float: right;
+                text-align: left;
+                padding-right: 10px;
+                /*font-weight: bold;*/
+                color: #333; }
+                #docs #api-docs #methods .method .method-section .method-description .info .field .desc .action-key {
+                  font-weight: bold }
+
+        #docs #api-docs #methods .method .method-section .method-example {
+          margin-left: 50%;
+          width: 50%;
+          padding: 75px 0 0;
+          border-top: 1px solid #000;
+          box-shadow: inset 0px 1px rgba(255, 255, 255, 0.17);
+          color: #fff; }
+          #docs #api-docs #methods .method .method-section .method-example > * {
+          	margin : 10px 20px 30px;
+          }
+          #docs #api-docs #methods .method .method-section .method-example pre {
+            background: none;
+            border: none;
+            padding: 0; }
+            #docs #api-docs #methods .method .method-section .method-example pre code {
+              background: none;
+              font-family: Monaco, Consolas, Menlo;
+              font-size: 12px;
+              display: none; }
+              #docs #api-docs #methods .method .method-section .method-example pre code.always-visible {
+                display: block !important; }
+                #docs #api-docs #methods .method .method-section .method-example .title {
+				  padding: 10px;
+				  margin: 0 0 0 -5px;
+				  background-color: #3B4249;
+				  box-shadow: 2px 1px 1px #1C1F22;
+				  z-index: 999;
+                }

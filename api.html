@@ -1,0 +1,1263 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+	<title>토스 결제 시작하기</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- stylesheets -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/tossdev.css" />
+	<link rel="stylesheet" type="text/css" href="css/prism.css" />
+
+	<!-- javascript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+    
+<body id="docs" data-spy="scroll" data-target="#guide">
+  <div id="guide">
+    <h1 class="logo">
+      <a href="apidoc">Toss Pay API</a>
+    </h1>
+    <ul class="menu nav">
+      <li>
+        <a href="#intro">Toss 결제 API 소개</a>
+      </li>
+      <li>
+        <a href="#state">결제 상태</a>
+      </li>
+      <li>
+        <a href="#httpResponse">HTTP 응답 코드</a>
+      </li>
+      <h5>API</h5>
+      <li>
+        <a href="#charge">결제</a>
+      </li>
+      <li>
+          <a href="#onWeb">Web에서 결제</a>
+      </li>
+      <li>
+          <a href="#onApp">App에서 결제</a>
+      </li>
+      <li>
+        <a href="#cancel">결제 취소</a>
+      </li>
+      <li>
+        <a href="#refunds">결제 환불</a>
+      </li>
+      <li>
+        <a href="#statusCheck">결제 상태 확인</a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="api-docs">
+    <div id="methods">
+      <div class="languages">
+        <a class="language selected" data-lang="curl" href="#">curl</a>
+        <a class="language" data-lang="java" href="#" disabled>Java</a>
+        <a class="language" data-lang="php" href="#" disabled>PHP</a>
+      </div>
+      <div class="method" id="intro">
+        <div class="method-section clearfix">
+          <div class="method-description">
+            <h3>Toss 결제 API 소개</h3>
+            <p>
+              Toss를 통한 결제 서비스를 사용하기 위한 API입니다. 사용 전, 먼저 <a href="https://toss.im/pay" target="_blank">가맹점 가입</a>을 해주세요! (이메일만 있으면 간단하게 가입하실 수 있습니다.)
+            </p>
+          </div>
+          <div class="method-example">
+            <pre>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="method" id="state">
+        <div class="method-section clearfix">
+          <div class="method-description">
+            <h3>결제 상태</h3>
+            <p>
+              결제 건이 생성된 후, 결제가 진행됨에 따라 결제 상태가 변경되며, 각 결제 상태마다 판매자 또는 구매자가 요청할 수 있는 행동도 변합니다. 아래는 결제 상태 목록과 각 상태에 대한 설명입니다.
+            </p>
+            <p>
+              생성된 결제의 현재 상태를 파악하려면 <a href="#statusCheck">결제 상태 확인 API</a>를 활용하세요.
+            </p>
+            <div class="info">
+              <h4>결제 상태 목록</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  PAY_STANDBY
+                </div>
+                <div class="desc">
+                  결제 대기 중<br />
+                  : 결제 건이 생성되었고, 구매자의 결제 진행을 대기 중인 상태. 이 상태에서 구매자나 가맹점이 결제를 취소할 수 있습니다. 또한 설정한 '만료 기간'이 도래하면 자동으로 취소됩니다.
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  PAY_CANCEL
+                </div>
+                <div class="desc">
+                  결제 취소<br />
+                  : 결제가 완료되기 전에 구매자나 가맹점이 결제를 취소한 상태입니다. (금원 이동 없음)
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  PAY_PROGRESS
+                </div>
+                <div class="desc">
+                  결제 진행 중<br />
+                  : 구매자가 대기 중인 결제를 승인하여 출금 처리 중인 상태입니다.
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  PAY_COMPLETE
+                </div>
+                <div class="desc">
+                  결제 완료<br />
+                  : 구매자의 결제 승인 및 출금이 정상적으로 완료된 상태입니다. 에스크로 결제 건의 경우, 자동으로 '에스크로 요청' 상태로 변경됩니다.
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  ESCROW_REQUEST
+                  <span class="type">에스크로 only</span>
+                </div>
+                <div class="desc">
+                  에스크로 요청<br />
+                  : 에스크로 결제 건이 결제 완료된 후, 매매보호에 들어간 상태입니다. 판매자가 '배송 등록'을 하면 에스크로 해제 상태로 변경되며, 120일 동안 배송 등록을 하지 않는 경우에도 자동으로 에스크로 해제 상태로 변경됩니다.
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  ESCROW_RELEASE
+                  <span class="type">에스크로 only</span>
+                </div>
+                <div class="desc">
+                  에스크로 해제<br />
+                  : 판매자가 '배송 등록'을 완료하고 구매자의 '구매 확정'을 대기 중인 상태입니다. 구매자가 구매 확정을 하면 판매자 대금 지급 과정을 시작하고, 구매자가 지급을 거부하면 에스크로 거부 상태로 변경됩니다.
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  ESCROW_DENY
+                  <span class="type">에스크로 only</span>
+                </div>
+                <div class="desc">
+                  에스크로 거부<br />
+                  : 구매자가 지급을 거절한 상태입니다. 판매자는 이 건을 전액 환불 처리하거나 구매자에게 '구매 확정'을 다시 요청할 수 있습니다.
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  REFUND_PROGRESS
+                </div>
+                <div class="desc">
+                  환불 진행 중<br />
+                  : 전액 또는 부분 환불을 진행 중인 상태로, 완료되기 전 까지 다른 환불을 진행할 수 없습니다.
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  REFUND_SUCCESS
+                </div>
+                <div class="desc">
+                  환불 성공<br />
+                  : 전액 또는 부분 환불이 완료되어, 환불 처리한 금액이 구매자의 계좌로 입금 완료된 상태입니다.
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  SETTLEMENT_COMPLETE
+                </div>
+                <div class="desc">
+                  정산 완료<br />
+                  : 결제 완료된 금액에 대해 정산이 완료되어 더 이상 환불이 불가한 상태입니다. (승인일 또는 구매 확정일로부터 180일 경과)
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  SETTLEMENT_REFUND_COMPLETE
+                </div>
+                <div class="desc">
+                  환불 정산 완료<br />
+                  : 전액 또는 부분 환불에 대한 정산이 완료되어 더 이상 환불이 불가한 상태입니다. (승인일 또는 구매 확정일로부터 180일 경과했거나 전액 환불에 대한 정산 완료된 경우)
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="method-example">
+            <pre>
+              <code class="curl">
+              </code>
+              <code class="java">
+              </code>
+              <code class="pho">
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="method" id="httpResponse">
+        <div class="method-section clearfix">
+          <div class="method-description">
+            <h3>HTTP 응답 코드</h3>
+            <p>
+              ...
+            </p>
+            <div class="info">
+              <h4>HTTP Response Code</h4>
+              <div class="field clearfix">
+                <div class="key">200</div>
+                <div class="desc">
+                  OK : 정상
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">400</div>
+                <div class="desc">
+                  Bad Request : 파라미터 오류
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">401</div>
+                <div class="desc">
+                  Unauthorized : 가맹점 key 오류
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">404</div>
+                <div class="desc">
+                  Not Found : 존재하지 않는 요청
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">50x</div>
+                <div class="desc">
+                  Server error : 서버 오류
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="method-example">
+            <pre>
+              <code class="curl">
+              </code>
+              <code class="java">
+              </code>
+              <code class="pho">
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="method" id="charge">
+        <div class="method-section clearfix">
+          <div class="method-description">
+            <h3>결제</h3>
+            <p>
+              결제 건을 생성합니다.
+            </p> 
+            <div class="info">
+              <h4>endpoint</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  (POST)
+                </div>
+                <div class="desc">
+                  https://toss.im/tosspay/api/v1/payments
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <h4>parameters</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  apiKey
+                  <span class="type">String</span>
+                  <span class="required"></span>
+                </div>
+                <div class="desc">
+                  가맹점 key
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  orderNo
+                  <span class="type">String</span>
+                  <span class="required"></span>
+                </div>
+                <div class="desc">
+                  가맹점의 상품 주문번호
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  amount
+                  <span class="type">Integer</span>
+                  <span class="required"></span>
+                </div>
+                <div class="desc">
+                  결제 금액
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  productDesc
+                  <span class="type">String</span>
+                  <span class="required"></span>
+                </div>
+                <div class="desc">
+                  상품 설명
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  expiredTime
+                  <span class="type">Timestamp</span>
+                </div>
+                <div class="desc">
+                  결제 만료 기한 (기본값 : 최장 24시간, 최단 10분) 형식 : 1970-01-01 00:00:00
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  orderCheckCallback
+                  <span class="type">String</span>
+                </div>
+                <div class="desc">
+                  결제 전 주문 가능 여부를 최종 확인하기 위한 callback URL (아직 품절되거나 취소되지 않았는지 확인)
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  resultCallback
+                  <span class="type">String</span>
+                </div>
+                <div class="desc">
+                  결제 결과 callback URL (성공, 취소, 환불 등)
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <h4>response</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  code
+                </div>
+                <div class="desc">
+                  응답코드<br />
+                  <br />
+                  <table class="table">
+                    <tr>
+                      <td>0</td>
+                      <td>성공</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>결제 에러</td>
+                    </tr>
+                    <tr>
+                      <td>11</td>
+                      <td>중복 주문</td>
+                    </tr>
+                    <tr>
+                      <td>12</td>
+                      <td>1회 결제 한도 초과 금액</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  payToken
+                </div>
+                <div class="desc">
+                  Toss 결제 토큰
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  msg
+                </div>
+                <div class="desc">
+                  응답이 성공이 아닌 경우 설명 메세지
+                </div>
+              </div>
+            </div>
+            <h4>주문 상태 확인 Callback (orderCheckCallback)</h4>
+            <p>
+              구매자가 Toss앱을 통해 결제를 승인하려고 할 때, 최종적으로 토스가 판매자에게 해당 주문이 여전히 유효한지 확인합니다. 재고 소진 등의 사유로 상품을 제공할 수 없는 경우, 결제가 진행되지 않도록 막을 수 있습니다.
+            </p>
+            <p>
+              *생성된 결제 건에 orderCheckCallback 파라미터 값이 있을 경우에만 동작합니다.
+            </p>
+            <div class="info">
+              <h4>parameter</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  orderNo
+                </div>
+                <div class="desc">
+                  결제 생성시 입력한 주문번호
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <h4>response</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  ORDER_VALID
+                </div>
+                <div class="desc">
+                  리턴값이 이것일 경우에만 결제 프로세스를 진행
+                </div>
+              </div>
+            </div>
+            <h4>결제 결과 Callback (resultCallback)</h4>
+            <p>
+              결제 상태가 변경될 때 토스가 판매자에게 변경 사항을 알립니다.
+            </p>
+            <p>
+              *생성된 결제 건에 resultCallback 파라미터 값이 있을 경우에만 동작합니다.
+            </p>
+            <div class="info">
+              <h4>parameter</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  status
+                </div>
+                <div class="desc">
+                  PAY_SUCCESS, PAY_CANCEL, REFUND_SUCCESS 중 하나
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  payToken
+                </div>
+                <div class="desc">
+                  Toss 결제 토큰
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  orderNo
+                </div>
+                <div class="desc">
+                  Toss 결제와 이어진 주문번호
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <h4>response</h4>
+              <div class="field clearfix">
+                <div class="key">
+                </div>
+                <div class="desc">
+                  기대하지 않음 (미사용)
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="method-example">
+          	<div class="title">Definition</div>
+            <pre><code class="language-bash always-visible">POST https://toss.im/tosspay/api/v1/payments</code></pre>
+          	<div class="title">Example Request</div>
+            <pre><code class="curl language-bash">curl https://toss.im/tosspay/api/v1/payments \
+    -H "content-Type: application/json" \
+    -d '{
+        "orderNo":"2015072012211",
+        "amount":10000,
+        "productDesc":"테스트결제",
+        "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O"
+        }'</code>
+			<code class="java language-java">URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://toss.im/tosspay/api/v1/payments");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+	
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+	jsonBody.put("orderNo", "2015072012211");
+	jsonBody.put("amount", 10000);
+	jsonBody.put("productDesc", "테스트 결제");
+	jsonBody.put("apiKey", "sk_test_4Q0kzy8WyVYaqNjzNZ9O");
+	jsonBody.put("expiredTime", "2015-07-20 16:21:00");
+	jsonBody.put("orderCheckCallback", "https://myshop.com/toss/orderCheck.php");
+	jsonBody.put("resultCallback", "https://myshop.com/toss/result.php");
+	
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	bos.write(jsonBody.toJSONString().getBytes());
+	bos.flush();
+	bos.close();
+	
+	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code>
+            <code class="php language-php">$arrayBody = array();
+$arrayBody["orderNo"] = "2015072012211";
+$arrayBody["amount"] = 10000;
+$arrayBody["productDesc"] = "테스트 결제";
+$arrayBody["apiKey"] = "sk_test_4Q0kzy8WyVYaqNjzNZ9O";
+$arrayBody["expiredTime"] = "2015-07-20 16:21:00";
+$arrayBody["orderCheckCallback"] = "https://myshop.com/toss/orderCheck.php";
+$arrayBody["resultCallback"] = "https://myshop.com/toss/result.php";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://toss.im/tosspay/api/v1/payments');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+ 
+$result = curl_exec($ch);
+curl_close($ch);
+      
+echo "Response: ".$result;</code></pre>
+            <div class="title">Example Response</div>
+            <pre><code class="language-javascript always-visible">{"code":0,"payToken":"7he9aYt0keNr"}</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="method" id="onWeb">
+          <div class="method-section clearfix">
+              <div class="method-description">
+                  <h3 id="callUrl">Web에서 결제</h3>
+                  <p>
+                      결제가 생성되었다면 URL을 호출하여 토스의 결제 단계로 진행할 수 있습니다. (Web)
+                  </p>
+                  <p>* 파라미터 값은 URL Encoding 되어야 합니다.</p>
+                  <div class="info">
+                      <h4>endpoint</h4>
+                      <div class="field clearfix">
+                          <div class="key">
+                              (GET)
+                          </div>
+                          <div class="desc">
+                              https://toss.im/tosspay/order/orderWait
+                          </div>
+                      </div>
+                  </div>
+                  <div class="info">
+                      <h4>parameters</h4>
+                      <div class="field clearfix">
+                          <div class="key">
+                              payToken
+                              <span class="type">String</span>
+                              <span class="required"></span>
+                          </div>
+                          <div class="desc">
+                              <p><a href="#charge">payments</a>에서 생성된 payToken</p>
+                          </div>
+                      </div>
+                      <div class="field clearfix">
+                          <div class="key">
+                              retUrl
+                              <span class="type">String</span>
+                              <span class="required"></span>
+                          </div>
+                          <div class="desc">
+                              주문이 완료된 후 다시 돌아가야 할 페이지의 URL
+                          </div>
+                      </div>
+                  </div>
+                  <div class="info">
+                      <h4>example</h4>
+                      <div class="field clearfix">
+                          <div class="key">
+                              (GET)
+                          </div>
+                          <div class="desc">
+                              https://toss.im/tosspay/order/orderWait?payToken=7he9aYt0keNr&retUrl=http://toss.im/orderInfo
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="method" id="onApp">
+          <div class="method-section clearfix">
+              <div class="method-description">
+                  <h3>App에서 결제</h3>
+                  <p>
+                      결제가 생성되었다면 Custom Scheme을 호출하여 바로 토스 앱으로 결제를 진행할 수 있습니다. (iOS, Android)
+                  </p>
+                  <p>* 파라미터 값은 URL Encoding 되어야 합니다.</p>
+                  <div class="info">
+                      <h4>launcher</h4>
+                      <div class="field clearfix">
+                          <div class="key">
+                              supertoss://
+                          </div>
+                          <div class="desc">
+                              토스를 실행합니다.
+                          </div>
+                      </div>
+                  </div>
+                  <div class="info">
+                      <h4>pay</h4>
+                      <div class="field clearfix">
+                          <div class="key">
+                              supertoss://pay?payToken=[...]
+                          </div>
+                          <div class="desc">
+                              <p><span class="action-key">payToken: </span><span class="action-desc"><a href="#charge">payments</a>에서 생성된 payToken</p></span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="info">
+                      <h4>pay with callback</h4>
+                      <div class="field clearfix">
+                          <div class="key" style="float:none;width:100%;text-align:left;">
+                              supertoss://x-callback-url/pay?payToken=[...]&x-source=[...]&x-success=[...]
+                              <span class="use-only" style="text-align:right">iOS Only</span>
+                          </div>
+                          <div class="desc">
+                              <p><span class="action-key">payToken: </span><span class="action-desc"><a href="#charge">payments</a>에서 생성된 payToken</p></span>
+                              <p><span class="action-key">x-source: </span><span class="action-desc">Toss 앱 표시되는 가맹점 돌아가기 버튼 타이틀. 예) 쇼핑몰 이름</span>
+                              <p><span class="action-key">x-success: </span><span class="action-desc">Toss 가맹점 돌아가기 버튼을 눌렀을 때 실행될 Scheme 예) 쇼핑몰 Custom Scheme</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <h4>Toss 설치 여부 확인하기 </h4>
+                  <ul>
+                      <li>
+                          iOS : 아래의 Scheme을 통해 확인 가능합니다.<br>
+                          supertoss://
+                      </li>
+                      <br>
+                      <li>
+                          Android : 아래의 패키지를 통해 확인 가능합니다.<br>
+                          viva.republica.toss
+                      </li>
+                  </ul>
+                  <br>
+
+                  <h4>Toss 앱이 설치되어 있지 않은 경우</h4>
+                  <p>
+                      Toss 앱이 설치되어 있지 않다면, 사용자가 <a href="#callUrl">Web에서 결제</a>를 계속할 수 있도록 합니다.
+                  </p>
+              </div>
+          </div>
+      </div>
+      <div class="method" id="cancel">
+        <div class="method-section clearfix">
+          <div class="method-description">
+            <h3>결제 취소</h3>
+            <p>
+              결제 대기 중인 결제 건을 취소합니다. (결제가 완료되어 구매자의 계좌에서 출금된 상태에서는 취소할 수 없으며 <a href="#refunds">환불</a> 처리해야 합니다)
+            </p> 
+            <div class="info">
+              <h4>endpoint</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  (POST)
+                </div>
+                <div class="desc">
+                  https://toss.im/tosspay/api/v1/cancel
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <h4>parameters</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  apiKey
+                  <span class="type">String</span>
+                  <span class="required"></span>
+                </div>
+                <div class="desc">
+                  가맹점 key
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  payToken
+                  <span class="type">String</span>
+                  <span class="required"></span>
+                </div>
+                <div class="desc">
+                  Toss 결제 토큰
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  reason
+                  <span class="type">String</span>
+                </div>
+                <div class="desc">
+                  취소 사유 (최대 50자)
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <h4>response</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  code
+                </div>
+                <div class="desc">
+                  응답코드<br />
+                  <br />
+                  <table class="table">
+                    <tr>
+                      <td>0</td>
+                      <td>성공</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>잘못된 API Key 사용</td>
+                    </tr>
+                    <tr>
+                      <td>30</td>
+                      <td>결제 취소 에러</td>
+                    </tr>
+                    <tr>
+                      <td>31</td>
+                      <td>존재하지 않는 결제</td>
+                    </tr>
+                    <tr>
+                      <td>32</td>
+                      <td>취소 불가 상태</td>
+                    </tr>
+                    <tr>
+                      <td>33</td>
+                      <td>기 취소된 결제</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="method-example">
+          	<div class="title">Definition</div>
+            <pre><code class="language-bash always-visible">POST https://toss.im/tosspay/api/v1/cancel</code></pre>
+          	<div class="title">Example Request</div>
+            <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/cancel" \
+    -H "content-Type: application/json" \
+    -d '{
+        "payToken":"7he9aYt0keNr",
+        "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O"
+        }'</code>
+			<code class="java language-java">URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://toss.im/tosspay/api/v1/cancel");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+	
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+	jsonBody.put("payToken", "7he9aYt0keNr");
+	jsonBody.put("reason", "재고 부족");
+	jsonBody.put("apiKey", "sk_test_4Q0kzy8WyVYaqNjzNZ9O");
+	
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	bos.write(jsonBody.toJSONString().getBytes());
+	bos.flush();
+	bos.close();
+	
+	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code>
+            <code class="php language-php">$arrayBody = array();
+$arrayBody["payToken"] = "7he9aYt0keNr";
+$arrayBody["reason"] = "재고 부족";
+$arrayBody["apiKey"] = "sk_test_4Q0kzy8WyVYaqNjzNZ9O";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://toss.im/tosspay/api/v1/cancel');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+ 
+$result = curl_exec($ch);
+curl_close($ch);
+      
+echo "Response: ".$result;</code></pre>
+            <div class="title">Example Response</div>
+            <pre><code class="language-javascript always-visible">{"code":0}</code>
+            </pre>
+          </div>
+          
+        </div>
+      </div>
+      <div class="method" id="refunds">
+        <div class="method-section clearfix">
+          <div class="method-description">
+            <h3>결제 환불</h3>
+            <p>
+              결제 완료 건의 결제 금액 중 일부 또는 전부를 구매자에게 돌려줍니다.
+            </p> 
+            <div class="info">
+              <h4>endpoint</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  (POST)
+                </div>
+                <div class="desc">
+                  https://toss.im/tosspay/api/v1/refunds
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <h4>parameters</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  apiKey
+                  <span class="type">String</span>
+                  <span class="required"></span>
+                </div>
+                <div class="desc">
+                  가맹점 key
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  payToken
+                  <span class="type">String</span>
+                  <span class="required"></span>
+                </div>
+                <div class="desc">
+                  Toss 결제 토큰
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  amount
+                  <span class="type">Integer</span>
+                </div>
+                <div class="desc">
+                  환불할 금액 (미입력시 전액 환불 처리)
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <h4>response</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  code
+                </div>
+                <div class="desc">
+                  응답코드<br />
+                  <br />
+                  <table class="table">
+                    <tr>
+                      <td>0</td>
+                      <td>성공</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>잘못된 API Key 사용</td>
+                    </tr>
+                    <tr>
+                      <td>50</td>
+                      <td>결제 환불 에러</td>
+                    </tr>
+                    <tr>
+                      <td>51</td>
+                      <td>존재하지 않는 결제</td>
+                    </tr>
+                    <tr>
+                      <td>52</td>
+                      <td>환불 불가 상태</td>
+                    </tr>
+                    <tr>
+                      <td>53</td>
+                      <td>기 환불된 결제</td>
+                    </tr>
+                    <tr>
+                      <td>54</td>
+                      <td>대기중인 환불이 있음</td>
+                    </tr>
+                    <tr>
+                      <td>55</td>
+                      <td>결제 미결</td>
+                    </tr>
+                    <tr>
+                      <td>56</td>
+                      <td>환불 가능 금액 초과</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="method-example">
+          	<div class="title">Definition</div>
+            <pre><code class="language-bash always-visible">POST https://toss.im/tosspay/api/v1/refunds</code></pre>
+          	<div class="title">Example Request</div>
+            <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/refunds" \
+    -H "content-Type: application/json" \
+    -d '{
+        "payToken":"7he9aYt0keNr",
+        "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O"
+        }'</code>
+			<code class="java language-java">URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://toss.im/tosspay/api/v1/refunds");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+	
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+	jsonBody.put("payToken", "7he9aYt0keNr");
+	jsonBody.put("amount", "5000");
+	jsonBody.put("apiKey", "sk_test_4Q0kzy8WyVYaqNjzNZ9O");
+	
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	bos.write(jsonBody.toJSONString().getBytes());
+	bos.flush();
+	bos.close();
+	
+	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code>
+            <code class="php language-php">$arrayBody = array();
+$arrayBody["payToken"] = "7He9aYt0keNr";
+$arrayBody["amount"] = 5000;
+$arrayBody["apiKey"] = "sk_test_4Q0kzy8WyVYaqNjzNZ9O";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://toss.im/tosspay/api/v1/refunds');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+ 
+$result = curl_exec($ch);
+curl_close($ch);
+   
+echo "Response: ".$result;</code></pre>
+            <div class="title">Example Response</div>
+            <pre><code class="language-javascript always-visible">{"code":0}</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="method" id="statusCheck">
+        <div class="method-section clearfix">
+          <div class="method-description">
+            <h3>결제 상태 확인</h3>
+            <p>
+              생성된 결제의 현재 상태를 조회합니다.
+            </p> 
+            <div class="info">
+              <h4>endpoint</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  (POST)
+                </div>
+                <div class="desc">
+                  https://toss.im/tosspay/api/v1/status
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <h4>parameters</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  apiKey
+                  <span class="type">String</span>
+                  <span class="required"></span>
+                </div>
+                <div class="desc">
+                  가맹점 key
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  payToken 또는 orderNo
+                  <span class="type">String</span>
+                  <span class="required"></span>
+                </div>
+                <div class="desc">
+                  Toss 결제 토큰 또는 가맹점 주문번호 (payToken의 우선순위 높음)
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <h4>response</h4>
+              <div class="field clearfix">
+                <div class="key">
+                  code
+                  <span class="type">Integer</span>
+                </div>
+                <div class="desc">
+                  응답코드<br />
+                  <br />
+                  <table class="table">
+                    <tr>
+                      <td>0</td>
+                      <td>성공</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>잘못된 API Key 사용</td>
+                    </tr>
+                    <tr>
+                      <td>70</td>
+                      <td>결제 상태 에러</td>
+                    </tr>
+                    <tr>
+                      <td>71</td>
+                      <td>존재하지 않는 결제</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  payToken
+                  <span class="type">String</span>
+                </div>
+                <div class="desc">
+                  Toss 결제 토큰
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  orderNo
+                  <span class="type">String</span>
+                </div>
+                <div class="desc">
+                  Toss 결제와 이어진 주문번호
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  payStatus
+                  <span class="type">String</span>
+                </div>
+                <div class="desc">
+                  결제 상태<br />
+                  <br />
+                  <table class="table">
+                    <tr>
+                      <td>PAY_STANDBY</td>
+                      <td>결제 대기 중</td>
+                    </tr>
+                    <tr>
+                      <td>PAY_CANCEL</td>
+                      <td>결제 취소</td>
+                    </tr>
+                    <tr>
+                      <td>PAY_PROGRESS</td>
+                      <td>결제 진행 중</td>
+                    </tr>
+                    <tr>
+                      <td>PAY_COMPLETE</td>
+                      <td>결제 완료</td>
+                    </tr>
+                    <tr>
+                      <td>ESCROW_REQUEST</td>
+                      <td>에스크로 요청</td>
+                    </tr>
+                    <tr>
+                      <td>ESCROW_RELEASE</td>
+                      <td>에스크로 해제</td>
+                    </tr>
+                    <tr>
+                      <td>ESCROW_DENY</td>
+                      <td>에스크로 거부</td>
+                    </tr>
+                    <tr>
+                      <td>REFUND_PROGRESS</td>
+                      <td>환불 진행 중</td>
+                    </tr>
+                    <tr>
+                      <td>REFUND_SUCCESS</td>
+                      <td>환불 성공</td>
+                    </tr>
+                    <tr>
+                      <td>SETTLEMENT_COMPLETE</td>
+                      <td>정산 완료</td>
+                    </tr>
+                    <tr>
+                      <td>SETTLEMENT_REFUND_COMPLETE</td>
+                      <td>환불 정산 완료</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  availableActions
+                  <span class="type">List</span>
+                </div>
+                <div class="desc">
+                  가능한 액션 목록<br />
+                  <br />
+                  <table class="table">
+                    <tr>
+                      <td>CANCEL</td>
+                      <td>결제 취소</td>
+                    </tr>
+                    <tr>
+                      <td>REFUND</td>
+                      <td>결제 환불</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="field clearfix">
+                <div class="key">
+                  hasOwner
+                  <span class="type">boolean</span>
+                </div>
+                <div class="desc">
+                  결제가 주인을 만났는지 여부
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="method-example">
+          	<div class="title">Definition</div>
+            <pre><code class="language-bash always-visible">POST https://toss.im/tosspay/api/v1/status</code></pre>
+          	<div class="title">Example Request</div>
+            <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/status" \
+    -H "content-Type: application/json" \
+    -d '{
+        "payToken":"7he9aYt0keNr",
+        "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O"
+        }'</code>
+			<code class="java language-java">URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://toss.im/tosspay/api/v1/status");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+	
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+	jsonBody.put("orderNo", "2015072012211");
+	jsonBody.put("apiKey", "sk_test_4Q0kzy8WyVYaqNjzNZ9O");
+	
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	bos.write(jsonBody.toJSONString().getBytes());
+	bos.flush();
+	bos.close();
+	
+	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code>
+            <code class="php language-php">$arrayBody = array();
+$arrayBody["orderNo"] = "2015072012211";
+$arrayBody["apiKey"] = "sk_test_4Q0kzy8WyVYaqNjzNZ9O";
+$jsonBody = json_encode($arrayBody);
+// echo "Request: ".$request."<br>";
+$ch = curl_init('https://toss.im/tosspay/api/v1/status');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+ 
+$result = curl_exec($ch);
+curl_close($ch);
+      
+echo "Response: ".$result;</code></pre>
+            <div class="title">Example Response</div>
+            <pre><code class="language-javascript always-visible">{
+    "orderNo":"2015072012211",
+    "code":0,
+    "availableActions ":["REFUND"],
+    "hasOwner":true,
+    "payStatus":"REFUND_SUCCESS",
+    "payToken":"7he9aYt0keNr"
+}</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+    $(function () {
+
+        // language toggle
+        var $languages = $(".languages .language");
+        $languages.click(function (e) {
+          e.preventDefault();
+          var lang = $(this).data("lang");
+          $languages.removeClass("selected");
+          $(this).addClass("selected");
+
+          $("pre code").hide();
+          $("pre code." + lang).css("display", "block");
+        });
+        $("pre code." + $(".language.selected").data("lang")).css("display", "block");
+    });
+  </script>
+  <script src="js/prism.js"></script>
+</body>
+</html>
