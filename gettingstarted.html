@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
-	<title>토스 결제 시작하기</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<!-- stylesheets -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>토스 결제 시작하기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/tossdev.css" />
-	<link rel="stylesheet" type="text/css" href="css/prism.css" />
+    <link rel="stylesheet" type="text/css" href="css/prism.css" />
 
-	<!-- javascript -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-	<!--[if lt IE 9]>
+    <!-- javascript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
+
 <body id="gettingstarted" data-spy="scroll" data-target="#guide" data-offset="120">
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-M7JBJD" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M7JBJD');
+    </script>
+    <!-- End Google Tag Manager -->
     <header id="tossdev-header">
         <div class="container">
             <div class="row">
@@ -101,7 +124,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="https://toss.im/tosspay/developer/apidoc" target="_blank">API 문서 참조 <i class="fa fa-external-link" style="margin-left:4px;"></i></a>
+                            <a href="api.html" target="_blank">API 문서 참조 <i class="fa fa-external-link" style="margin-left:4px;"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -115,7 +138,7 @@
                             <h4 id="overview-0">0. 당신은 온라인 상점 '토스몰'을 열었습니다.</h4>
                             <p>당신은 티셔츠를 파는 온라인 상점 '토스몰'을 열었습니다.</p>
                             <p>물건을 구매하려는 손님에게 어떻게 돈을 받을지 고민하던 당신, 여러 결제 서비스를 보며 고민하다가 개발이 쉽고 손님들도 편하게 쓸 수 있는 '토스'를 써보기로 합니다.</p>
-                            
+
                             <h4 id="overview-1">1. 토스 가맹점 계정을 만듭니다.</h4>
                             <p><a href="https://toss.im/tosspay/account/signup" target="_blank">토스 가맹점 가입 페이지</a>에서 가맹점 계정을 만들고, 당신의 소중한 상점, '토스몰'을 등록합니다. (3분 정도면 끝납니다.) 상점 등록이 완료되는 즉시 토스는 당신에게 <strong>API Key를 발급합니다.</strong> 발급받은 API Key는 '가맹점 관리자 > 상점 정보'에서 확인할 수 있습니다.</p>
                             <p class="alert alert-warning" role="alert">API Key는 '상점 열쇠'와도 같습니다. 이걸 가지고 있으면 마치 상점 주인처럼 맘대로 결제를 생성하거나 환불할 수 있습니다. 상점 주인이 문단속하듯 API Key를 잘 지켜주세요. 웹사이트 어딘가에 드러나거나 유출되지 않도록 주의해야 합니다. </p>
@@ -232,10 +255,10 @@ echo "Response: ".$result;</code></pre>
                             </ul>
                             <p>홍길동님이 열심히 결제를 진행하는 동안, 당신은 편한 마음으로 기다리면 됩니다만... 혹시 어떤 과정을 거치게 되는지 궁금하다면, 아래 설명을 참고해주세요.</p>
                             <div class="well">
-                                1. <strong>홍길동님이 토스 결제를 처음 만났다면</strong> : 사용할 계좌를 등록하고, 결제 시 사용할 암호를 등록한 후 결제 완료 (액티브X나 앱설치가 필요 없습니다)<br>
-                                2. <strong>홍길동님이 토스 결제를 써봤다면</strong> : 전화번호와 암호를 입력하면 결제 완료 (보안상 필요 시 ARS 인증을 거칩니다)<br>
+                                1. <strong>홍길동님이 토스 결제를 처음 만났다면</strong> : 사용할 계좌를 등록하고, 결제 시 사용할 암호를 등록한 후 결제 완료 (액티브X나 앱설치가 필요 없습니다)
+                                <br> 2. <strong>홍길동님이 토스 결제를 써봤다면</strong> : 전화번호와 암호를 입력하면 결제 완료 (보안상 필요 시 ARS 인증을 거칩니다)
                                 <br>
-                                그래도 여전히 궁금하시다면 <a href="https://toss.im/tosspay/demo" target="_blank">결제 데모 페이지</a>에서 직접 경험해보세요!
+                                <br> 그래도 여전히 궁금하시다면 <a href="https://toss.im/tosspay/demo" target="_blank">결제 데모 페이지</a>에서 직접 경험해보세요!
                             </div>
                             <h4 id="overview-4">4. 결제 결과 받기</h4>
                             <p>홍길동님이 무사히 결제를 완료하셨습니다! 토스몰의 첫 매출이군요~</p>
@@ -436,55 +459,55 @@ echo "Response: ".$result;</code></pre>
                             <p>결제 상태는 아래 중 하나입니다.</p>
                             <table class="table table-hover">
                                 <tr>
-                                  <td>PAY_STANDBY</td>
-                                  <td>결제 대기 중</td>
+                                    <td>PAY_STANDBY</td>
+                                    <td>결제 대기 중</td>
                                 </tr>
                                 <tr>
-                                  <td>PAY_CANCEL</td>
-                                  <td>결제 취소</td>
+                                    <td>PAY_CANCEL</td>
+                                    <td>결제 취소</td>
                                 </tr>
                                 <tr>
-                                  <td>PAY_PROGRESS</td>
-                                  <td>결제 진행 중</td>
+                                    <td>PAY_PROGRESS</td>
+                                    <td>결제 진행 중</td>
                                 </tr>
                                 <tr>
-                                  <td>PAY_COMPLETE</td>
-                                  <td>결제 완료</td>
+                                    <td>PAY_COMPLETE</td>
+                                    <td>결제 완료</td>
                                 </tr>
                                 <tr>
-                                  <td>ESCROW_REQUEST</td>
-                                  <td>에스크로 요청</td>
+                                    <td>ESCROW_REQUEST</td>
+                                    <td>에스크로 요청</td>
                                 </tr>
                                 <tr>
-                                  <td>ESCROW_RELEASE</td>
-                                  <td>에스크로 해제</td>
+                                    <td>ESCROW_RELEASE</td>
+                                    <td>에스크로 해제</td>
                                 </tr>
                                 <tr>
-                                  <td>ESCROW_DENY</td>
-                                  <td>에스크로 거부</td>
+                                    <td>ESCROW_DENY</td>
+                                    <td>에스크로 거부</td>
                                 </tr>
                                 <tr>
-                                  <td>REFUND_PROGRESS</td>
-                                  <td>환불 진행 중</td>
+                                    <td>REFUND_PROGRESS</td>
+                                    <td>환불 진행 중</td>
                                 </tr>
                                 <tr>
-                                  <td>REFUND_SUCCESS</td>
-                                  <td>환불 성공</td>
+                                    <td>REFUND_SUCCESS</td>
+                                    <td>환불 성공</td>
                                 </tr>
                                 <tr>
-                                  <td>SETTLEMENT_COMPLETE</td>
-                                  <td>정산 완료</td>
+                                    <td>SETTLEMENT_COMPLETE</td>
+                                    <td>정산 완료</td>
                                 </tr>
                                 <tr>
-                                  <td>SETTLEMENT_REFUND_COMPLETE</td>
-                                  <td>환불 정산 완료</td>
+                                    <td>SETTLEMENT_REFUND_COMPLETE</td>
+                                    <td>환불 정산 완료</td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <div class="method" id="iOS">
                         <div class="method-description">
-                            <h3>iOS 앱에서 결제하기</h3>                            
+                            <h3>iOS 앱에서 결제하기</h3>
                             <p>iOS 앱을 만드셨나요? iOS 앱 내에서 토스 결제를 이용할 경우, 약간의 대응을 해주시면 훨씬 매끄러운 결제 경험을 제공할 수 있습니다.</p>
                             <h4 id="iOS-1">전체 흐름</h4>
                             <ol>
@@ -519,7 +542,8 @@ echo "Response: ".$result;</code></pre>
                                 <li><strong>x-success</strong> : '돌아가기' 버튼을 눌렀을 때 실행될 Scheme입니다. 당신의 상점앱에서 결제를 완료한 고객이 가야할 곳을 지정해주세요. (당신의 상점앱 Custom Scheme등을 활용하세요)</li>
                             </ul>
                             <h4 id="iOS-4">Sample Code와 더 상세한 설명</h4>
-                            <p>토스 결제를 테스트하기 위한 iOS 샘플 코드와 상세한 설명을 확인하세요.<br>
+                            <p>토스 결제를 테스트하기 위한 iOS 샘플 코드와 상세한 설명을 확인하세요.
+                                <br>
                                 <a href="https://github.com/tossdev/tossdev.github.io/tree/master/appSampleCode/TossPayExample_iOS" target="_blank">https://github.com/tossdev/tossdev.github.io/tree/master/appSampleCode/TossPayExample_iOS</a></p>
                         </div>
                     </div>
@@ -547,36 +571,38 @@ echo "Response: ".$result;</code></pre>
                             </div>
                             <p>여기서 payToken값은 '결제 생성' 완료 후 받은 결제 고유번호입니다.</p>
                             <h4 id="android-4">Sample Code</h4>
-                            <p>아래 샘플 코드를 통해 직접 테스트해보실 수 있습니다.<br>
-                            <a href="https://github.com/tossdev/tossdev.github.io/tree/master/appSampleCode/TossPayExample_android" target="_blank">https://github.com/tossdev/tossdev.github.io/tree/master/appSampleCode/TossPayExample_android</a></p>
+                            <p>아래 샘플 코드를 통해 직접 테스트해보실 수 있습니다.
+                                <br>
+                                <a href="https://github.com/tossdev/tossdev.github.io/tree/master/appSampleCode/TossPayExample_android" target="_blank">https://github.com/tossdev/tossdev.github.io/tree/master/appSampleCode/TossPayExample_android</a></p>
                         </div>
                     </div>
-                </div>                    
+                </div>
             </div>
         </div>
     </div>
 
-	<script type="text/javascript">
-		$(function () {
-//			hljs.configure({
-//			  tabReplace: '  ',
-//			  classPrefix: ''
-//			})
-//			hljs.initHighlightingOnLoad();
+    <script type="text/javascript">
+        $(function () {
+            //			hljs.configure({
+            //			  tabReplace: '  ',
+            //			  classPrefix: ''
+            //			})
+            //			hljs.initHighlightingOnLoad();
 
-			// language toggle
-			var $languages = $(".languages .language");
-			$languages.click(function (e) {
-				e.preventDefault();
-				var lang = $(this).data("lang");
-				$languages.removeClass("selected");
-				$(this).addClass("selected");
+            // language toggle
+            var $languages = $(".languages .language");
+            $languages.click(function (e) {
+                e.preventDefault();
+                var lang = $(this).data("lang");
+                $languages.removeClass("selected");
+                $(this).addClass("selected");
 
-				$("pre code").hide();
-				$("pre code." + lang).css("display", "block");
-			});
-		});
-	</script>
+                $("pre code").hide();
+                $("pre code." + lang).css("display", "block");
+            });
+        });
+    </script>
     <script src="js/prism.js"></script>
 </body>
+
 </html>
