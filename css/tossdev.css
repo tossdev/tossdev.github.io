@@ -160,7 +160,7 @@ margin:-90px 0 0; /* negative fixed header height */
 
 /* 토스 결제 시작하기 */
 #gettingstarted {
-    margin: 80px auto 200px auto;
+    margin: 80px auto;
 }
     #gettingstarted .sidebar {
         position: fixed;
