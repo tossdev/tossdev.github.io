@@ -29,8 +29,15 @@ pre[class*="language-"] {
 :target:before {
 content:"";
 display:block;
-height:90px; /* fixed header height*/
-margin:-90px 0 0; /* negative fixed header height */
+height:40px; /* fixed header height*/
+margin:-40px 0 0; /* negative fixed header height */
+}
+
+/* overriding bootstrap.css */
+.well,.alert {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
 }
 
 /* front page */
@@ -86,10 +93,10 @@ margin:-90px 0 0; /* negative fixed header height */
 */
         width: 100%;
         height: 60px;
-        background-color: #53585E;
-        color: #cfcfcf;
-        font-size: 16px;
-        padding-top: 18px;
+        background-color: #F8F8F8;
+        color: #999;
+        font-size: 13px;
+        padding-top: 20px;
         }
         #frontpage footer .copyright {
             
@@ -106,7 +113,7 @@ margin:-90px 0 0; /* negative fixed header height */
                 margin-left: 30px;
             }
                 #frontpage footer ul li a {
-                    color: #cfcfcf;
+                    color: #777;
                 }
     #frontpage .inquiry {
         text-align: center;
@@ -160,49 +167,55 @@ margin:-90px 0 0; /* negative fixed header height */
 
 /* 토스 결제 시작하기 */
 #gettingstarted {
-    margin: 80px auto;
+    margin: 0px auto 80px 0;
 }
     #gettingstarted .sidebar {
         position: fixed;
-        width: 270px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        overflow: scroll;
+        width: 250px;
+        background-color: #FAFAFA;
+        border-right: 1px solid #e6e6e6;
     }
-    
-    #gettingstarted #guide {
-        background: #ffffff;
-        margin-top: 20px;
-        z-index: 25;
-    }
-    #gettingstarted #guide .logo {
+        #gettingstarted .sidebar .logo {
+            background-color: #fff;
+        }
+        #gettingstarted .sidebar .logo img {
+            height: 29px;
+            margin-top: 20px;
+            margin-left: 23px;
+            margin-bottom: 18px;
+        }
+    #gettingstarted #guide h1 {
         margin-top: 0;
-        font-size: 24px;
-        font-weight: lighter;
+        padding: 12px 25px;
+        border-top: 1px solid #e6e6e6;
+        border-bottom: 1px solid #e6e6e6;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: c
     }
-      #gettingstarted #guide .logo a {
-        color: #000;
-        padding: 20px 0 15px 23px;
-        display: block;
-        border-bottom: 1px solid #D6DCE0;
-        box-shadow: 0px 1px #FFF;
-        -webkit-transition: color 0.15s linear;
-        -moz-transition: color 0.15s linear;
-        -ms-transition: color 0.15s linear;
-        -o-transition: color 0.15s linear;
-        transition: color 0.15s linear; }
-        #gettingstarted #guide .logo a:hover {
-          color: #858585;
-          text-decoration: none; }
+      #gettingstarted #guide h1 a {
+        color: #555;
+        }
     #gettingstarted #guide .menu > li.active > .nav {
         display: block;
     }
         #gettingstarted #guide .menu > li.active > .nav  a {
-            font-size: 14px;
+            font-size: 13px;
+            color: #555;
         }
     #gettingstarted #guide .menu > li.active > a {
-      background: #DEEAF1; }
+        font-weight: bold;
+        color: #000;
+        text-decoration: underline;
+    }
     #gettingstarted #guide .menu > li a {
-      color: #3391C9;
+      color: #555;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 15px;
       padding: 10px 15px 10px 25px;
       -webkit-transition: all 0.15s linear;
       -moz-transition: all 0.15s linear;
@@ -210,7 +223,7 @@ margin:-90px 0 0; /* negative fixed header height */
       -o-transition: all 0.15s linear;
       transition: all 0.15s linear; }
       #gettingstarted #guide .menu > li a:hover {
-        background: #DEEAF1; }
+         }
     #gettingstarted #guide .menu > li > .nav {
       margin-bottom: 7px;
       display: none; }
@@ -221,10 +234,12 @@ margin:-90px 0 0; /* negative fixed header height */
   
     #gettingstarted #contents {
         background: #FFF;
-        margin-left: 270px;
+        margin-left: 250px;
+        max-width: 840px;
+        min-width: 320px;
     }
     #gettingstarted #contents #methods {
-        padding-left: 40px;
+        padding-left: 60px;
         padding-right: 40px;
     }
         #gettingstarted #contents #methods .method:first-child .method-description {
@@ -239,27 +254,34 @@ margin:-90px 0 0; /* negative fixed header height */
             padding-top: 80px; }
           #gettingstarted #contents #methods .method .method-description h3 {
                 font-size: 37px;
+              color: #333;
                 margin-top: 0px;
                 margin-bottom: 29px;
-                font-weight: lighter;}
+                font-weight: normal;}
           #gettingstarted #contents #methods .method .method-description h4 {
-                margin-top: 38px;
+                margin-top: 48px;
                 margin-bottom: 10px;
-                font-size: 20px;
+/*                margin-left: 10px;*/
+                font-size: 24px;
                 line-height: 26px;
-                margin-left: 10px;
-                color: #333;
+                color: #000;
                 }
           #gettingstarted #contents #methods .method .method-description p, #gettingstarted #contents #methods .method .method-description ul, #gettingstarted #contents #methods .method .method-description ol,#gettingstarted #contents #methods .method .method-description>div {
             font-size: 14px;
             color: #666;
             line-height: 26px;
-            margin-left: 34px;
+/*            margin-left: 34px;*/
             margin-bottom: 8px; }
           #gettingstarted #contents #methods .method .method-description>div.well {
               padding: 7px 24px;
               margin-top: 12px;
               margin-bottom: 16px;
+          }
+          #gettingstarted #contents #methods .method .method-description img {
+              width: 100%;
+              margin-top: 12px;
+              margin-bottom: 6px;
+              border: 1px solid #e8e8e8;
           }
           #gettingstarted #contents #methods .method .method-description table {
               font-size: 14px;
@@ -298,7 +320,6 @@ margin:-90px 0 0; /* negative fixed header height */
             border-top: 1px solid #000;
             color: #fff;
             margin-top: 14px;
-            margin-left: 34px;
             margin-bottom: 16px;
         }
             #gettingstarted #contents #methods .method .method-example .languages {
@@ -352,7 +373,7 @@ margin:-90px 0 0; /* negative fixed header height */
 #docs {
 }
   #docs #guide {
-    background: #F4F8FA;
+    background: #fafafa;
     border-right: 1px solid #DADFE5;
     left: 0;
     top: 0;
