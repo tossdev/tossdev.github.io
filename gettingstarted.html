@@ -83,6 +83,7 @@
                         <li><a href="#create-4">주문 상태 확인 callback URL</a></li>
                         <li><a href="#create-5">결제 만료 기한</a></li>
                         <li><a href="#create-6">에스크로 여부</a></li>
+                        <li><a href="#create-7">현금영수증 발급 가능 여부</a></li>
                     </ul>
                 </li>
                 <li>
@@ -301,6 +302,7 @@ echo "Response: ".$result;</code></pre>
 "orderCheckCallback":"http://YOUR-SITE.COM/ORDERSTATUS", # 주문 상태 확인 Callback
 "expiredTime":"2015-12-01 12:47:35",                     # 결제 만료 예정 시각
 "escrow":false                                           # 에스크로 여부
+"cashReceipt":true                                       # 현금영수증 발급 가능 여부
 }'</code></pre>
                     </div>
                     <h4 id="create-1">결제 생성 API의 Endpoint</h4>
@@ -356,6 +358,15 @@ echo "Response: ".$result;</code></pre>
                     <p>결제가 완료되면 결제 금액만큼 구매자의 계좌에서 출금되지만, 구매자가 물품을 정상적으로 받았다고 확정(구매확정)하기 전까지는 정산되지 않습니다. 따라서 구매자는 좀 더 안심하고 물품을 구매할 수 있습니다.</p>
                     <p class="alert alert-warning" role="alert">온라인상에서 실물을 판매하는 경우, 구매자에게 '에스크로 결제'를 선택할 수 있는 권한을 필수적으로 제공해야합니다.</p>
                     <p class="alert alert-warning" role="alert">에스크로 결제 생성 및 승인 완료 후, 반드시 '진행' 처리를 해주어야 합니다. <a href="#escrow">'에스크로 결제 진행'</a> 문서를 꼭 확인하세요.</p>
+                    <h4 id="create-7">현금영수증 발급 가능 여부 (cashReceipt)</h4>
+                    <p>
+                        현금영수증 발급 가능 여부를 설정할 수 있습니다.<br>
+                        (참고 : 문화상품권이나 백화점상품권, 모바일 쿠폰 등 과세 대상에서 제외되는 유가증권 등의 상품은 현금영수증 발행 대상에서 제외됩니다)
+                    </p>
+                    <ul>
+                        <li><strong>true</strong> : 현금영수증 발급 가능 (값을 설정하지 않으면 true)</li>
+                        <li><strong>false</strong> : 현금영수증 발급 불가</li>
+                    </ul>
                 </div>
             </div>
             <div class="method" id="cancel">
