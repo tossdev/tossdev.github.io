@@ -29,8 +29,8 @@ pre[class*="language-"] {
 :target:before {
 content:"";
 display:block;
-height:10px; /* fixed header height*/
-margin:-10px 0 0; /* negative fixed header height */
+height:0px; /* fixed header height*/
+margin:0px 0 0; /* negative fixed header height */
 }
 
 /* overriding bootstrap.css */
@@ -257,10 +257,17 @@ margin:-10px 0 0; /* negative fixed header height */
           #gettingstarted #contents #methods .method .method-description h4 {
                 margin-top: 48px;
                 margin-bottom: 10px;
-/*                margin-left: 10px;*/
                 font-size: 24px;
                 line-height: 26px;
                 color: #000;
+                }
+          #gettingstarted #contents #methods .method .method-description h5 {
+                margin-top: 18px;
+                margin-bottom: 4px;
+                font-size: 15px;
+                font-weight: bold;
+                line-height: 26px;
+                color: #555;
                 }
           #gettingstarted #contents #methods .method .method-description p, #gettingstarted #contents #methods .method .method-description ul, #gettingstarted #contents #methods .method .method-description ol,#gettingstarted #contents #methods .method .method-description>div {
             font-size: 14px;
@@ -280,10 +287,9 @@ margin:-10px 0 0; /* negative fixed header height */
               border: 1px solid #e8e8e8;
           }
           #gettingstarted #contents #methods .method .method-description table {
+              margin-top: 6px;
               font-size: 14px;
               color: #666;
-              margin-left: 54px;
-              max-width: 500px;
           }
           #gettingstarted #contents #methods .method .method-description .info {
             margin-top: 45px;
