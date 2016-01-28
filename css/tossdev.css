@@ -51,8 +51,8 @@ margin:0px 0 0; /* negative fixed header height */
         padding-bottom: 60px;
     }
     #frontpage .tagline {
-        margin-top: 180px;
-        margin-bottom: 48px;
+        margin-top: 140px;
+        margin-bottom: 0px;
         padding: 0 10px;
         font-size: 42px;
         font-weight: lighter;
@@ -61,12 +61,14 @@ margin:0px 0 0; /* negative fixed header height */
     }
     #frontpage .menu-container {
         max-width: 620px;
-        margin: 0 auto 50px auto;
+        margin: 60px auto 50px auto;
     }
         #frontpage .menu-container h5 {       
             margin: 4px;
-            color: #a8a8a8;
         }
+            #frontpage .menu-container h5 a {
+                color: #a8a8a8;
+            }
         #frontpage .menu-container hr {
             margin: 0;
             padding: 0;
