@@ -52,15 +52,28 @@ margin:0px 0 0; /* negative fixed header height */
     }
     #frontpage .tagline {
         margin-top: 180px;
-        margin-bottom: 30px;
+        margin-bottom: 48px;
+        padding: 0 10px;
         font-size: 42px;
         font-weight: lighter;
         line-height: 54px;
+        word-break: keep-all;
     }
+    #frontpage .menu-container {
+        max-width: 620px;
+        margin: 0 auto 50px auto;
+    }
+        #frontpage .menu-container h5 {       
+            margin: 4px;
+            color: #a8a8a8;
+        }
+        #frontpage .menu-container hr {
+            margin: 0;
+            padding: 0;
+            color: #888;
+        }
         #frontpage .menu-container .menu {
             padding: 0;
-            max-width: 620px;
-            margin: 0 auto;
         }
             #frontpage .menu-container .menu li {
                 list-style-type: none;
@@ -142,22 +155,38 @@ margin:0px 0 0; /* negative fixed header height */
             font-size: 24px;
             line-height: 30px;
         }
+        #frontpage .menu-container {
+            padding: 0 16px;
+        }
+        #frontpage .menu-container menu-title {
+            
+        }
+        #frontpage .menu-container hr {
+            margin-bottom: 8px;
+        }
         #frontpage .menu-container .menu {
             
         }
             #frontpage .menu-container .menu li {
-                padding: 0 60px;
+                
             }
                 #frontpage .menu-container .menu li img {
+                    margin-top: 16px;
                     float: none;
                     width: 100%;
                 }
                 #frontpage .menu-container .menu li h3 {
+                    margin-top: 14px;
+                    margin-bottom: 6px;
                     margin-left: 0;
-                    font-size: 18px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #555;
                 }
                 #frontpage .menu-container .menu li p {
+                    margin-top: 0;
                     margin-left: 0;
+                    color: #7a7a7a;
                 }
     }
 
