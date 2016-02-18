@@ -368,7 +368,8 @@ margin:0px 0 0; /* negative fixed header height */
                 font-size: 13px;
             }
               #gettingstarted #contents #methods .languages .language.selected {
-                color: #fff; }
+                color: #fff;
+            }
           #gettingstarted #contents #methods .method .method-example pre {
               background: #292E33;
               margin: 0;
@@ -487,7 +488,10 @@ margin:0px 0 0; /* negative fixed header height */
           padding: 5px 15px;
           font-size: 13px; }
           #docs #api-docs #methods .languages .language.selected {
-            color: #fff; }
+            color: #fff;
+            background-color: #4e7bfa;
+            border-radius: 14px;
+          }
       #docs #api-docs #methods .method:nth-child(2) .method-section .method-description {
         padding-top: 0px;
         border-top: 0px; }

@@ -84,6 +84,7 @@
                         <li><a href="#create-5">결제 만료 기한</a></li>
                         <li><a href="#create-6">에스크로 여부</a></li>
                         <li><a href="#create-7">현금영수증 발급 가능 여부</a></li>
+                        <li><a href="#create-8">복합과세 처리</a></li>
                     </ul>
                 </li>
                 <li>
@@ -101,6 +102,7 @@
                         <li><a href="#refund-1">API Endpoint</a></li>
                         <li><a href="#refund-2">필수 Parameters</a></li>
                         <li><a href="#refund-3">환불할 금액</a></li>
+                        <li><a href="#refund-4">복합과세 결제 환불 처리</a></li>
                     </ul>
                 </li>
                 <li>
@@ -300,6 +302,10 @@ echo "Response: ".$result;</code></pre>
 "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O",                 # 상점의 API Key (필수)
 "resultCallback":"http://YOUR-SITE.COM/CALLBACK",        # 결제 결과 callback URL
 "orderCheckCallback":"http://YOUR-SITE.COM/ORDERSTATUS", # 주문 상태 확인 Callback
+"amountTaxable":22727,                                   # 결제 금액 중 과세금액
+"amountTaxFree":10000,                                   # 결제 금액 중 비과세금액
+"amountVat":2273,                                        # 결제 금액 중 부가세
+"amountServiceFee":0,                                    # 결제 금액 중 봉사료
 "expiredTime":"2015-12-01 12:47:35",                     # 결제 만료 예정 시각
 "escrow":false                                           # 에스크로 여부
 "cashReceipt":true                                       # 현금영수증 발급 가능 여부
@@ -367,6 +373,35 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>true</strong> : 현금영수증 발급 가능 (값을 설정하지 않으면 true)</li>
                         <li><strong>false</strong> : 현금영수증 발급 불가</li>
                     </ul>
+                    <h4 id="create-8">복합과세 처리 (amount-)</h4>
+                    <p>
+                        전체 결제 금액 중 '비과세' 처리해야할 금액이 섞여있거나 부가세, 봉사료 비중을 원하는대로 설정하고 싶다면 결제 생성 시 '복합과세' 파라미터를 이용하세요.
+                    </p>
+                    <ul>
+                        <li><strong>amountTaxable</strong> : 결제 금액 중 '과세금액' 비중</li>
+                        <li><strong>amountTaxFree</strong> : 결제 금액 중 '비과세금액' 비중</li>
+                        <li><strong>amountVat</strong> : 결제 금액 중 '부가세' 비중</li>
+                        <li><strong>amountServiceFee</strong> : 결제 금액 중 '봉사료' 비중</li>
+                    </ul>
+                    <p>
+                        위 네 가지 값 중 하나라도 0이 아닌 값으로 설정하면 해당 결제 건은 '복합과세' 결제로 처리되며, 네 가지 값의 합은 총 결제 금액(amount)과 반드시 동일해야합니다. (동일하지 않을 시 에러 발생)<br>
+                        위 파라미터를 통해 설정한 값은 현금 영수증 발행 시 그대로 반영됩니다.
+                    </p>
+                    <p>
+                        위 파라미터 값을 설정하지 않는 경우, 자동으로 아래와 같이 처리됩니다.
+                    </p>
+                    <ul>
+                        <li><strong>부가세</strong> : 전체 금액(amount)을 11로 나눈 후 소수점 첫째 자리에서 올림</li>
+                        <li><strong>과세금액</strong> : 전체 금액에서 부가세를 뺀 나머지 값</li>
+                        <li><strong>비과세금액, 봉사료</strong> : 0</li>
+                    </ul>
+                    <p>
+                        단, 현금영수증 발행 불가 결제(cashReceipt = false)인 경우, 아래와 같이 처리됩니다.
+                    </p>
+                    <ul>
+                        <li><strong>과세금액</strong> : 전체 금액(amount)과 동일</li>
+                        <li><strong>부가세, 비과세금액, 봉사료</strong> : 0</li>
+                    </ul>
                 </div>
             </div>
             <div class="method" id="cancel">
@@ -415,6 +450,10 @@ echo "Response: ".$result;</code></pre>
 "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O",    # 상점의 API Key (필수)
 "payToken":"7he9aYt0keNr",                  # 결제 고유 번호 (필수)
 "amount":10000                              # 환불할 금액
+"amountTaxable":5000,                       # 환불할 금액 중 과세금액
+"amountTaxFree":4000,                       # 환불할 금액 중 비과세금액
+"amountVat":500,                            # 환불할 금액 중 부가세
+"amountServiceFee":500,                     # 환불할 금액 중 봉사료
 }'
 </code></pre>
                     </div>
@@ -427,7 +466,17 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>결제 고유 토큰 (payToken)</strong> : 결제 생성 완료 후 받은 결제 고유번호</li>
                     </ol>
                     <h4 id="refund-3">환불할 금액</h4>
-                    <p>환불할 금액을 설정하지 않으면 결제 금액 전액을 환불합니다. 결제 금액 중 일부만 환불하려는 경우, 이 파라미터 값을 설정해주세요.</p>
+                    <p>
+                        총 결제 금액 중 일부만 환불하고자 하는 경우, 이 파라미터 값을 설정해주세요. 금액을 설정하지 않으면 결제 금액 전액을 환불합니다.<br>
+                        (단, 에스크로 보호 중인 결제는 전체 금액 환불만 가능합니다)
+                    </p>
+                    <h4 id="refund-4">복합과세 결제 환불 처리</h4>
+                    <p>
+                        결제 생성 시, 세부 금액 구성(과세금액/비과세금액/부가세/봉사료)을 지정했다면, 환불 요청 시에도 반드시 어떤 부분에서 환불 처리할지 지정해야 합니다.
+                    </p>
+                    <p>
+                        환불 요청하는 금액은 '남은 결제 금액'보다 작거나 같아야 하고, 환불할 세부 금액들의 총합은 반드시 전체 환불 금액(amount)과 동일해야 합니다. (다를 시 에러 발생)
+                    </p>
                 </div>
             </div>
             <div class="method" id="checkstatus">

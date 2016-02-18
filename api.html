@@ -81,9 +81,9 @@
     <div id="api-docs">
         <div id="methods">
             <div class="languages">
-                <a class="language selected" data-lang="curl" href="#">curl</a>
+                <a class="language selected" data-lang="php" href="#" disabled>PHP</a>
                 <a class="language" data-lang="java" href="#" disabled>Java</a>
-                <a class="language" data-lang="php" href="#" disabled>PHP</a>
+                <a class="language" data-lang="curl" href="#">curl</a>
             </div>
             <div class="method" id="intro">
                 <div class="method-section clearfix">
@@ -342,6 +342,42 @@
                                 </div>
                                 <div class="desc">
                                     상품 설명
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxable
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액 중 과세금액 (복합과세)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxFree
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액 중 비과세금액 (복합과세)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountVat
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액 중 부가세 (복합과세)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountServiceFee
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액 중 봉사료 (복합과세)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -791,6 +827,42 @@ echo "Response: ".$result;</code></pre>
                                 </div>
                                 <div class="desc">
                                     환불할 금액 (미입력시 전액 환불 처리)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxable
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    환불할 금액 중 과세금액 (결제 생성 시 복합과세 설정한 경우에만 입력 가능)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxFree
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    환불할 금액 중 비과세금액 (결제 생성 시 복합과세 설정한 경우에만 입력 가능)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountVat
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    환불할 금액 중 부가세 (결제 생성 시 복합과세 설정한 경우에만 입력 가능)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountServiceFee
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    환불할 금액 중 봉사료 (결제 생성 시 복합과세 설정한 경우에만 입력 가능)
                                 </div>
                             </div>
                         </div>
