@@ -275,11 +275,11 @@ echo "Response: ".$result;</code></pre>
                         <pre><code class="always-visible language-bash">{
 "payToken":"test_token1234567890a",  # 상태가 바뀐 결제건의 고유 번호
 "orderNo":"1",              # 결제건과 연결된 상점 주문번호
-"status":"PAY_SUCCESS"      # 최종적으로 바뀐 결과
+"status":"PAY_COMPLETE"      # 최종적으로 바뀐 결과
 }</code></pre>
                     </div>
                     <ul>
-                        <li><strong>status</strong> : 결제건의 최종 상태입니다. PAY_SUCCESS, PAY_CANCEL, REFUND_SUCCESS 중 하나의 값을 가지며 각각 '결제 완료', '결제 취소', '환불 완료'를 의미합니다. (홍길동님이 결제를 완료했다면 <span class="bg-info">PAY_SUCCESS</span> 값을 받게 됩니다)</li>
+                        <li><strong>status</strong> : 결제건의 최종 상태입니다. PAY_COMPLETE, PAY_CANCEL, REFUND_SUCCESS 중 하나의 값을 가지며 각각 '결제 완료', '결제 취소', '환불 완료'를 의미합니다. (홍길동님이 결제를 완료했다면 <span class="bg-info">PAY_COMPLETE</span> 값을 받게 됩니다)</li>
                         <li><strong>payToken</strong> : 결제 고유 번호입니다.</li>
                         <li><strong>orderNo</strong> : 결제 생성 시 알려주신 '상점의 주문번호'입니다. (이 결제 결과가 토스몰의 어떤 주문에 관한 것인지 찾을 때 사용합니다)</li>
                     </ul>
@@ -328,12 +328,12 @@ echo "Response: ".$result;</code></pre>
                         <pre><code class="always-visible language-bash">{
 "payToken":"test_token1234567890a",  # 상태가 바뀐 결제건의 고유 번호
 "orderNo":"1",              # 결제건과 연결된 상점 주문번호
-"status":"PAY_SUCCESS"      # 최종적으로 바뀐 결과
+"status":"PAY_COMPLETE"      # 최종적으로 바뀐 결과
 }</code></pre>
                     </div>
                     <p>"status" 값은 결제 결과에 따라 다음과 같이 보내드립니다.</p>
                     <ul>
-                        <li><strong>PAY_SUCCESS</strong> : 결제가 성공적으로 완료되었음</li>
+                        <li><strong>PAY_COMPLETE</strong> : 결제가 성공적으로 완료되었음</li>
                         <li><strong>PAY_CANCEL</strong> : 결제가 완료되기 전에 취소됨</li>
                         <li><strong>REFUND_SUCCESS</strong> : 완료된 결제가 환불 처리됨</li>
                     </ul>
