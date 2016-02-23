@@ -557,7 +557,7 @@
         "orderNo":"2015072012211",
         "amount":10000,
         "productDesc":"테스트결제",
-        "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O"
+        "apiKey":"sk_test_apikey1234567890a"
         }'</code>
 			<code class="java language-java">URL url = null;
 URLConnection connection = null;
@@ -573,7 +573,7 @@ try {
 	jsonBody.put("orderNo", "2015072012211");
 	jsonBody.put("amount", 10000);
 	jsonBody.put("productDesc", "테스트 결제");
-	jsonBody.put("apiKey", "sk_test_4Q0kzy8WyVYaqNjzNZ9O");
+	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
 	jsonBody.put("expiredTime", "2015-07-20 16:21:00");
 	jsonBody.put("orderCheckCallback", "https://myshop.com/toss/orderCheck.php");
 	jsonBody.put("resultCallback", "https://myshop.com/toss/result.php");
@@ -597,7 +597,7 @@ System.out.println(responseBody.toString());</code>
 $arrayBody["orderNo"] = "2015072012211";
 $arrayBody["amount"] = 10000;
 $arrayBody["productDesc"] = "테스트 결제";
-$arrayBody["apiKey"] = "sk_test_4Q0kzy8WyVYaqNjzNZ9O";
+$arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $arrayBody["expiredTime"] = "2015-07-20 16:21:00";
 $arrayBody["orderCheckCallback"] = "https://myshop.com/toss/orderCheck.php";
 $arrayBody["resultCallback"] = "https://myshop.com/toss/result.php";
@@ -618,7 +618,7 @@ curl_close($ch);
       
 echo "Response: ".$result;</code></pre>
                         <div class="title">Example Response</div>
-                        <pre><code class="language-javascript always-visible">{"code":0,"payToken":"7he9aYt0keNr"}</code>
+                        <pre><code class="language-javascript always-visible">{"code":0,"payToken":"test_token1234567890a"}</code>
             </pre>
                     </div>
                 </div>
@@ -720,8 +720,8 @@ echo "Response: ".$result;</code></pre>
                         <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/cancel" \
     -H "content-Type: application/json" \
     -d '{
-        "payToken":"7he9aYt0keNr",
-        "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O"
+        "payToken":"test_token1234567890a",
+        "apiKey":"sk_test_apikey1234567890a"
         }'</code>
 			<code class="java language-java">URL url = null;
 URLConnection connection = null;
@@ -734,9 +734,9 @@ try {
 	connection.setDoInput(true);
 	
 	org.json.simple.JSONObject jsonBody = new JSONObject();
-	jsonBody.put("payToken", "7he9aYt0keNr");
+	jsonBody.put("payToken", "test_token1234567890a");
 	jsonBody.put("reason", "재고 부족");
-	jsonBody.put("apiKey", "sk_test_4Q0kzy8WyVYaqNjzNZ9O");
+	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
 	
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	bos.write(jsonBody.toJSONString().getBytes());
@@ -754,9 +754,9 @@ try {
 }
 System.out.println(responseBody.toString());</code>
             <code class="php language-php">$arrayBody = array();
-$arrayBody["payToken"] = "7he9aYt0keNr";
+$arrayBody["payToken"] = "test_token1234567890a";
 $arrayBody["reason"] = "재고 부족";
-$arrayBody["apiKey"] = "sk_test_4Q0kzy8WyVYaqNjzNZ9O";
+$arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $jsonBody = json_encode($arrayBody);
 
 $ch = curl_init('https://toss.im/tosspay/api/v1/cancel');
@@ -925,8 +925,8 @@ echo "Response: ".$result;</code></pre>
                         <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/refunds" \
     -H "content-Type: application/json" \
     -d '{
-        "payToken":"7he9aYt0keNr",
-        "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O"
+        "payToken":"test_token1234567890a",
+        "apiKey":"sk_test_apikey1234567890a"
         }'</code>
 			<code class="java language-java">URL url = null;
 URLConnection connection = null;
@@ -939,9 +939,9 @@ try {
 	connection.setDoInput(true);
 	
 	org.json.simple.JSONObject jsonBody = new JSONObject();
-	jsonBody.put("payToken", "7he9aYt0keNr");
+	jsonBody.put("payToken", "test_token1234567890a");
 	jsonBody.put("amount", "5000");
-	jsonBody.put("apiKey", "sk_test_4Q0kzy8WyVYaqNjzNZ9O");
+	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
 	
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	bos.write(jsonBody.toJSONString().getBytes());
@@ -959,9 +959,9 @@ try {
 }
 System.out.println(responseBody.toString());</code>
             <code class="php language-php">$arrayBody = array();
-$arrayBody["payToken"] = "7He9aYt0keNr";
+$arrayBody["payToken"] = "test_token1234567890a";
 $arrayBody["amount"] = 5000;
-$arrayBody["apiKey"] = "sk_test_4Q0kzy8WyVYaqNjzNZ9O";
+$arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $jsonBody = json_encode($arrayBody);
 
 $ch = curl_init('https://toss.im/tosspay/api/v1/refunds');
@@ -1174,8 +1174,8 @@ echo "Response: ".$result;</code></pre>
                         <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/status" \
     -H "content-Type: application/json" \
     -d '{
-        "payToken":"7he9aYt0keNr",
-        "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O"
+        "payToken":"test_token1234567890a",
+        "apiKey":"sk_test_apikey1234567890a"
         }'</code>
 			<code class="java language-java">URL url = null;
 URLConnection connection = null;
@@ -1189,7 +1189,7 @@ try {
 	
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("orderNo", "2015072012211");
-	jsonBody.put("apiKey", "sk_test_4Q0kzy8WyVYaqNjzNZ9O");
+	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
 	
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	bos.write(jsonBody.toJSONString().getBytes());
@@ -1208,7 +1208,7 @@ try {
 System.out.println(responseBody.toString());</code>
             <code class="php language-php">$arrayBody = array();
 $arrayBody["orderNo"] = "2015072012211";
-$arrayBody["apiKey"] = "sk_test_4Q0kzy8WyVYaqNjzNZ9O";
+$arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $jsonBody = json_encode($arrayBody);
 // echo "Request: ".$request."<br>";
 $ch = curl_init('https://toss.im/tosspay/api/v1/status');
@@ -1232,7 +1232,7 @@ echo "Response: ".$result;</code></pre>
     "availableActions ":["REFUND"],
     "hasOwner":true,
     "payStatus":"REFUND_SUCCESS",
-    "payToken":"7he9aYt0keNr"
+    "payToken":"test_token1234567890a"
 }</code>
             </pre>
                     </div>
@@ -1332,8 +1332,8 @@ echo "Response: ".$result;</code></pre>
                         <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/escrow" \
     -H "content-Type: application/json" \
     -d '{
-    "payToken":"7he9aYt0keNr",
-    "apiKey":"sk_test_4Q0kzy8WyVYaqNjzNZ9O"
+    "payToken":"test_token1234567890a",
+    "apiKey":"sk_test_apikey1234567890a"
     }'</code><code class="java language-java">URL url = null;
     URLConnection connection = null;
     StringBuilder responseBody = new StringBuilder();
@@ -1345,8 +1345,8 @@ echo "Response: ".$result;</code></pre>
     connection.setDoInput(true);
 
     org.json.simple.JSONObject jsonBody = new JSONObject();
-    jsonBody.put("payToken", "7he9aYt0keNr");
-    jsonBody.put("apiKey", "sk_test_4Q0kzy8WyVYaqNjzNZ9O");
+    jsonBody.put("payToken", "test_token1234567890a");
+    jsonBody.put("apiKey", "sk_test_apikey1234567890a");
 
     BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
     bos.write(jsonBody.toJSONString().getBytes());
@@ -1363,8 +1363,8 @@ echo "Response: ".$result;</code></pre>
     responseBody.append(e);
     }
     System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
-    $arrayBody["payToken"] = "7he9aYt0keNr";
-    $arrayBody["apiKey"] = "sk_test_4Q0kzy8WyVYaqNjzNZ9O";
+    $arrayBody["payToken"] = "test_token1234567890a";
+    $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
     $jsonBody = json_encode($arrayBody);
 
     $ch = curl_init('https://toss.im/tosspay/api/v1/escrow');
