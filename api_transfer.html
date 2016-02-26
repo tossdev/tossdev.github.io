@@ -2323,6 +2323,8 @@
             <li><a href="#_계좌주_성명_조회_2">4.3. 계좌주 성명 조회</a></li>
             <li><a href="#_지급_이체_2">4.4. 지급 이체</a></li>
             <li><a href="#_거래_조회">4.5. 거래 조회</a></li>
+            <li><a href="#_거래_내역_조회">4.6. 거래 내역 조회</a></li>
+            <li><a href="#_은행_점검시간_조회">4.7. 은행 점검시간 조회</a></li>
           </ul>
         </li>
         <li><a href="#_errors">5. Errors</a>
@@ -2342,7 +2344,7 @@
       <h2 id="_문서_버전">1. 문서 버전</h2>
       <div class="sectionbody">
         <div class="paragraph">
-          <p>Beta Version. v0.3</p>
+          <p>Beta Version. v0.5</p>
         </div>
         <div class="paragraph">
           <p>16.1.16 - 은행코드 추가</p>
@@ -2351,7 +2353,16 @@
           <p>16.1.21 - 타행이체불능 추가</p>
         </div>
         <div class="paragraph">
+          <p>16.1.26 - 거래내역조회 추가</p>
+        </div>
+        <div class="paragraph">
+          <p>16.1.28 - Admin 개설</p>
+        </div>
+        <div class="paragraph">
           <p>16.2.18 - 은행 점검시간 추가, 계좌주 성명 조회 내용 추가 (가상계좌 관련)</p>
+        </div>
+        <div class="paragraph">
+          <p>16.2.24 - 은행/Toss 점검 조회 API 추가</p>
         </div>
       </div>
     </div>
@@ -2721,183 +2732,166 @@
             </table>
           </div>
         </div>
-      </div>
-      <h3 id="_은행별_정기_점검시간">2.2 은행별 정기 점검시간</h3>
-      <div class="paragraph">
-        <p>점검시간에는 이체 및 계좌주 성명 조회가 불가합니다.</p>
-        <div class="listingblock">
-          <div class="content">
-            <pre class="highlightjs highlight"><code>전체 은행 공통 점검시간 : (매일) 23:20 ~ 익일 00:40 </code></pre>
-            <br>
-            <table class="tableblock frame-all grid-all spread">
-              <colgroup>
+        <div class="sect2">
+          <h3 id="_은행별_정기_점검시간">2.2. 은행별 정기 점검시간</h3>
+          <div class="paragraph">
+            <p>점검시간에는 이체 및 계좌주 성명 조회가 불가합니다.</p>
+          </div>
+          <div class="listingblock">
+            <div class="content">
+              <pre>전체 은행 공통 점검시간 : (매일) 23:20 ~ 익일 00:40</pre>
+            </div>
+          </div>
+          <table class="tableblock frame-all grid-all spread">
+            <colgroup>
+              <col style="width: 25%;">
                 <col style="width: 25%;">
                   <col style="width: 25%;">
                     <col style="width: 25%;">
-                      <col style="width: 25%;">
-              </colgroup>
-              <thead>
-                <tr>
-                  <th class="tableblock halign-left valign-top">은행명</th>
-                  <th class="tableblock halign-left valign-top">정기 점검 시간</th>
-                  <th class="tableblock halign-left valign-top">은행명</th>
-                  <th class="tableblock halign-left valign-top">정기 점검 시간</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">KDB산업</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">매주 일요일 00:00~04:00</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">부산은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">매월 셋째주 월요일 00:00~04~00</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">IBK기업</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock"></p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">광주은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">둘째주 일요일 02:00~06:00</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">KB국민</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">매월 세번째 (not 셋째주) 일요일 전날 23:50~00:30, 일요일 05:00 ~ 05:30</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">제주은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">월, 목 04:30 ~ 05:00</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">외환은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock"></p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">전북은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">매월 둘째주 토요일 00:00~04:00</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">수협은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock"></p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">경남은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">매월 둘째주 일요일 00:00 ~ 03:00</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">NH농협</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">매월 셋째주 월요일 00:00~04~00</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">새마을은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock"></p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">우리은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">매주 금요일 00:00~00:40, 2주차 일요일 00:00~06:00</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">신협은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock"></p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">SC은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock"></p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">저축은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock"></p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">신한은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock"></p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">우체국</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">매일 04:00~05:00 점검</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">씨티은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">공휴일 다음날(매주 월요일 포함) 00:00~02:00</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">하나은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock"></p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">대구은행</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top">
-                    <p class="tableblock">분기말에 한번 토요일 00:00~06:00</p>
-                  </td>
-                  <td class="tableblock halign-left valign-top"></td>
-                  <td class="tableblock halign-left valign-top"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="tableblock halign-left valign-top">은행명</th>
+                <th class="tableblock halign-left valign-top">정기 점검 시간</th>
+                <th class="tableblock halign-left valign-top">은행명</th>
+                <th class="tableblock halign-left valign-top">정기 점검 시간</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">KDB산업</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">매주 일요일 00:00~04:00</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">부산은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">매월 셋째주 월요일 00:00~04:00</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">IBK기업</p>
+                </td>
+                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">광주은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">둘째주 일요일 02:00~06:00</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">KB국민</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">매월 세번째 (not 셋째주) 일요일 전날 23:50~00:30, 일요일 05:00~05:30</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">제주은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">월, 목 04:30~05:00</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">외환은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">전북은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">매월 둘째주 토요일 00:00~04:00</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">수협은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">경남은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">매월 둘째주 일요일 00:00~03:00</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">NH농협</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">매월 셋째주 월요일 00:00~04:00</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">새마을은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top"></td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">우리은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">매주 금요일 00:00~00:40, 2주차 일요일 00:00~06:00</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">신협은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top"></td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">SC은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">저축은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top"></td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">신한은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">우체국</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">매일 04:00~05:00 점검</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">씨티은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">공휴일 다음날(매주 월요일 포함) 00:00~02:00</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">하나은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top"></td>
+              </tr>
+              <tr>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">대구은행</p>
+                </td>
+                <td class="tableblock halign-left valign-top">
+                  <p class="tableblock">분기말에 한번 토요일 00:00~06:00</p>
+                </td>
+                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -2925,14 +2919,14 @@
             <h4 id="_요청">3.2.1. 요청</h4>
             <div class="listingblock">
               <div class="content">
-                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/versions' -i -H 'Accept: application/json'</code></pre>
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/versions' -i -H 'Accept: application/json'</code></pre>
               </div>
             </div>
             <div class="listingblock">
               <div class="content">
                 <pre class="highlightjs highlight"><code class="language-http" data-lang="http">GET /fb/api/v1/company/versions HTTP/1.1
 Accept: application/json
-Host: toss.im</code></pre>
+Host: localhost</code></pre>
               </div>
             </div>
           </div>
@@ -2966,7 +2960,7 @@ Content-Length: 59
             <h4 id="_요청_2">3.3.1. 요청</h4>
             <div class="listingblock">
               <div class="content">
-                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/accounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000'</code></pre>
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/accounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000'</code></pre>
               </div>
             </div>
             <div class="listingblock">
@@ -3013,7 +3007,7 @@ key=ck_test_0000</code></pre>
               <div class="content">
                 <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 100
+Content-Length: 99
 
 {
   "meta" : {
@@ -3021,7 +3015,7 @@ Content-Length: 100
   },
   "status" : 200,
   "mode" : "TEST",
-  "balance" : 100000
+  "balance" : 10000
 }</code></pre>
               </div>
             </div>
@@ -3033,45 +3027,48 @@ Content-Length: 100
         <div class="sect2">
           <h3 id="_계좌주_성명_조회">3.4. 계좌주 성명 조회</h3>
           <div class="paragraph">
-            <p>이벤트에 당첨된 고객을 대상으로 당첨금액을 지급하기 위해, 성명 조회를 해봅니다. ==== 요청</p>
+            <p>이벤트에 당첨된 고객을 대상으로 당첨금액을 지급하기 위해, 성명 조회를 해봅니다.</p>
           </div>
-          <div class="listingblock">
-            <div class="content">
-              <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/bankaccounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;companyTxNo=company-tx-unique-0001&amp;bankCode=0&amp;bankAccountNo=0000000000000000'</code></pre>
+          <div class="sect3">
+            <h4 id="_요청_3">3.4.1. 요청</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/bankaccounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;companyTxNo=company-tx-unique-0001&amp;bankCode=0&amp;bankAccountNo=0000000000000000'</code></pre>
+              </div>
             </div>
-          </div>
-          <div class="listingblock">
-            <div class="content">
-              <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/bankaccounts HTTP/1.1
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/bankaccounts HTTP/1.1
 Accept: application/json
-Host: toss.im
+Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0000&amp;companyTxNo=company-tx-unique-0001&amp;bankCode=0&amp;bankAccountNo=0000000000000000</code></pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p><code>은행 코드(bankCode)</code> 와 <code>은행 계좌 번호(bankAccountNo)</code> 를 통해 계좌주 성명 조회가 가능합니다.</p>
+            </div>
+            <div class="admonitionblock note">
+              <table>
+                <tr>
+                  <td class="icon">
+                    <i class="fa icon-note" title="Note"></i>
+                  </td>
+                  <td class="content">
+                    <code>고객사 거래 번호(companyTxNo)</code> 는 고객사에서 거래를 확인하기 위해 요청시 꼭 필요한 값입니다. 매 거래 요청에 대해 고유한 값을 주셔야합니다. API 섹션에서 부연 설명 드리겠습니다.
+                  </td>
+                </tr>
+              </table>
             </div>
           </div>
-          <div class="paragraph">
-            <p><code>은행 코드(bankCode)</code> 와 <code>은행 계좌 번호(bankAccountNo)</code> 를 통해 계좌주 성명 조회가 가능합니다.</p>
-          </div>
-          <div class="admonitionblock note">
-            <table>
-              <tr>
-                <td class="icon">
-                  <i class="fa icon-note" title="Note"></i>
-                </td>
-                <td class="content">
-                  <code>고객사 거래 번호(companyTxNo)</code> 는 고객사에서 거래를 확인하기 위해 요청시 꼭 필요한 값입니다. 매 거래 요청에 대해 고유한 값을 주셔야합니다. API 섹션에서 부연 설명 드리겠습니다.
-                </td>
-              </tr>
-            </table>
-          </div>
           <div class="sect3">
-            <h4 id="_응답_3">3.4.1. 응답</h4>
+            <h4 id="_응답_3">3.4.2. 응답</h4>
             <div class="listingblock">
               <div class="content">
                 <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 505
+Content-Length: 519
 
 {
   "meta" : {
@@ -3087,14 +3084,15 @@ Content-Length: 505
     "message" : ""
   },
   "tx" : {
-    "txNo" : "tx_test_4d1654a3-bfda-42ee-b905-5ab18c060486",
+    "txNo" : "tx_test_886d3e3d-ecfa-4c3d-8548-9e2c622c2f26",
     "companyTxNo" : "company-tx-unique-0001",
     "txType" : "ACCOUNT_LOOKUP",
     "txStatus" : "SUCCESS",
     "originTxNo" : "",
     "amount" : 0,
-    "fee" : 10,
-    "balance" : 99990
+    "fee" : 40,
+    "vat" : 4,
+    "balance" : 9956
   }
 }</code></pre>
               </div>
@@ -3111,7 +3109,7 @@ Content-Length: 505
                   <p><code>거래번호(tx.txNo)</code> 를 통해 추후에도 거래 내역을 확인할 수 있습니다.</p>
                 </li>
                 <li>
-                  <p><code>수수료(tx.fee)</code> 가 10원 발생하여, 거래 후 <code>잔액(tx.balance)</code> 이 9,990원임을 확인할 수 있습니다.</p>
+                  <p><code>수수료(tx.fee)</code> 40원과 <code>부가세(tx.vat)</code> 4원이 발생하여, 거래 후 <code>잔액(tx.balance)</code> 이 9,956원임을 확인할 수 있습니다.</p>
                 </li>
               </ul>
             </div>
@@ -3135,17 +3133,17 @@ Content-Length: 505
             <p>이벤트에 당첨된 고객의 계좌정보와 성명이 계좌주 성명 조회 결과와 일치하는걸 확인했으니, 당첨금을 지급하기로 합니다.</p>
           </div>
           <div class="sect3">
-            <h4 id="_요청_3">3.5.1. 요청</h4>
+            <h4 id="_요청_4">3.5.1. 요청</h4>
             <div class="listingblock">
               <div class="content">
-                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/deposits' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;companyTxNo=company-tx-unique-0002&amp;bankCode=0&amp;bankAccountNo=0000000000000000&amp;amount=600&amp;withdrawAccountSummary=My+Event+Company&amp;depositAccountSummary=Customer'</code></pre>
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/deposits' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;companyTxNo=company-tx-unique-0002&amp;bankCode=0&amp;bankAccountNo=0000000000000000&amp;amount=600&amp;withdrawAccountSummary=My+Event+Company&amp;depositAccountSummary=Customer'</code></pre>
               </div>
             </div>
             <div class="listingblock">
               <div class="content">
                 <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/deposits HTTP/1.1
 Accept: application/json
-Host: toss.im
+Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0000&amp;companyTxNo=company-tx-unique-0002&amp;bankCode=0&amp;bankAccountNo=0000000000000000&amp;amount=600&amp;withdrawAccountSummary=My+Event+Company&amp;depositAccountSummary=Customer</code></pre>
@@ -3174,7 +3172,7 @@ key=ck_test_0000&amp;companyTxNo=company-tx-unique-0002&amp;bankCode=0&amp;bankA
               <div class="content">
                 <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 587
+Content-Length: 602
 
 {
   "meta" : {
@@ -3192,14 +3190,15 @@ Content-Length: 587
     "txReturnCallback" : ""
   },
   "tx" : {
-    "txNo" : "tx_test_232d84d1-d9f4-464f-b06d-b8a79d67a995",
+    "txNo" : "tx_test_7fc172ab-0b00-4381-b54f-18355826ad93",
     "companyTxNo" : "company-tx-unique-0002",
     "txType" : "DEPOSIT",
     "txStatus" : "SUCCESS",
     "originTxNo" : "",
     "amount" : 600,
-    "fee" : 100,
-    "balance" : 99290
+    "fee" : 200,
+    "vat" : 20,
+    "balance" : 9136
   }
 }</code></pre>
               </div>
@@ -3213,17 +3212,22 @@ Content-Length: 587
                   <p><code>거래 상태(tx.txStatus)</code> : 성공(SUCCESS)</p>
                 </li>
                 <li>
-                  <p>기존에 계좌주 성명 조회를 마치고 난 잔액이 9,990원 이었는데, 지급이체 <code>금액(tx.amount)</code> 600원과 지급이체 <code>수수료(tx.fee)</code> 가 100원 발생하여, 거래 후 <code>잔액(tx.balance)</code> 이 9,290원임을 확인할 수 있습니다.</p>
+                  <p>기존에 계좌주 성명 조회를 마치고 난 잔액이 9,956원 이었는데, 지급이체 <code>금액(tx.amount)</code> 600원과 지급이체 <code>수수료(tx.fee)</code> 200원과 <code>부가세(tx.vat)</code> 20원이 발생하여, 거래 후 <code>잔액(tx.balance)</code> 이 9,136원임을 확인할 수 있습니다.</p>
                 </li>
               </ul>
             </div>
           </div>
         </div>
         <div class="sect2">
-          <h3 id="_입금_중_에러로_인한_환급_처리">3.6. 입금 중 에러로 인한 환급 처리 (타행 이체 불능)</h3>
-          <div class="paragraph">
-            <p>'지급 이체' 요청이 '성공'으로 응답된 후에도 '입금 처리' 도중 에러가 발생하여 <code>최종적으로 입금에 실패하고, 해당 금액이 환급되는 경우</code>가 발생할 수 있어 이에 대한 처리가 반드시 필요합니다.</p>
-            <p>위 상황에 대한 처리를 위해, Toss는 '입금 중 에러로 인한 환급' 발생 시 Callback을 통해 가맹점에 변경 사항을 알립니다. (이체 생성 시 설정한 <code>txReturnCallback</code>값으로 전달)</p>
+          <h3 id="_입금_중_에러로_인한_환급_처리">3.6. 입금 중 에러로 인한 환급 처리</h3>
+          <div class="sect3">
+            <h4 id="_타행_이체_불능">3.6.1. 타행 이체 불능</h4>
+            <div class="paragraph">
+              <p>'지급 이체' 요청이 '성공&#8217;으로 응답된 후에도 '입금 처리' 도중 에러가 발생하여 최종적으로 입금에 실패하고, 해당 금액이 환급되는 경우가 발생할 수 있어 이에 대한 처리가 반드시 필요합니다.</p>
+            </div>
+            <div class="paragraph">
+              <p>위 상황에 대한 처리를 위해, Toss는 '입금 중 에러로 인한 환급' 발생 시 Callback을 통해 가맹점에 변경 사항을 알립니다. (이체 생성 시 설정한 txReturnCallback값으로 전달)</p>
+            </div>
             <div class="admonitionblock important">
               <table>
                 <tr>
@@ -3231,17 +3235,14 @@ Content-Length: 587
                     <i class="fa icon-important" title="Important"></i>
                   </td>
                   <td class="content">
-                    이체 생성 시 <code>txReturnCallback</code>값을 올바르게 설정하지 않으면, 입금에 최종적으로 실패하는 상황을 알 수 없게 됩니다. 원활한 처리를 위해 반드시 해당 값을 설정하고 에러 발생 시 적절히 대처하실 것을 권장합니다.
+                    이체 생성 시 <code>txReturnCallback</code> 값을 올바르게 설정하지 않으면, 입금에 최종적으로 실패하는 상황을 알 수 없게 됩니다. 원활한 처리를 위해 반드시 해당 값을 설정하고 에러 발생 시 적절히 대처하실 것을 권장합니다.
                   </td>
                 </tr>
               </table>
             </div>
           </div>
           <div class="sect3">
-            <h4 id="_파라미터">3.6.1. 파라미터</h4>
-            <div class="paragraph">
-              <p>에러로 인한 환급이 발생하면, 해당 건에 대해 아래 파라미터가 포함된 callback을 전달합니다.</p>
-            </div>
+            <h4 id="_파라미터">3.6.2. 파라미터</h4>
             <table class="tableblock frame-all grid-all spread">
               <colgroup>
                 <col style="width: 50%;">
@@ -3274,7 +3275,7 @@ Content-Length: 587
             </table>
           </div>
           <div class="sect3">
-            <h4 id="_응답_5">3.6.2. 응답</h4>
+            <h4 id="_응답_5">3.6.3. 응답</h4>
             <div class="listingblock">
               <div class="content">
                 <pre>기대하지 않음 (미사용)</pre>
@@ -3282,56 +3283,75 @@ Content-Length: 587
             </div>
           </div>
           <div class="sect3">
-            <h4 id="_발생_원인_및_대처">3.6.3. 발생 원인 및 대처</h4>
+            <h4 id="_발생_원인_및_대처">3.6.4. 발생 원인 및 대처</h4>
             <div class="paragraph">
-              <p>이체 요청이 '성공' 처리된 후 '타행 이체 불능'이 발생하는 과정은 아래와 같습니다.</p>
+              <p>이체 요청이 '성공' 처리된 후 '타행 이체 불능&#8217;이 발생하는 과정은 아래와 같습니다.</p>
             </div>
-            <div class="ulist">
-              <ol>
-                <li>이체 생성 시, Toss는 은행 공동망을 통해 이체를 요청하고 은행 공동망으로부터 '성공' 리턴을 받으면 Toss도 거래 '성공' 처리함</li>
-                <li>이체 금액은 은행 공동망을 통해 '받을 분'의 은행으로 이동하고, 받은 은행에서 입금 처리를 시작</li>
-                <li>입금 처리 과정에서 <code>해당 계좌가 사용할 수 없는 상태</code>로 판명됨 (계좌 거래 정지, 동결 등)</li>
-                <li>받는 은행은 <code>'타행 이체 불능'</code> 에러를 발생시키고, 입금 금액을 은행 공동망으로 돌려보냄</li>
-                <li>입금 금액은 다시 Toss 충전금으로 환급되고, Toss는 가맹점에 환급 사실을 알림 (<code>txReturnCallback</code>)</li>
+            <div class="olist arabic">
+              <ol class="arabic">
+                <li>
+                  <p>이체 생성 시, Toss는 은행 공동망을 통해 이체를 요청하고 은행 공동망으로부터 '성공' 리턴을 받으면 Toss도 거래 '성공' 처리함</p>
+                </li>
+                <li>
+                  <p>이체 금액은 은행 공동망을 통해 '받을 분&#8217;의 은행으로 이동하고, 받은 은행에서 입금 처리를 시작</p>
+                </li>
+                <li>
+                  <p>입금 처리 과정에서 <code>해당 계좌가 사용할 수 없는 상태</code> 로 판명됨 (계좌 거래 정지, 동결 등)</p>
+                </li>
+                <li>
+                  <p>받는 은행은 <code>'타행 이체 불능'</code> 에러를 발생시키고, 입금 금액을 은행 공동망으로 돌려보냄</p>
+                </li>
+                <li>
+                  <p>입금 금액은 다시 Toss 충전금으로 환급되고, Toss는 가맹점에 환급 사실을 알림 <code>(txReturnCallback)</code></p>
+                  <div class="ulist">
+                    <ul>
+                      <li>
+                        <p>'타행 이체 불능' 에러와 이에 따른 환급은 Toss 계좌이체 서비스 뿐만 아니라, 인터넷 뱅킹 등 통상적인 방법을 이용한 타행간 이체 시에도 발생할 수 있는 공통적인 에러입니다.</p>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
               </ol>
-              <p>* '타행 이체 불능' 에러와 이에 따른 환급은 Toss 계좌이체 서비스 뿐만 아니라, 인터넷 뱅킹 등 통상적인 방법을 이용한 타행간 이체 시에도 발생할 수 있는 공통적인 에러입니다.</p>
             </div>
             <div class="paragraph">
               <p>에러 발생 시 대처</p>
-              <div class="ulist">
-                <ul>
-                  <li><code>이체 불능 및 환급 처리</code>되는 경우 해당 계좌는 입금이 불가한 상태로 볼 수 있으며, <code>받을 분으로부터 대체할 다른 계좌</code>를 받아 다시 이체를 진행해야 합니다.</li>
-                </ul>
-              </div>
+            </div>
+            <div class="ulist">
+              <ul>
+                <li>
+                  <p><code>이체 불능 및 환급 처리</code> 되는 경우 해당 계좌는 입금이 불가한 상태로 볼 수 있으며, <code>받을 분으로부터 대체할 다른 계좌</code> 를 받아 다시 이체를 진행해야 합니다.</p>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-      <div class="sect1">
-        <h2 id="_api">4. API</h2>
-        <div class="sectionbody">
-          <div class="sect2">
-            <h3 id="_버전_조회_2">4.1. 버전 조회</h3>
-            <div class="sect3">
-              <h4 id="_요청_4">4.1.1. 요청</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/versions' -i -H 'Accept: application/json'</code></pre>
-                </div>
-              </div>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">GET /fb/api/v1/company/versions HTTP/1.1
-Accept: application/json
-Host: toss.im</code></pre>
-                </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_api">4. API</h2>
+      <div class="sectionbody">
+        <div class="sect2">
+          <h3 id="_버전_조회_2">4.1. 버전 조회</h3>
+          <div class="sect3">
+            <h4 id="_요청_5">4.1.1. 요청</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/versions' -i -H 'Accept: application/json'</code></pre>
               </div>
             </div>
-            <div class="sect3">
-              <h4 id="_응답_6">4.1.2. 응답</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">GET /fb/api/v1/company/versions HTTP/1.1
+Accept: application/json
+Host: localhost</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="sect3">
+            <h4 id="_응답_6">4.1.2. 응답</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 59
 
@@ -3341,84 +3361,84 @@ Content-Length: 59
   },
   "status" : 200
 }</code></pre>
-                </div>
               </div>
-              <table class="tableblock frame-all grid-all spread">
-                <colgroup>
+            </div>
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup>
+                <col style="width: 33%;">
                   <col style="width: 33%;">
                     <col style="width: 33%;">
-                      <col style="width: 33%;">
-                </colgroup>
-                <thead>
-                  <tr>
-                    <th class="tableblock halign-left valign-top">Path</th>
-                    <th class="tableblock halign-left valign-top">Type</th>
-                    <th class="tableblock halign-left valign-top">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">meta.version</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">API version</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">status</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">Number</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">API 호출 결과
-                        <br>
-                        <br> - 200 : OK (성공)
-                        <br> - 400 : Bad Request (파라미터 오류)
-                        <br> - 401 : Unauthorized (권한 없음)
-                        <br> - 402 : Payment Required (잔액 부족)
-                        <br> - 404 : Not Found (조회 결과 없음)
-                        <br> - 409 : Conflict (중복 요청)
-                        <br> - 503 : Service Unavailable (은행 점검)
-                        <br> - 50x : Server Error (기타 서버 오류)</p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="tableblock halign-left valign-top">Path</th>
+                  <th class="tableblock halign-left valign-top">Type</th>
+                  <th class="tableblock halign-left valign-top">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">meta.version</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API version</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">status</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API 호출 결과
+                      <br>
+                      <br> - 200 : OK (성공)
+                      <br> - 400 : Bad Request (파라미터 오류)
+                      <br> - 401 : Unauthorized (권한 없음)
+                      <br> - 402 : Payment Required (잔액 부족)
+                      <br> - 404 : Not Found (조회 결과 없음)
+                      <br> - 409 : Conflict (중복 요청)
+                      <br> - 503 : Service Unavailable (은행 점검)
+                      <br> - 50x : Server Error (기타 서버 오류)</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="sect2">
-            <h3 id="_모계좌_조회_2">4.2. 모계좌 조회</h3>
-            <div class="sect3">
-              <h4 id="_요청_5">4.2.1. 요청</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/accounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000'</code></pre>
-                </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_모계좌_조회_2">4.2. 모계좌 조회</h3>
+          <div class="sect3">
+            <h4 id="_요청_6">4.2.1. 요청</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/accounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000'</code></pre>
               </div>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/accounts HTTP/1.1
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/accounts HTTP/1.1
 Accept: application/json
-Host: toss.im
+Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0000</code></pre>
-                </div>
               </div>
             </div>
-            <div class="sect3">
-              <h4 id="_응답_7">4.2.2. 응답</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+          </div>
+          <div class="sect3">
+            <h4 id="_응답_7">4.2.2. 응답</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 100
+Content-Length: 99
 
 {
   "meta" : {
@@ -3426,111 +3446,111 @@ Content-Length: 100
   },
   "status" : 200,
   "mode" : "TEST",
-  "balance" : 100000
+  "balance" : 10000
 }</code></pre>
-                </div>
               </div>
-              <table class="tableblock frame-all grid-all spread">
-                <colgroup>
+            </div>
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup>
+                <col style="width: 33%;">
                   <col style="width: 33%;">
                     <col style="width: 33%;">
-                      <col style="width: 33%;">
-                </colgroup>
-                <thead>
-                  <tr>
-                    <th class="tableblock halign-left valign-top">Path</th>
-                    <th class="tableblock halign-left valign-top">Type</th>
-                    <th class="tableblock halign-left valign-top">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">meta.version</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">API version</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">status</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">Number</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">API 호출 결과
-                        <br>
-                        <br> - 200 : OK (성공)
-                        <br> - 400 : Bad Request (파라미터 오류)
-                        <br> - 401 : Unauthorized (권한 없음)
-                        <br> - 402 : Payment Required (잔액 부족)
-                        <br> - 404 : Not Found (조회 결과 없음)
-                        <br> - 409 : Conflict (중복 요청)
-                        <br> - 503 : Service Unavailable (은행 점검)
-                        <br> - 50x : Server Error (기타 서버 오류)</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">mode</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">API 호출 모드
-                        <br>
-                        <br> - TEST : 테스트 호출
-                        <br> - LIVE : 실서비스 호출</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">balance</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">Number</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">계좌 잔액</p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="tableblock halign-left valign-top">Path</th>
+                  <th class="tableblock halign-left valign-top">Type</th>
+                  <th class="tableblock halign-left valign-top">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">meta.version</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API version</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">status</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API 호출 결과
+                      <br>
+                      <br> - 200 : OK (성공)
+                      <br> - 400 : Bad Request (파라미터 오류)
+                      <br> - 401 : Unauthorized (권한 없음)
+                      <br> - 402 : Payment Required (잔액 부족)
+                      <br> - 404 : Not Found (조회 결과 없음)
+                      <br> - 409 : Conflict (중복 요청)
+                      <br> - 503 : Service Unavailable (은행 점검)
+                      <br> - 50x : Server Error (기타 서버 오류)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">mode</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API 호출 모드
+                      <br>
+                      <br> - TEST : 테스트 호출
+                      <br> - LIVE : 실서비스 호출</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">balance</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">계좌 잔액</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="sect2">
-            <h3 id="_계좌주_성명_조회_2">4.3. 계좌주 성명 조회</h3>
-            <div class="sect3">
-              <h4 id="_요청_6">4.3.1. 요청</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/bankaccounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;companyTxNo=company-tx-unique-0001&amp;bankCode=0&amp;bankAccountNo=0000000000000000'</code></pre>
-                </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_계좌주_성명_조회_2">4.3. 계좌주 성명 조회</h3>
+          <div class="sect3">
+            <h4 id="_요청_7">4.3.1. 요청</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/bankaccounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;companyTxNo=company-tx-unique-0001&amp;bankCode=0&amp;bankAccountNo=0000000000000000'</code></pre>
               </div>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/bankaccounts HTTP/1.1
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/bankaccounts HTTP/1.1
 Accept: application/json
-Host: toss.im
+Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0000&amp;companyTxNo=company-tx-unique-0001&amp;bankCode=0&amp;bankAccountNo=0000000000000000</code></pre>
-                </div>
               </div>
             </div>
-            <div class="sect3">
-              <h4 id="_응답_8">4.3.2. 응답</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+          </div>
+          <div class="sect3">
+            <h4 id="_응답_8">4.3.2. 응답</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 505
+Content-Length: 519
 
 {
   "meta" : {
@@ -3546,287 +3566,301 @@ Content-Length: 505
     "message" : ""
   },
   "tx" : {
-    "txNo" : "tx_test_4d1654a3-bfda-42ee-b905-5ab18c060486",
+    "txNo" : "tx_test_886d3e3d-ecfa-4c3d-8548-9e2c622c2f26",
     "companyTxNo" : "company-tx-unique-0001",
     "txType" : "ACCOUNT_LOOKUP",
     "txStatus" : "SUCCESS",
     "originTxNo" : "",
     "amount" : 0,
-    "fee" : 10,
-    "balance" : 99990
+    "fee" : 40,
+    "vat" : 4,
+    "balance" : 9956
   }
 }</code></pre>
-                </div>
-              </div>
-              <table class="tableblock frame-all grid-all spread">
-                <colgroup>
-                  <col style="width: 33%;">
-                    <col style="width: 33%;">
-                      <col style="width: 33%;">
-                </colgroup>
-                <thead>
-                  <tr>
-                    <th class="tableblock halign-left valign-top">Path</th>
-                    <th class="tableblock halign-left valign-top">Type</th>
-                    <th class="tableblock halign-left valign-top">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">meta.version</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">API version</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">status</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">Number</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">API 호출 결과
-                        <br>
-                        <br> - 200 : OK (성공)
-                        <br> - 400 : Bad Request (파라미터 오류)
-                        <br> - 401 : Unauthorized (권한 없음)
-                        <br> - 402 : Payment Required (잔액 부족)
-                        <br> - 404 : Not Found (조회 결과 없음)
-                        <br> - 409 : Conflict (중복 요청)
-                        <br> - 503 : Service Unavailable (은행 점검)
-                        <br> - 50x : Server Error (기타 서버 오류)</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">mode</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">API 호출 모드
-                        <br>
-                        <br> - TEST : 테스트 호출
-                        <br> - LIVE : 실서비스 호출</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">account.status</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">조회 상태
-                        <br>
-                        <br> - SUCCESS : 성공
-                        <br> - FAIL : 실패</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">account.bankCode</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">Number</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">거래 번호</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">account.bankAccountNo</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">계좌 번호</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">account.bankAccountName</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">계좌 성명 조회값</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">account.message</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">계좌 조회 메세지 (에러)</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">tx.txNo</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">거래 번호</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">tx.companyTxNo</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">고객사 거래 번호</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">tx.txType</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">거래 유형
-                        <br>
-                        <br> - ACCOUNT_LOOKUP: 계좌주 성명 조회
-                        <br> - DEPOSIT : 지급 이체
-                        <br> - BALANCE_CHARGE: 잔액 충전</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">tx.txStatus</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">거래 상태
-                        <br>
-                        <br> - SUCCESS : 성공
-                        <br> - FAIL : 실패
-                        <br> - PROGRESS : 진행중
-                        <br> - PROGRESS_FAIL : 진행중 실패
-                        <br> - PROGRESS_REFUND : 진행중 환급
-                        <br> - RETURN_REFUND : 타행이체불능 환급</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">tx.originTxNo</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">원거래 번호</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">tx.amount</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">Number</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">금액</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">tx.fee</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">Number</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">수수료</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">tx.balance</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">Number</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">잔액</p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="admonitionblock important">
-                <table>
-                  <tr>
-                    <td class="icon">
-                      <i class="fa icon-important" title="Important"></i>
-                    </td>
-                    <td class="content">
-                      <code><strong>조회 상태(account.status)</strong></code> v.s. <code><strong>거래 상태(tx.txStatus)</strong></code> <code>조회 상태</code> 는 성명 조회 결과의 성공/실패 여부를 이야기하고, <code>거래 상태</code> 는 성명 조회 요청 자체가 성공/실패 여부를 의미합니다. 예를들어 A 은행의 실존하는 계좌번호가 B 이고 계좌주가 C 라고 했을때는 <code>조회 상태</code> 값이 <code>성공(SUCCESS)</code> 이 됩니다. 하지만 계좌번호를 잘못 입력하여 B 가 아닌 B2 로 조회한다면, <code>조회 상태</code> 값은 <code>실패(FAIL)</code> 가 됩니다. 반면 <code>거래 상태</code> 의 경우는 조회 요청이 성공적으로 이루어 졌다면 <code>조회 상태</code> 가 성공/실패 여부에 관계없이 <code>성공(SUCCESS)</code> 이 됩니다. 하지만 펌뱅킹 망에서 오류가 발생한다면 <code>실패(FAIL)</code> 가 됩니다.
-                    </td>
-                  </tr>
-                </table>
-                <table>
-                  <tr>
-                    <td class="icon">
-                      <i class="fa icon-important" title="Important"></i>
-                    </td>
-                    <td class="content">
-                      <code>특정 가상계좌는 성명 조회 불가</code> : 입금액이 지정된 가상계좌 (금액이 정확히 맞지 않으면 입금이 되지 않는 가상계좌)는 '계좌주 성명 조회'를 할 수 없습니다. 단, 입금액이 정확할 경우, 지급이체는 가능합니다.
-                    </td>
-                  </tr>
-                </table>
               </div>
             </div>
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup>
+                <col style="width: 33%;">
+                  <col style="width: 33%;">
+                    <col style="width: 33%;">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="tableblock halign-left valign-top">Path</th>
+                  <th class="tableblock halign-left valign-top">Type</th>
+                  <th class="tableblock halign-left valign-top">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">meta.version</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API version</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">status</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API 호출 결과
+                      <br>
+                      <br> - 200 : OK (성공)
+                      <br> - 400 : Bad Request (파라미터 오류)
+                      <br> - 401 : Unauthorized (권한 없음)
+                      <br> - 402 : Payment Required (잔액 부족)
+                      <br> - 404 : Not Found (조회 결과 없음)
+                      <br> - 409 : Conflict (중복 요청)
+                      <br> - 503 : Service Unavailable (은행 점검)
+                      <br> - 50x : Server Error (기타 서버 오류)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">mode</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API 호출 모드
+                      <br>
+                      <br> - TEST : 테스트 호출
+                      <br> - LIVE : 실서비스 호출</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">account.status</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">조회 상태
+                      <br>
+                      <br> - SUCCESS : 성공
+                      <br> - FAIL : 실패</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">account.bankCode</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">거래 번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">account.bankAccountNo</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">계좌 번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">account.bankAccountName</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">계좌 성명 조회값</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">account.message</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">계좌 조회 메세지 (에러)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.txNo</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">거래 번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.companyTxNo</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">고객사 거래 번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.txType</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">거래 유형
+                      <br>
+                      <br> - ACCOUNT_LOOKUP: 계좌주 성명 조회
+                      <br> - DEPOSIT : 지급 이체
+                      <br> - BALANCE_CHARGE: 잔액 충전</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.txStatus</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">거래 상태
+                      <br>
+                      <br> - SUCCESS : 성공
+                      <br> - FAIL : 실패
+                      <br> - PROGRESS : 진행중
+                      <br> - PROGRESS_FAIL : 진행중 실패
+                      <br> - PROGRESS_REFUND : 진행중 환급
+                      <br> - RETURN_REFUND : 타행이체불능 환급</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.originTxNo</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">원거래 번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.amount</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">금액</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.fee</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">수수료</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.vat</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">부가세</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.balance</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">잔액</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="admonitionblock important">
+              <table>
+                <tr>
+                  <td class="icon">
+                    <i class="fa icon-important" title="Important"></i>
+                  </td>
+                  <td class="content">
+                    <code><strong>조회 상태(account.status)</strong></code> v.s. <code><strong>거래 상태(tx.txStatus)</strong></code> <code>조회 상태</code> 는 성명 조회 결과의 성공/실패 여부를 이야기하고, <code>거래 상태</code> 는 성명 조회 요청 자체가 성공/실패 여부를 의미합니다. 예를들어 A 은행의 실존하는 계좌번호가 B 이고 계좌주가 C 라고 했을때는 <code>조회 상태</code> 값이 <code>성공(SUCCESS)</code> 이 됩니다. 하지만 계좌번호를 잘못 입력하여 B 가 아닌 B2 로 조회한다면, <code>조회 상태</code> 값은 <code>실패(FAIL)</code> 가 됩니다. 반면 <code>거래 상태</code> 의 경우는 조회 요청이 성공적으로 이루어 졌다면 <code>조회 상태</code> 가 성공/실패 여부에 관계없이 <code>성공(SUCCESS)</code> 이 됩니다. 하지만 펌뱅킹 망에서 오류가 발생한다면 <code>실패(FAIL)</code> 가 됩니다.
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="admonitionblock important">
+              <table>
+                <tr>
+                  <td class="icon">
+                    <i class="fa icon-important" title="Important"></i>
+                  </td>
+                  <td class="content">
+                    <code>특정 가상계좌는 성명 조회 불가</code> : 입금액이 지정된 가상계좌 (금액이 정확히 맞지 않으면 입금이 되지 않는 가상계좌)는 '계좌주 성명 조회&#8217;를 할 수 없습니다. 단, 입금액이 정확할 경우, 지급이체는 가능합니다.
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div class="sect2">
-            <h3 id="_지급_이체_2">4.4. 지급 이체</h3>
-            <div class="sect3">
-              <h4 id="_요청_7">4.4.1. 요청</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/deposits' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;companyTxNo=company-tx-unique-0002&amp;bankCode=0&amp;bankAccountNo=0000000000000000&amp;amount=600&amp;withdrawAccountSummary=My+Event+Company&amp;depositAccountSummary=Customer'</code></pre>
-                </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_지급_이체_2">4.4. 지급 이체</h3>
+          <div class="sect3">
+            <h4 id="_요청_8">4.4.1. 요청</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/deposits' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;companyTxNo=company-tx-unique-0002&amp;bankCode=0&amp;bankAccountNo=0000000000000000&amp;amount=600&amp;withdrawAccountSummary=My+Event+Company&amp;depositAccountSummary=Customer'</code></pre>
               </div>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/deposits HTTP/1.1
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/deposits HTTP/1.1
 Accept: application/json
-Host: toss.im
+Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0000&amp;companyTxNo=company-tx-unique-0002&amp;bankCode=0&amp;bankAccountNo=0000000000000000&amp;amount=600&amp;withdrawAccountSummary=My+Event+Company&amp;depositAccountSummary=Customer</code></pre>
-                </div>
               </div>
             </div>
-            <div class="sect3">
-              <h4 id="_응답_9">4.4.2. 응답</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+          </div>
+          <div class="sect3">
+            <h4 id="_응답_9">4.4.2. 응답</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 587
+Content-Length: 602
 
 {
   "meta" : {
@@ -3844,14 +3878,377 @@ Content-Length: 587
     "txReturnCallback" : ""
   },
   "tx" : {
-    "txNo" : "tx_test_232d84d1-d9f4-464f-b06d-b8a79d67a995",
+    "txNo" : "tx_test_7fc172ab-0b00-4381-b54f-18355826ad93",
     "companyTxNo" : "company-tx-unique-0002",
     "txType" : "DEPOSIT",
     "txStatus" : "SUCCESS",
     "originTxNo" : "",
     "amount" : 600,
-    "fee" : 100,
-    "balance" : 99290
+    "fee" : 200,
+    "vat" : 20,
+    "balance" : 9136
+  }
+}</code></pre>
+              </div>
+            </div>
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup>
+                <col style="width: 33%;">
+                  <col style="width: 33%;">
+                    <col style="width: 33%;">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="tableblock halign-left valign-top">Path</th>
+                  <th class="tableblock halign-left valign-top">Type</th>
+                  <th class="tableblock halign-left valign-top">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">meta.version</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API version</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">status</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API 호출 결과
+                      <br>
+                      <br> - 200 : OK (성공)
+                      <br> - 400 : Bad Request (파라미터 오류)
+                      <br> - 401 : Unauthorized (권한 없음)
+                      <br> - 402 : Payment Required (잔액 부족)
+                      <br> - 404 : Not Found (조회 결과 없음)
+                      <br> - 409 : Conflict (중복 요청)
+                      <br> - 503 : Service Unavailable (은행 점검)
+                      <br> - 50x : Server Error (기타 서버 오류)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">mode</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API 호출 모드
+                      <br>
+                      <br> - TEST : 테스트 호출
+                      <br> - LIVE : 실서비스 호출</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">deposit.status</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">조회 상태
+                      <br>
+                      <br> - SUCCESS : 성공
+                      <br> - FAIL : 실패
+                      <br> - PROGRESS : 진행중</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">deposit.bankCode</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">거래 번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">deposit.bankAccountNo</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">계좌 번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">deposit.withdrawAccountSummary</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">집금이체 계좌 적요 (모계좌 적요)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">deposit.depositAccountSummary</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">지급이체 계좌 적요 (받는분 계좌 적요)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">deposit.amount</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">지급이체 금액</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">deposit.txReturnCallback</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">타행이체불능 통지 발생시 콜백 URL</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.txNo</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">거래 번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.companyTxNo</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">고객사 거래 번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.txType</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">거래 유형
+                      <br>
+                      <br> - ACCOUNT_LOOKUP: 계좌주 성명 조회
+                      <br> - DEPOSIT : 지급 이체
+                      <br> - BALANCE_CHARGE: 잔액 충전</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.txStatus</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">거래 상태
+                      <br>
+                      <br> - SUCCESS : 성공
+                      <br> - FAIL : 실패
+                      <br> - PROGRESS : 진행중
+                      <br> - PROGRESS_FAIL : 진행중 실패
+                      <br> - PROGRESS_REFUND : 진행중 환급
+                      <br> - RETURN_REFUND : 타행이체불능 환급</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.originTxNo</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">원거래 번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.amount</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">금액</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.fee</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">수수료</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.vat</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">부가세</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">tx.balance</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">잔액</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="admonitionblock note">
+              <table>
+                <tr>
+                  <td class="icon">
+                    <i class="fa icon-note" title="Note"></i>
+                  </td>
+                  <td class="content">
+                    <code><strong>TBD</strong></code> <strong>타행이체불능 콜백(txReturnCallback)</strong> 은행에 따라서 지급 이체 요청을 먼저 성공 처리하고, 지급 대상 계좌가 문제가 있다거나 하는 경우 <code>타행이체불능</code> 이란 방식으로 돌려줍니다. 이런 방식을 사용하는 은행으로 지급이체를 요청하는 경우에 타행이체불능이 발생할때 고객사에 노티해 줄 콜백 주소를 넣어줍니다(옵션). 노티 여부와는 상관없이, 타행이체불능이 발생한 경우 고객사 모계좌의 한도는 복원됩니다.
+                    <code>타행이체불능 환급(RETURN_REFUND)</code>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_거래_조회">4.5. 거래 조회</h3>
+          <div class="paragraph">
+            <p>API 는 기본적으로 요청과 그에 대한 응답으로 구성됩니다. 일반적인 경우라면 요청에 대해 바로 결과를 받을 수 있지만, 간혹 네트워크 상황에 문제가 있거나 하여 결과를 즉시 받지 못하는 경우에는 별도로 결과를 확인하는 과정이 필요합니다. 이를 위해 두 가지 거래 조회 API 가 존재합니다.</p>
+          </div>
+          <div class="paragraph">
+            <p><code>고객사 거래 번호</code> 를 통해서 조회하는 방법은 거래에 대해 자동으로 생성되는 고유한 값인 <code>거래 번호</code> 를 받지 못했을 때 요청할 수 있는 방법입니다. (예를 들어, Toss 와의 통신 과정에서 문제가 발생한 경우)</p>
+          </div>
+          <div class="paragraph">
+            <p><code>거래 번호</code> 를 통해 조회하는 방법은 요청에 대한 응답은 받았으나, <code>진행중</code> 상태로 응답이 왔을 경우 결과 확인을 위해 요청할 수 있는 방법입니다. (예를 들어, Toss 와 은행과의 통신 과정에서 문제가 발생한 경우)</p>
+          </div>
+          <div class="paragraph">
+            <p><code>진행중(PROGRESS)</code> 응답이 온 경우는 결과를 확인할 경우 다음과 같이 처리가 이루어집니다.</p>
+          </div>
+          <div class="ulist">
+            <ul>
+              <li>
+                <p><code>진행중 (PROGRESS)</code> : 거래 확인 중</p>
+              </li>
+              <li>
+                <p><code>성공 (SUCCESS)</code> : 거래 확인 결과 성공</p>
+              </li>
+              <li>
+                <p><code>진행중 실패 (PROGRESS_FAIL)</code> : 진행중 상태에서 거래 확인 결과 실패</p>
+              </li>
+            </ul>
+          </div>
+          <div class="admonitionblock note">
+            <table>
+              <tr>
+                <td class="icon">
+                  <i class="fa icon-note" title="Note"></i>
+                </td>
+                <td class="content">
+                  <strong>진행중 환급 (PROGRESS_REFUND)</strong> : 진행중 상태에서 거래 확인 결과로 환급. 거래 요청시에는 고객사 모계좌의 <code>한도(balance)</code> 가 먼저 차감됩니다. 진행중 거래가 실패로 확인된 경우에는 한도를 복원해주기 위한 내역으로 '진행중 환급 상태&#8217;로 남게됩니다.
+                  <code>원거래 번호(originTxNo)</code> 를 이용하여 연관된 거래를 찾을 수 있으며, 추후 제공될 거래내역 API 를 통한 조회시에 볼 수 있습니다.
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="sect3">
+            <h4 id="_by_고객사_거래_번호">4.5.1. By 고객사 거래 번호</h4>
+            <div class="sect4">
+              <h5 id="_요청_9">요청</h5>
+              <div class="listingblock">
+                <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/transactions' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;txNo=company-tx-unique-0000&amp;isCompanyTxNo=true'</code></pre>
+                </div>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/transactions HTTP/1.1
+Accept: application/json
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+
+key=ck_test_0000&amp;txNo=company-tx-unique-0000&amp;isCompanyTxNo=true</code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="sect4">
+              <h5 id="_응답_10">응답</h5>
+              <div class="listingblock">
+                <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 500
+
+{
+  "meta" : {
+    "version" : "v1"
+  },
+  "status" : 200,
+  "mode" : "TEST",
+  "tx" : {
+    "txNo" : "tx-unique-0000",
+    "companyTxNo" : "company-tx-unique-0000",
+    "txType" : "ACCOUNT_LOOKUP",
+    "txStatus" : "SUCCESS",
+    "originTxNo" : "",
+    "amount" : 0,
+    "fee" : 10,
+    "vat" : 0,
+    "balance" : 9990,
+    "body" : {
+      "status" : "SUCCESS",
+      "bankCode" : 0,
+      "bankAccountNo" : "0000000000000000",
+      "bankAccountName" : "Viva Lee",
+      "message" : ""
+    }
   }
 }</code></pre>
                 </div>
@@ -3913,87 +4310,6 @@ Content-Length: 587
                         <br>
                         <br> - TEST : 테스트 호출
                         <br> - LIVE : 실서비스 호출</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">deposit.status</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">조회 상태
-                        <br>
-                        <br> - SUCCESS : 성공
-                        <br> - FAIL : 실패
-                        <br> - PROGRESS : 진행중</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">deposit.bankCode</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">Number</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">거래 번호</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">deposit.bankAccountNo</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">계좌 번호</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">deposit.withdrawAccountSummary</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">집금이체 계좌 적요 (모계좌 적요)</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">deposit.depositAccountSummary</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">지급이체 계좌 적요 (받는분 계좌 적요)</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">deposit.amount</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">Number</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">지급이체 금액</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">deposit.txReturnCallback</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">String</p>
-                    </td>
-                    <td class="tableblock halign-left valign-top">
-                      <p class="tableblock">타행이체불능 통지 발생시 콜백 URL</p>
                     </td>
                   </tr>
                   <tr>
@@ -4086,6 +4402,17 @@ Content-Length: 587
                   </tr>
                   <tr>
                     <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.vat</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">Number</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">부가세</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
                       <p class="tableblock">tx.balance</p>
                     </td>
                     <td class="tableblock halign-left valign-top">
@@ -4093,6 +4420,17 @@ Content-Length: 587
                     </td>
                     <td class="tableblock halign-left valign-top">
                       <p class="tableblock">잔액</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.body</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">Object</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">거래 내역 정보 JSON</p>
                     </td>
                   </tr>
                 </tbody>
@@ -4104,320 +4442,40 @@ Content-Length: 587
                       <i class="fa icon-note" title="Note"></i>
                     </td>
                     <td class="content">
-                      <code><strong>TBD</strong></code> <strong>타행이체불능 콜백(txReturnCallback)</strong> 은행에 따라서 지급 이체 요청을 먼저 성공 처리하고, 지급 대상 계좌가 문제가 있다거나 하는 경우 <code>타행이체불능</code> 이란 방식으로 돌려줍니다. 이런 방식을 사용하는 은행으로 지급이체를 요청하는 경우에 타행이체불능이 발생할때 고객사에 노티해 줄 콜백 주소를 넣어줍니다(옵션). 노티 여부와는 상관없이, 타행이체불능이 발생한 경우 고객사 모계좌의 한도는 복원됩니다.
-                      <code>타행이체불능 환급(RETURN_REFUND)</code>
+                      <code>거래 내역 정보 JSON(tx.body)</code> 는 확인하려는 거래에 따라 다른 값을 포함합니다.
                     </td>
                   </tr>
                 </table>
               </div>
             </div>
           </div>
-          <div class="sect2">
-            <h3 id="_거래_조회">4.5. 거래 조회</h3>
-            <div class="paragraph">
-              <p>API 는 기본적으로 요청과 그에 대한 응답으로 구성됩니다. 일반적인 경우라면 요청에 대해 바로 결과를 받을 수 있지만, 간혹 네트워크 상황에 문제가 있거나 하여 결과를 즉시 받지 못하는 경우에는 별도로 결과를 확인하는 과정이 필요합니다. 이를 위해 두 가지 거래 조회 API 가 존재합니다.</p>
-            </div>
-            <div class="paragraph">
-              <p><code>고객사 거래 번호</code> 를 통해서 조회하는 방법은 거래에 대해 자동으로 생성되는 고유한 값인 <code>거래 번호</code> 를 받지 못했을 때 요청할 수 있는 방법입니다. (예를 들어, Toss 와의 통신 과정에서 문제가 발생한 경우)</p>
-            </div>
-            <div class="paragraph">
-              <p><code>거래 번호</code> 를 통해 조회하는 방법은 요청에 대한 응답은 받았으나, <code>진행중</code> 상태로 응답이 왔을 경우 결과 확인을 위해 요청할 수 있는 방법입니다. (예를 들어, Toss 와 은행과의 통신 과정에서 문제가 발생한 경우)</p>
-            </div>
-            <div class="paragraph">
-              <p><code>진행중(PROGRESS)</code> 응답이 온 경우는 결과를 확인할 경우 다음과 같이 처리가 이루어집니다.</p>
-            </div>
-            <div class="ulist">
-              <ul>
-                <li>
-                  <p><code>진행중 (PROGRESS)</code> : 거래 확인 중</p>
-                </li>
-                <li>
-                  <p><code>성공 (SUCCESS)</code> : 거래 확인 결과 성공</p>
-                </li>
-                <li>
-                  <p><code>진행중 실패 (PROGRESS_FAIL)</code> : 진행중 상태에서 거래 확인 결과 실패</p>
-                </li>
-              </ul>
-            </div>
-            <div class="admonitionblock note">
-              <table>
-                <tr>
-                  <td class="icon">
-                    <i class="fa icon-note" title="Note"></i>
-                  </td>
-                  <td class="content">
-                    <strong>진행중 환급 (PROGRESS_REFUND)</strong> : 진행중 상태에서 거래 확인 결과로 환급. 거래 요청시에는 고객사 모계좌의 <code>한도(balance)</code> 가 먼저 차감됩니다. 진행중 거래가 실패로 확인된 경우에는 한도를 복원해주기 위한 내역으로 '진행중 환급 상태&#8217;로 남게됩니다.
-                    <code>원거래 번호(originTxNo)</code> 를 이용하여 연관된 거래를 찾을 수 있으며, 추후 제공될 거래내역 API 를 통한 조회시에 볼 수 있습니다.
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="sect3">
-              <h4 id="_by_고객사_거래_번호">4.5.1. By 고객사 거래 번호</h4>
-              <div class="sect4">
-                <h5 id="_요청_8">요청</h5>
-                <div class="listingblock">
-                  <div class="content">
-                    <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/transactions' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;txNo=company-tx-unique-0000&amp;isCompanyTxNo=true'</code></pre>
-                  </div>
-                </div>
-                <div class="listingblock">
-                  <div class="content">
-                    <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/transactions HTTP/1.1
-Accept: application/json
-Host: toss.im
-Content-Type: application/x-www-form-urlencoded
-
-key=ck_test_0000&amp;txNo=company-tx-unique-0000&amp;isCompanyTxNo=true</code></pre>
-                  </div>
+          <div class="sect3">
+            <h4 id="_by_거래_번호">4.5.2. By 거래 번호</h4>
+            <div class="sect4">
+              <h5 id="_요청_10">요청</h5>
+              <div class="listingblock">
+                <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/transactions' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;txNo=tx-unique-0000'</code></pre>
                 </div>
               </div>
-              <div class="sect4">
-                <h5 id="_응답_10">응답</h5>
-                <div class="listingblock">
-                  <div class="content">
-                    <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Content-Type: application/json;charset=UTF-8
-Content-Length: 485
-
-{
-  "meta" : {
-    "version" : "v1"
-  },
-  "status" : 200,
-  "mode" : "TEST",
-  "tx" : {
-    "txNo" : "tx-unique-0000",
-    "companyTxNo" : "company-tx-unique-0000",
-    "txType" : "ACCOUNT_LOOKUP",
-    "txStatus" : "SUCCESS",
-    "originTxNo" : "",
-    "amount" : 0,
-    "fee" : 10,
-    "balance" : 9990,
-    "body" : {
-      "status" : "SUCCESS",
-      "bankCode" : 0,
-      "bankAccountNo" : "0000000000000000",
-      "bankAccountName" : "Viva Lee",
-      "message" : ""
-    }
-  }
-}</code></pre>
-                  </div>
-                </div>
-                <table class="tableblock frame-all grid-all spread">
-                  <colgroup>
-                    <col style="width: 33%;">
-                      <col style="width: 33%;">
-                        <col style="width: 33%;">
-                  </colgroup>
-                  <thead>
-                    <tr>
-                      <th class="tableblock halign-left valign-top">Path</th>
-                      <th class="tableblock halign-left valign-top">Type</th>
-                      <th class="tableblock halign-left valign-top">Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">meta.version</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">API version</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">status</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">Number</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">API 호출 결과
-                          <br>
-                          <br> - 200 : OK (성공)
-                          <br> - 400 : Bad Request (파라미터 오류)
-                          <br> - 401 : Unauthorized (권한 없음)
-                          <br> - 402 : Payment Required (잔액 부족)
-                          <br> - 404 : Not Found (조회 결과 없음)
-                          <br> - 409 : Conflict (중복 요청)
-                          <br> - 503 : Service Unavailable (은행 점검)
-                          <br> - 50x : Server Error (기타 서버 오류)</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">mode</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">API 호출 모드
-                          <br>
-                          <br> - TEST : 테스트 호출
-                          <br> - LIVE : 실서비스 호출</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.txNo</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">거래 번호</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.companyTxNo</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">고객사 거래 번호</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.txType</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">거래 유형
-                          <br>
-                          <br> - ACCOUNT_LOOKUP: 계좌주 성명 조회
-                          <br> - DEPOSIT : 지급 이체
-                          <br> - BALANCE_CHARGE: 잔액 충전</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.txStatus</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">거래 상태
-                          <br>
-                          <br> - SUCCESS : 성공
-                          <br> - FAIL : 실패
-                          <br> - PROGRESS : 진행중
-                          <br> - PROGRESS_FAIL : 진행중 실패
-                          <br> - PROGRESS_REFUND : 진행중 환급
-                          <br> - RETURN_REFUND : 타행이체불능 환급</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.originTxNo</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">원거래 번호</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.amount</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">Number</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">금액</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.fee</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">Number</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">수수료</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.balance</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">Number</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">잔액</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.body</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">Object</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">거래 내역 정보 JSON</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="admonitionblock note">
-                  <table>
-                    <tr>
-                      <td class="icon">
-                        <i class="fa icon-note" title="Note"></i>
-                      </td>
-                      <td class="content">
-                        <code>거래 내역 정보 JSON(tx.body)</code> 는 확인하려는 거래에 따라 다른 값을 포함합니다.
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="sect3">
-              <h4 id="_by_거래_번호">4.5.2. By 거래 번호</h4>
-              <div class="sect4">
-                <h5 id="_요청_9">요청</h5>
-                <div class="listingblock">
-                  <div class="content">
-                    <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/transactions' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;txNo=tx-unique-0000'</code></pre>
-                  </div>
-                </div>
-                <div class="listingblock">
-                  <div class="content">
-                    <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/transactions HTTP/1.1
+              <div class="listingblock">
+                <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/transactions HTTP/1.1
 Accept: application/json
-Host: toss.im
+Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0000&amp;txNo=tx-unique-0000</code></pre>
-                  </div>
                 </div>
               </div>
-              <div class="sect4">
-                <h5 id="_응답_11">응답</h5>
-                <div class="listingblock">
-                  <div class="content">
-                    <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+            </div>
+            <div class="sect4">
+              <h5 id="_응답_11">응답</h5>
+              <div class="listingblock">
+                <div class="content">
+                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 485
+Content-Length: 500
 
 {
   "meta" : {
@@ -4433,6 +4491,7 @@ Content-Length: 485
     "originTxNo" : "",
     "amount" : 0,
     "fee" : 10,
+    "vat" : 0,
     "balance" : 9990,
     "body" : {
       "status" : "SUCCESS",
@@ -4443,218 +4502,601 @@ Content-Length: 485
     }
   }
 }</code></pre>
-                  </div>
                 </div>
-                <table class="tableblock frame-all grid-all spread">
-                  <colgroup>
+              </div>
+              <table class="tableblock frame-all grid-all spread">
+                <colgroup>
+                  <col style="width: 33%;">
                     <col style="width: 33%;">
                       <col style="width: 33%;">
-                        <col style="width: 33%;">
-                  </colgroup>
-                  <thead>
-                    <tr>
-                      <th class="tableblock halign-left valign-top">Path</th>
-                      <th class="tableblock halign-left valign-top">Type</th>
-                      <th class="tableblock halign-left valign-top">Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">meta.version</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">API version</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">status</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">Number</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">API 호출 결과
-                          <br>
-                          <br> - 200 : OK (성공)
-                          <br> - 400 : Bad Request (파라미터 오류)
-                          <br> - 401 : Unauthorized (권한 없음)
-                          <br> - 402 : Payment Required (잔액 부족)
-                          <br> - 404 : Not Found (조회 결과 없음)
-                          <br> - 409 : Conflict (중복 요청)
-                          <br> - 503 : Service Unavailable (은행 점검)
-                          <br> - 50x : Server Error (기타 서버 오류)</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">mode</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">API 호출 모드
-                          <br>
-                          <br> - TEST : 테스트 호출
-                          <br> - LIVE : 실서비스 호출</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.txNo</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">거래 번호</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.companyTxNo</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">고객사 거래 번호</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.txType</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">거래 유형
-                          <br>
-                          <br> - ACCOUNT_LOOKUP: 계좌주 성명 조회
-                          <br> - DEPOSIT : 지급 이체
-                          <br> - BALANCE_CHARGE: 잔액 충전</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.txStatus</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">거래 상태
-                          <br>
-                          <br> - SUCCESS : 성공
-                          <br> - FAIL : 실패
-                          <br> - PROGRESS : 진행중
-                          <br> - PROGRESS_FAIL : 진행중 실패
-                          <br> - PROGRESS_REFUND : 진행중 환급
-                          <br> - RETURN_REFUND : 타행이체불능 환급</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.originTxNo</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">String</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">원거래 번호</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.amount</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">Number</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">금액</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.fee</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">Number</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">수수료</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.balance</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">Number</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">잔액</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">tx.body</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">Object</p>
-                      </td>
-                      <td class="tableblock halign-left valign-top">
-                        <p class="tableblock">거래 내역 정보 JSON</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th class="tableblock halign-left valign-top">Path</th>
+                    <th class="tableblock halign-left valign-top">Type</th>
+                    <th class="tableblock halign-left valign-top">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">meta.version</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">String</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">API version</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">status</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">Number</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">API 호출 결과
+                        <br>
+                        <br> - 200 : OK (성공)
+                        <br> - 400 : Bad Request (파라미터 오류)
+                        <br> - 401 : Unauthorized (권한 없음)
+                        <br> - 402 : Payment Required (잔액 부족)
+                        <br> - 404 : Not Found (조회 결과 없음)
+                        <br> - 409 : Conflict (중복 요청)
+                        <br> - 503 : Service Unavailable (은행 점검)
+                        <br> - 50x : Server Error (기타 서버 오류)</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">mode</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">String</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">API 호출 모드
+                        <br>
+                        <br> - TEST : 테스트 호출
+                        <br> - LIVE : 실서비스 호출</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.txNo</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">String</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">거래 번호</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.companyTxNo</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">String</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">고객사 거래 번호</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.txType</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">String</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">거래 유형
+                        <br>
+                        <br> - ACCOUNT_LOOKUP: 계좌주 성명 조회
+                        <br> - DEPOSIT : 지급 이체
+                        <br> - BALANCE_CHARGE: 잔액 충전</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.txStatus</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">String</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">거래 상태
+                        <br>
+                        <br> - SUCCESS : 성공
+                        <br> - FAIL : 실패
+                        <br> - PROGRESS : 진행중
+                        <br> - PROGRESS_FAIL : 진행중 실패
+                        <br> - PROGRESS_REFUND : 진행중 환급
+                        <br> - RETURN_REFUND : 타행이체불능 환급</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.originTxNo</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">String</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">원거래 번호</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.amount</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">Number</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">금액</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.fee</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">Number</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">수수료</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.vat</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">Number</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">부가세</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.balance</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">Number</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">잔액</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">tx.body</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">Object</p>
+                    </td>
+                    <td class="tableblock halign-left valign-top">
+                      <p class="tableblock">거래 내역 정보 JSON</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-      </div>
-      <div class="sect1">
-        <h2 id="_errors">5. Errors</h2>
-        <div class="sectionbody">
+        <div class="sect2">
+          <h3 id="_거래_내역_조회">4.6. 거래 내역 조회</h3>
           <div class="paragraph">
-            <p><em>Toss API for Company</em> 를 통해서 서비스를 개발, 운영중에 만날 수 있는 대표적인 에러 케이스를 설명합니다.</p>
+            <p>필수 파라미터</p>
           </div>
-          <div class="sect2">
-            <h3 id="_acl">5.1. ACL</h3>
-            <div class="paragraph">
-              <p>인증 실패시에 발생합니다. 예를 들어 <code>IP 접속 제한</code> 을 <code>1.1.1.1</code> 에서만 가능하도록 신청했는데 <code>2.2.2.2</code> 에서 접근을 시도했을 때 발생합니다.</p>
-            </div>
-            <div class="sect3">
-              <h4 id="_요청_10">5.1.1. 요청</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/accounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0002'</code></pre>
-                </div>
+          <div class="olist arabic">
+            <ol class="arabic">
+              <li>
+                <p>key</p>
+              </li>
+            </ol>
+          </div>
+          <div class="paragraph">
+            <p>선택 파라미터</p>
+          </div>
+          <div class="olist arabic">
+            <ol class="arabic">
+              <li>
+                <p>startDate : 조회 시작 시각 (형태: "yyyy-MM-dd HH:mm:ss")</p>
+              </li>
+              <li>
+                <p>endDtae : 조회 끝 시각 (형태: "yyyy-MM-dd HH:mm:ss")</p>
+              </li>
+              <li>
+                <p>startAmount : 조회할 금액 범위 (최소)</p>
+              </li>
+              <li>
+                <p>endAmount : 조회할 금액 범위 (최대)</p>
+              </li>
+              <li>
+                <p>txType : 거래 종류</p>
+              </li>
+              <li>
+                <p>txStatus : 거래 상태</p>
+              </li>
+              <li>
+                <p>companyTxNo : 거래 번호</p>
+              </li>
+              <li>
+                <p>limit : 페이지당 데이터 갯수 (초기값: 10, 최대: 50)</p>
+              </li>
+              <li>
+                <p>offset : 페이지 번호</p>
+              </li>
+            </ol>
+          </div>
+          <div class="sect4">
+            <h5 id="_요청_11">요청</h5>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/transactions/list?key=ck_test_0000&amp;startDate=2015-12-07+17%3A37%3A46&amp;endDate=2016-12-07+17%3A37%3A46&amp;startAmount=0&amp;endAmount=1000' -i -H 'Accept: application/json'</code></pre>
               </div>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/accounts HTTP/1.1
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">GET /fb/api/v1/company/transactions/list?key=ck_test_0000&amp;startDate=2015-12-07+17%3A37%3A46&amp;endDate=2016-12-07+17%3A37%3A46&amp;startAmount=0&amp;endAmount=1000 HTTP/1.1
 Accept: application/json
-Host: toss.im
+Host: localhost</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="sect4">
+            <h5 id="_응답_12">응답</h5>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 577
+
+{
+  "meta" : {
+    "version" : "v1"
+  },
+  "status" : 200,
+  "mode" : "TEST",
+  "shop" : {
+    "balance" : 9956,
+    "shopName" : "지급이체기업"
+  },
+  "transactions" : {
+    "size" : 1,
+    "offset" : 0,
+    "limit" : 10,
+    "list" : [ {
+      "txNo" : "tx_test_886d3e3d-ecfa-4c3d-8548-9e2c622c2f26",
+      "companyTxNo" : "company-tx-unique-0001",
+      "txType" : "ACCOUNT_LOOKUP",
+      "txStatus" : "SUCCESS",
+      "originTxNo" : "",
+      "amount" : 0,
+      "fee" : 40,
+      "vat" : 4,
+      "balance" : 9956,
+      "regTs" : "2016-02-25 16:57:18"
+    } ]
+  }
+}</code></pre>
+              </div>
+            </div>
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup>
+                <col style="width: 33%;">
+                  <col style="width: 33%;">
+                    <col style="width: 33%;">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="tableblock halign-left valign-top">Path</th>
+                  <th class="tableblock halign-left valign-top">Type</th>
+                  <th class="tableblock halign-left valign-top">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">meta.version</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API version</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">status</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API 호출 결과
+                      <br>
+                      <br> - 200 : OK (성공)
+                      <br> - 400 : Bad Request (파라미터 오류)
+                      <br> - 401 : Unauthorized (권한 없음)
+                      <br> - 402 : Payment Required (잔액 부족)
+                      <br> - 404 : Not Found (조회 결과 없음)
+                      <br> - 409 : Conflict (중복 요청)
+                      <br> - 503 : Service Unavailable (은행 점검)
+                      <br> - 50x : Server Error (기타 서버 오류)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">mode</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API 호출 모드
+                      <br>
+                      <br> - TEST : 테스트 호출
+                      <br> - LIVE : 실서비스 호출</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">shop.balance</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">잔액</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">shop.shopName</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">상점 명</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">transactions.size</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">검색된 거래 갯수</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">transactions.offset</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">오프셋</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">transactions.limit</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">검색 할 최대 거래 갯수</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">transactions.list</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Array</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">거래 내역</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_은행_점검시간_조회">4.7. 은행 점검시간 조회</h3>
+          <div class="sect4">
+            <h5 id="_요청_12">요청</h5>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/bank/3/check' -i -H 'Accept: application/json'</code></pre>
+              </div>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">GET /fb/api/v1/bank/3/check HTTP/1.1
+Accept: application/json
+Host: localhost</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="sect4">
+            <h5 id="_응답_13">응답</h5>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 212
+
+{
+  "meta" : {
+    "version" : "v1"
+  },
+  "status" : 200,
+  "bankCode" : 3,
+  "bankName" : "IBK_BANK",
+  "available" : true,
+  "maintenance" : {
+    "checkBeginTime" : "23:29",
+    "checkEndTime" : "00:35"
+  }
+}</code></pre>
+              </div>
+            </div>
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup>
+                <col style="width: 33%;">
+                  <col style="width: 33%;">
+                    <col style="width: 33%;">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="tableblock halign-left valign-top">Path</th>
+                  <th class="tableblock halign-left valign-top">Type</th>
+                  <th class="tableblock halign-left valign-top">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">meta.version</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API version</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">status</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">API 호출 결과
+                      <br>
+                      <br> - 200 : OK (성공)
+                      <br> - 400 : Bad Request (파라미터 오류)
+                      <br> - 401 : Unauthorized (권한 없음)
+                      <br> - 402 : Payment Required (잔액 부족)
+                      <br> - 404 : Not Found (조회 결과 없음)
+                      <br> - 409 : Conflict (중복 요청)
+                      <br> - 503 : Service Unavailable (은행 점검)
+                      <br> - 50x : Server Error (기타 서버 오류)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">bankCode</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Number</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">은행번호</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">bankName</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">은행명</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">available</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">Boolean</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">현재 이체 사용 가능 여부</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">maintenance.checkBeginTime</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">점검 종료 시간</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">maintenance.checkEndTime</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">String</p>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <p class="tableblock">점검 시작 시간</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_errors">5. Errors</h2>
+      <div class="sectionbody">
+        <div class="paragraph">
+          <p><em>Toss API for Company</em> 를 통해서 서비스를 개발, 운영중에 만날 수 있는 대표적인 에러 케이스를 설명합니다.</p>
+        </div>
+        <div class="sect2">
+          <h3 id="_acl">5.1. ACL</h3>
+          <div class="paragraph">
+            <p>인증 실패시에 발생합니다. 예를 들어 <code>IP 접속 제한</code> 을 <code>1.1.1.1</code> 에서만 가능하도록 신청했는데 <code>2.2.2.2</code> 에서 접근을 시도했을 때 발생합니다.</p>
+          </div>
+          <div class="sect3">
+            <h4 id="_요청_13">5.1.1. 요청</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/accounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0002'</code></pre>
+              </div>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/accounts HTTP/1.1
+Accept: application/json
+Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0002</code></pre>
-                </div>
               </div>
             </div>
-            <div class="sect3">
-              <h4 id="_응답_12">5.1.2. 응답</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+          </div>
+          <div class="sect3">
+            <h4 id="_응답_14">5.1.2. 응답</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 79
 
@@ -4663,38 +5105,38 @@ Content-Length: 79
   "ip" : "127.0.0.1",
   "message" : "Unauthorized Access"
 }</code></pre>
-                </div>
               </div>
             </div>
           </div>
-          <div class="sect2">
-            <h3 id="_잘못된_api_key">5.2. 잘못된 API Key</h3>
-            <div class="paragraph">
-              <p>잘못된 API Key 를 사용했을 때 발생합니다. 예를 들어 API Key 를 변경한 후, 구버전의 Key 를 사용했을 때 발생합니다.</p>
-            </div>
-            <div class="sect3">
-              <h4 id="_요청_11">5.2.1. 요청</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/accounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0001'</code></pre>
-                </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_잘못된_api_key">5.2. 잘못된 API Key</h3>
+          <div class="paragraph">
+            <p>잘못된 API Key 를 사용했을 때 발생합니다. 예를 들어 API Key 를 변경한 후, 구버전의 Key 를 사용했을 때 발생합니다.</p>
+          </div>
+          <div class="sect3">
+            <h4 id="_요청_14">5.2.1. 요청</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/accounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0001'</code></pre>
               </div>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/accounts HTTP/1.1
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/accounts HTTP/1.1
 Accept: application/json
-Host: toss.im
+Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0001</code></pre>
-                </div>
               </div>
             </div>
-            <div class="sect3">
-              <h4 id="_응답_13">5.2.2. 응답</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+          </div>
+          <div class="sect3">
+            <h4 id="_응답_15">5.2.2. 응답</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 92
 
@@ -4705,38 +5147,38 @@ Content-Length: 92
   "status" : 404,
   "message" : "Invalid API Key"
 }</code></pre>
-                </div>
               </div>
             </div>
           </div>
-          <div class="sect2">
-            <h3 id="_잘못된_거래_번호">5.3. 잘못된 거래 번호</h3>
-            <div class="paragraph">
-              <p>잘못된 <code>거래 번호(Tx No)</code> 로 요청했을 때 발생합니다. 예를 들어 존재하지 않는 거래 번호를 통해 거래 확인 요청시에 발생합니다.</p>
-            </div>
-            <div class="sect3">
-              <h4 id="_요청_12">5.3.1. 요청</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/transactions' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;txNo=tx-unique-9999'</code></pre>
-                </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_잘못된_거래_번호">5.3. 잘못된 거래 번호</h3>
+          <div class="paragraph">
+            <p>잘못된 <code>거래 번호(Tx No)</code> 로 요청했을 때 발생합니다. 예를 들어 존재하지 않는 거래 번호를 통해 거래 확인 요청시에 발생합니다.</p>
+          </div>
+          <div class="sect3">
+            <h4 id="_요청_15">5.3.1. 요청</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/transactions' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;txNo=tx-unique-9999'</code></pre>
               </div>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/transactions HTTP/1.1
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/transactions HTTP/1.1
 Accept: application/json
-Host: toss.im
+Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0000&amp;txNo=tx-unique-9999</code></pre>
-                </div>
               </div>
             </div>
-            <div class="sect3">
-              <h4 id="_응답_14">5.3.2. 응답</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+          </div>
+          <div class="sect3">
+            <h4 id="_응답_16">5.3.2. 응답</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 90
 
@@ -4747,38 +5189,38 @@ Content-Length: 90
   "status" : 404,
   "message" : "Invalid Tx No"
 }</code></pre>
-                </div>
               </div>
             </div>
           </div>
-          <div class="sect2">
-            <h3 id="_잘못된_파라미터">5.4. 잘못된 파라미터</h3>
-            <div class="paragraph">
-              <p>잘못된 파라미터로 요청했을 때 발생합니다. 예를 들어 형식에 맞지 않는 거래 번호로 요청시에 발생합니다.</p>
-            </div>
-            <div class="sect3">
-              <h4 id="_요청_13">5.4.1. 요청</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/transactions' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;txNo=so-far-far-very-very-very-very-long-long-long-long-long-long-long-transaction-no-parameter'</code></pre>
-                </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_잘못된_파라미터">5.4. 잘못된 파라미터</h3>
+          <div class="paragraph">
+            <p>잘못된 파라미터로 요청했을 때 발생합니다. 예를 들어 형식에 맞지 않는 거래 번호로 요청시에 발생합니다.</p>
+          </div>
+          <div class="sect3">
+            <h4 id="_요청_16">5.4.1. 요청</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/transactions' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;txNo=so-far-far-very-very-very-very-long-long-long-long-long-long-long-transaction-no-parameter'</code></pre>
               </div>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/transactions HTTP/1.1
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/transactions HTTP/1.1
 Accept: application/json
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0000&amp;txNo=so-far-far-very-very-very-very-long-long-long-long-long-long-long-transaction-no-parameter</code></pre>
-                </div>
               </div>
             </div>
-            <div class="sect3">
-              <h4 id="_응답_15">5.4.2. 응답</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+          </div>
+          <div class="sect3">
+            <h4 id="_응답_17">5.4.2. 응답</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 298
 
@@ -4794,58 +5236,58 @@ Content-Length: 298
     "description" : "length should be less then 64"
   }
 }</code></pre>
-                </div>
               </div>
             </div>
           </div>
-          <div class="sect2">
-            <h3 id="_기타_에러">5.5. 기타 에러</h3>
-            <div class="paragraph">
-              <p>예외 처리된 경우가 아닌 기대하지 않은 상항에서 오류가 발생한 경우입니다. 응답 파라미터에 있는 <code>참조 ID(referenceId)</code> 값을 통해 이슈 추적이 가능합니다.</p>
-            </div>
-            <div class="sect3">
-              <h4 id="_요청_14">5.5.1. 요청</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://toss.im/fb/api/v1/company/bankaccounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;companyTxNo=company-tx-unique-0001&amp;bankCode=not-a-number&amp;bankAccountNo=0000000000000000'</code></pre>
-                </div>
+        </div>
+        <div class="sect2">
+          <h3 id="_기타_에러">5.5. 기타 에러</h3>
+          <div class="paragraph">
+            <p>예외 처리된 경우가 아닌 기대하지 않은 상항에서 오류가 발생한 경우입니다. 응답 파라미터에 있는 <code>참조 ID(referenceId)</code> 값을 통해 이슈 추적이 가능합니다.</p>
+          </div>
+          <div class="sect3">
+            <h4 id="_요청_17">5.5.1. 요청</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/fb/api/v1/company/bankaccounts' -i -X POST -H 'Accept: application/json' -d 'key=ck_test_0000&amp;companyTxNo=company-tx-unique-0001&amp;bankCode=not-a-number&amp;bankAccountNo=0000000000000000'</code></pre>
               </div>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/bankaccounts HTTP/1.1
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">POST /fb/api/v1/company/bankaccounts HTTP/1.1
 Accept: application/json
-Host: toss.im
+Host: localhost
 Content-Type: application/x-www-form-urlencoded
 
 key=ck_test_0000&amp;companyTxNo=company-tx-unique-0001&amp;bankCode=not-a-number&amp;bankAccountNo=0000000000000000</code></pre>
-                </div>
               </div>
             </div>
-            <div class="sect3">
-              <h4 id="_응답_16">5.5.2. 응답</h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 500 Internal Server Error
+          </div>
+          <div class="sect3">
+            <h4 id="_응답_18">5.5.2. 응답</h4>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="highlightjs highlight"><code class="language-http" data-lang="http">HTTP/1.1 500 Internal Server Error
 Content-Type: application/json;charset=UTF-8
 Content-Length: 126
 
 {
   "message" : "Oops, something went wrong.",
-  "referenceId" : "ex_e92c287f-7fd7-4339-9979-5a58aea6347e",
+  "referenceId" : "ex_1efbf544-63b7-47c4-a8f6-34173e15483b",
   "status" : 500
 }</code></pre>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div id="footer">
-      <div id="footer-text">
-        Last updated 2016-01-26 16:20:00 +09:00
-      </div>
+  </div>
+  <div id="footer">
+    <div id="footer-text">
+      Last updated 2016-02-25 16:57:02 +09:00
     </div>
+  </div>
 </body>
 
 </html>
