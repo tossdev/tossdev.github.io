@@ -84,6 +84,7 @@
                 <a class="language selected" data-lang="php" href="#">PHP</a>
                 <a class="language" data-lang="java" href="#">Java</a>
                 <a class="language" data-lang="curl" href="#">curl</a>
+                <a class="language" data-lang="aspnet" href="#">ASP</a>
             </div>
             <div class="method" id="intro">
                 <div class="method-section clearfix">
@@ -558,8 +559,7 @@
         "amount":10000,
         "productDesc":"테스트결제",
         "apiKey":"sk_test_apikey1234567890a"
-        }'</code>
-			<code class="java language-java">URL url = null;
+        }'</code><code class="java language-java">URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
@@ -592,8 +592,7 @@ try {
 } catch (Exception e) {
 	responseBody.append(e);
 }
-System.out.println(responseBody.toString());</code>
-            <code class="php language-php">$arrayBody = array();
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
 $arrayBody["orderNo"] = "2015072012211";
 $arrayBody["amount"] = 10000;
 $arrayBody["productDesc"] = "테스트 결제";
@@ -616,7 +615,21 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 $result = curl_exec($ch);
 curl_close($ch);
       
-echo "Response: ".$result;</code></pre>
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=sk_test_apikey1234567890a"
+data = data & "&orderNo=2015072012211"
+data = data & "&amount=10000"
+data = data & "&productDesc=ASPtestProduct"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://toss.im/tosspay/api/v1/payments", False
+httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{"code":0,"payToken":"test_token1234567890a"}</code>
             </pre>
@@ -722,8 +735,7 @@ echo "Response: ".$result;</code></pre>
     -d '{
         "payToken":"test_token1234567890a",
         "apiKey":"sk_test_apikey1234567890a"
-        }'</code>
-			<code class="java language-java">URL url = null;
+        }'</code><code class="java language-java">URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
@@ -752,8 +764,7 @@ try {
 } catch (Exception e) {
 	responseBody.append(e);
 }
-System.out.println(responseBody.toString());</code>
-            <code class="php language-php">$arrayBody = array();
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
 $arrayBody["payToken"] = "test_token1234567890a";
 $arrayBody["reason"] = "재고 부족";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
@@ -772,7 +783,21 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 $result = curl_exec($ch);
 curl_close($ch);
       
-echo "Response: ".$result;</code></pre>
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+​
+data = "apiKey=sk_test_apikey1234567890a"
+data = data & "&payToken=test_token1234567890a"
+data = data & "&reason=SoldOut"
+​
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://toss.im/tosspay/api/v1/cancel", False
+httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.Send data
+​
+postResponse = httpRequest.ResponseText
+​
+Response.Write postResponse
+</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{"code":0}</code>
             </pre>
@@ -977,7 +1002,21 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 $result = curl_exec($ch);
 curl_close($ch);
    
-echo "Response: ".$result;</code></pre>
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=sk_test_apikey1234567890a"
+data = data & "&payToken=test_token1234567890a"
+data = data & "&amount=1000"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://toss.im/tosspay/api/v1/refunds", False
+httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse
+</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{"code":0}</code>
             </pre>
@@ -1176,8 +1215,7 @@ echo "Response: ".$result;</code></pre>
     -d '{
         "payToken":"test_token1234567890a",
         "apiKey":"sk_test_apikey1234567890a"
-        }'</code>
-			<code class="java language-java">URL url = null;
+        }'</code><code class="java language-java">URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
@@ -1205,8 +1243,7 @@ try {
 } catch (Exception e) {
 	responseBody.append(e);
 }
-System.out.println(responseBody.toString());</code>
-            <code class="php language-php">$arrayBody = array();
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
 $arrayBody["orderNo"] = "2015072012211";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $jsonBody = json_encode($arrayBody);
@@ -1224,7 +1261,20 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 $result = curl_exec($ch);
 curl_close($ch);
       
-echo "Response: ".$result;</code></pre>
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=sk_test_apikey1234567890a"
+data = data & "&orderNo=2015072012211"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://toss.im/tosspay/api/v1/status", False
+httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse
+</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{
     "orderNo":"2015072012211",
