@@ -84,6 +84,8 @@
                 <a class="language selected" data-lang="php" href="#">PHP</a>
                 <a class="language" data-lang="java" href="#">Java</a>
                 <a class="language" data-lang="curl" href="#">curl</a>
+                <a class="language" data-lang="python" href="#">Python</a>
+                <a class="language" data-lang="ruby" href="#">Ruby</a>
                 <a class="language" data-lang="aspnet" href="#">ASP</a>
             </div>
             <div class="method" id="intro">
@@ -629,7 +631,42 @@ httpRequest.Send data
 
 postResponse = httpRequest.ResponseText
 
-Response.Write postResponse</code></pre>
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://toss.im/tosspay/api/v1/payments"
+params = {
+    "orderNo": "2015072012211",
+    "amount": 10000,
+    "productDesc":"테스트 결제",
+    "apiKey": "sk_test_apikey1234567890a",
+    "expiredTime":"2015-07-20 16:21:00",
+    "orderCheckCallback":"https://myshop.com/toss/orderCheck.php",
+    "resultCallback": "https://myshop.com/toss/result.php"
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://toss.im/tosspay/api/v1/payments")
+
+params = {
+        "orderNo" => "2015072012211", 
+        "amount"=> 10000,
+        "productDesc" => "테스트 결제",
+        "apiKey" => "sk_test_apikey1234567890a",
+        "expiredTime" => "2015-07-20 16:21:00",
+        "orderCheckCallback" => "https://myshop.com/toss/orderCheck.php",
+        "resultCallback" => "https://myshop.com/toss/result.php"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{"code":0,"payToken":"test_token1234567890a"}</code>
             </pre>
@@ -797,7 +834,34 @@ httpRequest.Send data
 postResponse = httpRequest.ResponseText
 ​
 Response.Write postResponse
-</code></pre>
+</code><code class="python language-python">import urllib, urllib2
+
+url = "https://toss.im/tosspay/api/v1/cancel"
+params = {
+    "payToken": "test_token1234567890a",
+    "reason":"재고 부족",
+    "apiKey": "sk_test_apikey1234567890a"
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://toss.im/tosspay/api/v1/cancel")
+
+params = {
+        "payToken" => "test_token1234567890a", 
+        "reason" => "재고 부족",
+        "apiKey" => "sk_test_apikey1234567890a"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{"code":0}</code>
             </pre>
@@ -952,8 +1016,7 @@ Response.Write postResponse
     -d '{
         "payToken":"test_token1234567890a",
         "apiKey":"sk_test_apikey1234567890a"
-        }'</code>
-			<code class="java language-java">URL url = null;
+        }'</code><code class="java language-java">URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
@@ -982,8 +1045,7 @@ try {
 } catch (Exception e) {
 	responseBody.append(e);
 }
-System.out.println(responseBody.toString());</code>
-            <code class="php language-php">$arrayBody = array();
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
 $arrayBody["payToken"] = "test_token1234567890a";
 $arrayBody["amount"] = 5000;
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
@@ -1015,8 +1077,34 @@ httpRequest.Send data
 
 postResponse = httpRequest.ResponseText
 
-Response.Write postResponse
-</code></pre>
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://toss.im/tosspay/api/v1/refunds"
+params = {
+    "payToken": "test_token1234567890a",
+    "amount": 5000,
+    "apiKey": "sk_test_apikey1234567890a"
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://toss.im/tosspay/api/v1/refunds")
+
+params = {
+        "payToken" => "test_token1234567890a", 
+        "amount"=> 5000,
+        "apiKey" => "sk_test_apikey1234567890a"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{"code":0}</code>
             </pre>
@@ -1273,8 +1361,32 @@ httpRequest.Send data
 
 postResponse = httpRequest.ResponseText
 
-Response.Write postResponse
-</code></pre>
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://toss.im/tosspay/api/v1/status"
+params = {
+    "orderNo": "2015072012211",
+    "apiKey": "sk_test_apikey1234567890a"
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://toss.im/tosspay/api/v1/status")
+
+params = {
+        "orderNo" => "2015072012211",
+        "apiKey" => "sk_test_apikey1234567890a"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{
     "orderNo":"2015072012211",

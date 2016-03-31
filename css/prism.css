@@ -1,4 +1,4 @@
-/* http://prismjs.com/download.html?themes=prism-dark&languages=markup+css+clike+javascript+bash+java+php+php-extras */
+/* http://prismjs.com/download.html?themes=prism-dark&languages=markup+css+clike+javascript+aspnet+bash+ruby+java+php+python */
 /**
  * prism.js Dark theme for JavaScript, CSS and HTML
  * Based on the slides of the talk “/Reg(exp){2}lained/”
@@ -8,9 +8,9 @@
 code[class*="language-"],
 pre[class*="language-"] {
 	color: white;
+	background: none;
 	text-shadow: 0 -.1em .2em black;
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	direction: ltr;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
