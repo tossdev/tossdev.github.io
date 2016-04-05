@@ -84,7 +84,8 @@
                         <li><a href="#create-5">결제 만료 기한</a></li>
                         <li><a href="#create-6">에스크로 여부</a></li>
                         <li><a href="#create-7">현금영수증 발급 가능 여부</a></li>
-                        <li><a href="#create-8">복합과세 처리</a></li>
+                        <li><a href="#create-8">결제 연관 data 기록</a></li>
+                        <li><a href="#create-9">복합과세 처리</a></li>
                     </ul>
                 </li>
                 <li>
@@ -298,8 +299,8 @@ echo "Response: ".$result;</code></pre>
 -d '{
 "orderNo":"1",                                           # 토스몰 고유의 주문번호 (필수)
 "amount":35000,                                          # 결제 금액 (필수)
-"productDesc":"토스티셔츠",                                 # 상품 정보 (필수)
-"apiKey":"sk_test_apikey1234567890a",                 # 상점의 API Key (필수)
+"productDesc":"토스티셔츠",                                # 상품 정보 (필수)
+"apiKey":"sk_test_apikey1234567890a",                    # 상점의 API Key (필수)
 "resultCallback":"http://YOUR-SITE.COM/CALLBACK",        # 결제 결과 callback URL
 "orderCheckCallback":"http://YOUR-SITE.COM/ORDERSTATUS", # 주문 상태 확인 Callback
 "amountTaxable":22727,                                   # 결제 금액 중 과세금액
@@ -307,8 +308,9 @@ echo "Response: ".$result;</code></pre>
 "amountVat":2273,                                        # 결제 금액 중 부가세
 "amountServiceFee":0,                                    # 결제 금액 중 봉사료
 "expiredTime":"2015-12-01 12:47:35",                     # 결제 만료 예정 시각
-"escrow":false                                           # 에스크로 여부
-"cashReceipt":true                                       # 현금영수증 발급 가능 여부
+"escrow":false,                                          # 에스크로 여부
+"cashReceipt":true,                                      # 현금영수증 발급 가능 여부
+"metadata":"{'size':'XL','color':'Red'}"                 # metadata 값
 }'</code></pre>
                     </div>
                     <h4 id="create-1">결제 생성 API의 Endpoint</h4>
@@ -326,9 +328,10 @@ echo "Response: ".$result;</code></pre>
                     <p>그러한 상태 변경이 있을 때 마다 상점의 주문 상태를 변경하거나 구매자에게 안내를 해주어야 한다면 '결제 결과에 대한 callback' 파라미터를 사용하세요. 이 파라미터에 응답을 받을 URL을 등록하시면, 아래와 같이 callback을 보내드리겠습니다.</p>
                     <div class="method-example">
                         <pre><code class="always-visible language-bash">{
-"payToken":"test_token1234567890a",  # 상태가 바뀐 결제건의 고유 번호
-"orderNo":"1",              # 결제건과 연결된 상점 주문번호
-"status":"PAY_COMPLETE"      # 최종적으로 바뀐 결과
+"payToken":"test_token1234567890a",         # 상태가 바뀐 결제건의 고유 번호
+"orderNo":"1",                              # 결제건과 연결된 상점 주문번호
+"status":"PAY_COMPLETE"                     # 최종적으로 바뀐 결과
+"metadata":"{'size':'XL','color':'Red'}"    # 결제 생성 시 저장한 metadata
 }</code></pre>
                     </div>
                     <p>"status" 값은 결제 결과에 따라 다음과 같이 보내드립니다.</p>
@@ -373,7 +376,11 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>true</strong> : 현금영수증 발급 가능 (값을 설정하지 않으면 true)</li>
                         <li><strong>false</strong> : 현금영수증 발급 불가</li>
                     </ul>
-                    <h4 id="create-8">복합과세 처리 (amount-)</h4>
+                    <h4 id="create-8">결제 연관 data 기록 (metadata)</h4>
+                    <p>
+                        생성하는 결제 건과 연관된 추가적인 데이터가 있다면 이 파라미터를 활용하여 저장해둘 수 있습니다. (결제가 완료될 때 보내드리는 callback에 여기에 저장해준 데이터를 함께 보내드립니다)
+                    </p>
+                    <h4 id="create-9">복합과세 처리 (amount-)</h4>
                     <p>
                         전체 결제 금액 중 '비과세' 처리해야할 금액이 섞여있거나 부가세, 봉사료 비중을 원하는대로 설정하고 싶다면 결제 생성 시 '복합과세' 파라미터를 이용하세요.
                     </p>
