@@ -79,13 +79,14 @@
                     <ul class="nav">
                         <li><a href="#create-1">API Endpoint</a></li>
                         <li><a href="#create-2">필수 Parameters</a></li>
-                        <li><a href="#create-3">결제 결과 callback URL</a></li>
-                        <li><a href="#create-4">주문 상태 확인 callback URL</a></li>
-                        <li><a href="#create-5">결제 만료 기한</a></li>
-                        <li><a href="#create-6">에스크로 여부</a></li>
-                        <li><a href="#create-7">현금영수증 발급 가능 여부</a></li>
-                        <li><a href="#create-8">결제 연관 data 기록</a></li>
-                        <li><a href="#create-9">복합과세 처리</a></li>
+                        <li><a href="#create-3">결제 완료 후 연결할 URL</a></li>
+                        <li><a href="#create-4">결제 결과 callback URL</a></li>
+                        <li><a href="#create-5">주문 상태 확인 callback URL</a></li>
+                        <li><a href="#create-6">결제 만료 기한</a></li>
+                        <li><a href="#create-7">에스크로 여부</a></li>
+                        <li><a href="#create-8">현금영수증 발급 가능 여부</a></li>
+                        <li><a href="#create-9">결제 연관 data 기록</a></li>
+                        <li><a href="#create-10">복합과세 처리</a></li>
                     </ul>
                 </li>
                 <li>
@@ -162,11 +163,12 @@
                         <pre><code class="language-bash">curl https://toss.im/tosspay/api/v1/payments \
 -H "content-Type: application/json" \
 -d '{
-"orderNo":"1",                                      # 토스몰 고유의 주문번호
-"amount":35000,                                     # 결제 금액
-"productDesc":"토스티셔츠",                            # 상품 정보
-"apiKey":"sk_test_apikey1234567890a",               # 상점의 API Key
-"resultCallback":"http://YOUR-SITE.COM/CALLBACK"    # 결제 결과를 받을 URL
+"orderNo":"1",                                          # 토스몰 고유의 주문번호
+"amount":35000,                                         # 결제 금액
+"productDesc":"토스티셔츠",                                # 상품 정보
+"apiKey":"sk_test_apikey1234567890a",                   # 상점의 API Key
+"retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",  # 결제 완료 후 연결할 웹페이지 URL
+"resultCallback":"http://YOUR-SITE.COM/CALLBACK"        # 결제 결과 callback을 받을 URL
 }'</code><code class="language-java">URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
@@ -225,34 +227,31 @@ curl_close($ch);
 
 echo "Response: ".$result;</code></pre>
                     </div>
-                    <p>위 예제에서 알 수 있듯이 '결제 생성'을 위해서는 4가지 필수값과 callback URL을 담아 토스에 요청해야합니다.</p>
+                    <p>위 예제에서 알 수 있듯이 '결제 생성'을 위해서는 4가지 필수값과 두 가지 URL을 담아 토스에 요청해야합니다.</p>
                     <ol>
                         <li><strong>상점 주문번호</strong> : 추후 상점 주문 정보와 결제 정보를 매칭하기 위해 필요</li>
                         <li><strong>결제 금액</strong> : 손님으로부터 받을 금액</li>
                         <li><strong>상품 정보</strong> : 결제할 상품에 대한 정보 (상품명)</li>
                         <li><strong>상점 API Key</strong> : 이곳에 '테스트용 Key'를 넣으면 테스트 결제가, '실거래용 Key'를 넣으면 진짜 출금되는 결제가 생성됩니다.</li>
-                        <li><strong>결제 결과 callback URL</strong> : 결제 완료, 취소, 환불 등 요청에 대한 결과를 여기 적어주신 곳으로 보내드립니다.</li>
+                        <li><strong>결제 완료 후 연결할 URL</strong> : 결제를 완료한 구매자를 이 곳에 입력한 URL로 연결합니다. (일반적으로 '결제 완료 페이지'를 입력합니다)</li>
+                        <li><strong>결제 결과 callback URL</strong> : 결제 완료, 취소, 환불 등 결제 상태 변경 시, 여기 적어주신 곳으로 callback을 날려드립니다.</li>
                     </ol>
                     <p class="alert alert-warning" role="alert">앞서 말씀 드렸듯, API Key는 절대 유출되어선 안됩니다. 결제 요청 내용이 웹페이지에 그대로 드러나지 않게 다시 한번 주의해주세요!</p>
                     <p>요청하신 결제 생성이 무사히 완료되면, 토스는 아래와 같이 응답합니다.</p>
                     <div class="method-example">
-                        <pre><code class="always-visible language-bash">{"code":0,"payToken":"test_token1234567890a"}</code></pre>
+                        <pre><code class="always-visible language-bash">{"code":0,"checkoutPage":"https://toss.im/tosspay/order/orderWait?payToken=test_token1234567890a
+&retUrl=http://YOUR-SITE.COM/ORDER-CHECK?orderno=1","payToken":"test_token1234567890a"}</code></pre>
                     </div>
-                    <p><span class="bg-info">code '0'</span>은 결제 생성에 '성공'했음을 나타냅니다. 이제 요청하신 결제가 만들어졌고, 만들어진 이 결제는 '결제 대기' 상태가 되어 홍길동님이 결제를 진행해주길 기다리게 됩니다.</p>
-                    <p>함께 오는 <span class="bg-info">payToken</span> 값은 생성된 결제건의 고유번호입니다. 결제를 진행할 때, 결제를 취소하거나 환불할 때, 결제의 현재 상태를 파악할 때 이 고유번호를 통해 해당 결제 건에 접근하게 되니 잘 보관해주세요!</p>
+                    <p><span class="bg-info">code '0'</span>은 결제 생성에 '성공'했음을 나타냅니다.</p>
+                    <p><span class="bg-info">checkoutPage</span>는 생성된 결제를 진행할 웹페이지 URL입니다. (구매자를 이 URL로 보내주세요)</p>
+                    <p><span class="bg-info">payToken</span> 값은 생성된 결제건의 고유번호입니다. 결제를 진행할 때, 결제를 취소하거나 환불할 때, 결제의 현재 상태를 파악할 때 이 고유번호를 통해 해당 결제 건에 접근하게 되니 잘 보관해주세요!</p>
                     <h4 id="overview-3">3. 결제 진행하기</h4>
-                    <p>결제가 무사히 만들어졌지만, 기뻐하긴 이릅니다! 아직 결제 금액을 받은 것은 아니니까요. 이제 홍길동님께 결제 승인을 받아야 합니다.</p>
-                    <p>결제를 승인받기 위한 각종 과정은 토스가 알아서 해드립니다. (결제에 사용할 계좌를 받고, 계좌의 유효성을 검증하고, 계좌의 주인인지 철저히 알아보는 등...) 당신이 해야할 일은 딱 하나! <span class="bg-info">홍길동님을 '결제 진행 웹페이지'로 안내하는 일</span>입니다. 아래와 같은 URL로 연결해주세요.</p>
+                    <p>Toss 결제 진행은 간단합니다. 결제 생성 시 응답으로 받은 <span class="bg-info">'checkoutPage'</span> URL로 구매자를 보내주시기만 하면 됩니다.</p>
+                    <p>위 예제의 checkoutPage는 아래와 같습니다. (매 결제마다 다른 URL이 발급됩니다)</p>
                     <div class="method-example">
-                        <pre><code class="always-visible language-http">https://toss.im/tosspay/order/orderWait?payToken=test_token1234567890a
-&retUrl=http://YOUR-SITE.COM/ORDER-CHECK?orderno=1
-                        </code></pre>
-                    </div>
-                    <p>결제 진행 웹페이지는<span class="bg-info">https://toss.im/tosspay/order/orderWait</span> 뒤에 두 가지 파라미터를 붙여서 연결합니다.</p>
-                    <ul>
-                        <li><strong>payToken</strong> : 결제 생성 완료 후 받은 결제 고유번호입니다. (잊지 않으셨죠?)</li>
-                        <li><strong>retUrl</strong> : 홍길동님이 결제 완료 후 이동하게 될 URL입니다. 결제 승인을 완료한 홍길동님을 적절한 화면으로 이동시키기 위해 이 파라미터를 활용하세요. (더 자세한 내용은 바로 아래 '4. 결제 완료 처리'에서 확인)</li>
-                    </ul>
+                        <pre class=" language-http"><code class="always-visible  language-http">https://toss.im/tosspay/order/orderWait?payToken=test_token1234567890a
+&amp;retUrl=http://YOUR-SITE.COM/ORDER-CHECK?orderno=1</code></pre></div>
+                    <p>그 후, 결제 승인까지의 모든 과정은 토스가 알아서 해드립니다. (결제에 사용할 계좌를 받고, 계좌의 유효성을 검증하고, 계좌의 주인인지 철저히 알아보는 등...)</p>
                     <p>
                         올바른 URL로 연결하셨다면 홍길동님은 아래와 같은 화면을 통해 결제를 진행하게 됩니다.
                         <img src="images/flow_pay.png" alt="결제 진행 흐름">
@@ -264,14 +263,10 @@ echo "Response: ".$result;</code></pre>
                         <br> 직접 경험해보고 싶으시다면... <a href="https://toss.im/tosspay/demo" target="_blank">&gt;&gt; 결제 데모 페이지 바로가기</a>
                     </div>
                     <h4 id="overview-4">4. 결제 완료 처리</h4>
-                    <p>홍길동님이 무사히 결제를 완료하셨습니다! 토스몰의 첫 매출이군요~</p>
-                    <p>그러나 마지막으로 꼭 해주셔야 할 일이 있습니다!</p>
-                    <p>홍길동님을 토스몰의 '주문 완료 페이지'로 모시는 일입니다. 이를 위해 결제 진행 URL을 만들 때 넣어주었던 'retUrl' 값을 활용하셔야 합니다.</p>
                     <p>
-                        아래 그림과 같이, 홍길동님이 결제 암호를 잘 입력하면 결제 승인이 완료되는데, 그 후 토스는 'retUrl'로 홍길동님을 이동시킵니다. 토스몰에서는 retUrl로 돌아온 홍길동님을 적절한 방법을 통해 주문 완료 페이지로 이동시켜주시면 됩니다.
+                        아래 그림과 같이, 홍길동님이 결제 암호를 잘 입력하면 결제 승인이 완료됩니다. 그러면 토스는 결제 생성 시 넘겨주신 <span class="bg-info">'retUrl'</span>로 홍길동님을 보내드립니다. 토스몰로 돌아온 홍길동님을 적절한 페이지로 연결해주시면 됩니다.
                         <img src="images/flow_pay_complete.png" alt="결제 완료 처리"></p>
-                    <p>주문 완료 페이지로 이동시키기 전, 결제가 정말 완료되었는지 다시 한번 확인하고 싶으시다면, '결제 상태 확인' API를 활용하세요. 자세한 내용은 <a href="#checkstatus">'결제 상태 알아보기'</a> 참고!</p>
-                    <p>결제 생성 시 <span class="bg-info">callback URL</span>을 등록하셨다면, 좀 더 수월하게 '결제 완료 여부'를 확인하실 수 있습니다. 결제 완료 시, callback URL로 아래 예제 코드와 같은 내용들을 보내드립니다.</p>
+                    <p>결제가 완료되는 순간, 결제 생성 시 등록하신 <span class="bg-info">resultCallback</span> URL로 '결제 완료 callback'를 보내드립니다. 아래 예제 코드와 같은 형태로 보내드리오니 받아서 주문 완료 처리 등 적절한 처리를 해주시기 바랍니다.</p>
                     <div class="method-example">
                         <pre><code class="always-visible language-bash">{
 "payToken":"test_token1234567890a",  # 상태가 바뀐 결제건의 고유 번호
@@ -284,6 +279,7 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>payToken</strong> : 결제 고유 번호입니다.</li>
                         <li><strong>orderNo</strong> : 결제 생성 시 알려주신 '상점의 주문번호'입니다. (이 결제 결과가 토스몰의 어떤 주문에 관한 것인지 찾을 때 사용합니다)</li>
                     </ul>
+                    <p>결제가 정말 완료되었는지 직접 확인하고 싶으시다면, 언제든 '결제 상태 확인' API를 활용하세요. 자세한 내용은 <a href="#checkstatus">'결제 상태 알아보기'</a> 참고!</p>
                 </div>
             </div>
             <div class="method" id="create">
@@ -299,8 +295,9 @@ echo "Response: ".$result;</code></pre>
 -d '{
 "orderNo":"1",                                           # 토스몰 고유의 주문번호 (필수)
 "amount":35000,                                          # 결제 금액 (필수)
-"productDesc":"토스티셔츠",                                # 상품 정보 (필수)
+"productDesc":"토스티셔츠",                                 # 상품 정보 (필수)
 "apiKey":"sk_test_apikey1234567890a",                    # 상점의 API Key (필수)
+"retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",   # 결제 완료 후 연결할 웹페이지 URL
 "resultCallback":"http://YOUR-SITE.COM/CALLBACK",        # 결제 결과 callback URL
 "orderCheckCallback":"http://YOUR-SITE.COM/ORDERSTATUS", # 주문 상태 확인 Callback
 "amountTaxable":22727,                                   # 결제 금액 중 과세금액
@@ -323,7 +320,10 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>상품 정보</strong> : 결제할 상품에 대한 정보 (상품명)</li>
                         <li><strong>상점 API Key</strong> : 이곳에 '테스트용 Key'를 넣으면 테스트 결제가, '실거래용 Key'를 넣으면 진짜 출금되는 결제가 생성됩니다.</li>
                     </ol>
-                    <h4 id="create-3">결제 결과 callback URL (resultCallback)</h4>
+                    <h4 id="create-3">결제 완료 후 연결할 웹페이지 URL (retUrl)</h4>
+                    <p>결제 완료 후, 이 파라미터를 통해 등록한 URL로 구매자를 보내드립니다. 일반적으로 구매 완료 페이지 또는 구매 완료 페이지로 연결할 수 있는 곳을 지정합니다.</p>
+                    <p>이 값을 지정하지 않으면, 결제 완료 후 Toss 웹페이지로 연결되므로 필히 등록하실 것을 추천합니다.</p>
+                    <h4 id="create-4">결제 결과 callback URL (resultCallback)</h4>
                     <p>결제 생성이 성공적으로 끝나면, 해당 결제건은 '결제 대기' 상태가 됩니다. 이후, 결제는 '완료'되거나 '취소'되거나 혹은 '환불'처리됩니다.</p>
                     <p>그러한 상태 변경이 있을 때 마다 상점의 주문 상태를 변경하거나 구매자에게 안내를 해주어야 한다면 '결제 결과에 대한 callback' 파라미터를 사용하세요. 이 파라미터에 응답을 받을 URL을 등록하시면, 아래와 같이 callback을 보내드리겠습니다.</p>
                     <div class="method-example">
@@ -340,7 +340,7 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>PAY_CANCEL</strong> : 결제가 완료되기 전에 취소됨</li>
                         <li><strong>REFUND_SUCCESS</strong> : 완료된 결제가 환불 처리됨</li>
                     </ul>
-                    <h4 id="create-4">주문 상태 확인 callback URL (orderCheckCallback)</h4>
+                    <h4 id="create-5">주문 상태 확인 callback URL (orderCheckCallback)</h4>
                     <p>당신의 상점에서 판매하는 물품이 매우 짧은 시간 내에 재고 변동이 생기는 특성이 있다면, 이런 걱정을 하게 됩니다.</p>
                     <div class="well">"구매자가 처음 주문을 시작할 때는 재고가 있었지만, 결제를 최종 승인하는 시점에 재고가 없으면 어떡하지? 일일히 양해를 구하고 환불해줘야하잖아?</div>
                     <p>'핫딜'과 같이 짧은 시간에 대량의 주문이 발생하는 경우엔 이 문제가 더 심각해질 수 있습니다. 이런 걱정을 해결하기 위해 제공하는 것이 '주문 상태 확인 callback' 파라미터입니다.</p>
@@ -349,7 +349,7 @@ echo "Response: ".$result;</code></pre>
                         <pre><code class="always-visible language-bash">{"orderNo":"1"}</code></pre>
                     </div>
                     <p>이 요청을 받아 <strong>주문 번호에 해당하는 물품이 아직 주문 가능한 상태인지 확인해주세요.</strong> 확인 결과 주문이 가능한 상태라면, <span class="bg-info">ORDER_VALID</span>라는 문자열로 응답해주세요. (주문할 수 없는 상태라면 ORDER_VALID를 제외한 아무 값이나 응답을 주시면 됩니다)</p>
-                    <h4 id="create-5">결제 만료 기한 (expiredTime)</h4>
+                    <h4 id="create-6">결제 만료 기한 (expiredTime)</h4>
                     <p>이 파라미터를 통해 '결제 생성 후, 언제까지 결제 승인을 진행할 수 있는지' 설정할 수 있습니다. '결제 대기' 상태인 결제건의 만료 기한이 도래하면 자동으로 결제가 취소됩니다.</p>
                     <p>상점 혹은 판매 물품에 특성에 따라 결제 만료 기간을 길게 혹은 짧게 설정할 수 있습니다.</p>
                     <ul>
@@ -357,7 +357,7 @@ echo "Response: ".$result;</code></pre>
                         <li>재고의 변동이 크거나 '결제 대기' 상태를 오래 지속하고싶지 않은 경우엔 결제 만료 기한을 짧게 설정하세요.</li>
                     </ul>
                     <p>결제 만료 기한은 <span class="bg-info">최소 10분, 최대 24시간</span>이며, 따로 설정하지 않는 경우 1시간으로 설정됩니다.</p>
-                    <h4 id="create-6">에스크로 여부 (escrow)</h4>
+                    <h4 id="create-7">에스크로 여부 (escrow)</h4>
                     <p>에스크로 결제로 진행할지 설정할 수 있습니다.</p>
                     <ul>
                         <li><strong>true</strong> : 에스크로 결제를 생성합니다.</li>
@@ -367,7 +367,7 @@ echo "Response: ".$result;</code></pre>
                     <p>결제가 완료되면 결제 금액만큼 구매자의 계좌에서 출금되지만, 구매자가 물품을 정상적으로 받았다고 확정(구매확정)하기 전까지는 정산되지 않습니다. 따라서 구매자는 좀 더 안심하고 물품을 구매할 수 있습니다.</p>
                     <p class="alert alert-warning" role="alert">온라인상에서 실물을 판매하는 경우, 구매자에게 '에스크로 결제'를 선택할 수 있는 권한을 필수적으로 제공해야합니다.</p>
                     <p class="alert alert-warning" role="alert">에스크로 결제 생성 및 승인 완료 후, 반드시 '진행' 처리를 해주어야 합니다. <a href="#escrow">'에스크로 결제 진행'</a> 문서를 꼭 확인하세요.</p>
-                    <h4 id="create-7">현금영수증 발급 가능 여부 (cashReceipt)</h4>
+                    <h4 id="create-8">현금영수증 발급 가능 여부 (cashReceipt)</h4>
                     <p>
                         현금영수증 발급 가능 여부를 설정할 수 있습니다.<br>
                         (참고 : 문화상품권이나 백화점상품권, 모바일 쿠폰 등 과세 대상에서 제외되는 유가증권 등의 상품은 현금영수증 발행 대상에서 제외됩니다)
@@ -376,11 +376,11 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>true</strong> : 현금영수증 발급 가능 (값을 설정하지 않으면 true)</li>
                         <li><strong>false</strong> : 현금영수증 발급 불가</li>
                     </ul>
-                    <h4 id="create-8">결제 연관 data 기록 (metadata)</h4>
+                    <h4 id="create-9">결제 연관 data 기록 (metadata)</h4>
                     <p>
                         생성하는 결제 건과 연관된 추가적인 데이터가 있다면 이 파라미터를 활용하여 저장해둘 수 있습니다. (결제가 완료될 때 보내드리는 callback에 여기에 저장해준 데이터를 함께 보내드립니다)
                     </p>
-                    <h4 id="create-9">복합과세 처리 (amount-)</h4>
+                    <h4 id="create-10">복합과세 처리 (amount-)</h4>
                     <p>
                         전체 결제 금액 중 '비과세' 처리해야할 금액이 섞여있거나 부가세, 봉사료 비중을 원하는대로 설정하고 싶다면 결제 생성 시 '복합과세' 파라미터를 이용하세요.
                     </p>

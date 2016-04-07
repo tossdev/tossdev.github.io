@@ -585,6 +585,15 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    retUrl
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    결제 완료 후 연결할 웹페이지의 URL (미지정 시 Toss 웹페이지로 연결)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     expiredTime
                                     <span class="type">Timestamp</span>
                                 </div>
@@ -666,6 +675,14 @@
                                             <td>1회 결제 한도 초과 금액</td>
                                         </tr>
                                     </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    checkoutPage
+                                </div>
+                                <div class="desc">
+                                    생성된 결제를 진행하는 웹페이지 URL (구매자를 이 URL로 보내야 함)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -885,8 +902,8 @@ response = http.request(request)
 
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
-                        <pre><code class="language-javascript always-visible">{"code":0,"payToken":"test_token1234567890a"}</code>
-            </pre>
+                        <pre><div><code style="border:none;box-shadow:none;" class="language-javascript always-visible">{"code":0,"checkoutPage":"https://toss.im/tosspay/order/orderWait?payToken=test_token1234567890a&retUrl=http://YOUR-SITE.COM","payToken":"test_token1234567890a"}
+                        </code></div></pre>
                     </div>
                 </div>
             </div>
