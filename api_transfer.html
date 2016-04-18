@@ -767,6 +767,9 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>16.2.24 - 은행/Toss 점검 조회 API 추가</p>
 </div>
+<div class="paragraph">
+<p>16.4.18 - 타행 이체 불능 발생 case 설명 추가</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1386,7 +1389,7 @@ Content-Length: 624
 <p>'지급 이체' 요청이 '성공&#8217;으로 응답된 후에도 '입금 처리' 도중 에러가 발생하여 최종적으로 입금에 실패하고, 해당 금액이 환급되는 경우가 발생할 수 있어 이에 대한 처리가 반드시 필요합니다.</p>
 </div>
 <div class="paragraph">
-<p>위 상황에 대한 처리를 위해, Toss는 '입금 중 에러로 인한 환급' 발생 시 Callback을 통해 가맹점에 변경 사항을 알립니다. (이체 생성 시 설정한 txReturnCallback값으로 전달)</p>
+<p>위 상황에 대한 처리를 위해, Toss는 '입금 중 에러로 인한 환급 (타행 이체 불능)' 발생 시 Callback을 통해 가맹점에 변경 사항을 알립니다. (이체 생성 시 설정한 txReturnCallback값으로 전달)</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1448,7 +1451,7 @@ Content-Length: 624
 <p>이체 금액은 은행 공동망을 통해 '받을 분&#8217;의 은행으로 이동하고, 받은 은행에서 입금 처리를 시작</p>
 </li>
 <li>
-<p>입금 처리 과정에서 <code>해당 계좌가 사용할 수 없는 상태</code> 로 판명됨 (계좌 거래 정지, 동결 등)</p>
+<p>입금 처리 과정에서 <code>해당 계좌에 입금할 수 없다</code>고 판명됨</p>
 </li>
 <li>
 <p>받는 은행은 <code>'타행 이체 불능'</code> 에러를 발생시키고, 입금 금액을 은행 공동망으로 돌려보냄</p>
@@ -1464,6 +1467,25 @@ Content-Length: 624
 </div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>입금 불가 Case</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>압류, 사기 신고 등으로 인해 거래가 정지된 계좌에 입금</p>
+</li>
+<li>
+<p>정기 적금 계좌 (임의 입금 불가) 입금</p>
+</li>
+<li>
+<p>자유입금식 정기 적금 계좌에 최소 금액 미만 입금 (ex. 하나은행 자유입금식 정기 적금 계좌에 1000원 미만 금액 입금 불가)</p>
+</li>
+<li>
+<p>기타 은행 및 금융사가 지정한 입금 불가 정책에 적용되는 경우</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>에러 발생 시 대처</p>
