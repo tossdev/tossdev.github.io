@@ -70,7 +70,7 @@
                         <li><a href="#overview-0">0. 시작</a></li>
                         <li><a href="#overview-1">1. 가맹점 계정 만들기</a></li>
                         <li><a href="#overview-2">2. 토스 결제 생성 요청</a></li>
-                        <li><a href="#overview-3">3. 결제 진행하기</a></li>
+                        <li><a href="#overview-3">3. 구매자 승인 받기</a></li>
                         <li><a href="#overview-4">4. 결제 완료 처리</a></li>
                     </ul>
                 </li>
@@ -85,8 +85,16 @@
                         <li><a href="#create-6">결제 만료 기한</a></li>
                         <li><a href="#create-7">에스크로 여부</a></li>
                         <li><a href="#create-8">현금영수증 발급 가능 여부</a></li>
-                        <li><a href="#create-9">결제 연관 data 기록</a></li>
-                        <li><a href="#create-10">복합과세 처리</a></li>
+                        <li><a href="#create-9">자동 승인 여부</a></li>
+                        <li><a href="#create-10">결제 연관 data 기록</a></li>
+                        <li><a href="#create-11">복합과세 처리</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#execute">결제 승인하기</a>
+                    <ul class="nav">
+                        <li><a href="#execute-1">API Endpoint</a></li>
+                        <li><a href="#execute-2">필수 Parameters</a></li>
                     </ul>
                 </li>
                 <li>
@@ -167,7 +175,7 @@
 "amount":35000,                                         # 결제 금액
 "productDesc":"토스티셔츠",                                # 상품 정보
 "apiKey":"sk_test_apikey1234567890a",                   # 상점의 API Key
-"retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",  # 결제 완료 후 연결할 웹페이지 URL
+"retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",  # 인증 완료 후 연결할 웹페이지 URL
 "resultCallback":"http://YOUR-SITE.COM/CALLBACK"        # 결제 결과 callback을 받을 URL
 }'</code><code class="language-java">URL url = null;
 URLConnection connection = null;
@@ -233,7 +241,7 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>결제 금액</strong> : 손님으로부터 받을 금액</li>
                         <li><strong>상품 정보</strong> : 결제할 상품에 대한 정보 (상품명)</li>
                         <li><strong>상점 API Key</strong> : 이곳에 '테스트용 Key'를 넣으면 테스트 결제가, '실거래용 Key'를 넣으면 진짜 출금되는 결제가 생성됩니다.</li>
-                        <li><strong>결제 완료 후 연결할 URL</strong> : 결제를 완료한 구매자를 이 곳에 입력한 URL로 연결합니다. (일반적으로 '결제 완료 페이지'를 입력합니다)</li>
+                        <li><strong>인증 완료 후 연결할 URL</strong> : 결제 인증을 완료한 구매자를 이 곳에 입력한 URL로 연결합니다. (일반적으로 '결제 완료'를 안내하는 페이지 또는 '가맹점의 최종 승인을 대기' 하는 페이지)</li>
                         <li><strong>결제 결과 callback URL</strong> : 결제 완료, 취소, 환불 등 결제 상태 변경 시, 여기 적어주신 곳으로 callback을 날려드립니다.</li>
                     </ol>
                     <p class="alert alert-warning" role="alert">앞서 말씀 드렸듯, API Key는 절대 유출되어선 안됩니다. 결제 요청 내용이 웹페이지에 그대로 드러나지 않게 다시 한번 주의해주세요!</p>
@@ -245,7 +253,7 @@ echo "Response: ".$result;</code></pre>
                     <p><span class="bg-info">code '0'</span>은 결제 생성에 '성공'했음을 나타냅니다.</p>
                     <p><span class="bg-info">checkoutPage</span>는 생성된 결제를 진행할 웹페이지 URL입니다. (구매자를 이 URL로 보내주세요)</p>
                     <p><span class="bg-info">payToken</span> 값은 생성된 결제건의 고유번호입니다. 결제를 진행할 때, 결제를 취소하거나 환불할 때, 결제의 현재 상태를 파악할 때 이 고유번호를 통해 해당 결제 건에 접근하게 되니 잘 보관해주세요!</p>
-                    <h4 id="overview-3">3. 결제 진행하기</h4>
+                    <h4 id="overview-3">3. 구매자 승인 받기</h4>
                     <p>Toss 결제 진행은 간단합니다. 결제 생성 시 응답으로 받은 <span class="bg-info">'checkoutPage'</span> URL로 구매자를 보내주시기만 하면 됩니다.</p>
                     <p>위 예제의 checkoutPage는 아래와 같습니다. (매 결제마다 다른 URL이 발급됩니다)</p>
                     <div class="method-example">
@@ -264,7 +272,7 @@ echo "Response: ".$result;</code></pre>
                     </div>
                     <h4 id="overview-4">4. 결제 완료 처리</h4>
                     <p>
-                        아래 그림과 같이, 홍길동님이 결제 암호를 잘 입력하면 결제 승인이 완료됩니다. 그러면 토스는 결제 생성 시 넘겨주신 <span class="bg-info">'retUrl'</span>로 홍길동님을 보내드립니다. 토스몰로 돌아온 홍길동님을 적절한 페이지로 연결해주시면 됩니다.
+                        아래 그림과 같이, 홍길동님이 결제 암호를 잘 입력하면 구매자 승인이 완료됩니다. 그러면 토스는 결제 생성 시 넘겨주신 <span class="bg-info">'retUrl'</span>로 홍길동님을 보내드립니다. 토스몰로 돌아온 홍길동님을 적절한 페이지로 연결해주시면 됩니다.
                         <img src="images/flow_pay_complete.png" alt="결제 완료 처리"></p>
                     <p>결제가 완료되는 순간, 결제 생성 시 등록하신 <span class="bg-info">resultCallback</span> URL로 '결제 완료 callback'를 보내드립니다. 아래 예제 코드와 같은 형태로 보내드리오니 받아서 주문 완료 처리 등 적절한 처리를 해주시기 바랍니다.</p>
                     <div class="method-example">
@@ -376,11 +384,18 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>true</strong> : 현금영수증 발급 가능 (값을 설정하지 않으면 true)</li>
                         <li><strong>false</strong> : 현금영수증 발급 불가</li>
                     </ul>
-                    <h4 id="create-9">결제 연관 data 기록 (metadata)</h4>
+                    <h4 id="create-9">자동 승인 여부 (autoExecute)</h4>
+                    <p>구매자의 인증이 완료되면 바로 결제 완료 처리할지, 최종적으로 가맹점의 승인을 거칠지 설정할 수 있습니다.</p>
+                    <ul>
+                        <li><strong>true</strong> : 구매자 인증 완료 시 바로 결제 완료 처리합니다.</li>
+                        <li><strong>false</strong> : 구매자 인증 완료 후 가맹점의 최종 승인 시 결제 완료 처리합니다.</li>
+                    </ul>
+                    <p>재고 상황이 빠르게 변하는 경우나 서비스 흐름 상 결제의 최종 승인은 가맹점이 해야하는 경우, 자동 승인을 false로 설정함으로써 대응할 수 있습니다. </p>
+                    <h4 id="create-10">결제 연관 data 기록 (metadata)</h4>
                     <p>
                         생성하는 결제 건과 연관된 추가적인 데이터가 있다면 이 파라미터를 활용하여 저장해둘 수 있습니다. (결제가 완료될 때 보내드리는 callback에 여기에 저장해준 데이터를 함께 보내드립니다)
                     </p>
-                    <h4 id="create-10">복합과세 처리 (amount-)</h4>
+                    <h4 id="create-11">복합과세 처리 (amount-)</h4>
                     <p>
                         전체 결제 금액 중 '비과세' 처리해야할 금액이 섞여있거나 부가세, 봉사료 비중을 원하는대로 설정하고 싶다면 결제 생성 시 '복합과세' 파라미터를 이용하세요.
                     </p>
@@ -409,6 +424,42 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>과세금액</strong> : 전체 금액(amount)과 동일</li>
                         <li><strong>부가세, 비과세금액, 봉사료</strong> : 0</li>
                     </ul>
+                </div>
+            </div>
+            <div class="method" id="execute">
+                <div class="method-description">
+                    <h3>결제 승인하기</h3>
+                    <p>
+                        Toss 결제는 기본적으로 '구매자'의 인증이 완료되면 바로 구매자의 결제 계좌에서 출금하고 결제를 완료시킵니다. 하지만 상황에 따라 결제를 '최종 승인'하는 주체가 가맹점이어야 하는 경우가 있습니다. 그럴땐 아래 두 가지 조치를 통해 대응할 수 있습니다.
+                    </p>
+                    <ol>
+                        <li><strong>결제 생성 시, autoExecute를 'false'로 설정</strong> : 해당 결제건은 가맹점의 최종 승인 전까진 대기 상태에 머무르게 됩니다. (PAY_APPROVED 상태)</li>
+                        <li><strong>결제 승인 API를 통해 최종 승인 (execute API)</strong> : PAY_APPROVED 상태의 결제건에 대해 승인을 요청하면 출금을 시도하고 출금 완료 시 결제 완료로 상태를 변경합니다.</li>
+                    </ol>
+                    <p>
+                        아래 그림을 참고하세요.
+                        <img src="images/flow_autoExecute.png" alt="결제 승인 흐름">
+                    </p>
+                    <div class="method-example">
+                        <div class="languages">
+                            <a class="language selected" data-lang="language-bash" href="#">curl</a>
+                        </div>
+                        <pre><code class="language-bash">curl "https://toss.im/tosspay/api/v1/execute" \
+-H "content-Type: application/json" \
+-d '{
+"apiKey":"sk_test_apikey1234567890a",    # 상점의 API Key (필수)
+"payToken":"test_token1234567890a",      # 결제 고유 번호 (필수)
+}'
+</code></pre>
+                    </div>
+                    <h4 id="execute-1">결제 승인 API의 Endpoint</h4>
+                    <div class="well">POST https://toss.im/tosspay/api/v1/execute</div>
+                    <h4 id="execute-2">필수 Parameters</h4>
+                    <p>필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 최종 승인할지 알려주세요!</p>
+                    <ol>
+                        <li><strong>상점 API Key</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
+                        <li><strong>결제 고유 토큰 (payToken)</strong> : 결제 생성 완료 후 받은 결제 고유번호</li>
+                    </ol>
                 </div>
             </div>
             <div class="method" id="cancel">

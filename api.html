@@ -67,6 +67,9 @@
                 <a href="#charge">결제 생성</a>
             </li>
             <li>
+                <a href="#execute">결제 승인</a>
+            </li>
+            <li>
                 <a href="#cancel">결제 취소</a>
             </li>
             <li>
@@ -128,6 +131,17 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    PAY_APPROVED
+                                    <span class="type">수동 승인 설정 시</span>
+                                </div>
+                                <div class="desc">
+                                    구매자 인증 완료
+                                    <br /> : 결제를 위한 구매자 인증 완료되고, 가맹점의 최종 승인을 기다리는 상태.
+                                    <br />(결제 생성 시 'autoExecute'를 false로 설정한 경우에만 이 단계를 거칩니다)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     PAY_CANCEL
                                 </div>
                                 <div class="desc">
@@ -150,7 +164,7 @@
                                 </div>
                                 <div class="desc">
                                     결제 완료
-                                    <br /> : 구매자의 결제 승인 및 출금이 정상적으로 완료된 상태입니다. 에스크로 결제 건의 경우, 자동으로 '에스크로 요청' 상태로 변경됩니다.
+                                    <br /> : 구매자 및 가맹점의 결제 승인 및 출금이 정상적으로 완료된 상태입니다. 에스크로 결제 건의 경우, 자동으로 '에스크로 요청' 상태로 변경됩니다.
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -639,6 +653,17 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    autoExecute
+                                    <span class="type">boolean</span>
+                                </div>
+                                <div class="desc">
+                                    자동 승인 여부 설정 (기본값 true)<br />
+                                    - true : 구매자 인증 완료 시 바로 결제 완료 처리<br />
+                                    - false : 구매자 인증 완료 후 가맹점의 최종 승인 시 결제 완료 처리
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     metadata
                                     <span class="type">string</span>
                                 </div>
@@ -904,6 +929,168 @@ p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><div><code style="border:none;box-shadow:none;" class="language-javascript always-visible">{"code":0,"checkoutPage":"https://toss.im/tosspay/order/orderWait?payToken=test_token1234567890a&retUrl=http://YOUR-SITE.COM","payToken":"test_token1234567890a"}
                         </code></div></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="method" id="execute">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>결제 승인</h3>
+                        <p>
+                            구매자 인증 완료 상태(PAY_APPROVED)의 결제 건을 최종 승인하여 결제를 완료 처리합니다.<br>
+                            <br>
+                            - 주의 : 결제 생성 시, 'autoExecute' 파라미터를 false로 설정하여 '수동 승인'으로 생성한 경우에만 이 API가 필요합니다. autoExecute가 true로 설정된 결제건의 경우, 별도의 가맹점의 승인 절차가 필요하지 않습니다.
+                        </p>
+                        <div class="info">
+                            <h4>endpoint</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    (POST)
+                                </div>
+                                <div class="desc">
+                                    https://toss.im/tosspay/api/v1/execute
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <h4>parameters</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    apiKey
+                                    <span class="type">String</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    가맹점 key
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    payToken
+                                    <span class="type">String</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    Toss 결제 토큰 (승인할 결제 건의 토큰값)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <h4>response</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    code
+                                </div>
+                                <div class="desc">
+                                    응답코드
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>0</td>
+                                            <td>성공</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="method-example">
+                        <div class="title">Definition</div>
+                        <pre><code class="language-bash always-visible">POST https://toss.im/tosspay/api/v1/execute</code></pre>
+                        <div class="title">Example Request</div>
+                        <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/execute" \
+    -H "content-Type: application/json" \
+    -d '{
+        "payToken":"test_token1234567890a",
+        "apiKey":"sk_test_apikey1234567890a"
+        }'</code><code class="java language-java">URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://toss.im/tosspay/api/v1/execute");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+	
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+	jsonBody.put("payToken", "test_token1234567890a");
+	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
+	
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	bos.write(jsonBody.toJSONString().getBytes());
+	bos.flush();
+	bos.close();
+	
+	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
+$arrayBody["payToken"] = "test_token1234567890a";
+$arrayBody["apiKey"] = "sk_test_apikey1234567890a";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://toss.im/tosspay/api/v1/execute');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+ 
+$result = curl_exec($ch);
+curl_close($ch);
+   
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=sk_test_apikey1234567890a"
+data = data & "&payToken=test_token1234567890a"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://toss.im/tosspay/api/v1/execute", False
+httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://toss.im/tosspay/api/v1/execute"
+params = {
+    "payToken": "test_token1234567890a",
+    "apiKey": "sk_test_apikey1234567890a"
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://toss.im/tosspay/api/v1/execute")
+
+params = {
+        "payToken" => "test_token1234567890a", 
+        "apiKey" => "sk_test_apikey1234567890a"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
+                        <div class="title">Example Response</div>
+                        <pre><code class="language-javascript always-visible">{"code":0}</code>
+            </pre>
                     </div>
                 </div>
             </div>
@@ -1448,6 +1635,10 @@ p JSON.parse(response.body)</code></pre>
                                         <tr>
                                             <td>PAY_STANDBY</td>
                                             <td>결제 대기 중</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PAY_APPROVED</td>
+                                            <td>구매자 인증 완료</td>
                                         </tr>
                                         <tr>
                                             <td>PAY_CANCEL</td>
