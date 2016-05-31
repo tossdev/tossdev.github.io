@@ -312,7 +312,7 @@ margin:0px 0 0; /* negative fixed header height */
               margin-bottom: 16px;
           }
           #gettingstarted #contents #methods .method .method-description img {
-              width: 100%;
+/*              width: 100%;*/
               margin-top: 12px;
               margin-bottom: 6px;
               border: 1px solid #e8e8e8;
