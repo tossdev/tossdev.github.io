@@ -506,7 +506,7 @@
                         </p>
                         <p>
                             결제 생성 완료 후, 구매자의 승인을 얻어 완료처리하는 방법은 아래 문서를 참고하세요.<br>
-                            <a href="gettingstarted.html#overview-3">토스 결제 시작하기 > 3. 결제 진행하기</a>
+                            <a href="gettingstarted.html#overview-3">토스 결제 시작하기 > 3. 구매자 승인 받기</a>
                         </p>
                         <div class="info">
                             <h4>endpoint</h4>
@@ -617,15 +617,6 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    orderCheckCallback
-                                    <span class="type">String</span>
-                                </div>
-                                <div class="desc">
-                                    결제 전 주문 가능 여부를 최종 확인하기 위한 callback URL (아직 품절되거나 취소되지 않았는지 확인)
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
                                     resultCallback
                                     <span class="type">String</span>
                                 </div>
@@ -724,35 +715,6 @@
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
-                                </div>
-                            </div>
-                        </div>
-                        <h4>주문 상태 확인 Callback (orderCheckCallback)</h4>
-                        <p>
-                            구매자가 Toss앱을 통해 결제를 승인하려고 할 때, 최종적으로 토스가 판매자에게 해당 주문이 여전히 유효한지 확인합니다. 재고 소진 등의 사유로 상품을 제공할 수 없는 경우, 결제가 진행되지 않도록 막을 수 있습니다.
-                        </p>
-                        <p>
-                            *생성된 결제 건에 orderCheckCallback 파라미터 값이 있을 경우에만 동작합니다.
-                        </p>
-                        <div class="info">
-                            <h4>parameter</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    orderNo
-                                </div>
-                                <div class="desc">
-                                    결제 생성시 입력한 주문번호
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h4>response</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    ORDER_VALID
-                                </div>
-                                <div class="desc">
-                                    리턴값이 이것일 경우에만 결제 프로세스를 진행
                                 </div>
                             </div>
                         </div>
@@ -939,7 +901,8 @@ p JSON.parse(response.body)</code></pre>
                         <p>
                             구매자 인증 완료 상태(PAY_APPROVED)의 결제 건을 최종 승인하여 결제를 완료 처리합니다.<br>
                             <br>
-                            - 주의 : 결제 생성 시, 'autoExecute' 파라미터를 false로 설정하여 '수동 승인'으로 생성한 경우에만 이 API가 필요합니다. autoExecute가 true로 설정된 결제건의 경우, 별도의 가맹점의 승인 절차가 필요하지 않습니다.
+                            결제 승인에 관한 자세한 내용은 아래 문서를 참고하세요.<br>
+                            <a href="gettingstarted.html#execute">토스 결제 시작하기 > 결제 승인하기</a>
                         </p>
                         <div class="info">
                             <h4>endpoint</h4>
