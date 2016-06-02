@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>토스 정산 API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://toss.im/assets/img/favicon.ico">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/prism.css" />
+    <link rel="stylesheet" type="text/css" href="css/tossdev.css" />
+
+    <!-- javascript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body id="docs" data-spy="scroll" data-target="#guide">
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-M7JBJD" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M7JBJD');
+    </script>
+    <!-- End Google Tag Manager -->
+    <div id="guide">
+        <h1 class="logo">
+          <a href="index.html"><img src="images/logo_tossdev.png" alt="toss developers logo"></a>
+        </h1>
+        <ul class="menu nav">
+            <h5>Toss 정산 API</h5>
+            <li>
+                <a href="#intro">소개</a>
+            </li>
+            <li>
+                <a href="#terms">용어</a>
+            </li>
+            <li>
+                <a href="#httpResponse">HTTP 응답 코드</a>
+            </li>
+            <h5>API 목록</h5>
+            <li>
+                <a href="#settlementDetail">정산 내역 상세 조회</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="api-docs">
+        <div id="methods">
+            <div class="languages">
+                <a class="language selected" data-lang="php" href="#">PHP</a>
+                <a class="language" data-lang="java" href="#">Java</a>
+                <a class="language" data-lang="curl" href="#">curl</a>
+                <a class="language" data-lang="python" href="#">Python</a>
+                <a class="language" data-lang="ruby" href="#">Ruby</a>
+                <a class="language" data-lang="aspnet" href="#">ASP</a>
+            </div>
+            <div class="method" id="intro">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>Toss 정산 API 소개</h3>
+                        <p>
+                            Toss 결제 서비스를 통한 매출과 정산 금액 확인을 도와드리기 위한 API입니다. 가맹점 여러분들의 피드백을 받아 개선 및 추가해나갈 예정입니다.
+                        </p>
+                    </div>
+                    <div class="method-example">
+                        <pre>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="method" id="terms">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>용어</h3>
+                        <div class="info">
+                            <h4>용어 및 정의</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    지급일
+                                </div>
+                                <div class="desc">
+                                    결제 금액을 가맹점의 결제 계좌로 입금한 날입니다.
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    거래 승인일
+                                </div>
+                                <div class="desc">
+                                    결제, 환불 등 거래가 실제로 일어난 날입니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="method-example">
+                        <pre>
+              <code class="curl">
+              </code>
+              <code class="java">
+              </code>
+              <code class="pho">
+              </code>
+            </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="method" id="httpResponse">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>HTTP 응답 코드</h3>
+                        <div class="info">
+                            <h4>HTTP Response Code</h4>
+                            <div class="field clearfix">
+                                <div class="key">200</div>
+                                <div class="desc">
+                                    OK : 정상
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">400</div>
+                                <div class="desc">
+                                    Bad Request : 파라미터 오류
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">401</div>
+                                <div class="desc">
+                                    Unauthorized : 가맹점 key 오류
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">404</div>
+                                <div class="desc">
+                                    Not Found : 존재하지 않는 요청
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">50x</div>
+                                <div class="desc">
+                                    Server error : 서버 오류
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="method-example">
+                        <pre>
+              <code class="curl">
+              </code>
+              <code class="java">
+              </code>
+              <code class="pho">
+              </code>
+            </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="method" id="settlementDetail">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>정산 내역 상세 조회</h3>
+                        <p>
+                            특정 지급일에 입금된 금액이 어떻게 구성되어있는지 상세하게 알아볼 때 이용합니다. ('왜 이 금액이 들어왔지?')
+                        </p>
+                        <div class="info">
+                            <h4>endpoint</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    (POST)
+                                </div>
+                                <div class="desc">
+                                    https://toss.im/pay/api/v1/settlementDetails
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <h4>parameters</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    apiKey
+                                    <span class="type">String</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    가맹점 key<br>
+                                    (Test key도 입력 가능하나 테스트 결제는 실제 지급되지 않기 때문에 결과가 없을 것입니다)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    dueDate
+                                    <span class="type">String</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    조회하고자 하는 지급일 (YYYYMMDD)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    type
+                                    <span class="type">string</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    결과로 받고자 하는 형식을 정합니다. JSON형식과 전문 형식을 지원합니다.<br>
+                                    <br>
+                                    <table class="table">
+                                        <tr>
+                                            <td>JSON</td>
+                                            <td>JSON 형식</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TELEGRAM</td>
+                                            <td>전문 형식</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <h4>response (JSON)</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    transactionType
+                                </div>
+                                <div class="desc">
+                                    거래 종류
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>PAY</td>
+                                            <td>결제</td>
+                                        </tr>
+                                        <tr>
+                                            <td>REFUND</td>
+                                            <td>환불</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ETC</td>
+                                            <td>환불수수료 등 기타 건</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    settleDate
+                                </div>
+                                <div class="desc">
+                                    거래 승인일
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    dueDate
+                                </div>
+                                <div class="desc">
+                                    지급일
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    payToken
+                                </div>
+                                <div class="desc">
+                                    Toss 결제 토큰
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    orderNo
+                                </div>
+                                <div class="desc">
+                                    가맹점의 상품 주문번호
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    productDesc
+                                </div>
+                                <div class="desc">
+                                    상품 설명
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amount
+                                </div>
+                                <div class="desc">
+                                    금액<br>(결제는 '+', 환불은 '-'로 표시됨)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    fee
+                                </div>
+                                <div class="desc">
+                                    수수료<br>(수수료 부과는 '-', 전액 환불 등 사유로 수수료를 돌려드리는 경우 '+'로 표시됨)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    vat
+                                </div>
+                                <div class="desc">
+                                    부가세<br>(부가세 부과는 '-', 전액 환불 등 사유로 부가세를 돌려드리는 경우 '+'로 표시됨)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <h4>response (TELEGRAM, 총 250 bytes)</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    transactionType
+                                    <span class="type">IDX : 0</span>
+                                    <span class="type">char(8)</span>
+                                </div>
+                                <div class="desc">
+                                    거래 종류 (PAY, REFUND, ETC)<br>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    settleDate
+                                    <span class="type">IDX : 8</span>
+                                    <span class="type">char(8)</span>
+                                </div>
+                                <div class="desc">
+                                    거래 승인일
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    dueDate
+                                    <span class="type">IDX : 16</span>
+                                    <span class="type">char(8)</span>
+                                </div>
+                                <div class="desc">
+                                    지급일
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    payToken
+                                    <span class="type">IDX : 24</span>
+                                    <span class="type">char(20)</span>
+                                </div>
+                                <div class="desc">
+                                    Toss 결제 토큰
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    orderNo
+                                    <span class="type">IDX : 44</span>
+                                    <span class="type">char(50)</span>
+                                </div>
+                                <div class="desc">
+                                    가맹점의 상품 주문번호
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    productDesc
+                                    <span class="type">IDX : 94</span>
+                                    <span class="type">char(50)</span>
+                                </div>
+                                <div class="desc">
+                                    상품 설명
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amount
+                                    <span class="type">IDX : 144</span>
+                                    <span class="type">char(9)</span>
+                                </div>
+                                <div class="desc">
+                                    금액
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    fee
+                                    <span class="type">IDX : 153</span>
+                                    <span class="type">char(9)</span>
+                                </div>
+                                <div class="desc">
+                                    수수료
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    vat
+                                    <span class="type">IDX : 162</span>
+                                    <span class="type">char(9)</span>
+                                </div>
+                                <div class="desc">
+                                    부가세
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    Filler
+                                    <span class="type">IDX : 171</span>
+                                    <span class="type">char(79)</span>
+                                </div>
+                                <div class="desc">
+                                    SPACE
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="method-example">
+                        <div class="title">Definition</div>
+                        <pre><code class="language-bash always-visible">POST https://toss.im/pay/api/v1/settlementDetails</code></pre>
+                        <div class="title">Example Request</div>
+                        <pre><code class="curl language-bash">curl https://toss.im/pay/api/v1/settlementDetails \
+    -H "content-Type: application/json" \
+    -d '{
+        "apiKey":"sk_test_apikey1234567890a",
+        "dueDate":"20160601",
+        "type":"JSON"
+        }'</code><code class="java language-java">URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://toss.im/pay/api/v1/settlementDetails");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+	
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
+	jsonBody.put("dueDate", "20160601");
+	jsonBody.put("type", "JSON");
+	
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	bos.write(jsonBody.toJSONString().getBytes());
+	bos.flush();
+	bos.close();
+	
+	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
+$arrayBody["apiKey"] = "sk_test_apikey1234567890a";
+$arrayBody["dueDate"] = "20160601";
+$arrayBody["type"] = "JSON";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://toss.im/tosspay/api/v1/payments');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+ 
+$result = curl_exec($ch);
+curl_close($ch);
+      
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=sk_test_apikey1234567890a"
+data = data & "&dueDate=20160601"
+data = data & "&type=JSON"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://toss.im/pay/api/v1/settlementDetails", False
+httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://toss.im/pay/api/v1/settlementDetails"
+params = {
+    "apiKey": "sk_test_apikey1234567890a",
+    "dueDate":"20160601",
+    "type":"JSON"
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://toss.im/pay/api/v1/settlementDetails")
+
+params = {
+        "apiKey" => "sk_test_apikey1234567890a",
+        "dueDate" => "20160601",
+        "type" => "JSON"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(function () {
+
+            // language toggle
+            var $languages = $(".languages .language");
+            $languages.click(function (e) {
+                e.preventDefault();
+                var lang = $(this).data("lang");
+                $languages.removeClass("selected");
+                $(this).addClass("selected");
+
+                $("pre code").hide();
+                $("pre code." + lang).css("display", "block");
+            });
+            $("pre code." + $(".language.selected").data("lang")).css("display", "block");
+        });
+    </script>
+    <script src="js/prism.js"></script>
+</body>
+
+</html>
