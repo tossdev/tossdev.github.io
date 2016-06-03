@@ -533,6 +533,30 @@ request.set_form_data(params)
 response = http.request(request)
 
 p JSON.parse(response.body)</code></pre>
+                    <div class="title">Example Response (JSON)</div>
+                    <pre><code style="border:none;box-shadow:none;" class="language-javascript always-visible">[{
+    "transactionType": "PAY",
+	"productDesc": "토스공",
+	"amount": 11000,
+	"orderNo": "toss_orderNo_1234",
+	"dueDate": "20160530",
+	"fee": -400,
+	"vat": -40,
+	"settleDate": "20160527",
+	"payToken": "1234abcdef"
+}, {
+	"transactionType": "PAY",
+	"productDesc": "토스모자",
+	"amount": 5500,
+	"orderNo": "toss_orderNo_1235",
+	"dueDate": "20160530",
+	"fee": -400,
+	"vat": -40,
+	"settleDate": "20160527",
+	"payToken": "1235abcdef"
+},
+{....}
+]</code></pre>
                     </div>
                 </div>
             </div>
