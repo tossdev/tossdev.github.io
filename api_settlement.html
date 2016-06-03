@@ -479,7 +479,7 @@ $arrayBody["dueDate"] = "20160601";
 $arrayBody["type"] = "JSON";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://toss.im/tosspay/api/v1/payments');
+$ch = curl_init('https://toss.im/pay/api/v1/settlementDetails');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
