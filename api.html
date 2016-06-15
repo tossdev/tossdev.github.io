@@ -807,7 +807,6 @@ try {
 	jsonBody.put("productDesc", "테스트 결제");
 	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
 	jsonBody.put("expiredTime", "2015-07-20 16:21:00");
-	jsonBody.put("orderCheckCallback", "https://myshop.com/toss/orderCheck.php");
 	jsonBody.put("resultCallback", "https://myshop.com/toss/result.php");
 	
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
@@ -830,7 +829,6 @@ $arrayBody["amount"] = 10000;
 $arrayBody["productDesc"] = "테스트 결제";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $arrayBody["expiredTime"] = "2015-07-20 16:21:00";
-$arrayBody["orderCheckCallback"] = "https://myshop.com/toss/orderCheck.php";
 $arrayBody["resultCallback"] = "https://myshop.com/toss/result.php";
 $jsonBody = json_encode($arrayBody);
 
@@ -870,7 +868,6 @@ params = {
     "productDesc":"테스트 결제",
     "apiKey": "sk_test_apikey1234567890a",
     "expiredTime":"2015-07-20 16:21:00",
-    "orderCheckCallback":"https://myshop.com/toss/orderCheck.php",
     "resultCallback": "https://myshop.com/toss/result.php"
 }
 
@@ -886,7 +883,6 @@ params = {
         "productDesc" => "테스트 결제",
         "apiKey" => "sk_test_apikey1234567890a",
         "expiredTime" => "2015-07-20 16:21:00",
-        "orderCheckCallback" => "https://myshop.com/toss/orderCheck.php",
         "resultCallback" => "https://myshop.com/toss/result.php"
 }
 

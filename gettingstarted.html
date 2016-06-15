@@ -192,7 +192,6 @@ jsonBody.put("amount", 10000);
 jsonBody.put("productDesc", "토스티셔츠");
 jsonBody.put("apiKey", "sk_test_apikey1234567890a");
 jsonBody.put("expiredTime", "2015-07-20 16:21:00");
-jsonBody.put("orderCheckCallback", "https://myshop.com/toss/orderCheck.php");
 jsonBody.put("resultCallback", "https://myshop.com/toss/result.php");
 
 BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
@@ -215,7 +214,6 @@ $arrayBody["amount"] = 10000;
 $arrayBody["productDesc"] = "토스티셔츠";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $arrayBody["expiredTime"] = "2015-07-20 16:21:00";
-$arrayBody["orderCheckCallback"] = "https://myshop.com/toss/orderCheck.php";
 $arrayBody["resultCallback"] = "https://myshop.com/toss/result.php";
 $jsonBody = json_encode($arrayBody);
 
@@ -306,7 +304,6 @@ echo "Response: ".$result;</code></pre>
 "apiKey":"sk_test_apikey1234567890a",                    # 상점의 API Key (필수)
 "retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",   # 결제 완료 후 연결할 웹페이지 URL
 "resultCallback":"http://YOUR-SITE.COM/CALLBACK",        # 결제 결과 callback URL
-"orderCheckCallback":"http://YOUR-SITE.COM/ORDERSTATUS", # 주문 상태 확인 Callback
 "amountTaxable":22727,                                   # 결제 금액 중 과세금액
 "amountTaxFree":10000,                                   # 결제 금액 중 비과세금액
 "amountVat":2273,                                        # 결제 금액 중 부가세
