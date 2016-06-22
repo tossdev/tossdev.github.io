@@ -79,6 +79,9 @@
                 <a href="#statusCheck">결제 상태 확인</a>
             </li>
             <li>
+                <a href="#refundStatusCheck">환불 상태 확인</a>
+            </li>
+            <li>
                 <a href="#escrow">에스크로 결제 진행</a>
             </li>
         </ul>
@@ -660,6 +663,38 @@
                                             <td>구매자 인증 완료 후 가맹점의 최종 승인 시 결제 완료 처리</td>
                                         </tr>
                                     </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    arsAuthSkippable
+                                    <span class="type">character</span>
+                                </div>
+                                <div class="desc">
+                                    인증된 기기에서 다시 결제할 때 ARS 인증 생략 여부를 설정합니다.<br />
+                                    (기본값은 'Y'이며, 환금성이 높은 상품권이나 포인트 등의 결제건은 'N'으로 설정 권장)<br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>Y</td>
+                                            <td>인증된 기기에서는 ARS 인증 생략</td>
+                                        </tr>
+                                        <tr>
+                                            <td>N</td>
+                                            <td>인증 여부와 관계 없이 ARS 인증 제공</td>
+                                        </tr>
+                                    </table>
+                                    * 이 설정을 이용하려면 별도의 가맹점 계약이 필요합니다. (문의 : support-pay@toss.im)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    userPhone
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    구매자가 결제 시 이용할 휴대전화번호 지정<br />
+                                    (지정 시 구매자가 번호를 변경할 수 없으므로 전화번호 정보가 정확할 때만 이용하십시오)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1300,11 +1335,31 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    refundNo
+                                    <span class="type">String</span>
+                                </div>
+                                <div class="desc">
+                                    환불 번호 <br />
+                                    <span class="text-muted">환불 상태 확인 시 필요. 미입력 시 자동 생성되며 환불 완료 응답에서 확인 가능</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    reason
+                                    <span class="type">String</span>
+                                </div>
+                                <div class="desc">
+                                    환불 사유 (최대 50자)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     amount
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    환불할 금액 (미입력시 전액 환불 처리)
+                                    환불할 금액 <br />
+                                    <span class="text-muted">미입력시 전액 환불 처리</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1313,7 +1368,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    환불할 금액 중 과세금액 (결제 생성 시 복합과세 설정한 경우에만 입력 가능)
+                                    환불할 금액 중 과세금액 <br />
+                                    <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1322,7 +1378,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    환불할 금액 중 비과세금액 (결제 생성 시 복합과세 설정한 경우에만 입력 가능)
+                                    환불할 금액 중 비과세금액 <br />
+                                    <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1331,7 +1388,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    환불할 금액 중 부가세 (결제 생성 시 복합과세 설정한 경우에만 입력 가능)
+                                    환불할 금액 중 부가세 <br />
+                                    <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1340,7 +1398,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    환불할 금액 중 봉사료 (결제 생성 시 복합과세 설정한 경우에만 입력 가능)
+                                    환불할 금액 중 봉사료 <br />
+                                    <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
                                 </div>
                             </div>
                         </div>
@@ -1392,6 +1451,15 @@ p JSON.parse(response.body)</code></pre>
                                             <td>환불 가능 금액 초과</td>
                                         </tr>
                                     </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    refundNo
+                                </div>
+                                <div class="desc">
+                                    환불 번호 <br />
+                                    <span class="text-muted">환불 상태 확인 시 필요</span>
                                 </div>
                             </div>
                         </div>
@@ -1495,7 +1563,7 @@ response = http.request(request)
 
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
-                        <pre><code class="language-javascript always-visible">{"code":0}</code>
+                        <pre><code class="language-javascript always-visible">{"code":0,,"refundNo":"cc92a9ef-8a81-2938-dda9-ff8a78ae29b8"}</code>
             </pre>
                     </div>
                 </div>
@@ -1583,15 +1651,6 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    orderNo
-                                    <span class="type">String</span>
-                                </div>
-                                <div class="desc">
-                                    Toss 결제와 이어진 주문번호
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
                                     payStatus
                                     <span class="type">String</span>
                                 </div>
@@ -1653,6 +1712,24 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    orderNo
+                                    <span class="type">String</span>
+                                </div>
+                                <div class="desc">
+                                    Toss 결제와 이어진 주문번호
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    hasOwner
+                                    <span class="type">boolean</span>
+                                </div>
+                                <div class="desc">
+                                    구매자의 결제 정보 입력 여부
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     availableActions
                                     <span class="type">List</span>
                                 </div>
@@ -1678,11 +1755,11 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    hasOwner
-                                    <span class="type">boolean</span>
+                                    refunds
+                                    <span class="type">list</span>
                                 </div>
                                 <div class="desc">
-                                    결제가 주인을 만났는지 여부
+                                    조회한 결제건에 대한 환불 요청 및 결과
                                 </div>
                             </div>
                         </div>
@@ -1782,12 +1859,200 @@ response = http.request(request)
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{
-    "orderNo":"2015072012211",
-    "code":0,
-    "availableActions ":["REFUND"],
-    "hasOwner":true,
-    "payStatus":"REFUND_SUCCESS",
-    "payToken":"test_token1234567890a"
+    "payToken": "test_token1234567890a",
+    "payStatus": "REFUND_SUCCESS",
+    "orderNo": "2015072012211",
+    "hasOwner": true,
+    "availableActions": [
+    "REFUND"
+    ],
+    "refunds": [
+        {
+        "refundNo": "7161b8e3-4b79-49d7-ab3c-3ae898aa073b",
+        "status": "SUCCESS",
+        "amount": 100,
+        "reason": "일부 상품 환불"
+        },
+        {
+        "refundNo": "a636fe94-4e1e-41c8-90d9-b17180bdaf04",
+        "status": "SUCCESS",
+        "amount": 200,
+        "reason": "일부 상품 환불"
+        },
+        {
+        "refundNo": "cc92a9ef-8a81-2938-dda9-ff8a78ae29b8",
+        "status": "SUCCESS",
+        "amount": 500,
+        "reason": "일부 상품 환불"
+        }
+    ],
+    "code": 0
+}</code>
+            </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="method" id="refundStatusCheck">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>환불 상태 확인</h3>
+                        <p>
+                            요청하신 환불 건의 현재 상태를 조회합니다. (요청 건별 조회)
+                        </p>
+                        <div class="info">
+                            <h4>endpoint</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    (POST)
+                                </div>
+                                <div class="desc">
+                                    https://toss.im/tosspay/api/v1/refunds/{refundNo}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <h4>parameters</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    apiKey
+                                    <span class="type">String</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    가맹점 key
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <h4>response</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    code
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    응답코드
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>0</td>
+                                            <td>성공</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>실패 (실패사유는 msg로 제공)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    refund
+                                    <span class="type">list</span>
+                                </div>
+                                <div class="desc">
+                                    환불 번호와 금액, 상태, 사유
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="method-example">
+                        <div class="title">Definition</div>
+                        <pre><code class="language-bash always-visible">POST https://toss.im/tosspay/api/v1/refunds/{refundNo}</code></pre>
+                        <div class="title">Example Request</div>
+                        <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b" \
+    -H "content-Type: application/json" \
+    -d '{
+        "apiKey":"sk_test_apikey1234567890a"
+        }'</code><code class="java language-java">URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+	
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
+	
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	bos.write(jsonBody.toJSONString().getBytes());
+	bos.flush();
+	bos.close();
+	
+	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
+$arrayBody["apiKey"] = "sk_test_apikey1234567890a";
+$jsonBody = json_encode($arrayBody);
+// echo "Request: ".$request."<br>";
+$ch = curl_init('https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+ 
+$result = curl_exec($ch);
+curl_close($ch);
+      
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=sk_test_apikey1234567890a"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b", False
+httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b"
+params = {
+    "apiKey": "sk_test_apikey1234567890a"
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b")
+
+params = {
+        "apiKey" => "sk_test_apikey1234567890a"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
+                        <div class="title">Example Response</div>
+                        <pre><code class="language-javascript always-visible">{
+    "code": 0,
+    "refund": {
+        "refundNo": "7161b8e3-4b79-49d7-ab3c-3ae898aa073b",
+        "status": "SUCCESS",
+        "amount": 100,
+        "reason": "부분 환불 테스트"
+    }
 }</code>
             </pre>
                     </div>
