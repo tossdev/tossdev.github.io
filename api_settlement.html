@@ -214,12 +214,12 @@
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    조회일 기준<br>
+                                    조회일 기준 (기본값은 DUE)<br>
                                     <br>
                                     <table class="table">
                                         <tr>
                                             <td>DUE</td>
-                                            <td>지급일 (default)</td>
+                                            <td>지급일 (정산 계좌에 입금된 날짜 기준)</td>
                                         </tr>
                                         <tr>
                                             <td>SETTLE</td>
@@ -463,7 +463,8 @@
     -H "content-Type: application/json" \
     -d '{
         "apiKey":"sk_test_apikey1234567890a",
-        "dueDate":"20160601",
+        "mode":"DUE",
+        "date":"20160601",
         "type":"JSON"
         }'</code><code class="java language-java">URL url = null;
 URLConnection connection = null;
@@ -477,7 +478,8 @@ try {
 	
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
-	jsonBody.put("dueDate", "20160601");
+	jsonBody.put("mode", "DUE");
+    jsonBody.put("date", "20160601");
 	jsonBody.put("type", "JSON");
 	
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
@@ -496,7 +498,8 @@ try {
 }
 System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
-$arrayBody["dueDate"] = "20160601";
+$arrayBody["mode"] = "DUE";
+$arrayBody["date"] = "20160601";
 $arrayBody["type"] = "JSON";
 $jsonBody = json_encode($arrayBody);
 
@@ -516,7 +519,8 @@ curl_close($ch);
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
 data = "apiKey=sk_test_apikey1234567890a"
-data = data & "&dueDate=20160601"
+data = data & "&mode=DUE"
+data = data & "&date=20160601"
 data = data & "&type=JSON"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
@@ -531,7 +535,8 @@ Response.Write postResponse</code><code class="python language-python">import ur
 url = "https://toss.im/pay/api/v1/settlementDetails"
 params = {
     "apiKey": "sk_test_apikey1234567890a",
-    "dueDate":"20160601",
+    "mode":"DUE",
+    "date":"20160601",
     "type":"JSON"
 }
 
@@ -543,7 +548,8 @@ uri = URI.parse("https://toss.im/pay/api/v1/settlementDetails")
 
 params = {
         "apiKey" => "sk_test_apikey1234567890a",
-        "dueDate" => "20160601",
+        "mode" => "DUE",
+        "date" => "20160601",
         "type" => "JSON"
 }
 
