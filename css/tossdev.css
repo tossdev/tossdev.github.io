@@ -42,32 +42,60 @@ margin:0px 0 0; /* negative fixed header height */
 
 /* front page */
 #frontpage {
-    height: 100%
+    margin: 0;
+    padding: 0;
 }
-    #frontpage .wrapper {
-        min-height: 100%;
-        height: auto;
-        margin-bottom: -60px;
-        padding-bottom: 60px;
+    #frontpage .top-banner {
+        padding-top: 68px;
+        padding-bottom: 50px;
+        background-color: #4e7bfa;
     }
-    #frontpage .tagline {
-        margin-top: 140px;
-        margin-bottom: 0px;
-        padding: 0 10px;
-        font-size: 42px;
-        font-weight: lighter;
-        line-height: 54px;
-        word-break: keep-all;
+        #frontpage .top-banner .logo {
+            width: 180px;
+            margin-bottom: 54px;
+        }
+        #frontpage .top-banner .tagline {
+            margin-bottom: 30px;
+            font-size: 42px;
+            font-weight: lighter;
+            line-height: 54px;
+            word-break: keep-all;
+            color: white;
+        }
+        #frontpage .top-banner .btn {
+            margin-bottom: 84px;
+            border:1px solid white;
+            width:240px;
+            color: white;
+        }
+            #frontpage .top-banner .btn:hover {
+                background-color: #84A2F5;
+                color: white;
+            }
+        #frontpage .top-banner p {
+            margin-bottom: 40px;
+            font-size: 15px;
+            line-height: 1.6em;
+            word-break: keep-all;
+            color: white;
+        }
+            #frontpage .top-banner p i {
+                font-size: 60px;
+                opacity: 0.9;
+                margin-bottom: 10px;
+            }
+    #frontpage .wrapper {
+        
     }
     #frontpage .menu-container {
         max-width: 620px;
-        margin: 60px auto 50px auto;
+        margin: 70px auto 50px auto;
     }
         #frontpage .menu-container h5 {       
             margin: 4px;
         }
             #frontpage .menu-container h5 a {
-                color: #a8a8a8;
+                color: #737375;
             }
         #frontpage .menu-container hr {
             margin: 0;
@@ -126,19 +154,36 @@ margin:0px 0 0; /* negative fixed header height */
                 #frontpage footer ul li a {
                     color: #777;
                 }
-    #frontpage .inquiry {
+    #frontpage .inquiry,.bank-support {
         text-align: center;
         margin-top: 77px;
-        margin-bottom: 60px;
+        margin-bottom: 80px;
     }
-        #frontpage .inquiry h5 {
+        #frontpage .inquiry,.bank-support .bank-list {
+            font-size: 18px;
+        }
+            #frontpage .inquiry,.bank-support .bank-list span {
+                display: inline-block;
+                border: 1px solid #4294cf;
+                background-color: #fff;
+                color: #4294cf;
+                margin: 0 2px;
+                padding: 4px 12px;
+                margin-top: 8px;
+                border-radius: 2px;
+                font-size: 14px;
+            }
+        #frontpage .inquiry,.bank-support h5 {
             font-size: 15px;
-            color: #3A3A3A;
-            margin-bottom: 10px;
+            color: #3a3a3a;
+            margin-bottom: 24px;
         }
         #frontpage .inquiry a {
+            width: 240px;
+/*
             font-size: 22px;
             color: #4e7bfa;
+*/
         }
 
 /* media queries for 'front page' */
