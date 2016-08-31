@@ -52,7 +52,7 @@
             </li>
             <h5>API 목록</h5>
             <li>
-                <a href="#charge">결제 생성</a>
+                <a href="#payments">결제 생성</a>
             </li>
             <li>
                 <a href="#execute">결제 승인</a>
@@ -64,10 +64,10 @@
                 <a href="#refunds">결제 환불</a>
             </li>
             <li>
-                <a href="#statusCheck">결제 상태 확인</a>
+                <a href="#status">결제 상태 확인</a>
             </li>
             <li>
-                <a href="#refundStatusCheck">환불 상태 확인</a>
+                <a href="#refundStatus">환불 상태 확인</a>
             </li>
             <li>
                 <a href="#escrow">에스크로 결제 진행</a>
@@ -488,7 +488,7 @@
                     </div>
                 </div>
             </div>
-            <div class="method" id="charge">
+            <div class="method" id="payments">
                 <div class="method-section clearfix">
                     <div class="method-description">
                         <h3>결제 생성</h3>
@@ -544,6 +544,16 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    retUrl
+                                    <span class="type">string</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    결제 완료 후 연결할 웹페이지의 URL (결제 최종 승인 및 완료 처리할 페이지)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     productDesc
                                     <span class="type">String</span>
                                     <span class="required"></span>
@@ -586,15 +596,6 @@
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 봉사료 (복합과세)
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    retUrl
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    결제 완료 후 연결할 웹페이지의 URL (미지정 시 Toss 웹페이지로 연결)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -709,6 +710,10 @@
                                         <tr>
                                             <td>0</td>
                                             <td>성공</td>
+                                        </tr>
+                                        <tr>
+                                            <td>-1</td>
+                                            <td>실패 (실패사유는 msg로 제공)</td>
                                         </tr>
                                         <tr>
                                             <td>10</td>
@@ -980,6 +985,10 @@ p JSON.parse(response.body)</code></pre>
                                         <tr>
                                             <td>0</td>
                                             <td>성공</td>
+                                        </tr>
+                                        <tr>
+                                            <td>-1</td>
+                                            <td>실패 (실패사유는 msg로 제공)</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -1556,7 +1565,7 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                 </div>
             </div>
-            <div class="method" id="statusCheck">
+            <div class="method" id="status">
                 <div class="method-section clearfix">
                     <div class="method-description">
                         <h3>결제 상태 확인</h3>
@@ -1880,7 +1889,7 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                 </div>
             </div>
-            <div class="method" id="refundStatusCheck">
+            <div class="method" id="refundStatus">
                 <div class="method-section clearfix">
                     <div class="method-description">
                         <h3>환불 상태 확인</h3>
@@ -1928,7 +1937,7 @@ p JSON.parse(response.body)</code></pre>
                                             <td>성공</td>
                                         </tr>
                                         <tr>
-                                            <td>1</td>
+                                            <td>-1</td>
                                             <td>실패 (실패사유는 msg로 제공)</td>
                                         </tr>
                                     </table>
