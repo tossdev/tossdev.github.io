@@ -305,7 +305,7 @@ echo "Response: ".$result;</code></pre>
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-url = new URL("https://toss.im/tosspay/api/v1/payments");
+url = new URL("https://toss.im/tosspay/api/v1/execute");
 connection = url.openConnection();
 connection.addRequestProperty("Content-Type", "application/json");
 connection.setDoOutput(true);
@@ -334,7 +334,7 @@ $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $arrayBody["payToken"] = "test_token1234567890a";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://toss.im/tosspay/api/v1/payments');
+$ch = curl_init('https://toss.im/tosspay/api/v1/execute');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
