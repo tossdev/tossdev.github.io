@@ -24,13 +24,25 @@
 
 <body id="docs" data-spy="scroll" data-target="#guide">
     <!-- Google Tag Manager -->
-        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-TPTMLG');</script>
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TPTMLG');
+    </script>
     <!-- End Google Tag Manager -->
     <div id="guide">
         <h1 class="logo">
@@ -90,7 +102,9 @@
                     <div class="method-description">
                         <h3>Toss 결제 API 소개</h3>
                         <p>
-                            Toss를 통한 결제 서비스를 사용하기 위한 API입니다. Toss 결제를 활용한 개발을 처음 시작하신다면, 좀 더 친절한 안내를 먼저 확인해보세요!<br><br><a href="gettingstarted.html">&gt;&gt; '토스 결제 시작하기' 문서로 바로가기</a>
+                            Toss를 통한 결제 서비스를 사용하기 위한 API입니다. Toss 결제를 활용한 개발을 처음 시작하신다면, 좀 더 친절한 안내를 먼저 확인해보세요!
+                            <br>
+                            <br><a href="gettingstarted.html">&gt;&gt; '토스 결제 시작하기' 문서로 바로가기</a>
                         </p>
                     </div>
                     <div class="method-example">
@@ -269,7 +283,7 @@
                                     IBK기업
                                 </div>
                                 <div class="desc">
-                                    
+
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -285,7 +299,7 @@
                                     외환은행
                                 </div>
                                 <div class="desc">
-                                    
+
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -293,7 +307,7 @@
                                     수협은행
                                 </div>
                                 <div class="desc">
-                                    
+
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -317,7 +331,7 @@
                                     SC은행
                                 </div>
                                 <div class="desc">
-                                    
+
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -325,7 +339,7 @@
                                     신한은행
                                 </div>
                                 <div class="desc">
-                                    
+
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -389,7 +403,7 @@
                                     새마을은행
                                 </div>
                                 <div class="desc">
-                                    
+
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -397,7 +411,7 @@
                                     신협은행
                                 </div>
                                 <div class="desc">
-                                    
+
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -405,7 +419,7 @@
                                     저축은행
                                 </div>
                                 <div class="desc">
-                                    
+
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -421,7 +435,7 @@
                                     하나은행
                                 </div>
                                 <div class="desc">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -496,7 +510,8 @@
                             결제 건을 생성합니다.
                         </p>
                         <p>
-                            결제 생성 완료 후, 구매자의 승인을 얻어 완료처리하는 방법은 아래 문서를 참고하세요.<br>
+                            결제 생성 완료 후, 구매자의 승인을 얻어 완료처리하는 방법은 아래 문서를 참고하세요.
+                            <br>
                             <a href="gettingstarted.html#overview-3">토스 결제 시작하기 > 3. 구매자 승인 받기</a>
                         </p>
                         <div class="info">
@@ -604,7 +619,8 @@
                                     <span class="type">Timestamp</span>
                                 </div>
                                 <div class="desc">
-                                    결제 만료 기한 (기본값 1시간, 10분~24시간 설정 가능)<br>형식 : 1970-01-01 00:00:00
+                                    결제 만료 기한 (기본값 1시간, 10분~24시간 설정 가능)
+                                    <br>형식 : 1970-01-01 00:00:00
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -640,7 +656,8 @@
                                     <span class="type">boolean</span>
                                 </div>
                                 <div class="desc">
-                                    자동 승인 여부 설정 (기본값 true)<br />
+                                    자동 승인 여부 설정 (기본값 true)
+                                    <br />
                                     <br>
                                     <table class="table">
                                         <tr>
@@ -660,8 +677,9 @@
                                     <span class="type">character</span>
                                 </div>
                                 <div class="desc">
-                                    인증된 기기에서 다시 결제할 때 ARS 인증 생략 여부를 설정합니다.<br />
-                                    (기본값은 'Y'이며, 환금성이 높은 상품권이나 포인트 등의 결제건은 'N'으로 설정 권장)<br />
+                                    인증된 기기에서 다시 결제할 때 ARS 인증 생략 여부를 설정합니다.
+                                    <br /> (기본값은 'Y'이며, 환금성이 높은 상품권이나 포인트 등의 결제건은 'N'으로 설정 권장)
+                                    <br />
                                     <br />
                                     <table class="table">
                                         <tr>
@@ -682,8 +700,8 @@
                                     <span class="type">string</span>
                                 </div>
                                 <div class="desc">
-                                    구매자가 결제 시 이용할 휴대전화번호 지정<br />
-                                    (지정 시 구매자가 번호를 변경할 수 없으므로 전화번호 정보가 정확할 때만 이용하십시오)
+                                    구매자가 결제 시 이용할 휴대전화번호 지정
+                                    <br /> (지정 시 구매자가 번호를 변경할 수 없으므로 전화번호 정보가 정확할 때만 이용하십시오)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -932,9 +950,10 @@ p JSON.parse(response.body)</code></pre>
                     <div class="method-description">
                         <h3>결제 승인</h3>
                         <p>
-                            구매자 인증 완료 상태(PAY_APPROVED)의 결제 건을 최종 승인하여 결제를 완료 처리합니다.<br>
+                            구매자 인증 완료 상태(PAY_APPROVED)의 결제 건을 최종 승인하여 결제를 완료 처리합니다.
                             <br>
-                            결제 승인에 관한 자세한 내용은 아래 문서를 참고하세요.<br>
+                            <br> 결제 승인에 관한 자세한 내용은 아래 문서를 참고하세요.
+                            <br>
                             <a href="gettingstarted.html#execute">토스 결제 시작하기 > 결제 승인하기</a>
                         </p>
                         <div class="info">
@@ -991,6 +1010,14 @@ p JSON.parse(response.body)</code></pre>
                                             <td>실패 (실패사유는 msg로 제공)</td>
                                         </tr>
                                     </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    approvalTime
+                                </div>
+                                <div class="desc">
+                                    승인시각 (yyyy-MM-dd HH:mm:ss)
                                 </div>
                             </div>
                         </div>
@@ -1089,7 +1116,8 @@ response = http.request(request)
 
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
-                        <pre><code class="language-javascript always-visible">{"code":0}</code>
+                        <pre><code class="language-javascript always-visible">
+{"code":0,"approvalTime":"2016-11-16 13:59:59"}</code>
             </pre>
                     </div>
                 </div>
@@ -1336,7 +1364,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">String</span>
                                 </div>
                                 <div class="desc">
-                                    환불 번호 <br />
+                                    환불 번호
+                                    <br />
                                     <span class="text-muted">환불 상태 확인 시 필요. 미입력 시 자동 생성되며 환불 완료 응답에서 확인 가능</span>
                                 </div>
                             </div>
@@ -1355,7 +1384,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    환불할 금액 <br />
+                                    환불할 금액
+                                    <br />
                                     <span class="text-muted">미입력시 전액 환불 처리</span>
                                 </div>
                             </div>
@@ -1365,7 +1395,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    환불할 금액 중 과세금액 <br />
+                                    환불할 금액 중 과세금액
+                                    <br />
                                     <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
                                 </div>
                             </div>
@@ -1375,7 +1406,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    환불할 금액 중 비과세금액 <br />
+                                    환불할 금액 중 비과세금액
+                                    <br />
                                     <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
                                 </div>
                             </div>
@@ -1385,7 +1417,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    환불할 금액 중 부가세 <br />
+                                    환불할 금액 중 부가세
+                                    <br />
                                     <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
                                 </div>
                             </div>
@@ -1395,7 +1428,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    환불할 금액 중 봉사료 <br />
+                                    환불할 금액 중 봉사료
+                                    <br />
                                     <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
                                 </div>
                             </div>
@@ -1455,8 +1489,17 @@ p JSON.parse(response.body)</code></pre>
                                     refundNo
                                 </div>
                                 <div class="desc">
-                                    환불 번호 <br />
+                                    환불 번호
+                                    <br />
                                     <span class="text-muted">환불 상태 확인 시 필요</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    approvalTime
+                                </div>
+                                <div class="desc">
+                                    승인시각 (yyyy-MM-dd HH:mm:ss)
                                 </div>
                             </div>
                         </div>
@@ -1560,7 +1603,7 @@ response = http.request(request)
 
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
-                        <pre><code class="language-javascript always-visible">{"code":0,"refundNo":"cc92a9ef-8a81-2938-dda9-ff8a78ae29b8"}</code>
+                        <pre><code class="language-javascript always-visible">{"code":0,"refundNo":"cc92a9ef-8a81-2938-dda9-ff8a78ae29b8","approvalTime":"2016-11-16 13:59:59"}</code>
             </pre>
                     </div>
                 </div>
@@ -2063,10 +2106,10 @@ p JSON.parse(response.body)</code></pre>
                             에스크로 결제를 완료하고 대금을 정산받기 위해서는 '배송 등록'이 필요합니다. 또, 구매자가 대금 지급을 거부하여 결제가 '에스크로 거부' 상태가 된 경우, '구매확정 재요청'을 통해 거부 상태를 해제할 수 있습니다.
                         </p>
                         <p>
-                            본 API를 통해 '배송 등록'과 '구매확정 재요청'을 처리할 수 있습니다.<br>
+                            본 API를 통해 '배송 등록'과 '구매확정 재요청'을 처리할 수 있습니다.
                             <br>
-                            - 에스크로 요청 상태에서 호출 시 : '배송 등록' 됨<br>
-                            - 에스크로 거부 상태에서 호출 시 : '구매확정 재요청' 됨
+                            <br> - 에스크로 요청 상태에서 호출 시 : '배송 등록' 됨
+                            <br> - 에스크로 거부 상태에서 호출 시 : '구매확정 재요청' 됨
                         </p>
                         <p>더 자세한 내용은 <a href="gettingstarted.html#escrow">'토스 결제 시작하기 > 에스크로 결제 진행'</a> 문서를 참고하세요.</p>
                         <div class="info">
@@ -2110,7 +2153,8 @@ p JSON.parse(response.body)</code></pre>
                                     code
                                 </div>
                                 <div class="desc">
-                                    응답코드<br />
+                                    응답코드
+                                    <br />
                                     <br />
                                     <table class="table">
                                         <tr>
@@ -2202,7 +2246,7 @@ p JSON.parse(response.body)</code></pre>
                         <pre><code class="language-javascript always-visible">{"code":0}</code>
                         </pre>
                     </div>
-            
+
                 </div>
             </div>
         </div>
