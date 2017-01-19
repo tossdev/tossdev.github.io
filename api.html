@@ -1806,6 +1806,15 @@ p JSON.parse(response.body)</code></pre>
                                     조회한 결제건에 대한 환불 요청 및 결과
                                 </div>
                             </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    metadata
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    결제와 연관된 추가 데이터
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="method-example">
@@ -1930,7 +1939,9 @@ p JSON.parse(response.body)</code></pre>
         "reason": "일부 상품 환불"
         }
     ],
-    "code": 0
+    "code": 0,
+    "status": 200,
+    "metadata": "metadata"
 }</code>
             </pre>
                     </div>

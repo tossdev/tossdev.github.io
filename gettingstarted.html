@@ -24,15 +24,27 @@
 
 <body id="gettingstarted" data-spy="scroll" data-target="#guide" data-offset="0">
     <!-- Google Tag Manager -->
-        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-TPTMLG');</script>
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TPTMLG');
+    </script>
     <!-- End Google Tag Manager -->
-<!--
+    <!--
     <header id="tossdev-header">
         <div class="container">
             <div class="row">
@@ -41,8 +53,8 @@
         </div>
     </header>
 -->
-    
-    
+
+
     <div class="sidebar">
         <div class="logo">
             <a href="index.html"><img src="images/logo_tossdev.png" alt="toss developers logo"></a>
@@ -69,7 +81,7 @@
                         <li><a href="#create-1">API Endpoint</a></li>
                         <li><a href="#create-2">필수 Parameters</a></li>
                         <li><a href="#create-3">결제 완료 후 연결할 URL</a></li>
-<!--                        <li><a href="#create-4">결제 결과 callback URL</a></li>-->
+                        <!--                        <li><a href="#create-4">결제 결과 callback URL</a></li>-->
                         <li><a href="#create-6">결제 만료 기한</a></li>
                         <li><a href="#create-7">에스크로 여부</a></li>
                         <li><a href="#create-8">현금영수증 발급 가능 여부</a></li>
@@ -156,7 +168,8 @@
                     <h4 id="overview-2">2. 토스몰에 첫 손님 등장 - 토스 결제 생성을 요청합니다.</h4>
                     <p>'홍길동'씨는 토스몰을 둘러보다가 35,000원짜리 '토스 티셔츠'를 선택하여 결제를 요청합니다. 이 때 토스몰은 토스 결제 서버에게 '결제 생성'을 요청해야합니다. 결제 생성 API를 호출하세요!</p>
                     <div class="well">
-                        결제 생성 API Endpoint<br>
+                        결제 생성 API Endpoint
+                        <br>
                         <strong>POST https://toss.im/tosspay/api/v1/payments</strong></div>
                     <p>'홍길동'씨의 결제는 아래와 같이 요청합니다.</p>
                     <div class="method-example">
@@ -242,7 +255,7 @@ echo "Response: ".$result;</code></pre>
                     <div class="alert alert-warning" role="alert">
                         <i class="fa fa-exclamation-triangle pull-left" aria-hidden="true" style="margin-top:8px;margin-left:6px"></i>
                         <p style="margin-left:40px">
-                        앞서 말씀 드렸듯, API Key는 절대 유출되어선 안됩니다. 결제 요청 내용이 웹페이지에 그대로 드러나지 않게 다시 한번 주의해주세요!</p>
+                            앞서 말씀 드렸듯, API Key는 절대 유출되어선 안됩니다. 결제 요청 내용이 웹페이지에 그대로 드러나지 않게 다시 한번 주의해주세요!</p>
                     </div>
                     <p>요청하신 결제 생성이 무사히 완료되면, 토스는 아래와 같이 응답합니다.</p>
                     <div class="method-example">
@@ -286,7 +299,8 @@ echo "Response: ".$result;</code></pre>
                     <p>홍길동님은 결제를 승인했지만, 아직 결제가 완료된 상태는 아닙니다. '토스몰'의 최종 승인 단계가 남아있습니다.</p>
                     <p>최종 승인 전, 토스몰은 토스티셔츠의 재고가 충분한지 다시 한번 확인하고 문제가 없음을 확인한 후 '승인 요청'을 보내고자 합니다.</p>
                     <div class="well">
-                        결제 승인 API Endpoint<br>
+                        결제 승인 API Endpoint
+                        <br>
                         <strong>POST https://toss.im/tosspay/api/v1/execute</strong>
                     </div>
                     <p>결제 승인 요청은 아래와 같이 '상점 API key'와 'payToken'값을 담아 보냅니다.</p>
@@ -359,8 +373,8 @@ echo "Response: ".$result;</code></pre>
                     <div class="alert alert-warning" role="alert">
                         <i class="fa fa-exclamation-triangle pull-left" aria-hidden="true" style="margin-top:8px;margin-left:6px"></i>
                         <p style="margin-left:40px">
-                            다시 한번 말씀드리지만, 결제 승인 API 요청의 응답이 '성공' (코드 0)인지 반드시 확인하셔야 합니다.<br>
-                            계좌 잔액 부족이나 구매자의 URL 변조가 확인되어 '실패' (코드 -1)응답을 받을 수 있습니다. 응답을 확인하지 않고 결제 완료 처리하는 경우, 결제는 실패했으나 물품은 발송되어버릴 수도 있으니 주의하세요!
+                            다시 한번 말씀드리지만, 결제 승인 API 요청의 응답이 '성공' (코드 0)인지 반드시 확인하셔야 합니다.
+                            <br> 계좌 잔액 부족이나 구매자의 URL 변조가 확인되어 '실패' (코드 -1)응답을 받을 수 있습니다. 응답을 확인하지 않고 결제 완료 처리하는 경우, 결제는 실패했으나 물품은 발송되어버릴 수도 있으니 주의하세요!
                         </p>
                     </div>
                     <div class="alert alert-info" role="alert">
@@ -411,7 +425,7 @@ echo "Response: ".$result;</code></pre>
                     <h4 id="create-3">결제 완료 후 연결할 웹페이지 URL (retUrl)</h4>
                     <p>결제 완료 후, 이 파라미터를 통해 등록한 URL로 구매자를 보내드립니다. 일반적으로 구매 완료 페이지 또는 구매 완료 페이지로 연결할 수 있는 곳을 지정합니다.</p>
                     <p>이 값을 지정하지 않으면, 결제 완료 후 Toss 웹페이지로 연결되므로 필히 등록하실 것을 추천합니다.</p>
-<!--
+                    <!--
                     <h4 id="create-4">결제 결과 callback URL (resultCallback)</h4>
                     <p>결제 생성이 성공적으로 끝나면, 해당 결제건은 '결제 대기' 상태가 됩니다. 이후, 결제는 '완료'되거나 '취소'되거나 혹은 '환불'처리됩니다.</p>
                     <p>그러한 상태 변경이 있을 때 마다 상점의 주문 상태를 변경하거나 구매자에게 안내를 해주어야 한다면 '결제 결과에 대한 callback' 파라미터를 사용하세요. 이 파라미터에 응답을 받을 URL을 등록하시면, 아래와 같이 callback을 보내드리겠습니다.</p>
@@ -450,8 +464,8 @@ echo "Response: ".$result;</code></pre>
                     <p class="alert alert-warning" role="alert">에스크로 결제 생성 및 승인 완료 후, 반드시 '진행' 처리를 해주어야 합니다. <a href="#escrow">'에스크로 결제 진행'</a> 문서를 꼭 확인하세요.</p>
                     <h4 id="create-8">현금영수증 발급 가능 여부 (cashReceipt)</h4>
                     <p>
-                        현금영수증 발급 가능 여부를 설정할 수 있습니다.<br>
-                        (참고 : 문화상품권이나 백화점상품권, 모바일 쿠폰 등 과세 대상에서 제외되는 유가증권 등의 상품은 현금영수증 발행 대상에서 제외됩니다)
+                        현금영수증 발급 가능 여부를 설정할 수 있습니다.
+                        <br> (참고 : 문화상품권이나 백화점상품권, 모바일 쿠폰 등 과세 대상에서 제외되는 유가증권 등의 상품은 현금영수증 발행 대상에서 제외됩니다)
                     </p>
                     <ul>
                         <li><strong>true</strong> : 현금영수증 발급 가능 (값을 설정하지 않으면 true)</li>
@@ -479,8 +493,8 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>amountServiceFee</strong> : 결제 금액 중 '봉사료' 비중</li>
                     </ul>
                     <p>
-                        위 네 가지 값 중 하나라도 0이 아닌 값으로 설정하면 해당 결제 건은 '복합과세' 결제로 처리되며, 네 가지 값의 합은 총 결제 금액(amount)과 반드시 동일해야합니다. (동일하지 않을 시 에러 발생)<br>
-                        위 파라미터를 통해 설정한 값은 현금 영수증 발행 시 그대로 반영됩니다.
+                        위 네 가지 값 중 하나라도 0이 아닌 값으로 설정하면 해당 결제 건은 '복합과세' 결제로 처리되며, 네 가지 값의 합은 총 결제 금액(amount)과 반드시 동일해야합니다. (동일하지 않을 시 에러 발생)
+                        <br> 위 파라미터를 통해 설정한 값은 현금 영수증 발행 시 그대로 반영됩니다.
                     </p>
                     <p>
                         위 파라미터 값을 설정하지 않는 경우, 자동으로 아래와 같이 처리됩니다.
@@ -598,8 +612,8 @@ echo "Response: ".$result;</code></pre>
                     </ol>
                     <h4 id="refund-3">환불할 금액</h4>
                     <p>
-                        총 결제 금액 중 일부만 환불하고자 하는 경우, 이 파라미터 값을 설정해주세요. 금액을 설정하지 않으면 결제 금액 전액을 환불합니다.<br>
-                        (단, 에스크로 보호 중인 결제는 전체 금액 환불만 가능합니다)
+                        총 결제 금액 중 일부만 환불하고자 하는 경우, 이 파라미터 값을 설정해주세요. 금액을 설정하지 않으면 결제 금액 전액을 환불합니다.
+                        <br> (단, 에스크로 보호 중인 결제는 전체 금액 환불만 가능합니다)
                     </p>
                     <h4 id="refund-4">복합과세 결제 환불 처리</h4>
                     <p>
@@ -641,11 +655,12 @@ echo "Response: ".$result;</code></pre>
                     <div class="method-example">
                         <pre><code class="always-visible language-bash">{
 "code":0,                           # 응답코드
-"payToken":"test_token1234567890a"           # 결제 고유 번호
+"payToken":"test_token1234567890a"  # 결제 고유 번호
 "orderNo":"2015072012211",          # 상점의 주문번호
 "payStatus":"REFUND_SUCCESS",       # 결제 상태
 "availableActions ":["REFUND"],     # 가능한 액션 목록
 "hasOwner":true,                    # 결제할 사람의 정보 입력 여부
+"metadata":"metadata"               # 결제 생성 시 입력한 metadata
 }
 </code></pre>
                     </div>
@@ -657,11 +672,12 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>결제 상태</strong> : 조회 당시의 결제 상태 (아래 '결제 상태 목록'을 참고하세요)</li>
                         <li><strong>가능한 액션 목록</strong> : 조회 당시에 가능한 액션(취소, 환불 등) 목록 (예를 들어, '결제 완료' 상태에서는 '환불'이 가능하나 '전액 환불'한 상태에서는 환불 불가)</li>
                         <li><strong>결제할 사람의 정보 입력 여부</strong> : 당신의 상점에서 결제를 생성하고 결제 진행 웹페이지를 구매자에게 제공하고 나면 구매자는 결제 승인에 필요한 정보를 입력합니다. 결제를 진행할 사람에 대한 정보가 올바르게 입력되면 이 값은 <span class="bg-info">true</span>가 됩니다. 반면, 아직 정보를 입력하지 않은 상태라면 <span class="bg-info">false</span> 입니다.</li>
+                        <li><strong>결제 연관 data</strong> : 결제 생성 시 가맹점 측에서 해당 결제건과 연관된 정보를 metadata field를 통헤 기록할 수 있고, 결제 상태 조회를 통해 기록하셨던 data에 다시 접근하실 수 있습니다.</li>
                     </ul>
                     <h4 id="checkstatus-4">결제 상태 목록</h4>
                     <p>
-                        결제 상태는 아래 중 하나입니다.<br>
-                        각 상태에 대한 자세한 설명은 <a href="api.html#state">결제 API > 결제 상태</a> 문서를 참고하세요.
+                        결제 상태는 아래 중 하나입니다.
+                        <br> 각 상태에 대한 자세한 설명은 <a href="api.html#state">결제 API > 결제 상태</a> 문서를 참고하세요.
                     </p>
                     <table class="table table-hover">
                         <tr>
@@ -715,7 +731,8 @@ echo "Response: ".$result;</code></pre>
                 <div class="method-description">
                     <h3>에스크로 결제 진행</h3>
                     <p>
-                        에스크로 결제는 아래와 같은 흐름으로 진행됩니다.<br>
+                        에스크로 결제는 아래와 같은 흐름으로 진행됩니다.
+                        <br>
                         <img src="images/flow_escrow.png" alt="에스크로 결제 흐름">
                     </p>
                     <ol>
@@ -776,7 +793,7 @@ echo "Response: ".$result;</code></pre>
             </div>
         </div>
     </div>
-        
+
 
     <script type="text/javascript">
         $(function () {
