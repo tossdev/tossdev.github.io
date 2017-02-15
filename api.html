@@ -1775,6 +1775,62 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    amount
+                                    <span class="type">Integer</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxable
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액 중 과세금액 (복합과세)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxFree
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액 중 비과세금액 (복합과세)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountVat
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액 중 부가세 (복합과세)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountServiceFee
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액 중 봉사료 (복합과세)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    productDesc
+                                    <span class="type">String</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    상품 설명
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     hasOwner
                                     <span class="type">boolean</span>
                                 </div>
@@ -1925,6 +1981,12 @@ p JSON.parse(response.body)</code></pre>
     "payToken": "test_token1234567890a",
     "payStatus": "REFUND_SUCCESS",
     "orderNo": "2015072012211",
+    "amount":11000,
+    "amountTaxable":10000,
+    "amountTaxFree":0,
+    "amountVat":1000,
+    "amountServiceFee":0,
+    "productDesc":"테스트 상품",
     "hasOwner": true,
     "availableActions": [
     "REFUND"
