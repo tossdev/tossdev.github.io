@@ -1820,6 +1820,33 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    timeCreated
+                                    <span class="type">String</span>
+                                </div>
+                                <div class="desc">
+                                    결제 생성 시각
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    timePayComplete
+                                    <span class="type">String</span>
+                                </div>
+                                <div class="desc">
+                                    결제 완료 시각
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    timePayCancel
+                                    <span class="type">String</span>
+                                </div>
+                                <div class="desc">
+                                    결제 취소 시각
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     productDesc
                                     <span class="type">String</span>
                                 </div>
@@ -1868,6 +1895,15 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     조회한 결제건에 대한 환불 요청 및 결과
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    timeRefundSuccess
+                                    <span class="type">list</span>
+                                </div>
+                                <div class="desc">
+                                    환불 완료 시각
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1984,6 +2020,9 @@ p JSON.parse(response.body)</code></pre>
     "amountTaxFree":0,
     "amountVat":1000,
     "amountServiceFee":0,
+    "timeCreated":"2017-02-15 11:59:48",
+	"timePayComplete":"2017-02-15 12:01:19",
+	"timePayCancel":"",
     "productDesc":"테스트 상품",
     "hasOwner": true,
     "availableActions": [
@@ -1991,22 +2030,25 @@ p JSON.parse(response.body)</code></pre>
     ],
     "refunds": [
         {
-        "refundNo": "7161b8e3-4b79-49d7-ab3c-3ae898aa073b",
-        "status": "SUCCESS",
+        "reason": "일부 상품 환불",
         "amount": 100,
-        "reason": "일부 상품 환불"
+        "refundNo": "7161b8e3-4b79-49d7-ab3c-3ae898aa073b",
+        "timeRefundSuccess": "2017-02-15 16:12:40",
+        "status": "SUCCESS"
         },
         {
-        "refundNo": "a636fe94-4e1e-41c8-90d9-b17180bdaf04",
-        "status": "SUCCESS",
+        "reason": "일부 상품 환불",
         "amount": 200,
-        "reason": "일부 상품 환불"
+        "refundNo": "a636fe94-4e1e-41c8-90d9-b17180bdaf04",
+        "timeRefundSuccess": "2017-02-15 16:12:43",
+        "status": "SUCCESS"
         },
         {
-        "refundNo": "cc92a9ef-8a81-2938-dda9-ff8a78ae29b8",
-        "status": "SUCCESS",
+        "reason": "일부 상품 환불",
         "amount": 500,
-        "reason": "일부 상품 환불"
+        "refundNo": "cc92a9ef-8a81-2938-dda9-ff8a78ae29b8",
+        "timeRefundSuccess": "2017-02-15 16:12:46",
+        "status": "SUCCESS"
         }
     ],
     "code": 0,
