@@ -27,7 +27,7 @@
         <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -234,12 +234,12 @@
                     <h3>결제 대행 수수료</h3>
                     <h4 id="fee-1">표준 수수료 정책</h4>
                     <ul>
-                        <li>수수료 : 결제 금액의 2%</li>
+                        <li>수수료 : 결제 금액의 4%</li>
                         <li>
                             건당 최소 수수료 : 400원
                             <ul>
-                                <li>결제 금액의 2%가 400원보다 작으면 '최소 수수료'를 적용합니다.</li>
-                                <li>예시) 결제 금액이 50,000원이면 수수료는 2%인 1,000원이 적용되고 결제 금액이 10,000원인 경우, 결제 금액의 2%는 200원으로 최소 수수료보다 작으므로 이 건에는 400원의 수수료가 적용됨</li>
+                                <li>결제 금액의 4%가 400원보다 작으면 '최소 수수료'를 적용합니다.</li>
+                                <li>예시) 결제 금액이 50,000원이면 수수료는 4%인 2,000원이 적용되고 결제 금액이 1,000원인 경우, 결제 금액의 4%는 40원으로 최소 수수료보다 작으므로 이 건에는 400원의 수수료가 적용됨</li>
                             </ul>
                         </li>
                         <li>환불 처리 수수료 : 400원 (전액 환불 시에만 부과)</li>
@@ -351,9 +351,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">68,100</td>
-                                    <td class="text-right">-1,362</td>
-                                    <td class="text-right">-136</td>
-                                    <td class="text-right">66,602</td>
+                                    <td class="text-right">-2,724</td>
+                                    <td class="text-right">-272</td>
+                                    <td class="text-right">65,104</td>
                                     <td class="text-center">-</td>
                                     <td class="text-center">-</td>
                                 </tr>
@@ -362,9 +362,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">220,000</td>
-                                    <td class="text-right">-4,400</td>
-                                    <td class="text-right">-440</td>
-                                    <td class="text-right">215,160</td>
+                                    <td class="text-right">-8,800</td>
+                                    <td class="text-right">-880</td>
+                                    <td class="text-right">210,320</td>
                                     <td class="text-center">-</td>
                                     <td class="text-center">-</td>
                                 </tr>
@@ -373,9 +373,9 @@
                                     <td>8/3</td>
                                     <td>환불</td>
                                     <td class="text-right">-220,000</td>
-                                    <td class="text-right">4,400</td>
-                                    <td class="text-right">440</td>
-                                    <td class="text-right">-215,160</td>
+                                    <td class="text-right">8,800</td>
+                                    <td class="text-right">880</td>
+                                    <td class="text-right">-210,320</td>
                                     <td class="text-center">-</td>
                                     <td class="text-center">-</td>
                                 </tr>
@@ -395,9 +395,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">98,000</td>
-                                    <td class="text-right">-1960</td>
-                                    <td class="text-right">-196</td>
-                                    <td class="text-right">95,844</td>
+                                    <td class="text-right">-3,920</td>
+                                    <td class="text-right">-392</td>
+                                    <td class="text-right">93,688</td>
                                     <td class="text-center">-</td>
                                     <td class="text-center">-</td>
                                 </tr>
@@ -414,10 +414,10 @@
                                 </tr>
                             </table>
                             <ul>
-                                <li><strong>1번</strong> - 68,100원의 결제금액에서 수수료와 수수료에 대한 부가세를 제외한 66,602원을 지급합니다. 수수료는 68,100원의 2%에 해당하는 1,362원이고, 수수료에 대한 부가세는 1,362원의 10%인 136.2원입니다만, <a href="#fee-5">'원단위 미만의 수수료 및 부가세 처리'</a> 정책에 따라 소수점 부분에서 반올림하여 136원으로 처리하였습니다.</li>
+                                <li><strong>1번</strong> - 68,100원의 결제금액에서 수수료와 수수료에 대한 부가세를 제외한 65,104원을 지급합니다. 수수료는 68,100원의 4%에 해당하는 2,724원이고, 수수료에 대한 부가세는 2,724원의 10%인 272.4원입니다만, <a href="#fee-5">'원단위 미만의 수수료 및 부가세 처리'</a> 정책에 따라 소수점 부분에서 반올림하여 272원으로 처리하였습니다.</li>
                                 <li><strong>2, 5번</strong> - '결제'건으로 1과 동일하게 처리되었습니다.</li>
                                 <li><strong>3번</strong> - 2번 결제에 대해 전액 환불이 발생하여, 결제 금액을 모두 차감하고, 받았던 수수료와 부가세는 모두 돌려드리는 것으로 처리하였습니다.</li>
-                                <li><strong>4번</strong> - 2번 결제가 전액 환불됨에 따라 환불 수수료가 발생하였습니다. 환불 수수료는 300원이며, 그에 대한 부가세 30원도 함께 부과됩니다.</li>
+                                <li><strong>4번</strong> - 2번 결제가 전액 환불됨에 따라 환불 수수료가 발생하였습니다. 환불 수수료는 400원이며, 그에 대한 부가세 40원도 함께 부과됩니다.</li>
                                 <li><strong>6번</strong> - 부분 환불이 발생하여 환불한 금액 만큼 결제 금액을 차감합니다. 부분 환불이기 때문에 수수료나 부가세를 반환하지 않습니다. (부분 환불이 누적되어 '전액' 환불이 될 때 반환합니다)</li>
                             </ul>
                         </li>
@@ -440,9 +440,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">68,100</td>
-                                    <td class="text-right">-1,362</td>
-                                    <td class="text-right">-136</td>
-                                    <td class="text-right">66,602</td>
+                                    <td class="text-right">-2,724</td>
+                                    <td class="text-right">-272</td>
+                                    <td class="text-right">65,104</td>
                                     <td class="bg-success">지급 대기</td>
                                     <td>8/4</td>
                                 </tr>
@@ -451,9 +451,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">220,000</td>
-                                    <td class="text-right">-4,400</td>
-                                    <td class="text-right">-440</td>
-                                    <td class="text-right">215,160</td>
+                                    <td class="text-right">-8,800</td>
+                                    <td class="text-right">-880</td>
+                                    <td class="text-right">210,320</td>
                                     <td class="bg-success">지급 대기</td>
                                     <td>8/4</td>
                                 </tr>
@@ -462,9 +462,9 @@
                                     <td>8/3</td>
                                     <td>환불</td>
                                     <td class="text-right">-220,000</td>
-                                    <td class="text-right">4,400</td>
-                                    <td class="text-right">440</td>
-                                    <td class="text-right">-215,160</td>
+                                    <td class="text-right">8,800</td>
+                                    <td class="text-right">880</td>
+                                    <td class="text-right">-210,320</td>
                                     <td class="bg-success">지급 대기</td>
                                     <td>8/4</td>
                                 </tr>
@@ -484,9 +484,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">98,000</td>
-                                    <td class="text-right">-1960</td>
-                                    <td class="text-right">-196</td>
-                                    <td class="text-right">95,844</td>
+                                    <td class="text-right">-3,920</td>
+                                    <td class="text-right">-392</td>
+                                    <td class="text-right">93,688</td>
                                     <td class="bg-success">지급 대기</td>
                                     <td>8/4</td>
                                 </tr>
@@ -503,12 +503,12 @@
                                 </tr>
                                 <tr class="bg-info">
                                     <td colspan="6" class="text-right">총 지급 예정 금액</td>
-                                    <td class="text-right">150,006</td>
+                                    <td class="text-right">146,352</td>
                                 </tr>
                             </table>
                             <ul>
                                 <li>상점 A의 8/3 결제/환불 건들은 모두 정상 처리되었고,</li>
-                                <li>8/4에 150,116원이 입금될 예정입니다.</li>
+                                <li>8/4에 146,352원이 입금될 예정입니다.</li>
                             </ul>
                         </li>
                     </ul>
@@ -540,9 +540,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">150,000</td>
-                                    <td class="text-right">-3,000</td>
-                                    <td class="text-right">-300</td>
-                                    <td class="text-right">146,700</td>
+                                    <td class="text-right">-6,000</td>
+                                    <td class="text-right">-600</td>
+                                    <td class="text-right">143,400</td>
                                     <td class="text-center">-</td>
                                     <td class="text-center">-</td>
                                 </tr>
@@ -551,9 +551,9 @@
                                     <td>8/3</td>
                                     <td>환불</td>
                                     <td class="text-right">-150,000</td>
-                                    <td class="text-right">3,000</td>
-                                    <td class="text-right">300</td>
-                                    <td class="text-right">-146,700</td>
+                                    <td class="text-right">6,000</td>
+                                    <td class="text-right">600</td>
+                                    <td class="text-right">-143,400</td>
                                     <td class="text-center">-</td>
                                     <td class="text-center">-</td>
                                 </tr>
@@ -570,7 +570,7 @@
                                 </tr>
                             </table>
                         </li>
-                        <li><strong>문제 발생</strong> : 지급액을 모두 합하면 -330원이 됩니다. 이러한 경우에는, 일부 결제건을 '이연' 처리하여 지급액을 '0' 이상이 되도록 합니다. (이연된 결제건은 다음 '집계'에 들어갑니다.)</li>
+                        <li><strong>문제 발생</strong> : 지급액을 모두 합하면 -440원이 됩니다. 이러한 경우에는, 일부 결제건을 '이연' 처리하여 지급액을 '0' 이상이 되도록 합니다. (이연된 결제건은 다음 '집계'에 들어갑니다.)</li>
                         <li>
                             <strong>정산 결과</strong>는 아래와 같습니다.
                             <table class="table table-bordered table-hover table-condensed">
@@ -590,9 +590,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">150,000</td>
-                                    <td class="text-right">-3,000</td>
-                                    <td class="text-right">-300</td>
-                                    <td class="text-right">146,700</td>
+                                    <td class="text-right">-6,000</td>
+                                    <td class="text-right">-600</td>
+                                    <td class="text-right">143,400</td>
                                     <td class="bg-success">지급 대기</td>
                                     <td>8/4</td>
                                 </tr>
@@ -601,9 +601,9 @@
                                     <td>8/3</td>
                                     <td>환불</td>
                                     <td class="text-right">-150,000</td>
-                                    <td class="text-right">3,000</td>
-                                    <td class="text-right">300</td>
-                                    <td class="text-right">-146,700</td>
+                                    <td class="text-right">6,000</td>
+                                    <td class="text-right">600</td>
+                                    <td class="text-right">-143,400</td>
                                     <td class="bg-success">지급 대기</td>
                                     <td>8/4</td>
                                 </tr>
@@ -633,11 +633,11 @@
                         <li>
                             상점 C에선 8월 3일에 아래와 같은 일이 있었습니다.
                             <ul>
-                                <li>1,200원 결제</li>
+                                <li>1,400원 결제</li>
                                 <li>68,100원 결제 후 곧 전액 환불 처리</li>
                                 <li>5,000원 결제 후 4,000원 부분 환불 처리</li>
-                                <li>7/31 부터 이연되어온 1000원 환불 건</li>
-                                <li>7/30 부터 이연되어온 330원 환불 수수료 건</li>
+                                <li>7/31 부터 이연되어온 1,000원 환불 건</li>
+                                <li>7/30 부터 이연되어온 440원 환불 수수료 건</li>
                             </ul>
                         </li>
                         <li>
@@ -658,10 +658,10 @@
                                     <td class="text-center">1</td>
                                     <td>8/3</td>
                                     <td>결제</td>
-                                    <td class="text-right">1,200</td>
-                                    <td class="text-right">-300</td>
-                                    <td class="text-right">-30</td>
-                                    <td class="text-right">870</td>
+                                    <td class="text-right">1,400</td>
+                                    <td class="text-right">-400</td>
+                                    <td class="text-right">-40</td>
+                                    <td class="text-right">960</td>
                                     <td class="text-center">-</td>
                                     <td class="text-center">-</td>
                                 </tr>
@@ -670,9 +670,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">68,100</td>
-                                    <td class="text-right">-1,362</td>
-                                    <td class="text-right">-136</td>
-                                    <td class="text-right">66,602</td>
+                                    <td class="text-right">-2,724</td>
+                                    <td class="text-right">-272</td>
+                                    <td class="text-right">65,104</td>
                                     <td class="text-center">-</td>
                                     <td class="text-center">-</td>
                                 </tr>
@@ -681,9 +681,9 @@
                                     <td>8/3</td>
                                     <td>환불</td>
                                     <td class="text-right">-68,100</td>
-                                    <td class="text-right">1,362</td>
-                                    <td class="text-right">136</td>
-                                    <td class="text-right">-66,602</td>
+                                    <td class="text-right">2,724</td>
+                                    <td class="text-right">272</td>
+                                    <td class="text-right">-65,104</td>
                                     <td class="text-center">-</td>
                                     <td class="text-center">-</td>
                                 </tr>
@@ -703,9 +703,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">5,000</td>
-                                    <td class="text-right">-300</td>
-                                    <td class="text-right">-30</td>
-                                    <td class="text-right">4,670</td>
+                                    <td class="text-right">-400</td>
+                                    <td class="text-right">-40</td>
+                                    <td class="text-right">4,560</td>
                                     <td class="text-center">-</td>
                                     <td class="text-center">-</td>
                                 </tr>
@@ -744,13 +744,13 @@
                                 </tr>
                             </table>
                             <ul>
-                                <li><strong>1번</strong> - 1,200원의 2%는 24원이나 최소 수수료 정책에 따라 수수료는 300원을 부과합니다. (5번도 동일)</li>
+                                <li><strong>1번</strong> - 1,400원의 2%는 28원이나 최소 수수료 정책에 따라 수수료는 400원을 부과합니다. (5번도 동일)</li>
                                 <li><strong>2, 3, 4번</strong> - 결제 및 전액 환불에 의한 수수료 환급 및 환불 수수료 발생</li>
                                 <li><strong>5, 6번</strong> - 결제 및 부분 환불 처리</li>
                                 <li><strong>7, 8번</strong> - 지난 집계에서 처리되지 못하고 이연된 정산 건들</li>
                             </ul>
                         </li>
-                        <li><strong>문제 발생</strong> : 지급액을 모두 합하면 -120원이 됩니다. 이러한 경우에는, 일부 결제건을 '이연' 처리해야 하는데, 어떤 결제건을 이연 시켜야 할까요?</li>
+                        <li><strong>문제 발생</strong> : 지급액을 모두 합하면 -360원이 됩니다. 이러한 경우에는, 일부 결제건을 '이연' 처리해야 하는데, 어떤 결제건을 이연 시켜야 할까요?</li>
                         <li>
                             <strong>정산 결과</strong>는 아래와 같습니다.
                             <table class="table table-bordered table-hover table-condensed">
@@ -769,10 +769,10 @@
                                     <td class="text-center">1</td>
                                     <td>8/3</td>
                                     <td>결제</td>
-                                    <td class="text-right">1,200</td>
-                                    <td class="text-right">-300</td>
-                                    <td class="text-right">-30</td>
-                                    <td class="text-right">870</td>
+                                    <td class="text-right">1,400</td>
+                                    <td class="text-right">-400</td>
+                                    <td class="text-right">-40</td>
+                                    <td class="text-right">960</td>
                                     <td class="bg-success">지급 대기</td>
                                     <td>8/4</td>
                                 </tr>
@@ -781,9 +781,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">68,100</td>
-                                    <td class="text-right">-1,362</td>
-                                    <td class="text-right">-136</td>
-                                    <td class="text-right">66,602</td>
+                                    <td class="text-right">-2,724</td>
+                                    <td class="text-right">-272</td>
+                                    <td class="text-right">65,104</td>
                                     <td class="bg-success">지급 대기</td>
                                     <td>8/4</td>
                                 </tr>
@@ -792,9 +792,9 @@
                                     <td>8/3</td>
                                     <td>환불</td>
                                     <td class="text-right">-68,100</td>
-                                    <td class="text-right">1,362</td>
-                                    <td class="text-right">136</td>
-                                    <td class="text-right">-66,602</td>
+                                    <td class="text-right">2,724</td>
+                                    <td class="text-right">272</td>
+                                    <td class="text-right">-65,104</td>
                                     <td class="bg-success">지급 대기</td>
                                     <td>8/4</td>
                                 </tr>
@@ -814,9 +814,9 @@
                                     <td>8/3</td>
                                     <td>결제</td>
                                     <td class="text-right">5,000</td>
-                                    <td class="text-right">-300</td>
-                                    <td class="text-right">-30</td>
-                                    <td class="text-right">4,670</td>
+                                    <td class="text-right">-400</td>
+                                    <td class="text-right">-40</td>
+                                    <td class="text-right">4,560</td>
                                     <td class="bg-success">지급 대기</td>
                                     <td>8/4</td>
                                 </tr>
@@ -855,7 +855,7 @@
                                 </tr>
                                 <tr class="bg-info">
                                     <td colspan="6" class="text-right">총 지급 예정 금액</td>
-                                    <td class="text-right">100</td>
+                                    <td class="text-right">80</td>
                                 </tr>
                             </table>
                             <ul>
