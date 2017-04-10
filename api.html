@@ -28,7 +28,7 @@
         <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -46,7 +46,7 @@
     <!-- End Google Tag Manager -->
     <div id="guide">
         <h1 class="logo">
-          <a href="index.html"><img src="images/logo_tossdev.png" alt="toss developers logo"></a>
+            <a href="index.html"><img src="images/logo_tossdev.png" alt="toss developers logo"></a>
         </h1>
         <ul class="menu nav">
             <h5>Toss 결제 API</h5>
@@ -559,22 +559,44 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    retUrl
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
-                                </div>
-                                <div class="desc">
-                                    결제 완료 후 연결할 웹페이지의 URL (결제 최종 승인 및 완료 처리할 페이지)
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
                                     productDesc
                                     <span class="type">String</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
                                     상품 설명
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    autoExecute
+                                    <span class="type">boolean</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    자동 승인 여부 설정
+                                    <br />
+                                    <br>
+                                    <table class="table">
+                                        <tr>
+                                            <td>true</td>
+                                            <td>구매자 인증 완료 시, 바로 결제 완료 처리<br>(true로 설정하면 반드시 'resultCallback' 값을 설정하고 '결제 완료' callback을 받았을 때만 구매 완료 처리해야합니다)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>false</td>
+                                            <td>구매자 인증 완료 후 가맹점의 최종 승인 시 결제 완료 처리<br>('결제 승인 API'를 통해 최종 승인합니다)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    retUrl
+                                    <span class="type">string</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    결제 완료 후 연결할 웹페이지의 URL (결제 최종 승인 및 완료 처리할 페이지)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -627,11 +649,10 @@
                                 <div class="key">
                                     resultCallback
                                     <span class="type">String</span>
+                                    <span class="type">자동 승인 설정시 필수</span>
                                 </div>
                                 <div class="desc">
-                                    <span class="bg-danger">본 parameter는 곧 지원이 종료됩니다.</span>
-                                    <br />
-                                    <br /> 결제 결과 callback URL (성공, 취소, 환불 등)
+                                    결제 결과 callback URL (성공, 취소, 환불 등)<br />
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -650,27 +671,6 @@
                                 </div>
                                 <div class="desc">
                                     현금영수증 발급 가능 여부 (기본값 true)
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    autoExecute
-                                    <span class="type">boolean</span>
-                                </div>
-                                <div class="desc">
-                                    자동 승인 여부 설정 (기본값 true)
-                                    <br />
-                                    <br>
-                                    <table class="table">
-                                        <tr>
-                                            <td>true</td>
-                                            <td>구매자 인증 완료 시 바로 결제 완료 처리</td>
-                                        </tr>
-                                        <tr>
-                                            <td>false</td>
-                                            <td>구매자 인증 완료 후 가맹점의 최종 승인 시 결제 완료 처리</td>
-                                        </tr>
-                                    </table>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -787,12 +787,10 @@
                         </div>
                         <h4>결제 결과 Callback (resultCallback)</h4>
                         <p>
-                            <span class="bg-danger">본 parameter는 곧 지원이 종료됩니다.</span>
-                            <br />
-                            <br /> 결제 상태가 변경될 때 토스가 판매자에게 변경 사항을 알립니다.
+                            결제 상태가 변경될 때 토스가 판매자에게 변경 사항을 알립니다. 자동 승인 설정을 사용 시 (autoExecute가 true) 필수적으로 활용해야합니다.
                         </p>
                         <p>
-                            *생성된 결제 건에 resultCallback 파라미터 값이 있을 경우에만 동작합니다.
+                            * 생성된 결제 건에 resultCallback 파라미터 값이 있을 경우에만 동작합니다.
                         </p>
                         <div class="info">
                             <h4>parameter</h4>
@@ -2381,11 +2379,11 @@ p JSON.parse(response.body)</code></pre>
 
 
     <script type="text/javascript">
-        $(function () {
+        $(function() {
 
             // language toggle
             var $languages = $(".languages .language");
-            $languages.click(function (e) {
+            $languages.click(function(e) {
                 e.preventDefault();
                 var lang = $(this).data("lang");
                 $languages.removeClass("selected");
