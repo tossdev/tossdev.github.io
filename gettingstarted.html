@@ -42,6 +42,7 @@
                 '//www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-TPTMLG');
+
     </script>
     <!-- End Google Tag Manager -->
     <!--
@@ -700,15 +701,15 @@ echo "Response: ".$result;</code></pre>
                         </tr>
                         <tr>
                             <td>ESCROW_REQUEST</td>
-                            <td>에스크로 요청</td>
+                            <td>배송등록 대기 중 (에스크로 요청)</td>
                         </tr>
                         <tr>
                             <td>ESCROW_RELEASE</td>
-                            <td>에스크로 해제</td>
+                            <td>구매확정 대기 중 (에스크로 해제)</td>
                         </tr>
                         <tr>
                             <td>ESCROW_DENY</td>
-                            <td>에스크로 거부</td>
+                            <td>구매자 지급 거부 (에스크로 거부)</td>
                         </tr>
                         <tr>
                             <td>REFUND_PROGRESS</td>
@@ -817,6 +818,7 @@ echo "Response: ".$result;</code></pre>
                 $("pre code." + lang).css("display", "block");
             });
         });
+
     </script>
     <script src="js/prism.js"></script>
 </body>
