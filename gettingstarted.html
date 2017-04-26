@@ -28,7 +28,7 @@
         <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -270,7 +270,8 @@ echo "Response: ".$result;</code></pre>
                     <p>위 예제의 checkoutPage는 아래와 같습니다. (매 결제마다 다른 URL이 발급됩니다)</p>
                     <div class="method-example">
                         <pre class=" language-http"><code class="always-visible  language-http">https://toss.im/tosspay/order/orderWait?payToken=test_token1234567890a
-&amp;retUrl=http://YOUR-SITE.COM/ORDER-CHECK</code></pre></div>
+&amp;retUrl=http://YOUR-SITE.COM/ORDER-CHECK</code></pre>
+                    </div>
                     <p>그 후, 결제 승인까지의 모든 과정은 토스가 알아서 해드립니다. (결제에 사용할 계좌번호를 받고, 계좌의 유효성을 검증하고, 계좌의 주인인지 철저히 알아보는 등...)</p>
                     <p>
                         올바른 URL로 연결하셨다면 홍길동님은 아래와 같은 화면을 통해 결제를 진행하게 됩니다.
@@ -288,7 +289,8 @@ echo "Response: ".$result;</code></pre>
                         <img src="images/flow_pay_complete.png" alt="결제 완료 처리"></p>
                     <p>retUrl로 홍길동님을 보내면서, 주문 번호 (orderNo)와 승인 결과 (status) query string 파라미터로 함께 보내드립니다. 예시는 다음과 같습니다.</p>
                     <div class="method-example">
-                        <pre class=" language-http"><code class="always-visible  language-http">http://YOUR-SITE.COM/ORDER-CHECK?orderNo=1&status=PAY_APPROVED</code></pre></div>
+                        <pre class=" language-http"><code class="always-visible  language-http">http://YOUR-SITE.COM/ORDER-CHECK?orderNo=1&status=PAY_APPROVED</code></pre>
+                    </div>
                     <p>여기서 status 값을 확인해주세요.</p>
                     <ul>
                         <li><strong>승인 완료한 경우</strong> : ?status=PAY_APPROVED</li>
@@ -737,18 +739,18 @@ echo "Response: ".$result;</code></pre>
                     </p>
                     <ol>
                         <li>에스크로 결제 생성 및 구매자의 승인 완료</li>
-                        <li>에스크로 요청 : 구매자가 결제 승인을 완료하여 구매 대금이 출금된 상태입니다. (구매 대금은 '구매 확정'될 때 까지 토스가 보관합니다) 판매자가 물품 배송을 완료한 후, <span class="bg-info">'배송 등록'</span>을 하면 '에스크로 해제' 상태로 변경됩니다.</li>
-                        <li>에스크로 해제 : 구매자의 '구매 확정'을 기다리는 상태입니다. 이 때 구매자는 '구매 확정' 또는 '지급 거부'할 수 있습니다.
+                        <li>배송등록 대기 중 : 구매자가 결제 승인을 완료하여 구매 대금이 출금된 상태입니다. (구매 대금은 '구매 확정'될 때 까지 토스가 보관합니다) 판매자가 물품 배송을 완료한 후, <span class="bg-info">'배송 등록'</span>을 하면 '구매확정 대기 중' 상태로 변경됩니다.</li>
+                        <li>구매확정 대기 중 : 구매자의 '구매 확정'을 기다리는 상태입니다. 이 때 구매자는 '구매 확정' 또는 '지급 거부'할 수 있습니다.
                             <ul>
                                 <li>구매 확정 시 : 결제가 완료되고 판매자는 대금을 정산받습니다.</li>
-                                <li>지급 거부 시 : '에스크로 거부' 상태가 되며, 대금 정산이 진행되지 않습니다. 구매자와 판매자간 합의를 거친 후, '환불'하거나 '구매확정을 다시 요청'할 수 있습니다.</li>
+                                <li>지급 거부 시 : '구매자 지급 거부' 상태가 되며, 대금 정산이 진행되지 않습니다. 구매자와 판매자간 합의를 거친 후, '환불'하거나 '구매확정을 다시 요청'할 수 있습니다.</li>
                             </ul>
                         </li>
                     </ol>
                     <p>위와 같은 에스크로 결제 진행 과정에서 판매자가 반드시 조치해야하는 두 가지 상황이 있습니다.</p>
                     <ol>
-                        <li>에스크로 요청 상태에서 물품 배송 후 <strong>'배송 등록'하기</strong></li>
-                        <li>에스크로 거부 상태에 빠졌을 때 문제를 해결하고 <strong>'구매확정 재요청'하기</strong></li>
+                        <li>'배송등록 대기 중' 상태에서 물품 배송 후 <strong>'배송 등록'하기</strong></li>
+                        <li>'구매자 지급 거부' 상태에 빠졌을 때 문제를 해결하고 <strong>'구매확정 재요청'하기</strong></li>
                     </ol>
                     <p>위 두 상황에서 조치를 취하지 않으면 결제 및 대금 지급이 이루어지지 않으므로 잊지말고 진행해야 합니다. '배송 등록'과 '구매확정 재요청' 처리 시 사용하는 API가 지금부터 소개할 '에스크로 결제 진행 API'입니다.</p>
                     <p>아래 예제는 에스크로 결제 진행 API의 예제 코드입니다.</p>
@@ -765,8 +767,8 @@ echo "Response: ".$result;</code></pre>
 </code></pre>
                     </div>
                     <ul>
-                        <li>'에스크로 요청' 상태인 결제 건에 대해 위 요청을 보내면 '배송 등록' 처리됩니다.</li>
-                        <li>'에스크로 거부' 상태인 결제 건에 대해 위 요청을 보내면 '구매확정 재요청' 처리됩니다.</li>
+                        <li>'배송등록 대기 중' 상태인 결제 건에 대해 위 요청을 보내면 '배송 등록' 처리됩니다.</li>
+                        <li>'구매자 지급 거부' 상태인 결제 건에 대해 위 요청을 보내면 '구매확정 재요청' 처리됩니다.</li>
                     </ul>
                     <h4 id="escrow-1">에스크로 결제 진행 API의 Endpoint</h4>
                     <div class="well">POST https://toss.im/tosspay/api/v1/escrow</div>
@@ -796,7 +798,7 @@ echo "Response: ".$result;</code></pre>
 
 
     <script type="text/javascript">
-        $(function () {
+        $(function() {
             //			hljs.configure({
             //			  tabReplace: '  ',
             //			  classPrefix: ''
@@ -805,7 +807,7 @@ echo "Response: ".$result;</code></pre>
 
             // language toggle
             var $languages = $(".languages .language");
-            $languages.click(function (e) {
+            $languages.click(function(e) {
                 e.preventDefault();
                 var lang = $(this).data("lang");
                 $languages.removeClass("selected");
