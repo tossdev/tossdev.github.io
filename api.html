@@ -2151,86 +2151,70 @@ p JSON.parse(response.body)</code></pre>
                         <div class="title">Definition</div>
                         <pre><code class="language-bash always-visible">GET https://toss.im/tosspay/api/v1/refunds/{refundNo}</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b?apiKey=sk_test_apikey1234567890a" \
-    -H "content-Type: application/json"</code><code class="java language-java">URL url = null;
-URLConnection connection = null;
-StringBuilder responseBody = new StringBuilder();
+                        <pre><code class="curl language-bash">curl -X GET \
+  'https://toss.im/tosspay/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890a' \
+  -H 'content-type: application/json'</code><code class="java language-java">OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"apiKey\":\"sk_test_LY5kmjV2l7LY5kmjV2l7\"\n}");
+Request request = new Request.Builder()
+  .url("https://toss.im/tosspay/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890a")
+  .get()
+  .addHeader("content-type", "application/json")
+  .build();
+
+Response response = client.newCall(request).execute();</code><code class="php language-php">$request = new HttpRequest();
+$request->setUrl('https://toss.im/tosspay/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e');
+$request->setMethod(HTTP_METH_GET);
+
+$request->setQueryData(array(
+  'apiKey' => 'sk_test_apikey1234567890a'
+));
+
+$request->setHeaders(array(
+  'content-type' => 'application/json'
+));
+
+$request->setBody('{
+    "apiKey":"sk_test_LY5kmjV2l7LY5kmjV2l7"
+}');
+
 try {
-	url = new URL("https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b");
-	connection = url.openConnection();
-	connection.addRequestProperty("Content-Type", "application/json");
-	connection.setDoOutput(true);
-	connection.setDoInput(true);
-	
-	org.json.simple.JSONObject jsonBody = new JSONObject();
-	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
-	
-	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
-	bos.write(jsonBody.toJSONString().getBytes());
-	bos.flush();
-	bos.close();
-	
-	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-	String line = null;
-	while ((line = br.readLine()) != null) {
-		responseBody.append(line);
-	}
-	br.close();
-} catch (Exception e) {
-	responseBody.append(e);
-}
-System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
-$arrayBody["apiKey"] = "sk_test_apikey1234567890a";
-$jsonBody = json_encode($arrayBody);
-// echo "Request: ".$request."<br>";
-$ch = curl_init('https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b');
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Content-Length: ' . strlen($jsonBody))
-);
- 
-$result = curl_exec($ch);
-curl_close($ch);
-      
-echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+  $response = $request->send();
 
-data = "apiKey=sk_test_apikey1234567890a"
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}</code><code class="aspnet language-aspnet"></code><code class="python language-python">import http.client
 
-Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b", False
-httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
-httpRequest.Send data
+conn = http.client.HTTPSConnection("toss.im")
 
-postResponse = httpRequest.ResponseText
+payload = "{\n    \"apiKey\":\"sk_test_LY5kmjV2l7LY5kmjV2l7\"\n}"
 
-Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+headers = {
+    'content-type': "application/json"
+    }
 
-url = "https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b"
-params = {
-    "apiKey": "sk_test_apikey1234567890a"
-}
+conn.request("GET", "/tosspay/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890a", payload, headers)
 
-response = urllib.urlopen(url, urllib.urlencode(params))
-print(response.read())</code><code class="ruby language-ruby">require 'net/http'
-require 'json'
+res = conn.getresponse()
+data = res.read()
 
-uri = URI.parse("https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b")
+print(data.decode("utf-8"))</code><code class="ruby language-ruby">require 'uri'
+require 'net/http'
 
-params = {
-        "apiKey" => "sk_test_apikey1234567890a"
-}
+url = URI("https://toss.im/tosspay/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890a")
 
-http = Net::HTTP.new(uri.host, uri.port)
+http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
-request = Net::HTTP::Post.new(uri.path)
-request.set_form_data(params)
-response = http.request(request)
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-p JSON.parse(response.body)</code></pre>
+request = Net::HTTP::Get.new(url)
+request["content-type"] = 'application/json'
+request.body = "{\n    \"apiKey\":\"sk_test_LY5kmjV2l7LY5kmjV2l7\"\n}"
+
+response = http.request(request)
+puts response.read_body</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{
     "code": 0,
