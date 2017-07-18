@@ -2093,7 +2093,7 @@ p JSON.parse(response.body)</code></pre>
                             <h4>endpoint</h4>
                             <div class="field clearfix">
                                 <div class="key">
-                                    (POST)
+                                    (GET)
                                 </div>
                                 <div class="desc">
                                     https://toss.im/tosspay/api/v1/refunds/{refundNo}
@@ -2149,13 +2149,10 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://toss.im/tosspay/api/v1/refunds/{refundNo}</code></pre>
+                        <pre><code class="language-bash always-visible">GET https://toss.im/tosspay/api/v1/refunds/{refundNo}</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b" \
-    -H "content-Type: application/json" \
-    -d '{
-        "apiKey":"sk_test_apikey1234567890a"
-        }'</code><code class="java language-java">URL url = null;
+                        <pre><code class="curl language-bash">curl "https://toss.im/tosspay/api/v1/refunds/7161b8e3-4b79-49d7-ab3c-3ae898aa073b?apiKey=sk_test_apikey1234567890a" \
+    -H "content-Type: application/json"</code><code class="java language-java">URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
