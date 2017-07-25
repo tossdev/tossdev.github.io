@@ -1026,6 +1026,24 @@ p JSON.parse(response.body)</code></pre>
                                     Toss 결제 토큰 (승인할 결제 건의 토큰값)
                                 </div>
                             </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amount
+                                    <span class="type">Integer</span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액<br> (입력하는 경우, 구매자가 승인한 결제 금액과 이 값이 일치할 경우에만 승인 처리)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    orderNo
+                                    <span class="type">String</span>
+                                </div>
+                                <div class="desc">
+                                    가맹점의 상품 주문번호<br> (입력하는 경우, 구매자가 승인한 주문번호와 이 값이 일치할 경우에만 승인 처리)
+                                </div>
+                            </div>
                         </div>
                         <div class="info">
                             <h4>response</h4>
@@ -1055,6 +1073,22 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     승인시각 (yyyy-MM-dd HH:mm:ss)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amount
+                                </div>
+                                <div class="desc">
+                                    승인한 결제 금액
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    orderNo
+                                </div>
+                                <div class="desc">
+                                    승인한 상품 주문번호
                                 </div>
                             </div>
                         </div>
