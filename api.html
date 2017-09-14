@@ -28,7 +28,7 @@
         <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <script>
-        (function(w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -545,6 +545,8 @@
                                 </div>
                                 <div class="desc">
                                     가맹점의 상품 주문번호
+                                    <br>
+                                    <span class="text-muted">주문번호는 50자 이내여야 하고, '숫자, 영문자, _, -'만 사용할 수 있습니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -565,6 +567,8 @@
                                 </div>
                                 <div class="desc">
                                     상품 설명
+                                    <br>
+                                    <span class="text-muted">상품 설명은 공백으로만 설정할 수 없고, 백슬래시(\)와 따옴표(",')를 포함할 수 없으며 총 255자 이내여야 합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -580,11 +584,13 @@
                                     <table class="table">
                                         <tr>
                                             <td>true</td>
-                                            <td>구매자 인증 완료 시, 바로 결제 완료 처리<br>(true로 설정하면 반드시 'resultCallback' 값을 설정하고 '결제 완료' callback을 받았을 때만 구매 완료 처리해야합니다)</td>
+                                            <td>구매자 인증 완료 시, 바로 결제 완료 처리
+                                                <br>(true로 설정하면 반드시 'resultCallback' 값을 설정하고 '결제 완료' callback을 받았을 때만 구매 완료 처리해야합니다)</td>
                                         </tr>
                                         <tr>
                                             <td>false</td>
-                                            <td>구매자 인증 완료 후 가맹점의 최종 승인 시 결제 완료 처리<br>('결제 승인 API'를 통해 최종 승인합니다)</td>
+                                            <td>구매자 인증 완료 후 가맹점의 최종 승인 시 결제 완료 처리
+                                                <br>('결제 승인 API'를 통해 최종 승인합니다)</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -652,7 +658,8 @@
                                     <span class="type">자동 승인 설정시 필수</span>
                                 </div>
                                 <div class="desc">
-                                    결제 결과 callback URL (성공, 취소, 환불 등)<br />
+                                    결제 결과 callback URL (성공, 취소, 환불 등)
+                                    <br />
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -768,19 +775,7 @@
                                         </tr>
                                         <tr>
                                             <td>-1</td>
-                                            <td>실패 (실패사유는 msg로 제공)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>10</td>
-                                            <td>결제 에러</td>
-                                        </tr>
-                                        <tr>
-                                            <td>11</td>
-                                            <td>중복 주문</td>
-                                        </tr>
-                                        <tr>
-                                            <td>12</td>
-                                            <td>1회 결제 한도 초과 금액</td>
+                                            <td>실패 (실패사유는 msg와 errorCode 제공)</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -807,6 +802,22 @@
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    errorCode
+                                </div>
+                                <div class="desc">
+                                    에러 코드
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>COMMON_INVALID_PARAMETER</td>
+                                            <td>요청한 값이 부족하거나 올바르지 않습니다.</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -1032,7 +1043,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액<br> (입력하는 경우, 구매자가 승인한 결제 금액과 이 값이 일치할 경우에만 승인 처리)
+                                    결제 금액
+                                    <br> (입력하는 경우, 구매자가 승인한 결제 금액과 이 값이 일치할 경우에만 승인 처리)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1041,7 +1053,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">String</span>
                                 </div>
                                 <div class="desc">
-                                    가맹점의 상품 주문번호<br> (입력하는 경우, 구매자가 승인한 주문번호와 이 값이 일치할 경우에만 승인 처리)
+                                    가맹점의 상품 주문번호
+                                    <br> (입력하는 경우, 구매자가 승인한 주문번호와 이 값이 일치할 경우에만 승인 처리)
                                 </div>
                             </div>
                         </div>
@@ -1062,7 +1075,7 @@ p JSON.parse(response.body)</code></pre>
                                         </tr>
                                         <tr>
                                             <td>-1</td>
-                                            <td>실패 (실패사유는 msg로 제공)</td>
+                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -1089,6 +1102,22 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     승인한 상품 주문번호
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    msg
+                                </div>
+                                <div class="desc">
+                                    응답이 성공이 아닌 경우 설명 메세지
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    errorCode
+                                </div>
+                                <div class="desc">
+                                    에러 코드
                                 </div>
                             </div>
                         </div>
@@ -1259,26 +1288,26 @@ p JSON.parse(response.body)</code></pre>
                                             <td>성공</td>
                                         </tr>
                                         <tr>
-                                            <td>1</td>
-                                            <td>잘못된 API Key 사용</td>
-                                        </tr>
-                                        <tr>
-                                            <td>30</td>
-                                            <td>결제 취소 에러</td>
-                                        </tr>
-                                        <tr>
-                                            <td>31</td>
-                                            <td>존재하지 않는 결제</td>
-                                        </tr>
-                                        <tr>
-                                            <td>32</td>
-                                            <td>취소 불가 상태</td>
-                                        </tr>
-                                        <tr>
-                                            <td>33</td>
-                                            <td>기 취소된 결제</td>
+                                            <td>-1</td>
+                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
                                         </tr>
                                     </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    msg
+                                </div>
+                                <div class="desc">
+                                    응답이 성공이 아닌 경우 설명 메세지
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    errorCode
+                                </div>
+                                <div class="desc">
+                                    에러 코드
                                 </div>
                             </div>
                         </div>
@@ -1457,7 +1486,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     환불할 금액
                                     <br />
-                                    <span class="text-muted">미입력시 전액 환불 처리</span>
+                                    <span class="text-muted">미입력시 환불할 결제건의 남은 전액을 환불 처리</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1521,36 +1550,8 @@ p JSON.parse(response.body)</code></pre>
                                             <td>성공</td>
                                         </tr>
                                         <tr>
-                                            <td>1</td>
-                                            <td>잘못된 API Key 사용</td>
-                                        </tr>
-                                        <tr>
-                                            <td>50</td>
-                                            <td>결제 환불 에러</td>
-                                        </tr>
-                                        <tr>
-                                            <td>51</td>
-                                            <td>존재하지 않는 결제</td>
-                                        </tr>
-                                        <tr>
-                                            <td>52</td>
-                                            <td>환불 불가 상태</td>
-                                        </tr>
-                                        <tr>
-                                            <td>53</td>
-                                            <td>기 환불된 결제</td>
-                                        </tr>
-                                        <tr>
-                                            <td>54</td>
-                                            <td>대기중인 환불이 있음</td>
-                                        </tr>
-                                        <tr>
-                                            <td>55</td>
-                                            <td>결제 미결</td>
-                                        </tr>
-                                        <tr>
-                                            <td>56</td>
-                                            <td>환불 가능 금액 초과</td>
+                                            <td>-1</td>
+                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -1571,6 +1572,34 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     승인시각 (yyyy-MM-dd HH:mm:ss)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    msg
+                                </div>
+                                <div class="desc">
+                                    응답이 성공이 아닌 경우 설명 메세지
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    errorCode
+                                </div>
+                                <div class="desc">
+                                    에러 코드
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>COMMON_REFUND_ERROR</td>
+                                            <td>이미 환불된 결제입니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>REFUND_EXCEED_AMOUNT</td>
+                                            <td>환불금액이 결제금액보다 더 클수 없습니다.</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -1725,7 +1754,6 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     code
-                                    <span class="type">Integer</span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -1737,16 +1765,8 @@ p JSON.parse(response.body)</code></pre>
                                             <td>성공</td>
                                         </tr>
                                         <tr>
-                                            <td>1</td>
-                                            <td>잘못된 API Key 사용</td>
-                                        </tr>
-                                        <tr>
-                                            <td>70</td>
-                                            <td>결제 상태 에러</td>
-                                        </tr>
-                                        <tr>
-                                            <td>71</td>
-                                            <td>존재하지 않는 결제</td>
+                                            <td>-1</td>
+                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -1972,6 +1992,22 @@ p JSON.parse(response.body)</code></pre>
                                     결제와 연관된 추가 데이터
                                 </div>
                             </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    msg
+                                </div>
+                                <div class="desc">
+                                    응답이 성공이 아닌 경우 설명 메세지
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    errorCode
+                                </div>
+                                <div class="desc">
+                                    에러 코드
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="method-example">
@@ -2165,7 +2201,7 @@ p JSON.parse(response.body)</code></pre>
                                         </tr>
                                         <tr>
                                             <td>-1</td>
-                                            <td>실패 (실패사유는 msg로 제공)</td>
+                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -2177,6 +2213,22 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     환불 번호와 금액, 상태, 사유
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    msg
+                                </div>
+                                <div class="desc">
+                                    응답이 성공이 아닌 경우 설명 메세지
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    errorCode
+                                </div>
+                                <div class="desc">
+                                    에러 코드
                                 </div>
                             </div>
                         </div>
@@ -2327,26 +2379,26 @@ puts response.read_body</code></pre>
                                             <td>성공</td>
                                         </tr>
                                         <tr>
-                                            <td>1</td>
-                                            <td>잘못된 API Key 사용</td>
-                                        </tr>
-                                        <tr>
-                                            <td>90</td>
-                                            <td>에스크로 에러</td>
-                                        </tr>
-                                        <tr>
-                                            <td>91</td>
-                                            <td>존재하지 않는 에스크로 결제</td>
-                                        </tr>
-                                        <tr>
-                                            <td>92</td>
-                                            <td>에스크로 불가 상태</td>
-                                        </tr>
-                                        <tr>
-                                            <td>93</td>
-                                            <td>에스크로 환불시 전체 환불만 가능</td>
+                                            <td>-1</td>
+                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
                                         </tr>
                                     </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    msg
+                                </div>
+                                <div class="desc">
+                                    응답이 성공이 아닌 경우 설명 메세지
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    errorCode
+                                </div>
+                                <div class="desc">
+                                    에러 코드
                                 </div>
                             </div>
                         </div>
@@ -2419,11 +2471,11 @@ puts response.read_body</code></pre>
 
 
     <script type="text/javascript">
-        $(function() {
+        $(function () {
 
             // language toggle
             var $languages = $(".languages .language");
-            $languages.click(function(e) {
+            $languages.click(function (e) {
                 e.preventDefault();
                 var lang = $(this).data("lang");
                 $languages.removeClass("selected");
