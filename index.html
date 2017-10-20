@@ -23,13 +23,25 @@
 
 <body id="frontpage">
     <!-- Google Tag Manager -->
-        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG"
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-TPTMLG');</script>
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TPTMLG');
+
+    </script>
     <!-- End Google Tag Manager -->
     <!--
         <header id="tossdev-header">
@@ -43,28 +55,23 @@
     <div class="top-banner text-center">
         <img class="logo" src="images/logo_tossdev_white.png" alt="toss developers logo">
         <h1 class="tagline">개발자에게도. 구매자에게도.<br>스트레스 없는 결제!</h1>
-            <a href="https://toss.im/pay#inquiry" type="button" id="signup-request" class="btn btn-lg">토스 결제 가맹점 신청</a>
-<!--        
+        <a href="https://toss.im/pay#inquiry" type="button" id="signup-request" class="btn btn-lg">토스 결제 가맹점 신청</a>
+        <!--        
 <a href="#" type="button" id="signup-request" class="btn btn-lg" data-toggle="modal" data-target="#modal-inquire">토스 결제 가맹점 신청</a>
 -->
         <div class="row">
             <p class="col-md-3 col-md-offset-3">
-                <i class="fa fa-code"></i><br>
-                개발자 여러분께는<br>
-                잘 정리된 문서와 편리한 테스트 환경,<br>
-                가볍고 빠른 관리자를-<br>
+                <i class="fa fa-code"></i><br> 개발자 여러분께는<br> 잘 정리된 문서와 편리한 테스트 환경,<br> 가볍고 빠른 관리자를-<br>
             </p>
             <p class="col-md-3">
-                <i class="fa fa-users"></i><br>
-                구매자에게는<br>
-                ActiveX와 공인인증서 없는<br>
-                간편한 결제 경험을-
+                <i class="fa fa-users"></i><br> 구매자에게는
+                <br> ActiveX와 공인인증서 없는<br> 간편한 결제 경험을-
             </p>
         </div>
     </div>
     <div class="wrapper container">
         <div class="menu-container">
-<!--
+            <!--
             <div class="menu-title">
                 <h5><a href="https://toss.im/pay" target="_blank"><i class="fa fa-arrow-circle-o-down"></i> 돈 받을 때 - Toss 계좌결제</a></h5>
                 <hr>
@@ -101,7 +108,7 @@
                 </li>
             </ul>
         </div>
-<!--
+        <!--
         <div class="menu-container">
             <h5><a href="https://toss.im/bizTransfer" target="_blank"><i class="fa fa-arrow-circle-o-up"></i> 돈 보낼 때 - Toss 이체대행</a></h5>
             <hr>
@@ -117,12 +124,13 @@
         </div>
 -->
         <div class="bank-support row">
-            <h5>Toss 결제는 아래 은행 계좌를 지원합니다.</h5>
+            <h5>Toss 결제는 아래 은행/증권사 계좌를 지원합니다.</h5>
             <div class="bank-list col-md-6 col-md-offset-3">
                 <span>우리</span><span>KB국민</span><span>NH농협</span><span>신한</span><span>KEB하나</span><span>IBK기업</span><span>부산</span><span>경남</span><span>우체국</span><span>광주</span><span>전북</span><span>MG새마을금고</span><span>신협</span><span>SC제일</span><span>대구</span><span>KDB산업</span><span>제주</span><span>수협</span>
+                <hr><span>키움</span><span>삼성</span><span>대신</span><span>NH투자</span><span>신한금융투자</span><span>메리츠종금</span><span>유진투자</span>
             </div>
         </div>
-<!--
+        <!--
         <div class="inquiry">
             <h5>궁금한 것은 무엇이든 물어보세요!</h5>
             <a href="mailto:support-pay@toss.im">support-pay@toss.im</a>
@@ -137,7 +145,7 @@
             </ul>
         </div>
     </footer>
-    
+
     <!-- 가입 문의 modal -->
     <div id="modal-inquire" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -184,8 +192,9 @@
         </div>
     </div>
     <script type="text/javascript">
-        $( "#signup-request" ).click(function() {
+        $("#signup-request").click(function() {
             $("#utm-param").val(window.location.href);
         });
+
     </script>
 </body>
