@@ -13,7 +13,7 @@ public class TossConstants {
     /**
      * 토스 결제 HOME URL
      */
-    private static final String TOSS_PAY_HOME = "https://toss.im/tosspay";
+    private static final String TOSS_PAY_HOME = "https://pay.toss.im/tosspay";
 
     /**
      * 토스 결제 주문 HOME URL

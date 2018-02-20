@@ -149,7 +149,7 @@
                     <p>물건을 구매하려는 손님에게 어떻게 돈을 받을지 고민하던 당신, 여러 결제 서비스를 보며 고민하다가 개발이 쉽고 손님들도 편하게 쓸 수 있는 '토스 결제 서비스'를 써보기로 합니다.</p>
 
                     <h4 id="overview-1">1. 토스 가맹점 계정을 만듭니다.</h4>
-                    <p>먼저 <a href="https://toss.im/pay" target="_blank">가입 문의</a>를 통해 가맹점 가입을 신청합니다. 가입 승인이 완료되면 가맹점 계정이 발급되고, <a href="https://toss.im/tosspay/" target="_blank">가맹점 관리자</a>에 로그인하여 상점을 등록할 수 있습니다.</p>
+                    <p>먼저 <a href="https://pay.toss.im/pay" target="_blank">가입 문의</a>를 통해 가맹점 가입을 신청합니다. 가입 승인이 완료되면 가맹점 계정이 발급되고, <a href="https://pay.toss.im/tosspay/" target="_blank">가맹점 관리자</a>에 로그인하여 상점을 등록할 수 있습니다.</p>
                     <p>당신은 안내에 따라 정보를 입력하고 상점 '토스몰 (가칭)'을 생성합니다. 생성이 완료되면 상점 '토스몰'의 <strong>API Key가 발급됩니다.</strong> (발급받은 API Key는 '가맹점 관리자 > 상점 정보'에서 확인할 수 있습니다)</p>
                     <p>발급된 상점 API Key는 결제 생성 / 환불 등 모든 거래에서 인증 수단으로 활용합니다.</p>
                     <div class="alert alert-warning" role="alert">
@@ -170,7 +170,7 @@
                     <div class="well">
                         결제 생성 API Endpoint
                         <br>
-                        <strong>POST https://toss.im/tosspay/api/v1/payments</strong></div>
+                        <strong>POST https://pay.toss.im/tosspay/api/v1/payments</strong></div>
                     <p>'홍길동'씨의 결제는 아래와 같이 요청합니다.</p>
                     <div class="method-example">
                         <div class="languages">
@@ -178,7 +178,7 @@
                             <a class="language" data-lang="language-java" href="#">Java</a>
                             <a class="language" data-lang="language-php" href="#">PHP</a>
                         </div>
-                        <pre><code class="language-bash">curl https://toss.im/tosspay/api/v1/payments \
+                        <pre><code class="language-bash">curl https://pay.toss.im/tosspay/api/v1/payments \
 -H "content-Type: application/json" \
 -d '{
 "orderNo":"1",
@@ -191,7 +191,7 @@
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-url = new URL("https://toss.im/tosspay/api/v1/payments");
+url = new URL("https://pay.toss.im/tosspay/api/v1/payments");
 connection = url.openConnection();
 connection.addRequestProperty("Content-Type", "application/json");
 connection.setDoOutput(true);
@@ -228,7 +228,7 @@ $arrayBody["autoExecute"] = false;
 $arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://toss.im/tosspay/api/v1/payments');
+$ch = curl_init('https://pay.toss.im/tosspay/api/v1/payments');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -259,7 +259,7 @@ echo "Response: ".$result;</code></pre>
                     </div>
                     <p>요청하신 결제 생성이 무사히 완료되면, 토스는 아래와 같이 응답합니다.</p>
                     <div class="method-example">
-                        <pre><code class="always-visible language-bash">{"code":0,"checkoutPage":"https://toss.im/tosspay/order/orderWait?payToken=test_token1234567890a
+                        <pre><code class="always-visible language-bash">{"code":0,"checkoutPage":"https://pay.toss.im/tosspay/order/orderWait?payToken=test_token1234567890a
 &retUrl=http://YOUR-SITE.COM/ORDER-CHECK","payToken":"test_token1234567890a"}</code></pre>
                     </div>
                     <p><span class="bg-info">code '0'</span>은 결제 생성에 '성공'했음을 나타냅니다.</p>
@@ -269,7 +269,7 @@ echo "Response: ".$result;</code></pre>
                     <p>Toss 결제 진행은 간단합니다. 결제 생성 시 응답으로 받은 <span class="bg-info">'checkoutPage'</span> URL로 구매자를 보내주시기만 하면 됩니다.</p>
                     <p>위 예제의 checkoutPage는 아래와 같습니다. (매 결제마다 다른 URL이 발급됩니다)</p>
                     <div class="method-example">
-                        <pre class=" language-http"><code class="always-visible  language-http">https://toss.im/tosspay/order/orderWait?payToken=test_token1234567890a
+                        <pre class=" language-http"><code class="always-visible  language-http">https://pay.toss.im/tosspay/order/orderWait?payToken=test_token1234567890a
 &amp;retUrl=http://YOUR-SITE.COM/ORDER-CHECK</code></pre>
                     </div>
                     <p>그 후, 결제 승인까지의 모든 과정은 토스가 알아서 해드립니다. (결제에 사용할 계좌번호를 받고, 계좌의 유효성을 검증하고, 계좌의 주인인지 철저히 알아보는 등...)</p>
@@ -281,7 +281,7 @@ echo "Response: ".$result;</code></pre>
                         1. <strong>홍길동님이 토스 결제를 처음 만났다면</strong> : 사용할 계좌를 등록하고, 결제 시 사용할 암호를 등록한 후 결제 완료 (액티브X나 앱설치가 필요 없습니다)
                         <br> 2. <strong>홍길동님이 토스 결제를 써봤다면</strong> : 전화번호와 암호를 입력하면 결제 완료 (보안상 필요 시 ARS 인증을 거칩니다)
                         <br>
-                        <br> 직접 경험해보고 싶으시다면... <a href="https://toss.im/payfront/demo" target="_blank">&gt;&gt; 결제 데모 페이지 바로가기</a>
+                        <br> 직접 경험해보고 싶으시다면... <a href="https://pay.toss.im/payfront/demo" target="_blank">&gt;&gt; 결제 데모 페이지 바로가기</a>
                     </div>
                     <h4 id="overview-4">4. 구매자 승인 완료</h4>
                     <p>
@@ -303,7 +303,7 @@ echo "Response: ".$result;</code></pre>
                     <div class="well">
                         결제 승인 API Endpoint
                         <br>
-                        <strong>POST https://toss.im/tosspay/api/v1/execute</strong>
+                        <strong>POST https://pay.toss.im/tosspay/api/v1/execute</strong>
                     </div>
                     <p>결제 승인 요청은 아래와 같이 '상점 API key'와 'payToken'값을 담아 보냅니다.</p>
                     <div class="method-example">
@@ -312,7 +312,7 @@ echo "Response: ".$result;</code></pre>
                             <a class="language" data-lang="language-java" href="#">Java</a>
                             <a class="language" data-lang="language-php" href="#">PHP</a>
                         </div>
-                        <pre><code class="language-bash">curl https://toss.im/tosspay/api/v1/execute \
+                        <pre><code class="language-bash">curl https://pay.toss.im/tosspay/api/v1/execute \
 -H "content-Type: application/json" \
 -d '{
 "apiKey":"sk_test_apikey1234567890a",
@@ -321,7 +321,7 @@ echo "Response: ".$result;</code></pre>
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-url = new URL("https://toss.im/tosspay/api/v1/execute");
+url = new URL("https://pay.toss.im/tosspay/api/v1/execute");
 connection = url.openConnection();
 connection.addRequestProperty("Content-Type", "application/json");
 connection.setDoOutput(true);
@@ -350,7 +350,7 @@ $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $arrayBody["payToken"] = "test_token1234567890a";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://toss.im/tosspay/api/v1/execute');
+$ch = curl_init('https://pay.toss.im/tosspay/api/v1/execute');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -395,7 +395,7 @@ echo "Response: ".$result;</code></pre>
                         <div class="languages">
                             <a class="language selected" data-lang="language-bash" href="#">curl</a>
                         </div>
-                        <pre><code class="language-bash">curl https://toss.im/tosspay/api/v1/payments \
+                        <pre><code class="language-bash">curl https://pay.toss.im/tosspay/api/v1/payments \
 -H "content-Type: application/json" \
 -d '{
 "orderNo":"1",                                           # 토스몰 고유의 주문번호 (필수)
@@ -415,7 +415,7 @@ echo "Response: ".$result;</code></pre>
 }'</code></pre>
                     </div>
                     <h4 id="create-1">결제 생성 API의 Endpoint</h4>
-                    <div class="well">POST https://toss.im/tosspay/api/v1/payments</div>
+                    <div class="well">POST https://pay.toss.im/tosspay/api/v1/payments</div>
                     <h4 id="create-2">필수 Parameters</h4>
                     <p>결제 생성 요청 시 반드시 아래 4가지 값을 함께 보내주셔야합니다.</p>
                     <ol>
@@ -531,7 +531,7 @@ echo "Response: ".$result;</code></pre>
                         <div class="languages">
                             <a class="language selected" data-lang="language-bash" href="#">curl</a>
                         </div>
-                        <pre><code class="language-bash">curl "https://toss.im/tosspay/api/v1/execute" \
+                        <pre><code class="language-bash">curl "https://pay.toss.im/tosspay/api/v1/execute" \
 -H "content-Type: application/json" \
 -d '{
 "apiKey":"sk_test_apikey1234567890a",    # 상점의 API Key (필수)
@@ -542,7 +542,7 @@ echo "Response: ".$result;</code></pre>
 </code></pre>
                     </div>
                     <h4 id="execute-1">결제 승인 API의 Endpoint</h4>
-                    <div class="well">POST https://toss.im/tosspay/api/v1/execute</div>
+                    <div class="well">POST https://pay.toss.im/tosspay/api/v1/execute</div>
                     <h4 id="execute-2">필수 Parameters</h4>
                     <p>필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 최종 승인할지 알려주세요!</p>
                     <ol>
@@ -561,7 +561,7 @@ echo "Response: ".$result;</code></pre>
                         <div class="languages">
                             <a class="language selected" data-lang="language-bash" href="#">curl</a>
                         </div>
-                        <pre><code class="language-bash">curl "https://toss.im/tosspay/api/v1/cancel" \
+                        <pre><code class="language-bash">curl "https://pay.toss.im/tosspay/api/v1/cancel" \
 -H "content-Type: application/json" \
 -d '{
 "apiKey":"sk_test_apikey1234567890a",    # 상점의 API Key (필수)
@@ -571,7 +571,7 @@ echo "Response: ".$result;</code></pre>
 </code></pre>
                     </div>
                     <h4 id="cancel-1">결제 취소 API의 Endpoint</h4>
-                    <div class="well">POST https://toss.im/tosspay/api/v1/cancel</div>
+                    <div class="well">POST https://pay.toss.im/tosspay/api/v1/cancel</div>
                     <h4 id="cancel-2">필수 Parameters</h4>
                     <p>필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 취소하는지만 알려주세요!</p>
                     <ol>
@@ -593,7 +593,7 @@ echo "Response: ".$result;</code></pre>
                         <div class="languages">
                             <a class="language selected" data-lang="language-bash" href="#">curl</a>
                         </div>
-                        <pre><code class="language-bash">curl "https://toss.im/tosspay/api/v1/refunds" \
+                        <pre><code class="language-bash">curl "https://pay.toss.im/tosspay/api/v1/refunds" \
 -H "content-Type: application/json" \
 -d '{
 "apiKey":"sk_test_apikey1234567890a",    # 상점의 API Key (필수)
@@ -607,7 +607,7 @@ echo "Response: ".$result;</code></pre>
 </code></pre>
                     </div>
                     <h4 id="refund-1">결제 환불 API의 Endpoint</h4>
-                    <div class="well">POST https://toss.im/tosspay/api/v1/refunds</div>
+                    <div class="well">POST https://pay.toss.im/tosspay/api/v1/refunds</div>
                     <h4 id="refund-2">필수 Parameters</h4>
                     <p>'결제 취소'와 마찬가지로 필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 환불하는지만 알려주세요!</p>
                     <ol>
@@ -637,7 +637,7 @@ echo "Response: ".$result;</code></pre>
                         <div class="languages">
                             <a class="language selected" data-lang="language-bash" href="#">curl</a>
                         </div>
-                        <pre><code class="language-bash">curl "https://toss.im/tosspay/api/v1/status" \
+                        <pre><code class="language-bash">curl "https://pay.toss.im/tosspay/api/v1/status" \
 -H "content-Type: application/json" \
 -d '{
 "apiKey":"sk_test_apikey1234567890a",    # 상점의 API Key (필수)
@@ -646,7 +646,7 @@ echo "Response: ".$result;</code></pre>
 </code></pre>
                     </div>
                     <h4 id="checkstatus-1">결제 상태 확인 API의 Endpoint</h4>
-                    <div class="well">POST https://toss.im/tosspay/api/v1/status</div>
+                    <div class="well">POST https://pay.toss.im/tosspay/api/v1/status</div>
                     <h4 id="checkstatus-2">필수 Parameters</h4>
                     <p>필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 일어난 '어떤 결제건'을 조회하고 싶은지 알려주세요.</p>
                     <ol>
@@ -760,7 +760,7 @@ echo "Response: ".$result;</code></pre>
                         <div class="languages">
                             <a class="language selected" data-lang="language-bash" href="#">curl</a>
                         </div>
-                        <pre><code class="language-bash">curl "https://toss.im/tosspay/api/v1/escrow" \
+                        <pre><code class="language-bash">curl "https://pay.toss.im/tosspay/api/v1/escrow" \
 -H "content-Type: application/json" \
 -d '{
 "payToken":"test_token1234567890a",                  # 결제 고유 번호
@@ -773,7 +773,7 @@ echo "Response: ".$result;</code></pre>
                         <li>'구매자 지급 거부' 상태인 결제 건에 대해 위 요청을 보내면 '구매확정 재요청' 처리됩니다.</li>
                     </ul>
                     <h4 id="escrow-1">에스크로 결제 진행 API의 Endpoint</h4>
-                    <div class="well">POST https://toss.im/tosspay/api/v1/escrow</div>
+                    <div class="well">POST https://pay.toss.im/tosspay/api/v1/escrow</div>
                     <h4 id="escrow-2">필수 Parameters</h4>
                     <ol>
                         <li><strong>상점 API Key</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>

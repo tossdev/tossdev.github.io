@@ -79,7 +79,7 @@
 #warning TODO - TossAPIKey에 Toss 가맹점 페이지에서 발급한 Test API Key를 입력하세요.
     static NSString * const TossAPIKey = @"YOUR_TEST_API_KEY";
 
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:@"https://toss.im/tosspay/api/v1/payments"]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:@"https://pay.toss.im/tosspay/api/v1/payments"]];
 
     NSDictionary *params = @{@"orderNo" : [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]], // orderNo는 매 결제건마다 고유한 값이어야 함. Example에서는 시간을 이용
                              @"amount" : [NSNumber numberWithInt:amount],
