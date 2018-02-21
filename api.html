@@ -521,7 +521,7 @@
                                     (POST)
                                 </div>
                                 <div class="desc">
-                                    https://pay.toss.im/tosspay/api/v1/payments
+                                    https://pay.toss.im/api/v1/payments
                                 </div>
                             </div>
                         </div>
@@ -876,9 +876,9 @@
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/tosspay/api/v1/payments</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/payments</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl https://pay.toss.im/tosspay/api/v1/payments \
+                        <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/payments \
     -H "content-Type: application/json" \
     -d '{
         "orderNo":"2015072012211",
@@ -889,7 +889,7 @@
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-	url = new URL("https://pay.toss.im/tosspay/api/v1/payments");
+	url = new URL("https://pay.toss.im/api/v1/payments");
 	connection = url.openConnection();
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
@@ -926,7 +926,7 @@ $arrayBody["expiredTime"] = "2015-07-20 16:21:00";
 $arrayBody["resultCallback"] = "https://myshop.com/toss/result.php";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://pay.toss.im/tosspay/api/v1/payments');
+$ch = curl_init('https://pay.toss.im/api/v1/payments');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -947,7 +947,7 @@ data = data & "&amount=10000"
 data = data & "&productDesc=ASPtestProduct"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/tosspay/api/v1/payments", False
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/payments", False
 httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
 httpRequest.Send data
 
@@ -955,7 +955,7 @@ postResponse = httpRequest.ResponseText
 
 Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
 
-url = "https://pay.toss.im/tosspay/api/v1/payments"
+url = "https://pay.toss.im/api/v1/payments"
 params = {
     "orderNo": "2015072012211",
     "amount": 10000,
@@ -969,7 +969,7 @@ response = urllib.urlopen(url, urllib.urlencode(params))
 print(response.read())</code><code class="ruby language-ruby">require 'net/http'
 require 'json'
 
-uri = URI.parse("https://pay.toss.im/tosspay/api/v1/payments")
+uri = URI.parse("https://pay.toss.im/api/v1/payments")
 
 params = {
         "orderNo" => "2015072012211", 
@@ -1011,7 +1011,7 @@ p JSON.parse(response.body)</code></pre>
                                     (POST)
                                 </div>
                                 <div class="desc">
-                                    https://pay.toss.im/tosspay/api/v1/execute
+                                    https://pay.toss.im/api/v1/execute
                                 </div>
                             </div>
                         </div>
@@ -1124,9 +1124,9 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/tosspay/api/v1/execute</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/execute</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl "https://pay.toss.im/tosspay/api/v1/execute" \
+                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/execute" \
     -H "content-Type: application/json" \
     -d '{
         "payToken":"test_token1234567890a",
@@ -1135,7 +1135,7 @@ p JSON.parse(response.body)</code></pre>
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-	url = new URL("https://pay.toss.im/tosspay/api/v1/execute");
+	url = new URL("https://pay.toss.im/api/v1/execute");
 	connection = url.openConnection();
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
@@ -1164,7 +1164,7 @@ $arrayBody["payToken"] = "test_token1234567890a";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://pay.toss.im/tosspay/api/v1/execute');
+$ch = curl_init('https://pay.toss.im/api/v1/execute');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -1183,7 +1183,7 @@ data = "apiKey=sk_test_apikey1234567890a"
 data = data & "&payToken=test_token1234567890a"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/tosspay/api/v1/execute", False
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/execute", False
 httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
 httpRequest.Send data
 
@@ -1191,7 +1191,7 @@ postResponse = httpRequest.ResponseText
 
 Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
 
-url = "https://pay.toss.im/tosspay/api/v1/execute"
+url = "https://pay.toss.im/api/v1/execute"
 params = {
     "payToken": "test_token1234567890a",
     "apiKey": "sk_test_apikey1234567890a"
@@ -1201,7 +1201,7 @@ response = urllib.urlopen(url, urllib.urlencode(params))
 print(response.read())</code><code class="ruby language-ruby">require 'net/http'
 require 'json'
 
-uri = URI.parse("https://pay.toss.im/tosspay/api/v1/execute")
+uri = URI.parse("https://pay.toss.im/api/v1/execute")
 
 params = {
         "payToken" => "test_token1234567890a", 
@@ -1236,7 +1236,7 @@ p JSON.parse(response.body)</code></pre>
                                     (POST)
                                 </div>
                                 <div class="desc">
-                                    https://pay.toss.im/tosspay/api/v1/cancel
+                                    https://pay.toss.im/api/v1/cancel
                                 </div>
                             </div>
                         </div>
@@ -1314,9 +1314,9 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/tosspay/api/v1/cancel</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/cancel</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl "https://pay.toss.im/tosspay/api/v1/cancel" \
+                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/cancel" \
     -H "content-Type: application/json" \
     -d '{
         "payToken":"test_token1234567890a",
@@ -1325,7 +1325,7 @@ p JSON.parse(response.body)</code></pre>
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-	url = new URL("https://pay.toss.im/tosspay/api/v1/cancel");
+	url = new URL("https://pay.toss.im/api/v1/cancel");
 	connection = url.openConnection();
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
@@ -1356,7 +1356,7 @@ $arrayBody["reason"] = "재고 부족";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://pay.toss.im/tosspay/api/v1/cancel');
+$ch = curl_init('https://pay.toss.im/api/v1/cancel');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -1376,7 +1376,7 @@ data = data & "&payToken=test_token1234567890a"
 data = data & "&reason=SoldOut"
 ​
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/tosspay/api/v1/cancel", False
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/cancel", False
 httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
 httpRequest.Send data
 ​
@@ -1385,7 +1385,7 @@ postResponse = httpRequest.ResponseText
 Response.Write postResponse
 </code><code class="python language-python">import urllib, urllib2
 
-url = "https://pay.toss.im/tosspay/api/v1/cancel"
+url = "https://pay.toss.im/api/v1/cancel"
 params = {
     "payToken": "test_token1234567890a",
     "reason":"재고 부족",
@@ -1396,7 +1396,7 @@ response = urllib.urlopen(url, urllib.urlencode(params))
 print(response.read())</code><code class="ruby language-ruby">require 'net/http'
 require 'json'
 
-uri = URI.parse("https://pay.toss.im/tosspay/api/v1/cancel")
+uri = URI.parse("https://pay.toss.im/api/v1/cancel")
 
 params = {
         "payToken" => "test_token1234567890a", 
@@ -1432,7 +1432,7 @@ p JSON.parse(response.body)</code></pre>
                                     (POST)
                                 </div>
                                 <div class="desc">
-                                    https://pay.toss.im/tosspay/api/v1/refunds
+                                    https://pay.toss.im/api/v1/refunds
                                 </div>
                             </div>
                         </div>
@@ -1606,9 +1606,9 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/tosspay/api/v1/refunds</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/refunds</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl "https://pay.toss.im/tosspay/api/v1/refunds" \
+                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/refunds" \
     -H "content-Type: application/json" \
     -d '{
         "payToken":"test_token1234567890a",
@@ -1617,7 +1617,7 @@ p JSON.parse(response.body)</code></pre>
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-	url = new URL("https://pay.toss.im/tosspay/api/v1/refunds");
+	url = new URL("https://pay.toss.im/api/v1/refunds");
 	connection = url.openConnection();
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
@@ -1648,7 +1648,7 @@ $arrayBody["amount"] = 5000;
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://pay.toss.im/tosspay/api/v1/refunds');
+$ch = curl_init('https://pay.toss.im/api/v1/refunds');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -1668,7 +1668,7 @@ data = data & "&payToken=test_token1234567890a"
 data = data & "&amount=1000"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/tosspay/api/v1/refunds", False
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/refunds", False
 httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
 httpRequest.Send data
 
@@ -1676,7 +1676,7 @@ postResponse = httpRequest.ResponseText
 
 Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
 
-url = "https://pay.toss.im/tosspay/api/v1/refunds"
+url = "https://pay.toss.im/api/v1/refunds"
 params = {
     "payToken": "test_token1234567890a",
     "amount": 5000,
@@ -1687,7 +1687,7 @@ response = urllib.urlopen(url, urllib.urlencode(params))
 print(response.read())</code><code class="ruby language-ruby">require 'net/http'
 require 'json'
 
-uri = URI.parse("https://pay.toss.im/tosspay/api/v1/refunds")
+uri = URI.parse("https://pay.toss.im/api/v1/refunds")
 
 params = {
         "payToken" => "test_token1234567890a", 
@@ -1722,7 +1722,7 @@ p JSON.parse(response.body)</code></pre>
                                     (POST)
                                 </div>
                                 <div class="desc">
-                                    https://pay.toss.im/tosspay/api/v1/status
+                                    https://pay.toss.im/api/v1/status
                                 </div>
                             </div>
                         </div>
@@ -2012,9 +2012,9 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/tosspay/api/v1/status</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/status</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl "https://pay.toss.im/tosspay/api/v1/status" \
+                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/status" \
     -H "content-Type: application/json" \
     -d '{
         "payToken":"test_token1234567890a",
@@ -2023,7 +2023,7 @@ p JSON.parse(response.body)</code></pre>
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-	url = new URL("https://pay.toss.im/tosspay/api/v1/status");
+	url = new URL("https://pay.toss.im/api/v1/status");
 	connection = url.openConnection();
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
@@ -2052,7 +2052,7 @@ $arrayBody["orderNo"] = "2015072012211";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $jsonBody = json_encode($arrayBody);
 // echo "Request: ".$request."<br>";
-$ch = curl_init('https://pay.toss.im/tosspay/api/v1/status');
+$ch = curl_init('https://pay.toss.im/api/v1/status');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -2071,7 +2071,7 @@ data = "apiKey=sk_test_apikey1234567890a"
 data = data & "&orderNo=2015072012211"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/tosspay/api/v1/status", False
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/status", False
 httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
 httpRequest.Send data
 
@@ -2079,7 +2079,7 @@ postResponse = httpRequest.ResponseText
 
 Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
 
-url = "https://pay.toss.im/tosspay/api/v1/status"
+url = "https://pay.toss.im/api/v1/status"
 params = {
     "orderNo": "2015072012211",
     "apiKey": "sk_test_apikey1234567890a"
@@ -2089,7 +2089,7 @@ response = urllib.urlopen(url, urllib.urlencode(params))
 print(response.read())</code><code class="ruby language-ruby">require 'net/http'
 require 'json'
 
-uri = URI.parse("https://pay.toss.im/tosspay/api/v1/status")
+uri = URI.parse("https://pay.toss.im/api/v1/status")
 
 params = {
         "orderNo" => "2015072012211",
@@ -2166,7 +2166,7 @@ p JSON.parse(response.body)</code></pre>
                                     (GET)
                                 </div>
                                 <div class="desc">
-                                    https://pay.toss.im/tosspay/api/v1/refunds/{refundNo}
+                                    https://pay.toss.im/api/v1/refunds/{refundNo}
                                 </div>
                             </div>
                         </div>
@@ -2235,22 +2235,22 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">GET https://pay.toss.im/tosspay/api/v1/refunds/{refundNo}</code></pre>
+                        <pre><code class="language-bash always-visible">GET https://pay.toss.im/api/v1/refunds/{refundNo}</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="curl language-bash">curl -X GET \
-  'https://pay.toss.im/tosspay/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890a' \
+  'https://pay.toss.im/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890a' \
   -H 'content-type: application/json'</code><code class="java language-java">OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\n    \"apiKey\":\"sk_test_LY5kmjV2l7LY5kmjV2l7\"\n}");
 Request request = new Request.Builder()
-  .url("https://pay.toss.im/tosspay/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890a")
+  .url("https://pay.toss.im/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890a")
   .get()
   .addHeader("content-type", "application/json")
   .build();
 
 Response response = client.newCall(request).execute();</code><code class="php language-php">$request = new HttpRequest();
-$request->setUrl('https://pay.toss.im/tosspay/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e');
+$request->setUrl('https://pay.toss.im/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e');
 $request->setMethod(HTTP_METH_GET);
 
 $request->setQueryData(array(
@@ -2289,7 +2289,7 @@ data = res.read()
 print(data.decode("utf-8"))</code><code class="ruby language-ruby">require 'uri'
 require 'net/http'
 
-url = URI("https://pay.toss.im/tosspay/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890a")
+url = URI("https://pay.toss.im/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890a")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -2336,7 +2336,7 @@ puts response.read_body</code></pre>
                                     (POST)
                                 </div>
                                 <div class="desc">
-                                    https://pay.toss.im/tosspay/api/v1/escrow
+                                    https://pay.toss.im/api/v1/escrow
                                 </div>
                             </div>
                         </div>
@@ -2405,9 +2405,9 @@ puts response.read_body</code></pre>
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/tosspay/api/v1/escrow</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/escrow</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl "https://pay.toss.im/tosspay/api/v1/escrow" \
+                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/escrow" \
     -H "content-Type: application/json" \
     -d '{
     "payToken":"test_token1234567890a",
@@ -2416,7 +2416,7 @@ puts response.read_body</code></pre>
     URLConnection connection = null;
     StringBuilder responseBody = new StringBuilder();
     try {
-    url = new URL("https://pay.toss.im/tosspay/api/v1/escrow");
+    url = new URL("https://pay.toss.im/api/v1/escrow");
     connection = url.openConnection();
     connection.addRequestProperty("Content-Type", "application/json");
     connection.setDoOutput(true);
@@ -2445,7 +2445,7 @@ puts response.read_body</code></pre>
     $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
     $jsonBody = json_encode($arrayBody);
 
-    $ch = curl_init('https://pay.toss.im/tosspay/api/v1/escrow');
+    $ch = curl_init('https://pay.toss.im/api/v1/escrow');
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
