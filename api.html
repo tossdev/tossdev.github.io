@@ -621,9 +621,10 @@
                                 <div class="key">
                                     amountTaxFree
                                     <span class="type">Integer</span>
+                                    <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액 중 비과세금액 (복합과세)
+                                    결제 금액 중 비과세금액 (복합과세), 없으면 0으로 설정
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -678,9 +679,10 @@
                                 <div class="key">
                                     cashReceipt
                                     <span class="type">boolean</span>
+                                    <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    현금영수증 발급 가능 여부 (기본값 true)
+                                    현금영수증 발급 가능 여부 
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -758,6 +760,15 @@
                                 </div>
                                 <div class="desc">
                                     결제와 연관된 추가 데이터
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    retCancelUrl
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    토스 브릿지 페이지에서 사용자가 결제를 중단할때 사용자를 이동시킬 가맹점 페이지
                                 </div>
                             </div>
                         </div>
@@ -901,6 +912,7 @@ try {
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("orderNo", "2015072012211");
 	jsonBody.put("amount", 10000);
+	jsonBody.put("amountTaxFree", 0);
 	jsonBody.put("productDesc", "테스트 결제");
 	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
 	jsonBody.put("expiredTime", "2015-07-20 16:21:00");
@@ -923,6 +935,7 @@ try {
 System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
 $arrayBody["orderNo"] = "2015072012211";
 $arrayBody["amount"] = 10000;
+$arrayBody["amountTaxFree"] = 0;
 $arrayBody["productDesc"] = "테스트 결제";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $arrayBody["expiredTime"] = "2015-07-20 16:21:00";
@@ -947,6 +960,7 @@ echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, 
 data = "apiKey=sk_test_apikey1234567890a"
 data = data & "&orderNo=2015072012211"
 data = data & "&amount=10000"
+data = data & "&amountTaxFree=0"
 data = data & "&productDesc=ASPtestProduct"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
@@ -962,6 +976,7 @@ url = "https://pay.toss.im/api/v1/payments"
 params = {
     "orderNo": "2015072012211",
     "amount": 10000,
+    "amountTaxFree": 0,
     "productDesc":"테스트 결제",
     "apiKey": "sk_test_apikey1234567890a",
     "expiredTime":"2015-07-20 16:21:00",
@@ -977,6 +992,7 @@ uri = URI.parse("https://pay.toss.im/api/v1/payments")
 params = {
         "orderNo" => "2015072012211", 
         "amount"=> 10000,
+        "amountTaxFree"=> 0,
         "productDesc" => "테스트 결제",
         "apiKey" => "sk_test_apikey1234567890a",
         "expiredTime" => "2015-07-20 16:21:00",
@@ -1488,6 +1504,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     amount
                                     <span class="type">Integer</span>
+                                    <span class="required"></span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액
@@ -1503,18 +1520,18 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     환불할 금액 중 과세금액
                                     <br />
-                                    <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxFree
                                     <span class="type">Integer</span>
+                                    <span class="required"></span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액 중 비과세금액
                                     <br />
-                                    <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
+                                    <span class="text-muted">환불할 금액중 비과세 금액, 없으면 0으로 설정</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1525,7 +1542,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     환불할 금액 중 부가세
                                     <br />
-                                    <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
+                                    <span class="text-muted">값이 없으면 환불할 과세금액을 11로 나눈 후 소수점 첫째 자리에서 올림</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1536,7 +1553,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     환불할 금액 중 봉사료
                                     <br />
-                                    <span class="text-muted">결제 생성 시 복합과세 설정한 경우에만 입력 가능</span>
+                                    <span class="text-muted">결제 생성 시 봉사료 설정한 경우에만 입력 가능</span>
                                 </div>
                             </div>
                         </div>

@@ -183,6 +183,7 @@
 -d '{
 "orderNo":"1",
 "amount":35000,
+"amountTaxFree":0,
 "productDesc":"토스티셔츠",
 "apiKey":"sk_test_apikey1234567890a",
 "autoExecute":false,
@@ -199,7 +200,8 @@ connection.setDoInput(true);
 
 org.json.simple.JSONObject jsonBody = new JSONObject();
 jsonBody.put("orderNo", "2015072012211");
-jsonBody.put("amount", 10000);
+jsonBody.put("amount", 35000);
+jsonBody.put("amountTaxFree", 0);
 jsonBody.put("productDesc", "토스티셔츠");
 jsonBody.put("apiKey", "sk_test_apikey1234567890a");
 jsonBody.put("autoExecute", false);
@@ -222,6 +224,7 @@ responseBody.append(e);
 System.out.println(responseBody.toString());</code><code class="language-php">$arrayBody = array();
 $arrayBody["orderNo"] = "2015072012211";
 $arrayBody["amount"] = 10000;
+$arrayBody["amountTaxFree"] = 0;
 $arrayBody["productDesc"] = "토스티셔츠";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890a";
 $arrayBody["autoExecute"] = false;
@@ -243,10 +246,11 @@ curl_close($ch);
 
 echo "Response: ".$result;</code></pre>
                     </div>
-                    <p>위 예제에서 알 수 있듯이 '결제 생성'을 위해서는 6가지 설정값을 담아 토스에 요청해야합니다.</p>
+                    <p>위 예제에서 알 수 있듯이 '결제 생성'을 위해서는 7가지 설정값을 담아 토스에 요청해야합니다.</p>
                     <ol>
                         <li><strong>orderNo (상점 주문번호)</strong> : 추후 상점 주문 정보와 결제 정보를 매칭하기 위해 필요</li>
                         <li><strong>amount (결제 금액)</strong> : 손님으로부터 받을 금액</li>
+                        <li><strong>amountTaxFree (비과세 금액)</strong> : 손님으로부터 받을 금액중 비과세 금액</li>
                         <li><strong>productDesc (상품 정보)</strong> : 결제할 상품에 대한 정보 (상품명)</li>
                         <li><strong>apiKey (상점 API Key)</strong> : 이곳에 '테스트용 Key'를 넣으면 테스트 결제가, '실거래용 Key'를 넣으면 진짜 출금되는 결제가 생성됩니다.</li>
                         <li><strong>autoExecute (자동 승인 설정)</strong> : false로 설정할 것을 권장합니다. 이 값을 true로 설정할 경우, 가맹점의 최종 승인 과정 없이 결제가 자동 완료됩니다.</li>
@@ -400,6 +404,7 @@ echo "Response: ".$result;</code></pre>
 -d '{
 "orderNo":"1",                                           # 토스몰 고유의 주문번호 (필수)
 "amount":35000,                                          # 결제 금액 (필수)
+"amountTaxFree":0,                                       # 비과세 금액 (필수)
 "productDesc":"토스티셔츠",                                 # 상품 정보 (필수)
 "apiKey":"sk_test_apikey1234567890a",                    # 상점의 API Key (필수)
 "retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",   # 결제 완료 후 연결할 웹페이지 URL
@@ -417,10 +422,11 @@ echo "Response: ".$result;</code></pre>
                     <h4 id="create-1">결제 생성 API의 Endpoint</h4>
                     <div class="well">POST https://pay.toss.im/api/v1/payments</div>
                     <h4 id="create-2">필수 Parameters</h4>
-                    <p>결제 생성 요청 시 반드시 아래 4가지 값을 함께 보내주셔야합니다.</p>
+                    <p>결제 생성 요청 시 반드시 아래 5가지 값을 함께 보내주셔야합니다.</p>
                     <ol>
                         <li><strong>상점 주문번호</strong> : 추후 상점 주문 정보와 결제 정보를 매칭하기 위해 필요</li>
                         <li><strong>결제 금액</strong> : 손님으로부터 받을 금액</li>
+                        <li><strong>비과세 금액</strong> : 손님으로부터 받을 금액중 비과세 금액</li>
                         <li><strong>상품 정보</strong> : 결제할 상품에 대한 정보 (상품명)</li>
                         <li><strong>상점 API Key</strong> : 이곳에 '테스트용 Key'를 넣으면 테스트 결제가, '실거래용 Key'를 넣으면 진짜 출금되는 결제가 생성됩니다.</li>
                         <li><strong>구매자 승인 완료 후 연결할 URL</strong> : 구매자가 결제를 승인하면 이 파라미터를 통해 등록한 URL로 구매자를 보내드립니다. 일반적으로 구매 완료 페이지 또는 구매 완료 페이지로 연결할 수 있는 곳을 지정합니다.</li>
@@ -598,9 +604,9 @@ echo "Response: ".$result;</code></pre>
 -d '{
 "apiKey":"sk_test_apikey1234567890a",    # 상점의 API Key (필수)
 "payToken":"test_token1234567890a",                  # 결제 고유 번호 (필수)
-"amount":10000                              # 환불할 금액
+"amount":10000                              # 환불할 금액 (필수)
 "amountTaxable":5000,                       # 환불할 금액 중 과세금액
-"amountTaxFree":4000,                       # 환불할 금액 중 비과세금액
+"amountTaxFree":4000,                       # 환불할 금액 중 비과세금액 (필수)
 "amountVat":500,                            # 환불할 금액 중 부가세
 "amountServiceFee":500,                     # 환불할 금액 중 봉사료
 }'
@@ -609,10 +615,12 @@ echo "Response: ".$result;</code></pre>
                     <h4 id="refund-1">결제 환불 API의 Endpoint</h4>
                     <div class="well">POST https://pay.toss.im/api/v1/refunds</div>
                     <h4 id="refund-2">필수 Parameters</h4>
-                    <p>'결제 취소'와 마찬가지로 필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 환불하는지만 알려주세요!</p>
+                    <p>'결제 취소'와 필수 파라미터는 4가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 환불하는지만 알려주세요!</p>
                     <ol>
                         <li><strong>상점 API Key</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
                         <li><strong>결제 고유 토큰 (payToken)</strong> : 결제 생성 완료 후 받은 결제 고유번호</li>
+                        <li><strong>환불할 금액 (amount)</strong> : 환불 할 금액</li>
+                        <li><strong>환불할 비과세 금액 (amountTaxFree)</strong> : 환불할 금액중 비과세 금액</li>
                     </ol>
                     <h4 id="refund-3">환불할 금액</h4>
                     <p>
