@@ -287,6 +287,76 @@ echo "Response: ".$result;</code></pre>
                         <br>
                         <br> 직접 경험해보고 싶으시다면... <a href="https://pay.toss.im/payfront/demo" target="_blank">&gt;&gt; 결제 데모 페이지 바로가기</a>
                     </div>
+                    <div class="well">
+                      (선택 구현 사항)<br>앱내 웹뷰 연동 가이드
+                      사용자의 결제 승인을 위해 토스 앱을 띄우고자 하신다면 아래와 같은 구현이 필요합니다.<br>
+                      <strong>Android</strong>
+                      <ol>
+                        <li>App 설정에서 supertoss:// scheme을 허용 </li>
+                        <li>toss 결제 웹페이지 → 가맹점 native app 통신을 위한 javascript interface 구현 </li>
+                        <ul>
+                          <li>interface name: TossPaymentInterface</li>
+                          <li>method : checkTossAppInstall(string)</li>
+                          <li>
+                            <p>
+                            결제 브릿지페이지가 안드로이드 웹뷰에서 열렸을 경우 위의 인터페이스 method를 호출합니다.<br>
+                            위의 method를 호출하였을때의 기대하는 동작은 다음과 같습니다.<br>
+                            "supertoss://" 앱스킴을 가진 Toss 앱이 사용자의 device에 설치여부에 따라 다음 javascript 함수 호출 <br>
+                            <ul>
+                              <li> Toss 앱 설치: callbackOnTossIosInstalled() 호출 </li>
+                              <li> Toss 앱 미설치: callbackOnTossAppNotyet() 호출 </li>
+                            </ul>
+                            </p>
+                          </li>
+                        </ul>
+                      </ol>
+                      
+                      <strong>iOS</strong>
+                      <ol>
+                        <li>App 설정에서 supertoss:// scheme을 허용 </li>
+                        <li>toss 결제 웹페이지 → 가맹점 native app 통신을 위한 evaluate javascript interface 구현</li>
+                        <ul>
+                          <li> method:  checkTossAppInstalledHandler(string)</li>
+                          <li>
+                            <p>
+                            결제 브릿지페이지가 아이폰 앱의 웹뷰에서 열렸을 경우 위의 인터페이스 method를 호출합니다.<br>
+                            위의 method를 호출하였을때의 기대하는 동작은 다음과 같습니다.<br>
+                            "supertoss://" 앱스킴을 가진 Toss 앱이 사용자의 device에 설치여부에 따라 다음 javascript 함수 호출 <br>
+                            <ul>
+                              <li> Toss 앱 설치: callbackOnTossIosInstalled() 호출 </li>
+                              <li> Toss 앱 미설치: callbackOnTossAppNotyet() 호출 </li>
+                            </ul>
+                            </p>
+                          </li>
+                        </ul>
+                        <li> <a href="https://github.com/toss/ios-toss-pay-demo" target="_blank">Sample Project</a></li>
+                      </ol>
+
+                      <strong>공통 callback</strong>
+                      <ol>
+                        <li>
+                          가맹점 native app -> toss 결제 웹페이지 (토스 앱이 설치된 사용자)
+                          <ul>
+                            <li> method: callbackOnTossIosInstalled() </li>
+                            <li> 
+                              사용자의 mobile device에 토스 App이 설치되었을때 토스 앱을 띄우는 함수입니다. <br>
+                              해당 함수가 호출되면 supertoss:// 스킴을 이용해 새탭에서 앱을 여는 시도와 함께 결제 대기 페이지로 사용자를 이동시키게 됩니다.
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          가맹점 native app -> toss 결제 웹페이지 (토스 앱 미설치 사용자)
+                          <ul>
+                            <li> method: callbackOnTossAppNotyet()) </li>
+                            <li> 
+                              사용자의 mobile device에 토스 App이 미설치되어 있다고 판단한 경우 호출하는 함수입니다.
+                              이 함수를 호출할 경우 os에 맞는 마켓 설치 페이지 - 안드로이드는 플레이마켓, ios는 앱스토어 - 로 사용자를 이동시킵니다.
+                            </li>
+                          </ul>
+                        </li>
+                      </ol>
+                    </div>
+
                     <h4 id="overview-4">4. 구매자 승인 완료</h4>
                     <p>
                         아래 그림과 같이, 홍길동님이 결제 암호를 잘 입력하면 구매자 승인이 완료됩니다. 그러면 토스는 결제 생성 시 넘겨주신 <span class="bg-info">'retUrl'</span>로 홍길동님을 보내드립니다.
