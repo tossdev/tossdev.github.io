@@ -303,7 +303,7 @@ echo "Response: ".$result;</code></pre>
                             위의 method를 호출하였을때의 기대하는 동작은 다음과 같습니다.<br>
                             "supertoss://" 앱스킴을 가진 Toss 앱이 사용자의 device에 설치여부에 따라 다음 javascript 함수 호출 <br>
                             <ul>
-                              <li> Toss 앱 설치: callbackOnTossIosInstalled() 호출 </li>
+                              <li> Toss 앱 설치: callbackOnTossAppInstalled() 호출 </li>
                               <li> Toss 앱 미설치: callbackOnTossAppNotyet() 호출 </li>
                             </ul>
                             </p>
@@ -323,7 +323,7 @@ echo "Response: ".$result;</code></pre>
                             위의 method를 호출하였을때의 기대하는 동작은 다음과 같습니다.<br>
                             "supertoss://" 앱스킴을 가진 Toss 앱이 사용자의 device에 설치여부에 따라 다음 javascript 함수 호출 <br>
                             <ul>
-                              <li> Toss 앱 설치: callbackOnTossIosInstalled() 호출 </li>
+                              <li> Toss 앱 설치: callbackOnTossAppInstalled() 호출 </li>
                               <li> Toss 앱 미설치: callbackOnTossAppNotyet() 호출 </li>
                             </ul>
                             </p>
@@ -342,7 +342,7 @@ echo "Response: ".$result;</code></pre>
                         <li>
                           가맹점 native app -> toss 결제 웹페이지 (토스 앱이 설치된 사용자)
                           <ul>
-                            <li> method: callbackOnTossIosInstalled() </li>
+                            <li> method: callbackOnTossAppInstalled() </li>
                             <li> 
                               사용자의 mobile device에 토스 App이 설치되었을때 토스 앱을 띄우는 함수입니다. <br>
                               해당 함수가 호출되면 supertoss:// 스킴을 이용해 새탭에서 앱을 여는 시도와 함께 결제 대기 페이지로 사용자를 이동시키게 됩니다.
@@ -352,7 +352,7 @@ echo "Response: ".$result;</code></pre>
                         <li>
                           가맹점 native app -> toss 결제 웹페이지 (토스 앱 미설치 사용자)
                           <ul>
-                            <li> method: callbackOnTossAppNotyet()) </li>
+                            <li> method: callbackOnTossAppNotyet() </li>
                             <li> 
                               사용자의 mobile device에 토스 App이 미설치되어 있다고 판단한 경우 호출하는 함수입니다.
                               이 함수를 호출할 경우 os에 맞는 마켓 설치 페이지 - 안드로이드는 플레이마켓, ios는 앱스토어 - 로 사용자를 이동시킵니다.
