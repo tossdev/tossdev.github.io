@@ -893,7 +893,7 @@
                         <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/payments</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/payments \
-    -H "content-Type: application/json" \
+    -H "Content-Type: application/json" \
     -d '{
         "orderNo":"2015072012211",
         "amount":10000,
@@ -1148,7 +1148,7 @@ p JSON.parse(response.body)</code></pre>
                         <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/execute</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/execute" \
-    -H "content-Type: application/json" \
+    -H "Content-Type: application/json" \
     -d '{
         "payToken":"test_token1234567890a",
         "apiKey":"sk_test_apikey1234567890"
@@ -1339,7 +1339,7 @@ p JSON.parse(response.body)</code></pre>
                         <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/cancel</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/cancel" \
-    -H "content-Type: application/json" \
+    -H "Content-Type: application/json" \
     -d '{
         "payToken":"test_token1234567890a",
         "apiKey":"sk_test_apikey1234567890"
@@ -1633,7 +1633,7 @@ p JSON.parse(response.body)</code></pre>
                         <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/refunds</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/refunds" \
-    -H "content-Type: application/json" \
+    -H "Content-Type: application/json" \
     -d '{
         "payToken":"test_token1234567890a",
         "apiKey":"sk_test_apikey1234567890"
@@ -2040,7 +2040,7 @@ p JSON.parse(response.body)</code></pre>
                         <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/status</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/status" \
-    -H "content-Type: application/json" \
+    -H "Content-Type: application/json" \
     -d '{
         "payToken":"test_token1234567890a",
         "apiKey":"sk_test_apikey1234567890"
@@ -2435,7 +2435,7 @@ puts response.read_body</code></pre>
                         <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/escrow</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/escrow" \
-    -H "content-Type: application/json" \
+    -H "Content-Type: application/json" \
     -d '{
     "payToken":"test_token1234567890a",
     "apiKey":"sk_test_apikey1234567890"
