@@ -448,9 +448,9 @@
                         <pre><code class="language-bash always-visible">POST https://toss.im/pay/api/v1/settlementDetails</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="curl language-bash">curl https://toss.im/pay/api/v1/settlementDetails \
-    -H "content-Type: application/json" \
+    -H "Content-Type: application/json" \
     -d '{
-        "apiKey":"sk_test_apikey1234567890a",
+        "apiKey":"sk_test_apikey1234567890",
         "mode":"DUE",
         "date":"20160601",
         "type":"JSON"
@@ -465,7 +465,7 @@ try {
 	connection.setDoInput(true);
 	
 	org.json.simple.JSONObject jsonBody = new JSONObject();
-	jsonBody.put("apiKey", "sk_test_apikey1234567890a");
+	jsonBody.put("apiKey", "sk_test_apikey1234567890");
 	jsonBody.put("mode", "DUE");
     jsonBody.put("date", "20160601");
 	jsonBody.put("type", "JSON");
@@ -485,7 +485,7 @@ try {
 	responseBody.append(e);
 }
 System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
-$arrayBody["apiKey"] = "sk_test_apikey1234567890a";
+$arrayBody["apiKey"] = "sk_test_apikey1234567890";
 $arrayBody["mode"] = "DUE";
 $arrayBody["date"] = "20160601";
 $arrayBody["type"] = "JSON";
@@ -506,7 +506,7 @@ curl_close($ch);
       
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
-data = "apiKey=sk_test_apikey1234567890a"
+data = "apiKey=sk_test_apikey1234567890"
 data = data & "&mode=DUE"
 data = data & "&date=20160601"
 data = data & "&type=JSON"
@@ -522,7 +522,7 @@ Response.Write postResponse</code><code class="python language-python">import ur
 
 url = "https://toss.im/pay/api/v1/settlementDetails"
 params = {
-    "apiKey": "sk_test_apikey1234567890a",
+    "apiKey": "sk_test_apikey1234567890",
     "mode":"DUE",
     "date":"20160601",
     "type":"JSON"
@@ -535,7 +535,7 @@ require 'json'
 uri = URI.parse("https://toss.im/pay/api/v1/settlementDetails")
 
 params = {
-        "apiKey" => "sk_test_apikey1234567890a",
+        "apiKey" => "sk_test_apikey1234567890",
         "mode" => "DUE",
         "date" => "20160601",
         "type" => "JSON"
