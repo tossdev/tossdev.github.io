@@ -185,6 +185,9 @@ margin:0px 0 0; /* negative fixed header height */
             color: #4e7bfa;
 */
         }
+    #frontpage .top-banner .row {
+        margin: 0;
+    }
 
 /* media queries for 'front page' */
     @media screen and (max-width: 580px) {
