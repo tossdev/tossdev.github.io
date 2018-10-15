@@ -9,233 +9,96 @@ pre[class*="language-"] {
 }
 
 /* common header */
-#tossdev-header {
+#header {
     position: fixed;
     margin:0;
     top: 0;
     width: 100%;
-    height: 80px;
+    height: 64px;
     background-color: rgba(255,255,255,0.9);
-    border-bottom: 1px solid #ededed;
+    padding: 0 24px;
     z-index: 99;
 }
-    #tossdev-header .logo {
-        height: 29px;
-        margin-top: 24px;
-        margin-left: 20px;
-    }
-
-/* for offsetting anchor */
-:target:before {
-content:"";
-display:block;
-height:0px; /* fixed header height*/
-margin:0px 0 0; /* negative fixed header height */
+#header .logo {
+  display: inline-block;
+  margin-top: 20px;
 }
-
-/* overriding bootstrap.css */
-.well,.alert {
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
+#header .logo-img {
+    height: 18px;
+    float: left;
+    margin-right: 2px;
+}
+#header .header-menu {
+  float: right;
+  margin-top: 12px;
 }
 
 /* front page */
 #frontpage {
+  /* html settings for footer height */
+  position: relative;
+  min-height: 100%;
+}
+#frontpage body{
     margin: 0;
     padding: 0;
+    margin-bottom: 160px; /* Margin bottom by footer height */
 }
-    #frontpage .top-banner {
-        padding-top: 68px;
-        padding-bottom: 50px;
-        background-color: #4e7bfa;
-    }
-        #frontpage .top-banner .logo {
-            width: 180px;
-            margin-bottom: 54px;
-        }
-        #frontpage .top-banner .tagline {
-            margin-bottom: 30px;
-            font-size: 42px;
-            font-weight: lighter;
-            line-height: 54px;
-            word-break: keep-all;
-            color: white;
-        }
-        #frontpage .top-banner .btn {
-            margin-bottom: 84px;
-            border:1px solid white;
-            width:240px;
-            color: white;
-        }
-            #frontpage .top-banner .btn:hover {
-                background-color: #84A2F5;
-                color: white;
-            }
-        #frontpage .top-banner p {
-            margin-bottom: 40px;
-            font-size: 15px;
-            line-height: 1.6em;
-            word-break: keep-all;
-            color: white;
-        }
-            #frontpage .top-banner p i {
-                font-size: 60px;
-                opacity: 0.9;
-                margin-bottom: 10px;
-            }
-    #frontpage .wrapper {
-        
-    }
-    #frontpage .menu-container {
-        max-width: 620px;
-        margin: 70px auto 50px auto;
-    }
-        #frontpage .menu-container h5 {       
-            margin: 4px;
-        }
-            #frontpage .menu-container h5 a {
-                color: #737375;
-            }
-        #frontpage .menu-container hr {
-            margin: 0;
-            padding: 0;
-            color: #888;
-        }
-        #frontpage .menu-container .menu {
-            padding: 0;
-        }
-            #frontpage .menu-container .menu li {
-                list-style-type: none;
-                min-height: 128px;
-                margin-top: 0;
-                margin-bottom: 30px;
-            }
-                #frontpage .menu-container .menu li a:hover {
-                    text-decoration: none;
-                }
-                #frontpage .menu-container .menu li img {
-                    float: left;
-                    width: 228px;
-                }
-                #frontpage .menu-container .menu li h3 {
-                    padding-top: 4px;
-                    margin-left: 248px;
-                    color: #3a3a3a;
-                    font-size: 22px;
-                }
-                #frontpage .menu-container .menu li p {
-                    margin-left: 248px;
-                    color: #535353;
-                    font-size: 15px;
-                }
-    #frontpage footer {
-        width: 100%;
-        height: 60px;
-        background-color: #F8F8F8;
-        color: #999;
-        font-size: 13px;
-        padding-top: 20px;
-        }
-        #frontpage footer .copyright {
-            
-        }
-        #frontpage footer ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            float: right;
-        }
-            #frontpage footer ul li {
-                display: inline;
-                float: right;
-                margin-left: 30px;
-            }
-                #frontpage footer ul li a {
-                    color: #777;
-                }
-    #frontpage .inquiry,.bank-support {
-        text-align: center;
-        margin-top: 77px;
-        margin-bottom: 80px;
-    }
-        #frontpage .inquiry,.bank-support .bank-list {
-            font-size: 18px;
-        }
-            #frontpage .inquiry,.bank-support .bank-list span {
-                display: inline-block;
-                border: 1px solid #4294cf;
-                background-color: #fff;
-                color: #4294cf;
-                margin: 0 2px;
-                padding: 4px 12px;
-                margin-top: 8px;
-                border-radius: 2px;
-                font-size: 14px;
-            }
-        #frontpage .inquiry,.bank-support h5 {
-            font-size: 15px;
-            color: #3a3a3a;
-            margin-bottom: 24px;
-        }
-        #frontpage .inquiry a {
-            width: 240px;
-/*
-            font-size: 22px;
-            color: #4e7bfa;
-*/
-        }
 
-/* media queries for 'front page' */
-    @media screen and (max-width: 580px) {
-        #tossdev-header {
-            position: relative;
-            height: 60px;
-        }
-            #tossdev-header .logo {
-                height: 22px;
-                margin-top: 20px;
-                margin-left: 20px;
-            }
-        #frontpage .tagline {
-            margin-top: 30px;
-            font-size: 24px;
-            line-height: 30px;
-        }
-        #frontpage .menu-container {
-            padding: 0 16px;
-        }
-        #frontpage .menu-container menu-title {
-            
-        }
-        #frontpage .menu-container hr {
-            margin-bottom: 8px;
-        }
-        #frontpage .menu-container .menu {
-            
-        }
-            #frontpage .menu-container .menu li {
-                
-            }
-                #frontpage .menu-container .menu li img {
-                    margin-top: 16px;
-                    float: none;
-                    width: 100%;
-                }
-                #frontpage .menu-container .menu li h3 {
-                    margin-top: 14px;
-                    margin-bottom: 6px;
-                    margin-left: 0;
-                    font-size: 16px;
-                    font-weight: bold;
-                    color: #555;
-                }
-                #frontpage .menu-container .menu li p {
-                    margin-top: 0;
-                    margin-left: 0;
-                    color: #7a7a7a;
-                }
+#frontpage .content {
+  margin-top: 64px;
+  max-width: 960px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+#frontpage .menu {
+  margin: 80px 0 50px;
+}
+#frontpage .menu p {
+  font-size: 16px;
+}
+
+#frontpage footer {
+  position: absolute;
+  bottom: 0;
+  max-width: 100%;
+  background-color: #f2f2f5;
+  color: #95959e;
+  padding: 24px;
+}
+#frontpage footer .copyright {
+  float: left;
+}
+#frontpage footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+#frontpage footer ul li {
+    display: inline;
+    margin-left: 30px;
+}
+#frontpage footer ul li a {
+    color: #777;
+}
+
+/* media queries for 'frontpage' */
+@media screen and (max-width: 360px) {
+    #frontpage footer ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        float: left;
     }
+    #frontpage footer ul li {
+        display: inline;
+        float: left;
+        margin: 20px 30px 0 0;
+    }
+}
+
+
 
 /* 토스 결제 시작하기 */
 #gettingstarted {
@@ -303,7 +166,7 @@ margin:0px 0 0; /* negative fixed header height */
         font-weight: 400;
         color: #48A0D6;
         padding: 6px 15px 5px 35px; }
-  
+
     #gettingstarted #contents {
         background: #FFF;
         margin-left: 250px;
