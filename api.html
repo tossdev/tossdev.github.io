@@ -535,7 +535,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -545,7 +545,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     orderNo
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -557,7 +557,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     amount
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -567,7 +567,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     productDesc
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -612,7 +612,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxable
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 과세금액 (복합과세)
@@ -621,7 +621,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxFree
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -631,7 +631,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     amountVat
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 부가세 (복합과세)
@@ -640,7 +640,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     amountServiceFee
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 봉사료 (복합과세)
@@ -649,7 +649,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     expiredTime
-                                    <span class="type">Timestamp</span>
+                                    <span class="type">timestamp</span>
                                 </div>
                                 <div class="desc">
                                     결제 만료 기한 (기본값 15분, 최대 1시간 설정 가능)
@@ -659,7 +659,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     resultCallback
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="type">자동 승인 설정시 필수</span>
                                 </div>
                                 <div class="desc">
@@ -778,6 +778,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     code
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -798,6 +799,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     checkoutPage
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     생성된 결제를 진행하는 웹페이지 URL (구매자를 이 URL로 보내야 함)
@@ -806,6 +808,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     Toss 결제 토큰
@@ -814,6 +817,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     msg
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -822,6 +826,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     errorCode
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -848,6 +853,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     status
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     PAY_SUCCESS, PAY_CANCEL, REFUND_SUCCESS 중 하나
@@ -859,11 +865,13 @@
                                 </div>
                                 <div class="desc">
                                     Toss 결제 토큰
+                                    <span class="type">string</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     orderNo
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     Toss 결제와 이어진 주문번호
@@ -872,6 +880,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     metadata
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     결제 생성 시 저장한 연관 정보
@@ -1042,7 +1051,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -1052,7 +1061,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -1062,7 +1071,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amount
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액
@@ -1072,7 +1081,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     orderNo
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     가맹점의 상품 주문번호
@@ -1085,6 +1094,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     code
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -1105,6 +1115,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     approvalTime
+                                    <span class="type">timestamp</span>
                                 </div>
                                 <div class="desc">
                                     승인시각 (yyyy-MM-dd HH:mm:ss)
@@ -1113,6 +1124,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amount
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     승인한 결제 금액
@@ -1121,6 +1133,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     orderNo
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     승인한 상품 주문번호
@@ -1129,6 +1142,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     msg
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -1137,6 +1151,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     errorCode
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -1268,7 +1283,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -1278,7 +1293,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -1288,7 +1303,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     reason
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     취소 사유 (최대 50자)
@@ -1300,6 +1315,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     code
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -1320,6 +1336,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     msg
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -1328,6 +1345,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     errorCode
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -1465,7 +1483,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -1475,7 +1493,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -1485,7 +1503,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     refundNo
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     환불 번호
@@ -1496,7 +1514,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     reason
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     환불 사유 (최대 50자)
@@ -1505,7 +1523,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amount
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -1517,7 +1535,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxable
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액 중 과세금액
@@ -1527,7 +1545,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxFree
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -1539,7 +1557,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountVat
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액 중 부가세
@@ -1550,7 +1568,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountServiceFee
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액 중 봉사료
@@ -1564,6 +1582,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     code
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -1584,6 +1603,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     refundNo
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     환불 번호
@@ -1594,6 +1614,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     approvalTime
+                                    <span class="type">timestamp</span>
                                 </div>
                                 <div class="desc">
                                     승인시각 (yyyy-MM-dd HH:mm:ss)
@@ -1602,6 +1623,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     msg
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -1610,6 +1632,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     errorCode
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -1757,7 +1780,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -1767,7 +1790,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken 또는 orderNo
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -1780,6 +1803,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     code
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -1800,7 +1824,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     Toss 결제 토큰
@@ -1809,7 +1833,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     payStatus
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     결제 상태
@@ -1870,7 +1894,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     orderNo
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     Toss 결제와 이어진 주문번호
@@ -1879,7 +1903,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amount
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액
@@ -1888,7 +1912,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxable
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 과세금액 (복합과세)
@@ -1897,7 +1921,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxFree
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 비과세금액 (복합과세)
@@ -1906,7 +1930,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountVat
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 부가세 (복합과세)
@@ -1915,7 +1939,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountServiceFee
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 봉사료 (복합과세)
@@ -1951,7 +1975,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     productDesc
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     상품 설명
@@ -1969,7 +1993,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     availableActions
-                                    <span class="type">List</span>
+                                    <span class="type">list</span>
                                 </div>
                                 <div class="desc">
                                     가능한 액션 목록
@@ -2021,6 +2045,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     msg
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -2029,6 +2054,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     errorCode
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -2202,7 +2228,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -2215,7 +2241,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     code
-                                    <span class="type">Integer</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -2245,6 +2271,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     msg
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -2253,6 +2280,7 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     errorCode
+                                    <span class="type">string</span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -2373,7 +2401,7 @@ puts response.read_body</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
@@ -2383,7 +2411,7 @@ puts response.read_body</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
