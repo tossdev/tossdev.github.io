@@ -463,18 +463,18 @@ try {
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
 	connection.setDoInput(true);
-	
+
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
 	jsonBody.put("mode", "DUE");
     jsonBody.put("date", "20160601");
 	jsonBody.put("type", "JSON");
-	
+
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	bos.write(jsonBody.toJSONString().getBytes());
 	bos.flush();
 	bos.close();
-	
+
 	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	String line = null;
 	while ((line = br.readLine()) != null) {
@@ -500,10 +500,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json',
     'Content-Length: ' . strlen($jsonBody))
 );
- 
+
 $result = curl_exec($ch);
 curl_close($ch);
-      
+
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
 data = "apiKey=sk_test_apikey1234567890"

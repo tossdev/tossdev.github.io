@@ -116,13 +116,18 @@ pre[class*="language-"] {
         border-right: 1px solid #e6e6e6;
     }
         #gettingstarted .sidebar .logo {
-            background-color: #fff;
+          background-color: #fff;
+          padding: 20px 24px;
+          font-size: 16px;
         }
         #gettingstarted .sidebar .logo img {
-            height: 29px;
-            margin-top: 20px;
-            margin-left: 23px;
-            margin-bottom: 18px;
+          height: 18px;
+          float: left;
+          margin-right: 2px;
+          margin-top: 3px;
+        }
+        #gettingstarted .sidebar .logo span {
+          color: #212529;
         }
     #gettingstarted #guide h1 {
         margin-top: 0;
@@ -327,37 +332,32 @@ pre[class*="language-"] {
     z-index: 25;
     height: 100%; }
     #docs #guide .logo {
-      margin-top: 0;
-      font-size: 22px; }
-      #docs #guide .logo a {
-        color: #000;
-        padding: 20px 0 15px 23px;
-        display: block;
-        border-bottom: 1px solid #D6DCE0;
-        box-shadow: 0px 1px #FFF;
-        -webkit-transition: color 0.15s linear;
-        -moz-transition: color 0.15s linear;
-        -ms-transition: color 0.15s linear;
-        -o-transition: color 0.15s linear;
-        transition: color 0.15s linear; }
-        #docs #guide .logo a:hover {
-          color: #858585;
-          text-decoration: none; }
-        #docs #guide .logo img {
-            height: 26px;
-        }
+      background-color: #fff;
+      padding: 20px 24px;
+      font-size: 16px;
+    }
+    #docs #guide .logo img {
+      height: 18px;
+      float: left;
+      margin-right: 2px;
+      margin-top: 3px;
+    }
+    #docs #guide .logo span {
+      color: #212529;
+    }
     #docs #guide .menu h5 {
       padding: 20px 15px 0px 25px;
-      color: #4e7bfa;
+      color: #555;
+      font-size: 15px;
+      font-weight: 800;
     }
     #docs #guide .menu > li.active > .nav {
       display: block; }
     #docs #guide .menu > li.active > a {
       background: #DEEAF1; }
     #docs #guide .menu > li a {
-      color: #334152;
-      font-weight: 500;
-      font-size: 17px;
+      color: #555;
+      font-size: 15px;
       padding: 10px 15px 10px 25px;
       -webkit-transition: all 0.15s linear;
       -moz-transition: all 0.15s linear;

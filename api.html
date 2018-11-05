@@ -10,7 +10,7 @@
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://static.toss.im/tds/current/css/tds.min.css">
     <link rel="stylesheet" type="text/css" href="css/prism.css" />
     <link rel="stylesheet" type="text/css" href="css/tossdev.css" />
 
@@ -45,11 +45,14 @@
     </script>
     <!-- End Google Tag Manager -->
     <div id="guide">
-        <h1 class="logo">
-            <a href="index.html"><img src="images/logo_tossdev.png" alt="toss developers logo"></a>
-        </h1>
+      <div class="logo">
+        <a href="index.html">
+          <img class="logo-img" src="images/toss.png" alt="">
+          <span>결제 연동 가이드</span>
+        </a>
+      </div>
         <ul class="menu nav">
-            <h5>Toss 결제 API</h5>
+            <h5>결제 API</h5>
             <li>
                 <a href="#intro">소개</a>
             </li>
@@ -524,7 +527,7 @@
                                 </div>
                                 <div class="desc">
                                   https://pay.toss.im/api/v1/payments <br/>
-                                  <p> 
+                                  <p>
                                   (이전) https://toss.im/tosspay/api/v1/payments
                                   </p>
                                 </div>
@@ -683,7 +686,7 @@
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    현금영수증 발급 가능 여부 
+                                    현금영수증 발급 가능 여부
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -910,7 +913,7 @@ try {
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
 	connection.setDoInput(true);
-	
+
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("orderNo", "2015072012211");
 	jsonBody.put("amount", 10000);
@@ -919,12 +922,12 @@ try {
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
 	jsonBody.put("expiredTime", "2015-07-20 16:21:00");
 	jsonBody.put("resultCallback", "https://myshop.com/toss/result.php");
-	
+
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	bos.write(jsonBody.toJSONString().getBytes());
 	bos.flush();
 	bos.close();
-	
+
 	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	String line = null;
 	while ((line = br.readLine()) != null) {
@@ -953,10 +956,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json',
     'Content-Length: ' . strlen($jsonBody))
 );
- 
+
 $result = curl_exec($ch);
 curl_close($ch);
-      
+
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
 data = "apiKey=sk_test_apikey1234567890"
@@ -992,7 +995,7 @@ require 'json'
 uri = URI.parse("https://pay.toss.im/api/v1/payments")
 
 params = {
-        "orderNo" => "2015072012211", 
+        "orderNo" => "2015072012211",
         "amount"=> 10000,
         "amountTaxFree"=> 0,
         "productDesc" => "테스트 결제",
@@ -1162,16 +1165,16 @@ try {
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
 	connection.setDoInput(true);
-	
+
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("payToken", "test_token1234567890");
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
-	
+
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	bos.write(jsonBody.toJSONString().getBytes());
 	bos.flush();
 	bos.close();
-	
+
 	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	String line = null;
 	while ((line = br.readLine()) != null) {
@@ -1195,10 +1198,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json',
     'Content-Length: ' . strlen($jsonBody))
 );
- 
+
 $result = curl_exec($ch);
 curl_close($ch);
-   
+
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
 data = "apiKey=sk_test_apikey1234567890"
@@ -1353,17 +1356,17 @@ try {
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
 	connection.setDoInput(true);
-	
+
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("payToken", "test_token1234567890");
 	jsonBody.put("reason", "재고 부족");
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
-	
+
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	bos.write(jsonBody.toJSONString().getBytes());
 	bos.flush();
 	bos.close();
-	
+
 	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	String line = null;
 	while ((line = br.readLine()) != null) {
@@ -1388,10 +1391,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json',
     'Content-Length: ' . strlen($jsonBody))
 );
- 
+
 $result = curl_exec($ch);
 curl_close($ch);
-      
+
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 ​
 data = "apiKey=sk_test_apikey1234567890"
@@ -1647,17 +1650,17 @@ try {
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
 	connection.setDoInput(true);
-	
+
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("payToken", "test_token1234567890");
 	jsonBody.put("amount", "5000");
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
-	
+
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	bos.write(jsonBody.toJSONString().getBytes());
 	bos.flush();
 	bos.close();
-	
+
 	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	String line = null;
 	while ((line = br.readLine()) != null) {
@@ -1682,10 +1685,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json',
     'Content-Length: ' . strlen($jsonBody))
 );
- 
+
 $result = curl_exec($ch);
 curl_close($ch);
-   
+
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
 data = "apiKey=sk_test_apikey1234567890"
@@ -2054,16 +2057,16 @@ try {
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
 	connection.setDoInput(true);
-	
+
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("orderNo", "2015072012211");
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
-	
+
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	bos.write(jsonBody.toJSONString().getBytes());
 	bos.flush();
 	bos.close();
-	
+
 	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	String line = null;
 	while ((line = br.readLine()) != null) {
@@ -2087,10 +2090,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json',
     'Content-Length: ' . strlen($jsonBody))
 );
- 
+
 $result = curl_exec($ch);
 curl_close($ch);
-      
+
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
 data = "apiKey=sk_test_apikey1234567890"
