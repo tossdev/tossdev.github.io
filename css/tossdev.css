@@ -1,5 +1,11 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 
+:not(input):not(textarea) {
+    -webkit-user-select: auto;
+    user-select: auto;
+    -webkit-touch-callout: auto;
+}
+
 body {
     font-family: 'Spoqa Han Sans', Malgun Gothic, dotum, sans-serif;
 }
