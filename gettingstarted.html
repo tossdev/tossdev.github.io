@@ -270,7 +270,7 @@ echo "Response: ".$result;</code></pre>
                     <p><span class="bg-info">payToken</span> 값은 생성된 결제건의 고유번호입니다. 결제를 진행할 때, 결제를 취소하거나 환불할 때, 결제의 현재 상태를 파악할 때 이 고유번호를 통해 해당 결제 건에 접근하게 되니 잘 보관해주세요!</p>
 
                     <h4 id="overview-3">3. 구매자 승인 받기</h4>
-                    <p>Toss 결제 진행은 간단합니다. 결제 생성 시 응답으로 받은 <span class="bg-info">'checkoutPage'</span> URL로 구매자를 보내주시기만 하면 됩니다.</p>
+                    <p>토스 결제 진행은 간단합니다. 결제 생성 시 응답으로 받은 <span class="bg-info">'checkoutPage'</span> URL로 구매자를 보내주시기만 하면 됩니다.</p>
                     <p>위 예제의 checkoutPage는 아래와 같습니다. (매 결제마다 다른 URL이 발급됩니다)</p>
                     <div class="method-example">
                         <pre class=" language-http"><code class="always-visible  language-http">https://pay.toss.im/payfront/auth?payToken=test_token1234567890
@@ -283,7 +283,7 @@ echo "Response: ".$result;</code></pre>
                     </p>
                     <div class="well">
                         1. <strong>토스 회원</strong> : 토스 비밀번호를 입력하면 결제 완료
-                        <br> 2. <strong>토스 비회원</strong> : 사용할 계좌를 등록하고, 결제 시 사용할 암호를 등록한 후 결제 완료 (액티브X나 앱설치가 필요 없습니다)
+                        <br> 2. <strong>토스 비회원</strong> : 토스 앱 설치, 가입 후 결제 진행
                         <br>
                         <br><a href="https://pay.toss.im/payfront/demo" target="_blank">결제 데모 페이지 바로가기</a>
                     </div>
@@ -291,7 +291,7 @@ echo "Response: ".$result;</code></pre>
                       <strong>Android</strong>
                       <ol>
                         <li>App 설정에서 supertoss:// scheme을 허용 </li>
-                        <li>toss 결제 웹페이지 → 가맹점 native app 통신을 위한 javascript interface 구현 </li>
+                        <li>토스 결제 웹페이지 → 가맹점 native app 통신을 위한 javascript interface 구현 </li>
                         <ul>
                           <li>interface name: TossPaymentInterface</li>
                           <li>method : checkTossAppInstall(string)</li>
@@ -299,10 +299,10 @@ echo "Response: ".$result;</code></pre>
                             <p>
                             결제 브릿지페이지가 안드로이드 웹뷰에서 열렸을 경우 위의 인터페이스 method를 호출합니다.<br>
                             위의 method를 호출하였을때의 기대하는 동작은 다음과 같습니다.<br>
-                            "supertoss://" 앱스킴을 가진 Toss 앱이 사용자의 device에 설치여부에 따라 다음 javascript 함수 호출 <br>
+                            "supertoss://" 앱스킴을 가진 토스 앱이 사용자의 device에 설치여부에 따라 다음 javascript 함수 호출 <br>
                             <ul>
-                              <li> Toss 앱 설치: callbackOnTossAppInstalled() 호출 </li>
-                              <li> Toss 앱 미설치: callbackOnTossAppNotyet() 호출 </li>
+                              <li> 토스 앱 설치: callbackOnTossAppInstalled() 호출 </li>
+                              <li> 토스 앱 미설치: callbackOnTossAppNotyet() 호출 </li>
                             </ul>
                             </p>
                           </li>
@@ -339,17 +339,17 @@ public class TossPaymentJavascriptInterface {
                       <strong>iOS</strong>
                       <ol>
                         <li>App 설정에서 supertoss:// scheme을 허용 </li>
-                        <li>toss 결제 웹페이지 → 가맹점 native app 통신을 위한 evaluate javascript interface 구현</li>
+                        <li>토스 결제 웹페이지 → 가맹점 native app 통신을 위한 evaluate javascript interface 구현</li>
                         <ul>
                           <li> method:  checkTossAppInstalledHandler(string)</li>
                           <li>
                             <p>
                             결제 브릿지페이지가 아이폰 앱의 웹뷰에서 열렸을 경우 위의 인터페이스 method를 호출합니다.<br>
                             위의 method를 호출하였을때의 기대하는 동작은 다음과 같습니다.<br>
-                            "supertoss://" 앱스킴을 가진 Toss 앱이 사용자의 device에 설치여부에 따라 다음 javascript 함수 호출 <br>
+                            "supertoss://" 앱스킴을 가진 토스 앱이 사용자의 device에 설치여부에 따라 다음 javascript 함수 호출 <br>
                             <ul>
-                              <li> Toss 앱 설치: callbackOnTossAppInstalled() 호출 </li>
-                              <li> Toss 앱 미설치: callbackOnTossAppNotyet() 호출 </li>
+                              <li> 토스 앱 설치: callbackOnTossAppInstalled() 호출 </li>
+                              <li> 토스 앱 미설치: callbackOnTossAppNotyet() 호출 </li>
                             </ul>
                             </p>
                           </li>
@@ -365,7 +365,7 @@ public class TossPaymentJavascriptInterface {
                       <strong>공통 callback</strong>
                       <ol>
                         <li>
-                          가맹점 native app -> toss 결제 웹페이지 (토스 앱이 설치된 사용자)
+                          가맹점 native app -> 토스 결제 웹페이지 (토스 앱이 설치된 사용자)
                           <ul>
                             <li> method: callbackOnTossAppInstalled() </li>
                             <li>
@@ -375,7 +375,7 @@ public class TossPaymentJavascriptInterface {
                           </ul>
                         </li>
                         <li>
-                          가맹점 native app -> toss 결제 웹페이지 (토스 앱 미설치 사용자)
+                          가맹점 native app -> 토스 결제 웹페이지 (토스 앱 미설치 사용자)
                           <ul>
                             <li> method: callbackOnTossAppNotyet() </li>
                             <li>
@@ -512,7 +512,7 @@ echo "Response: ".$result;</code></pre>
 "amountTaxFree":10000,                                   # 결제 금액 중 비과세금액
 "amountVat":2273,                                        # 결제 금액 중 부가세
 "amountServiceFee":0,                                    # 결제 금액 중 봉사료
-"expiredTime":"2015-12-01 12:47:35",                     # 결제 만료 예정 시각
+"expiredTime":"2018-12-01 12:47:35",                     # 결제 만료 예정 시각
 "escrow":false,                                          # 에스크로 여부
 "cashReceipt":true,                                      # 현금영수증 발급 가능 여부
 "autoExecute":false,                                     # 자동 승인 여부
@@ -557,7 +557,7 @@ echo "Response: ".$result;</code></pre>
                         <li>재고의 변동이 적고, 구매자의 결제가 급하지 않다면 결제 만료 기한을 길게 설정하세요. 구매자는 먼저 주문만 해두고 원하는 시점에 결제할 수 있습니다. (예를 들어, 주문은 오전에 하고 밤에 Toss 앱을 설치하여 결제를 완료할 수 있습니다)</li>
                         <li>재고의 변동이 크거나 '결제 대기' 상태를 오래 지속하고싶지 않은 경우엔 결제 만료 기한을 짧게 설정하세요.</li>
                     </ul>
-                    <p>결제 만료 기한은 <span class="bg-info">최대 1시간</span>이며, 따로 설정하지 않는 경우 15분으로 설정됩니다.</p>
+                    <p>결제 만료 기한은 최대 1시간이며, 따로 설정하지 않는 경우 15분으로 설정됩니다.</p>
                     <h4 id="create-7">에스크로 여부 (escrow)</h4>
                     <p>에스크로 결제로 진행할지 설정할 수 있습니다.</p>
                     <ul>
@@ -623,7 +623,7 @@ echo "Response: ".$result;</code></pre>
                 <div class="method-description">
                     <h3>결제 승인하기</h3>
                     <p>
-                        Toss 결제는 기본적으로 '구매자'의 인증이 완료되면 바로 구매자의 결제 계좌에서 출금하고 결제를 완료시킵니다. 하지만 상황에 따라 결제를 '최종 승인'하는 주체가 가맹점이어야 하는 경우가 있습니다. 그럴땐 아래 두 가지 조치를 통해 대응할 수 있습니다.
+                        토스 결제는 기본적으로 '구매자'의 인증이 완료되면 바로 구매자의 토스머니에서 출금하고 결제를 완료시킵니다. 하지만 상황에 따라 결제를 '최종 승인'하는 주체가 가맹점이어야 하는 경우가 있습니다. 그럴땐 아래 두 가지 조치를 통해 대응할 수 있습니다.
                     </p>
                     <ol>
                         <li><strong>결제 생성 시, autoExecute를 'false'로 설정</strong> : 해당 결제건은 가맹점의 최종 승인 전까진 대기 상태에 머무르게 됩니다. (PAY_APPROVED 상태)</li>
