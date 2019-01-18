@@ -507,9 +507,9 @@ echo "Response: ".$result;</code></pre>
 "amountTaxFree":0,                                       # 비과세 금액 (필수)
 "productDesc":"토스티셔츠",                                 # 상품 정보 (필수)
 "apiKey":"sk_test_apikey1234567890",                     # 상점의 API Key (필수)
-"retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",   # 결제 완료 후 연결할 웹페이지 URL
+"retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",   # 결제 완료 후 연결할 웹 URL (필수)
+"retCancelUrl":"http://YOUR-SITE.COM/close",             # 결제 취소 시 연결할 웹 URL (필수)
 "amountTaxable":22727,                                   # 결제 금액 중 과세금액
-"amountTaxFree":10000,                                   # 결제 금액 중 비과세금액
 "amountVat":2273,                                        # 결제 금액 중 부가세
 "amountServiceFee":0,                                    # 결제 금액 중 봉사료
 "expiredTime":"2018-12-01 12:47:35",                     # 결제 만료 예정 시각
@@ -522,7 +522,7 @@ echo "Response: ".$result;</code></pre>
                     <h4 id="create-1">결제 생성 API의 Endpoint</h4>
                     <div class="well">POST https://pay.toss.im/api/v1/payments</div>
                     <h4 id="create-2">필수 Parameters</h4>
-                    <p>결제 생성 요청 시 반드시 아래 5가지 값을 함께 보내주셔야합니다.</p>
+                    <p>결제 생성 요청 시 반드시 아래 7가지 값을 함께 보내주셔야합니다.</p>
                     <ol>
                         <li><strong>상점 주문번호</strong> : 추후 상점 주문 정보와 결제 정보를 매칭하기 위해 필요</li>
                         <li><strong>결제 금액</strong> : 손님으로부터 받을 금액</li>
@@ -530,6 +530,7 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>상품 정보</strong> : 결제할 상품에 대한 정보 (상품명)</li>
                         <li><strong>상점 API Key</strong> : 이곳에 '테스트용 Key'를 넣으면 테스트 결제가, '실거래용 Key'를 넣으면 진짜 출금되는 결제가 생성됩니다.</li>
                         <li><strong>구매자 승인 완료 후 연결할 URL</strong> : 구매자가 결제를 승인하면 이 파라미터를 통해 등록한 URL로 구매자를 보내드립니다. 일반적으로 구매 완료 페이지 또는 구매 완료 페이지로 연결할 수 있는 곳을 지정합니다.</li>
+                        <li><strong>구매자가 결제 취소 시 연결할 URL</strong> : 구매자가 결제를 취소하면 이 파라미터를 통해 등록한 URL로 구매자를 보내드립니다. 토스 결제 화면에서 사용자가 결제를 중단할 때 사용자를 이동시킬 가맹점 페이지를 지정합니다.</li>
                     </ol>
                     <!--
                     <h4 id="create-4">결제 결과 callback URL (resultCallback)</h4>

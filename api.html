@@ -581,6 +581,35 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    retUrl
+                                    <span class="type">string</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    Web 결제 완료 후 연결할 웹페이지의 URL (결제 최종 승인 및 완료 처리할 페이지)
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    retCancelUrl
+                                    <span class="type">string</span>
+                                    <span class="required"></span>
+                                </div>
+                                <div class="desc">
+                                    토스 브릿지 페이지에서 사용자가 결제를 중단할때 사용자를 이동시킬 가맹점 페이지
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    retAppScheme
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    App 결제 완료 후 연결할 app scheme (결제 최종 승인 및 완료 처리할 페이지). retAppScheme을 사용할 경우 retUrl은 사용하지 않아도 됩니다.
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     autoExecute
                                     <span class="type">boolean</span>
                                 </div>
@@ -600,25 +629,6 @@
                                                 <br>('결제 승인 API'를 통해 최종 승인합니다)</td>
                                         </tr>
                                     </table>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    retUrl
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
-                                </div>
-                                <div class="desc">
-                                    Web 결제 완료 후 연결할 웹페이지의 URL (결제 최종 승인 및 완료 처리할 페이지)
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    retAppScheme
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    App 결제 완료 후 연결할 app scheme (결제 최종 승인 및 완료 처리할 페이지). retAppScheme을 사용할 경우 retUrl은 사용하지 않아도 됩니다.
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -775,15 +785,6 @@
                                     결제와 연관된 추가 데이터 (최대 1024자)
                                 </div>
                             </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    retCancelUrl
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    토스 브릿지 페이지에서 사용자가 결제를 중단할때 사용자를 이동시킬 가맹점 페이지
-                                </div>
-                            </div>
                         </div>
                         <div class="info">
                             <h4>response</h4>
@@ -920,6 +921,8 @@
         "orderNo":"2015072012211",
         "amount":10000,
         "amountTaxFree":0,
+        "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
+        "retCancelUrl": "http://YOUR-SITE.COM/close",
         "productDesc":"테스트결제",
         "apiKey":"sk_test_apikey1234567890"
         }'</code><code class="java language-java">URL url = null;
@@ -938,8 +941,8 @@ try {
 	jsonBody.put("amountTaxFree", 0);
 	jsonBody.put("productDesc", "테스트 결제");
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
-	jsonBody.put("expiredTime", "2015-07-20 16:21:00");
-	jsonBody.put("resultCallback", "https://myshop.com/toss/result.php");
+    jsonBody.put("retUrl", "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1");
+    jsonBody.put("retCancelUrl", "http://YOUR-SITE.COM/close");
 
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	bos.write(jsonBody.toJSONString().getBytes());
@@ -961,8 +964,8 @@ $arrayBody["amount"] = 10000;
 $arrayBody["amountTaxFree"] = 0;
 $arrayBody["productDesc"] = "테스트 결제";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890";
-$arrayBody["expiredTime"] = "2015-07-20 16:21:00";
-$arrayBody["resultCallback"] = "https://myshop.com/toss/result.php";
+$arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1";
+$arrayBody["retCancelUrl"] = "http://YOUR-SITE.COM/close";
 $jsonBody = json_encode($arrayBody);
 
 $ch = curl_init('https://pay.toss.im/api/v1/payments');
@@ -985,6 +988,8 @@ data = data & "&orderNo=2015072012211"
 data = data & "&amount=10000"
 data = data & "&amountTaxFree=0"
 data = data & "&productDesc=ASPtestProduct"
+data = data & "&retUrl=http://YOUR-SITE.COM/ORDER-CHECK?orderno=1"
+data = data & "&retCancelUrl=http://YOUR-SITE.COM/close"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
 httpRequest.Open "POST", "https://pay.toss.im/api/v1/payments", False
@@ -1000,10 +1005,10 @@ params = {
     "orderNo": "2015072012211",
     "amount": 10000,
     "amountTaxFree": 0,
+    "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
+    "retCancelUrl": "http://YOUR-SITE.COM/close",
     "productDesc":"테스트 결제",
-    "apiKey": "sk_test_apikey1234567890",
-    "expiredTime":"2015-07-20 16:21:00",
-    "resultCallback": "https://myshop.com/toss/result.php"
+    "apiKey": "sk_test_apikey1234567890"
 }
 
 response = urllib.urlopen(url, urllib.urlencode(params))
@@ -1018,8 +1023,8 @@ params = {
         "amountTaxFree"=> 0,
         "productDesc" => "테스트 결제",
         "apiKey" => "sk_test_apikey1234567890",
-        "expiredTime" => "2015-07-20 16:21:00",
-        "resultCallback" => "https://myshop.com/toss/result.php"
+        "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
+        "retCancelUrl": "http://YOUR-SITE.COM/close"
 }
 
 http = Net::HTTP.new(uri.host, uri.port)
