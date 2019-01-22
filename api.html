@@ -60,9 +60,6 @@
                 <a href="#state">결제 상태</a>
             </li>
             <li>
-                <a href="#maintenance">은행별 정기 점검시간</a>
-            </li>
-            <li>
                 <a href="#httpResponse">HTTP 응답 코드</a>
             </li>
             <h5>API 목록</h5>
@@ -83,9 +80,6 @@
             </li>
             <li>
                 <a href="#refundStatus">환불 상태 확인</a>
-            </li>
-            <li>
-                <a href="#escrow">에스크로 결제 진행</a>
             </li>
         </ul>
     </div>
@@ -174,37 +168,7 @@
                                 </div>
                                 <div class="desc">
                                     결제 완료
-                                    <br /> : 구매자 및 가맹점의 결제 승인 및 출금이 정상적으로 완료된 상태입니다. 에스크로 결제 건의 경우, 자동으로 '배송등록 대기 중' 상태로 변경됩니다.
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    ESCROW_REQUEST
-                                    <span class="type">에스크로 only</span>
-                                </div>
-                                <div class="desc">
-                                    배송등록 대기 중 (에스크로 요청)
-                                    <br /> : 에스크로 결제 건이 결제 완료된 후, 매매보호에 들어간 상태입니다. 판매자가 '배송 등록'을 하면 '구매확정 대기 중' 상태로 변경되며, 120일 동안 배송 등록을 하지 않는 경우에도 자동으로 '구매확정 대기 중' 상태로 변경됩니다.
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    ESCROW_RELEASE
-                                    <span class="type">에스크로 only</span>
-                                </div>
-                                <div class="desc">
-                                    구매확정 대기 중 (에스크로 해제)
-                                    <br /> : 판매자가 '배송 등록'을 완료하고 구매자의 '구매 확정'을 대기 중인 상태입니다. 구매자가 구매 확정을 하면 판매자 대금 지급 과정을 시작하고, 구매자가 지급을 거부하면 '구매자 지급 거부' 상태로 변경됩니다.
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    ESCROW_DENY
-                                    <span class="type">에스크로 only</span>
-                                </div>
-                                <div class="desc">
-                                    구매자 지급 거부 (에스크로 거부)
-                                    <br /> : 구매자가 지급을 거절한 상태입니다. 판매자는 이 건을 전액 환불 처리하거나 구매자에게 '구매 확정'을 다시 요청할 수 있습니다.
+                                    <br /> : 구매자 및 가맹점의 결제 승인 및 출금이 정상적으로 완료된 상태입니다
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -254,206 +218,6 @@
               <code class="pho">
               </code>
             </pre>
-                    </div>
-                </div>
-            </div>
-            <div class="method" id="maintenance">
-                <div class="method-section clearfix">
-                    <div class="method-description">
-                        <h3>은행 정기 점검시간</h3>
-                        <p>은행 점검 시간에는 해당 은행 계좌를 통한 토스머니 충전이 불가합니다.</p>
-                        <div class="info">
-                            <h4>전체 은행 공통 점검시간</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    (매일)
-                                </div>
-                                <div class="desc">
-                                    23:20 ~ 익일 00:40
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h4>은행별 정기 점검시간</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    KDB산업
-                                </div>
-                                <div class="desc">
-                                    매주 일요일 00:00~04:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    IBK기업
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    KB국민
-                                </div>
-                                <div class="desc">
-                                    매월 세번째 (not 셋째주) 일요일 전날 23:50~00:30, 일요일 05:00~05:30
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    외환은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    수협은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    NH농협
-                                </div>
-                                <div class="desc">
-                                    매월 셋째주 월요일 00:00~04:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    우리은행
-                                </div>
-                                <div class="desc">
-                                    매주 목요일 23:45 ~ 금요일 00:45, 매달 둘째주 일요일 02:00 ~ 06:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    SC은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    신한은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    씨티은행
-                                </div>
-                                <div class="desc">
-                                    공휴일 다음날(매주 월요일 포함) 00:00~02:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    대구은행
-                                </div>
-                                <div class="desc">
-                                    분기말에 한번 토요일 00:00~06:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    부산은행
-                                </div>
-                                <div class="desc">
-                                    매월 셋째주 월요일 00:00~04:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    광주은행
-                                </div>
-                                <div class="desc">
-                                    둘째주 일요일 02:00~06:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    제주은행
-                                </div>
-                                <div class="desc">
-                                    월, 목 04:30~05:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    전북은행
-                                </div>
-                                <div class="desc">
-                                    매월 둘째주 토요일 00:00~04:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    경남은행
-                                </div>
-                                <div class="desc">
-                                    매월 둘째주 일요일 00:00~03:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    새마을은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    신협은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    저축은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    우체국
-                                </div>
-                                <div class="desc">
-                                    매일 04:00~05:00 점검
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    하나은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="method-example">
-                        <pre>
-                          <code class="curl">
-                          </code>
-                          <code class="java">
-                          </code>
-                          <code class="pho">
-                          </code>
-                        </pre>
                     </div>
                 </div>
             </div>
@@ -687,15 +451,6 @@
                                 <div class="desc">
                                     결제 결과 callback URL (성공, 취소, 환불 등)
                                     <br />
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    escrow
-                                    <span class="type">boolean</span>
-                                </div>
-                                <div class="desc">
-                                    에스크로 결제 여부 (기본값 false)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1878,18 +1633,6 @@ p JSON.parse(response.body)</code></pre>
                                             <td>결제 완료</td>
                                         </tr>
                                         <tr>
-                                            <td>ESCROW_REQUEST</td>
-                                            <td>배송등록 대기 중</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ESCROW_RELEASE</td>
-                                            <td>구매확정 대기 중</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ESCROW_DENY</td>
-                                            <td>구매자 지급 거부</td>
-                                        </tr>
-                                        <tr>
                                             <td>REFUND_PROGRESS</td>
                                             <td>환불 진행 중</td>
                                         </tr>
@@ -2024,10 +1767,6 @@ p JSON.parse(response.body)</code></pre>
                                         <tr>
                                             <td>REFUND</td>
                                             <td>결제 환불</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ESCROW</td>
-                                            <td>에스크로 (배송등록/구매확정재요청)</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -2387,163 +2126,7 @@ puts response.read_body</code></pre>
                     </div>
                 </div>
             </div>
-            <div class="method" id="escrow">
-                <div class="method-section clearfix">
-                    <div class="method-description">
-                        <h3>에스크로 결제 진행</h3>
-                        <p>
-                            에스크로 결제를 완료하고 대금을 정산받기 위해서는 '배송 등록'이 필요합니다. 또, 구매자가 대금 지급을 거부하여 결제가 '구매자 지급 거부' 상태가 된 경우, '구매확정 재요청'을 통해 거부 상태를 해제할 수 있습니다.
-                        </p>
-                        <p>
-                            본 API를 통해 '배송 등록'과 '구매확정 재요청'을 처리할 수 있습니다.
-                            <br>
-                            <br> - '배송등록 대기 중' 상태에서 호출 시 : '배송 등록' 됨
-                            <br> - 구매자 지급 거부 상태에서 호출 시 : '구매확정 재요청' 됨
-                        </p>
-                        <p>더 자세한 내용은 <a href="gettingstarted.html#escrow">'토스 결제 시작하기 > 에스크로 결제 진행'</a> 문서를 참고하세요.</p>
-                        <div class="info">
-                            <h4>endpoint</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    (POST)
-                                </div>
-                                <div class="desc">
-                                  https://pay.toss.im/api/v1/escrow </br>
-                                  <p>(이전) https://toss.im/tosspay/api/v1/escrow</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h4>parameters</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    apiKey
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
-                                </div>
-                                <div class="desc">
-                                    가맹점 key
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    payToken
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
-                                </div>
-                                <div class="desc">
-                                    토스 결제 토큰
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h4>response</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    code
-                                    <span class="type">integer</span>
-                                </div>
-                                <div class="desc">
-                                    응답코드
-                                    <br />
-                                    <br />
-                                    <table class="table">
-                                        <tr>
-                                            <td>0</td>
-                                            <td>성공</td>
-                                        </tr>
-                                        <tr>
-                                            <td>-1</td>
-                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    msg
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    응답이 성공이 아닌 경우 설명 메세지
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    errorCode
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    에러 코드
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="method-example">
-                        <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/escrow</code></pre>
-                        <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/escrow" \
-    -H "Content-Type: application/json" \
-    -d '{
-    "payToken":"test_token1234567890",
-    "apiKey":"sk_test_apikey1234567890"
-    }'</code><code class="java language-java">URL url = null;
-    URLConnection connection = null;
-    StringBuilder responseBody = new StringBuilder();
-    try {
-    url = new URL("https://pay.toss.im/api/v1/escrow");
-    connection = url.openConnection();
-    connection.addRequestProperty("Content-Type", "application/json");
-    connection.setDoOutput(true);
-    connection.setDoInput(true);
 
-    org.json.simple.JSONObject jsonBody = new JSONObject();
-    jsonBody.put("payToken", "test_token1234567890");
-    jsonBody.put("apiKey", "sk_test_apikey1234567890");
-
-    BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
-    bos.write(jsonBody.toJSONString().getBytes());
-    bos.flush();
-    bos.close();
-
-    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-    String line = null;
-    while ((line = br.readLine()) != null) {
-    responseBody.append(line);
-    }
-    br.close();
-    } catch (Exception e) {
-    responseBody.append(e);
-    }
-    System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
-    $arrayBody["payToken"] = "test_token1234567890";
-    $arrayBody["apiKey"] = "sk_test_apikey1234567890";
-    $jsonBody = json_encode($arrayBody);
-
-    $ch = curl_init('https://pay.toss.im/api/v1/escrow');
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Content-Length: ' . strlen($jsonBody))
-    );
-
-    $result = curl_exec($ch);
-    curl_close($ch);
-
-    echo "Response: ".$result;</code></pre>
-                        <div class="title">Example Response</div>
-                        <pre><code class="language-javascript always-visible">{"code":0}</code>
-                        </pre>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <script type="text/javascript">
