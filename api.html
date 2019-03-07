@@ -1401,11 +1401,15 @@ p JSON.parse(response.body)</code></pre>
                                     <table class="table">
                                         <tr>
                                             <td>COMMON_REFUND_ERROR</td>
-                                            <td>이미 환불된 결제입니다.</td>
+                                            <td>이미 환불된 결제, 환불 가능 기간 180일이 지난 결제.</td>
                                         </tr>
                                         <tr>
                                             <td>REFUND_EXCEED_AMOUNT</td>
                                             <td>환불금액이 결제금액보다 더 클수 없습니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>INACTIVE_USER</td>
+                                            <td>계정이 비활성화/삭제된 사용자의 결제.</td>
                                         </tr>
                                     </table>
                                 </div>
