@@ -201,7 +201,7 @@ pre[class*="language-"] {
             padding-top: 80px; }
           #gettingstarted #contents #methods .method .method-description h3 {
                 font-size: 37px;
-              color: #333;
+                color: #333;
                 margin-top: 0px;
                 margin-bottom: 29px;
                 font-weight: normal;}
@@ -231,11 +231,12 @@ pre[class*="language-"] {
               margin-top: 12px;
               margin-bottom: 16px;
           }
-          #gettingstarted #contents #methods .method .method-description img {
-/*              width: 100%;*/
+          #gettingstarted #contents #methods .method .method-description img {              
+              /*이미지 사이즈 조정 width: 100%;*/
+              width: 100%;
               margin-top: 12px;
               margin-bottom: 6px;
-              border: 1px solid #e8e8e8;
+              /*border: 1px solid #e8e8e8;*/
           }
           #gettingstarted #contents #methods .method .method-description table {
               margin-top: 6px;
@@ -468,9 +469,22 @@ pre[class*="language-"] {
                     font-size: 12px;
                   /*margin-bottom: 5px; */
                 }
+
+                /*190414 추가*/
+                #docs #api-docs #methods .method .method-description p, #docs #api-docs #methods .method .method-description ul {
+                    
+                    font-size: 14px;
+                    color: #666;
+                    line-height: 26px;                    
+                    margin-bottom: 8px; 
+                }
                 #docs #api-docs #methods .method .method-section .method-description .info .field .key .required:before{
                     color: #c25300;
                     content: '필수';
+                }
+                #docs #api-docs #methods .method .method-section .method-description .info .field .key .auto-required:before{
+                    color: #c25300;
+                    content: '자동 승인 설정시 필수';
                 }
                 #docs #api-docs #methods .method .method-section .method-description .info .field .key .use-only{
                   color: #c25300;
@@ -512,3 +526,5 @@ pre[class*="language-"] {
 				  box-shadow: 2px 1px 1px #1C1F22;
 				  z-index: 999;
                 }
+
+
