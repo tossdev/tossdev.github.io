@@ -106,13 +106,16 @@
         </h1>
         <ul class="menu nav">
           <li>
+            <a href="#payflow">결제 처리 순서</a>
+          </li>
+          <li>
             <a href="#overview">가입부터 결제 완료까지</a>
             <ul class="nav">
               <li><a href="#overview-1">1. 가맹점 계정 신청</a></li>
               <li><a href="#overview-2">2. 토스 결제 생성 요청</a></li>
-              <li><a href="#overview-3">3. 구매자 승인 받기</a></li>
-              <li><a href="#overview-4">4. 구매자 승인 완료</a></li>
-              <li><a href="#overview-5">5. 가맹점 최종 승인</a></li>
+              <li><a href="#overview-3">3. 구매자 인증 받기</a></li>
+              <li><a href="#overview-4">4. 구매자 인증 완료</a></li>
+              <!--<li><a href="#overview-5">5. 가맹점 최종 승인</a></li>-->
             </ul>
           </li>
           <li>
@@ -128,6 +131,7 @@
               <li><a href="#create-11">복합과세 처리</a></li>
             </ul>
           </li>
+          <!--
           <li>
             <a href="#execute">결제 승인하기</a>
             <ul class="nav">
@@ -136,6 +140,7 @@
               <li><a href="#execute-3">유효성 추가 검증</a></li>
             </ul>
           </li>
+          -->
           <li>
             <a href="#cancel">결제 취소하기</a>
             <ul class="nav">
@@ -164,9 +169,19 @@
             </ul>
           </li>
           <li>
+            <a href="#faq">자주 묻는 질문</a>
+            <ul class="nav">
+              <li><a href="#faq-1">토스 연동을 위한 방화벽 설정</a></li>
+              <li><a href="#faq-2">토스 인코딩 방식</a></li>
+              <li><a href="#faq-3">Time Out 처리</a></li>
+              <li><a href="#faq-4">retUrl 이동의 실패</a></li>
+              <li><a href="#faq-5">resultCallback 처리방안</a></li>
+              <li><a href="#faq-6">resultCallback 실패</a></li>
+            </ul>
+          </li>
+          <li>
             <a href="api.html" target="_blank"
-              >API 문서 참조 <i class="fa fa-external-link" style="margin-left:4px;"></i
-            ></a>
+              >API 문서 참조 <i class="fa fa-external-link" style="margin-left:4px;"></i></a>
           </li>
         </ul>
       </div>
@@ -174,10 +189,21 @@
 
     <div id="contents">
       <div id="methods">
+
+        <div class="method" id="payflow">
+          <div class="method-description">
+            <br>
+            <h3>토스 결제 연동은 간단합니다</h3>
+            <p>
+              토스는 결제만큼 연동도 간단합니다. 연동 전 아래 그림을 참고하시면 이해가 쉽습니다.
+              <img src="images/whole_pay_flow.png" alt="결제 연동 흐름" />
+            </p>
+          </div>
+        </div>
+
         <div class="method" id="overview">
           <div class="method-description">
             <h3>가입부터 결제 완료까지</h3>
-
             <h4 id="overview-1">1. 토스 가맹점 계정을 신청합니다</h4>
             <p>
               먼저 <a href="https://product.toss.im/pay/merchant/apply.html" target="_blank">계약 문의</a>를 통해 가맹점
@@ -240,8 +266,10 @@
 "amountTaxFree":0,
 "productDesc":"토스티셔츠",
 "apiKey":"sk_test_apikey1234567890",
-"autoExecute":false,
-"retUrl":"http://YOUR-SITE.COM/ORDER-CHECK"
+"autoExecute":true,
+"resultCallback":"http://YOUR-SITE.COM/callback",
+"retUrl":"http://YOUR-SITE.COM/ORDER-CHECK",
+"retCancelUrl":"http://YOUR-SITE.COM/close"
 }'</code><code class="language-java">URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
@@ -258,8 +286,10 @@ jsonBody.put("amount", 35000);
 jsonBody.put("amountTaxFree", 0);
 jsonBody.put("productDesc", "토스티셔츠");
 jsonBody.put("apiKey", "sk_test_apikey1234567890");
-jsonBody.put("autoExecute", false);
+jsonBody.put("autoExecute", true);
+jsonBody.put("resultCallback", "http://YOUR-SITE.COM/callback");
 jsonBody.put("retUrl", "http://YOUR-SITE.COM/ORDER-CHECK");
+jsonBody.put("retCancelUrl", "http://YOUR-SITE.COM/close");
 
 BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 bos.write(jsonBody.toJSONString().getBytes());
@@ -281,8 +311,10 @@ $arrayBody["amount"] = 10000;
 $arrayBody["amountTaxFree"] = 0;
 $arrayBody["productDesc"] = "토스티셔츠";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890";
-$arrayBody["autoExecute"] = false;
+$arrayBody["autoExecute"] = true;
+$arrayBody["resultCallback"] = "http://YOUR-SITE.COM/callback";
 $arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK";
+$arrayBody["retCancelUrl"] = "http://YOUR-SITE.COM/close";
 $jsonBody = json_encode($arrayBody);
 
 $ch = curl_init('https://pay.toss.im/api/v1/payments');
@@ -300,7 +332,7 @@ curl_close($ch);
 
 echo "Response: ".$result;</code></pre>
             </div>
-            <p>위 예제에서 알 수 있듯이 '결제 생성'을 위해서는 7가지 설정값을 담아 토스에 요청해야합니다.</p>
+            <p>위 예제에서 알 수 있듯이 '결제 생성'을 위해서는 9가지 설정값을 담아 토스에 요청해야합니다.</p>
             <ol>
               <li><strong>orderNo (상점 주문번호)</strong> : 추후 상점 주문 정보와 결제 정보를 매칭하기 위해 필요</li>
               <li><strong>amount (결제 금액)</strong> : 손님으로부터 받을 금액</li>
@@ -311,12 +343,18 @@ echo "Response: ".$result;</code></pre>
                 넣으면 진짜 출금되는 결제가 생성됩니다.
               </li>
               <li>
-                <strong>autoExecute (자동 승인 설정)</strong> : false로 설정할 것을 권장합니다. 이 값을 true로 설정할
-                경우, 가맹점의 최종 승인 과정 없이 결제가 자동 완료됩니다.
+                <strong>autoExecute (자동 승인 설정)</strong> : 기본 값은 true 입니다. 구매자 인증이 완료되면 토스가 알아서 승인을 진행합니다.
+              </li>
+              <li>
+                <strong>resultCallback (결제 결과 Callback URL)</strong> : 자동 승인 설정을 true로 설정할 경우, 반드시 함께 보내주셔야 합니다. <br>
+                토스 서버는 출금을 성공한 후 이 곳에 입력한 가맹점 서버로 callback을 요청합니다. 최종적으로 토스 결제완료 여부를 확인할 수 있습니다.
               </li>
               <li>
                 <strong>retUrl (인증 완료 후 연결할 URL)</strong> : 구매자가 결제 인증을 완료하면 이 곳에 입력한 URL로
-                연결해드립니다. 일반적으로 '가맹점의 최종 승인을 대기' 하는 페이지를 이곳에 넣습니다.
+                연결해드립니다. 이 URL은 단순히 가맹점의 결제 완료 페이지의 이동을 위해 사용됩니다.
+              </li>
+              <li>
+                <strong>retCancelUrl (결제 중단 시 사용자를 이동시킬 가맹점 페이지)</strong> : 토스 브릿지 페이지에서 사용자가 결제를 중단할 때 사용자를 이동시킬 가맹점 페이지 URL을 입력해주세요. 사용자는 브라우저나 앱을 종료하지 않고 이 URL로 redirect 됩니다.
               </li>
             </ol>
             <div class="alert alert-warning" role="alert">
@@ -326,8 +364,8 @@ echo "Response: ".$result;</code></pre>
                 style="margin-top:8px;margin-left:6px"
               ></i>
               <p style="margin-left:10px">
-                앞서 말씀 드렸듯, API Key는 절대 유출되어선 안됩니다. 결제 요청 내용이 웹페이지에 그대로 드러나지 않게
-                다시 한번 주의해주세요!
+                앞서 말씀 드렸듯, API Key는 절대 유출되어선 안됩니다.<br>
+                결제 요청 내용이 웹페이지에 그대로 드러나지 않게 다시 한번 주의해주세요!
               </p>
             </div>
             <p>요청하신 결제 생성이 무사히 완료되면, 토스는 아래와 같이 응답합니다.</p>
@@ -346,7 +384,7 @@ echo "Response: ".$result;</code></pre>
               보관해주세요!
             </p>
 
-            <h4 id="overview-3">3. 구매자 승인 받기</h4>
+            <h4 id="overview-3">3. 구매자 인증 받기</h4>
             <p>
               토스 결제 진행은 간단합니다. 결제 생성 시 응답으로 받은 <span class="bg-info">'checkoutPage'</span> URL로
               구매자를 보내주시기만 하면 됩니다.
@@ -359,7 +397,7 @@ echo "Response: ".$result;</code></pre>
 &amp;retUrl=http://YOUR-SITE.COM/ORDER-CHECK</code></pre>
             </div>
             <p>
-              그 후, 결제 승인까지의 모든 과정은 토스가 알아서 해드립니다. (결제에 사용할 계좌번호를 받고, 계좌의
+              그 후, 결제 인증까지의 모든 과정은 토스가 알아서 해드립니다. (결제에 사용할 계좌번호를 받고, 계좌의
               유효성을 검증하고, 계좌의 주인인지 철저히 알아보는 등)
             </p>
             <p>
@@ -372,35 +410,48 @@ echo "Response: ".$result;</code></pre>
               <br />
               <br /><a href="https://pay.toss.im/payfront/demo" target="_blank">결제 데모 페이지 바로가기</a>
             </div>
+            <div class="alert alert-warning" role="alert">
+              <i
+                class="fa fa-exclamation-triangle pull-left"
+                aria-hidden="true"
+                style="margin-top:8px;margin-left:6px"
+              ></i>
+              <p style="margin-left:10px">
+                <strong>Tip. 가맹점에서 구현하고자 하는 결제창의 유형을 먼저 알려주세요! </strong><br>
+                토스 서버가 기억하고 가맹점에 맞는 브릿지 페이지를 호출합니다. <br>예를 들어, 토스몰에서 “토스 앱으로 결제” 만 원하는 경우 구매자는 앱 결제만 선택 가능하고, <br>
+                “웹/앱 둘다 선택” 하는 경우 위의 그림처럼 구매자가 직접 결제 유형을 선택해서 진행할 수 있습니다.
+              </p>
+            </div>
 
-            <h4 id="overview-4">4. 구매자 승인 완료</h4>
+            <h4 id="overview-4">4. 구매자 인증 완료</h4>
             <p>
-              아래 그림과 같이, 고객이 결제 암호를 잘 입력하면 구매자 승인이 완료됩니다. 그러면 토스는 결제 생성 시
+              아래 그림과 같이, 고객이 결제 암호를 잘 입력하면 구매자 인증이 완료됩니다. 그러면 토스는 결제 생성 시
               넘겨주신 <span class="bg-info">'retUrl'</span>로 고객을 보내드립니다.
               <img src="images/flow_pay_complete.png" alt="결제 완료 처리" />
             </p>
 
             <p>
-              retUrl로 고객을 보내면서, 주문 번호 (orderNo)와 승인 결과 (status) query string 파라미터로 함께
+              retUrl로 고객을 보내면서, 주문 번호 (orderNo)와 인증 결과 (status) query string 파라미터로 함께
               보내드립니다. 예시는 다음과 같습니다.
             </p>
             <div class="method-example">
               <pre
                 class=" language-http"
-              ><code class="always-visible  language-http">http://YOUR-SITE.COM/ORDER-CHECK?orderNo=1&status=PAY_APPROVED</code></pre>
+              ><code class="always-visible  language-http">http://YOUR-SITE.COM/ORDER-CHECK?orderNo=1&status=PAY_COMPLETE</code></pre>
             </div>
             <p>여기서 status 값을 확인해주세요.</p>
             <ul>
-              <li><strong>승인 완료한 경우</strong> : ?status=PAY_APPROVED</li>
+              <li><strong>인증 완료 후 정상 출금된 경우</strong> : ?status=PAY_COMPLETE</li>
               <li><strong>결제를 취소한 경우</strong> : ?status=PAY_CANCEL</li>
             </ul>
             <p>
-              결제를 취소한 경우에는 결제 취소 안내 화면을 보여주시고, 승인 완료한 경우엔 다음 단계 - 가맹점 최종 승인을
-              진행합니다.
+              결제를 취소한 경우에는 결제 취소 안내 화면을 보여주시고, 인증을 완료한 경우에는 결제 완료 화면을 보여주세요.
             </p>
+
+            <!--
             <h4 id="overview-5">5. 가맹점 최종 승인</h4>
             <p>
-              고객은 결제를 승인했지만, 아직 결제가 완료된 상태는 아닙니다. '토스몰'의 최종 승인 단계가 남아있습니다.
+              고객은 결제를 확인하고 인증 완료했으나, 아직 결제가 완료된 상태는 아닙니다. '토스몰'의 최종 승인 단계가 남아있습니다.
             </p>
             <p>
               최종 승인 전, 토스몰은 토스티셔츠의 재고가 충분한지 다시 한번 확인하고 문제가 없음을 확인한 후 '승인
@@ -472,11 +523,11 @@ curl_close($ch);
 echo "Response: ".$result;</code></pre>
             </div>
             <p>
-              토스몰의 승인 요청을 받으면 토스 결제 서버는 먼저 구매자의 승인이 정말 완료되었는지 다시 한번 확인합니다.
-              (구매자가 악의적으로 URL 변조를 통해 승인 완료인 척 했다면 여기서 결제가 중지됩니다)
+              토스몰의 승인 요청을 받으면 토스 결제 서버는 먼저 구매자의 인증이 정말 완료되었는지 다시 한번 확인합니다.
+              (구매자가 악의적으로 URL 변조를 통해 인증 완료인 척 했다면 여기서 결제가 중지됩니다)
             </p>
             <p>
-              승인이 완료된 것을 확인한 후, 구매자의 결제 계좌에서 결제 금액을 출금합니다. 출금이 완료되면 승인 요청에
+              인증 완료된 것을 확인한 후, 구매자의 결제 계좌에서 결제 금액을 출금합니다. 출금이 완료되면 승인 요청에
               대한 응답을 토스몰로 보냅니다.
             </p>
             <div class="method-example">
@@ -508,6 +559,7 @@ echo "Response: ".$result;</code></pre>
             </div>
           </div>
         </div>
+        -->
         <div class="method" id="create">
           <div class="method-description">
             <h3>결제 생성하기</h3>
@@ -532,16 +584,17 @@ echo "Response: ".$result;</code></pre>
 "amountTaxable":22727,                                   # 결제 금액 중 과세금액
 "amountVat":2273,                                        # 결제 금액 중 부가세
 "amountServiceFee":0,                                    # 결제 금액 중 봉사료
-"expiredTime":"2018-12-01 12:47:35",                     # 결제 만료 예정 시각
+"autoExecute":true,                                      # 자동 승인 설정
+"resultCallback":"http://YOUR-SITE.COM/callback",        # 결제 결과 callback 웹 URL (자동 승인 설정 true일 경우 필수)
+"expiredTime":"2019-04-01 12:47:35",                     # 결제 만료 예정 시각
 "cashReceipt":true,                                      # 현금영수증 발급 가능 여부
-"autoExecute":false,                                     # 자동 승인 여부
 "metadata":"{'size':'XL','color':'Red'}"                 # metadata 값
 }'</code></pre>
             </div>
             <h4 id="create-1">결제 생성 API의 Endpoint</h4>
             <div class="well">POST https://pay.toss.im/api/v1/payments</div>
             <h4 id="create-2">필수 Parameters</h4>
-            <p>결제 생성 요청 시 반드시 아래 7가지 값을 함께 보내주셔야합니다.</p>
+            <p>결제 생성 요청 시 반드시 아래 9가지 값을 함께 보내주셔야합니다.</p>
             <ol>
               <li><strong>상점 주문번호</strong> : 추후 상점 주문 정보와 결제 정보를 매칭하기 위해 필요</li>
               <li><strong>결제 금액</strong> : 손님으로부터 받을 금액</li>
@@ -552,14 +605,21 @@ echo "Response: ".$result;</code></pre>
                 진짜 출금되는 결제가 생성됩니다.
               </li>
               <li>
-                <strong>구매자 승인 완료 후 연결할 URL</strong> : 구매자가 결제를 승인하면 이 파라미터를 통해 등록한
+                <strong>구매자 인증 완료 후 연결할 URL</strong> : 구매자가 결제를 확인하고 인증 완료하면 이 파라미터를 통해 설정한
                 URL로 구매자를 보내드립니다. 일반적으로 구매 완료 페이지 또는 구매 완료 페이지로 연결할 수 있는 곳을
                 지정합니다.
               </li>
               <li>
-                <strong>구매자가 결제 취소 시 연결할 URL</strong> : 구매자가 결제를 취소하면 이 파라미터를 통해 등록한
+                <strong>구매자가 결제 취소 시 연결할 URL</strong> : 구매자가 결제를 취소하면 이 파라미터를 통해 설정한
                 URL로 구매자를 보내드립니다. 토스 결제 화면에서 사용자가 결제를 중단할 때 사용자를 이동시킬 가맹점
                 페이지를 지정합니다.
+              </li>
+              <li>
+                <strong>자동 승인 설정</strong> : 구매자가 인증을 완료하면 토스가 자동으로 승인을 진행합니다. 가맹점은 결과 값만 확인해 주시면 됩니다.
+              </li>
+              <li>
+                <strong>결제 결과 callback URL</strong> : 토스 서버가 출금을 성공하면 가맹점 서버로 결제 성공 callback을 요청합니다.
+                이후 가맹점에서는 결제완료 상태변경 및 재고차감 등의 로직을 처리할 수 있습니다.
               </li>
             </ol>
             <!--
@@ -584,7 +644,7 @@ echo "Response: ".$result;</code></pre>
             <h4 id="create-6">결제 만료 기한 (expiredTime)</h4>
             <p>
               이 파라미터를 통해 '결제 생성 후, 언제까지 결제 승인을 진행할 수 있는지' 설정할 수 있습니다. '결제 대기'
-              상태인 결제건의 만료 기한이 도래하면 자동으로 결제가 취소됩니다.
+              상태인 결제건의 만료 기한이 도래하면 토스 서버에서 자동으로 결제를 취소합니다.
             </p>
             <p>상점 혹은 판매 물품에 특성에 따라 결제 만료 기간을 길게 혹은 짧게 설정할 수 있습니다.</p>
             <ul>
@@ -597,7 +657,7 @@ echo "Response: ".$result;</code></pre>
                 재고의 변동이 크거나 '결제 대기' 상태를 오래 지속하고싶지 않은 경우엔 결제 만료 기한을 짧게 설정하세요.
               </li>
             </ul>
-            <p>결제 만료 기한은 최대 1시간이며, 따로 설정하지 않는 경우 15분으로 설정됩니다.</p>
+            <p><span class="bg-info">결제 만료 기한은 최대 1시간이며, 따로 설정하지 않는 경우 15분으로 설정됩니다.</span></p>
             <h4 id="create-8">현금영수증 발급 가능 여부 (cashReceipt)</h4>
             <p>
               현금영수증 발급 가능 여부를 설정할 수 있습니다.
@@ -611,16 +671,26 @@ echo "Response: ".$result;</code></pre>
             </ul>
             <h4 id="create-9">자동 승인 여부 (autoExecute)</h4>
             <p>
-              구매자의 인증이 완료되면 바로 결제 완료 처리할지, 최종적으로 가맹점의 승인을 거칠지 설정할 수 있습니다.
-            </p>
-            <ul>
-              <li><strong>true</strong> : 구매자 인증 완료 시 바로 결제 완료 처리합니다.</li>
-              <li><strong>false</strong> : 구매자 인증 완료 후 가맹점의 최종 승인 시 결제 완료 처리합니다.</li>
-            </ul>
+              토스 결제는 기본적으로 '구매자'의 인증이 완료되면 바로 구매자의 토스머니에서 출금하고 결제를 완료시킵니다.<br>
+              하지만, 재고 상황이 빠르게 변하는 경우나 서비스 흐름 상 결제를 '최종 승인'하는 주체가 가맹점이어야 하는 경우가 있습니다.<br>
+              그럴땐 아래 두 가지 조치를 통해 대응할 수 있습니다.
+            </p><br>
+            <ol>
+              <li>
+                <strong>결제 생성 시, autoExecute를 'false'로 설정</strong> : 해당 결제건은 가맹점의 최종 승인 전까진
+                대기 상태에 머무르게 됩니다. (PAY_APPROVED 상태)
+              </li>
+              <li>
+                <strong>결제 승인 API를 통해 최종 승인 (execute API)</strong> : PAY_APPROVED 상태의 결제건에 대해 승인을
+                요청하면 출금을 시도하고 출금 완료 시 결제 완료로 상태를 변경합니다.
+              </li>
+            </ol>
+            <br>
             <p>
-              재고 상황이 빠르게 변하는 경우나 서비스 흐름 상 결제의 최종 승인은 가맹점이 해야하는 경우, 자동 승인을
-              false로 설정함으로써 대응할 수 있습니다.
+              아래 그림을 참고하세요.
+              <img src="images/flow_autoExecute_modify.png" alt="결제 승인 흐름" />
             </p>
+
             <h4 id="create-10">결제 연관 data 기록 (metadata)</h4>
             <p>
               생성하는 결제 건과 연관된 추가적인 데이터가 있다면 이 파라미터를 활용하여 저장해둘 수 있습니다. (결제가
@@ -639,7 +709,7 @@ echo "Response: ".$result;</code></pre>
             </ul>
             <p>
               위 네 가지 값 중 하나라도 0이 아닌 값으로 설정하면 해당 결제 건은 '복합과세' 결제로 처리되며, 네 가지 값의
-              합은 총 결제 금액(amount)과 반드시 동일해야합니다. (동일하지 않을 시 에러 발생)
+              합은 총 결제 금액(amount)과 반드시 동일해야합니다. (동일하지 않거나 빈 값으로 전달할 경우 에러 발생)
               <br />
               위 파라미터를 통해 설정한 값은 현금 영수증 발행 시 그대로 반영됩니다.
             </p>
@@ -660,6 +730,7 @@ echo "Response: ".$result;</code></pre>
             </ul>
           </div>
         </div>
+        <!--
         <div class="method" id="execute">
           <div class="method-description">
             <h3>결제 승인하기</h3>
@@ -680,7 +751,7 @@ echo "Response: ".$result;</code></pre>
             </ol>
             <p>
               아래 그림을 참고하세요.
-              <img src="images/flow_autoExecute.png" alt="결제 승인 흐름" />
+              <img src="images/flow_autoExecute_modify.png" alt="결제 승인 흐름" />
             </p>
             <div class="method-example">
               <div class="languages">
@@ -704,12 +775,7 @@ echo "Response: ".$result;</code></pre>
               <li><strong>상점 API Key</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
               <li><strong>결제 고유 토큰 (payToken)</strong> : 결제 생성 완료 후 받은 결제 고유번호</li>
             </ol>
-            <h4 id="execute-3">유효성 추가 검증</h4>
-            <p>
-              결제 승인 시 orderNo (상점의 주문번호)와 amount (결제 금액)을 함께 보내면 일치 여부를 확인합니다. 결제
-              고유 번호 (payToken)와 연결된 결제건과 orderNo나 amount가 다르면 승인 실패처리하여 다시 한번 유효성을
-              검증합니다.
-            </p>
+            -->
           </div>
         </div>
         <div class="method" id="cancel">
@@ -846,7 +912,6 @@ echo "Response: ".$result;</code></pre>
 "orderNo":"2015072012211",          # 상점의 주문번호
 "payStatus":"REFUND_SUCCESS",       # 결제 상태
 "availableActions ":["REFUND"],     # 가능한 액션 목록
-"hasOwner":true,                    # 결제할 사람의 정보 입력 여부
 "metadata":"metadata"               # 결제 생성 시 입력한 metadata
 }
 </code></pre>
@@ -867,12 +932,14 @@ echo "Response: ".$result;</code></pre>
                 <strong>가능한 액션 목록</strong> : 조회 당시에 가능한 액션(취소, 환불 등) 목록 (예를 들어, '결제 완료'
                 상태에서는 '환불'이 가능하나 '전액 환불'한 상태에서는 환불 불가)
               </li>
+              <!--subin_20190410_삭제
               <li>
                 <strong>결제할 사람의 정보 입력 여부</strong> : 당신의 상점에서 결제를 생성하고 결제 진행 웹페이지를
                 구매자에게 제공하고 나면 구매자는 결제 승인에 필요한 정보를 입력합니다. 결제를 진행할 사람에 대한 정보가
                 올바르게 입력되면 이 값은 <span class="bg-info">true</span>가 됩니다. 반면, 아직 정보를 입력하지 않은
                 상태라면 <span class="bg-info">false</span> 입니다.
               </li>
+              -->
               <li>
                 <strong>결제 연관 data</strong> : 결제 생성 시 가맹점 측에서 해당 결제건과 연관된 정보를 metadata
                 field를 통헤 기록할 수 있고, 결제 상태 조회를 통해 기록하셨던 data에 다시 접근하실 수 있습니다.
@@ -888,6 +955,10 @@ echo "Response: ".$result;</code></pre>
               <tr>
                 <td width="50%">PAY_STANDBY</td>
                 <td width="50%">결제 대기 중</td>
+              </tr>
+              <tr>
+                <td>PAY_APPROVED</td>
+                <td>구매자 인증 완료 <br> (결제 생성 시 'autoExecute'를 'false'일 경우에만 해당)</td>
               </tr>
               <tr>
                 <td>PAY_CANCEL</td>
@@ -920,6 +991,76 @@ echo "Response: ".$result;</code></pre>
             </table>
           </div>
         </div>
+
+        <!--190415 추가-->
+        <div class="method" id="faq">
+          <div class="method-description">
+            <h3>자주 묻는 질문</h3>
+            <p>
+              이제, 토스 결제 서비스에 대해 좀 더 자세하게 안내드립니다.<br> 이 항목은 지속적으로 업데이트될 예정이며, 궁금하신 사항은 언제든지 토스 결제팀(support-pay@toss.im)으로 의견주세요!
+            </p>
+            <h4 id="faq-1">토스 연동을 위한 방화벽 설정</h4>
+            <p>구매자는 인증을 완료했지만 가맹점 retUrl로 결제 결과가 오지 않는 경우나, 토스 서버로 부터 resultCallback 결과를 받지<br> 못한다면 먼저 방화벽 설정을 살펴봐야 합니다.</p>
+            <ol>
+              <li><strong>가맹점에서 토스서버로 접근하는 경우 (결제 생성, 결제 승인 등의 API)</strong><br>가맹점 --> 가맹점 방화벽 --> 토스 결제</li><br>
+              위의 경우에는 가맹점 방화벽의 outbound 정책에 아래 토스 IP를 추가해 주시면 됩니다. <br>
+              <strong>domain : <font color="blue">pay.toss.im</font></strong>
+              <ul>
+                <li>58.229.176.202</li>
+              </ul>
+              <ul>
+                <li>117.52.3.202</li><br>
+              </ul>
+
+              <li><strong>토스서버에서 가맹점으로 접근하는 경우 (resultCallback를 포함하는 경우만 사용)</strong><br>토스결제 --> 가맹점 방화벽 --> 가맹점</li><br>
+              위의 경우에서는 가맹점 방화벽의 inbound 정책에 아래 토스 IP를 추가해 주시면 됩니다. <br>
+              <strong>domain : <font color="blue">pay.toss.im</font></strong>
+              <ul>
+                <li>118.217.181.219</li>
+              </ul>
+              <ul>
+                <li>117.52.3.11</li>
+              </ul>
+              <ul>
+                <li>117.52.3.4</li>
+              </ul>
+            </ol>
+            <p>* 각 케이스 별 구분이 어렵다면 outbound, inbound 정책에 맞게 토스 IP를 모두 추가해 주셔도 됩니다.</p>
+            </ol>
+
+            <h4 id="faq-2">토스 인코딩 방식</h4>
+            <p><strong>토스 인코딩 방식은 UTF-8 형식을 사용합니다.</strong> 
+               가맹점에서 토스 서버로 한글이 포함된 값(주문번호, 상품명 등)을 보내주실 때 UTF-8 형식으로 보내주셔야 정상적인 response값을 확인하실 수 있습니다. <br>
+               <strong> 유의해 주세요! 깨진 한글이 유입되면 토스 서버는 필수 값 체크를 못해 오류가 발생할 수 있습니다. </strong>
+
+            <h4 id="faq-3">토스가 권장하는 Time Out 처리 시간은 무엇인가요?</h4>
+            <p>토스는 일반 은행계좌에서 토스머니로 충전 시 최대 30초의 타임아웃 시간을 설정합니다. <br>
+               따라서, 가맹점에서는 <strong>30초 + 3~5초 정도</strong>의 대기 시간을 잡아주시면 대사 불일치 거래건이 발생하지 않습니다.(처리 지연으로 가맹점은 취소 처리했으나 토스는 승인되는 케이스 방지)<br>
+               토스 이슈가 아닌 은행망 이슈를 제외하면 타임아웃으로 인한 거래 지연은 발생하지 않습니다.
+
+            <h4 id="faq-4">retUrl 이동이 실패할 수 있나요?</h4>
+            <p>retUrl의 이동은 토스 web page에서 처리되는 로직으로 일반적인 경우 처리를 보장하지만 특별한 상황에서 실패할 수 있습니다.<br>
+              특별한 상황이란, <strong>구매자가 결제 중에 앱을 종료하거나 백그라운드 처리를 하는 등의 이탈</strong>로 javascript 로직이 처리될 수 없는 경우입니다.
+              이 경우 구매자가 다시 결제 화면으로 돌아와서 '결제완료' 버튼을 클릭한다면 retUrl 로의 이동을 재시도 하게 됩니다.<br>
+              다만, 구매자가 재시도를 하지 않는 경우에는 retUrl로 이동하지 못하는 상황이 발생할 수 있습니다.</p>
+
+            <h4 id="faq-5">resultCallback을 반드시 활용해야 하나요?</h4>
+            <p>토스 서버에서 결제처리가 완료되고 나면 해당 결제건의 상태는 <strong>PAY_COMPLETE</strong>로 변경되고, 구매자를<strong>retUrl로 이동</strong>시킵니다.<br>
+               <strong>동시에 토스 서버에서 가맹점 서버의 resultCallback URL로 callback을 요청합니다.</strong>
+               retUrl은 단순 web page의 이동으로<br> 토스에서 결제 성공 여부를 확인 할 수 없고, 구매자 상황에 따라 실행을 보장할 수 없기 때문에 resultCallback을 활용하시길 권장드립니다. <br>
+               또한, resultCallback 은 <strong>토스 서버<->가맹점 서버 통신</strong>이므로 데이터 유실이 없고 안전합니다.
+            <br><br>
+            <ul>
+              <li>자동 승인 설정(autoExecute)을 true로 사용하는 가맹점에서는 필수 값입니다.</li>
+              <li>반대로, false를 사용하는 가맹점에서는 retUrl이동 후에 결제 승인(Execcute) API를 호출하는 시점에 resultCallback을 비동기로 호출합니다. 
+                   사용을 위해선 자동 승인 설정을 true로 변경해주셔야 합니다.</li>
+            </ul>
+
+            <h4 id="faq-6">resultCallback이 실패하는 이유가 뭘까요?</h4>
+            <p>토스에서는 장애 상황이 아닌 한 resultCallback 요청을 보장합니다. 단, 방화벽 이슈를 제외하고 callback 요청을 받아 처리하는 것은 가맹점 서버로 많은 트래픽, 개발 중의 버그 등의
+               특별한 사유로 callback 요청이 실패할 수 있습니다. <br>
+               <strong>토스에서는 callback 실패 시 가맹점 서버로 10분 이내에 총 4회의 재시도 요청</strong>을 하고 있으니 안심하세요.
+        <!--추가 끝-->
 
         <div class="method" id="maintenance">
           <div class="method-description">
