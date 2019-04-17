@@ -370,8 +370,8 @@ echo "Response: ".$result;</code></pre>
             </div>
             <p>요청하신 결제 생성이 무사히 완료되면, 토스는 아래와 같이 응답합니다.</p>
             <div class="method-example">
-              <pre><code class="always-visible language-bash">{"code":0,"checkoutPage":"https://pay.toss.im/payfront/auth?payToken=test_token1234567890
-&retUrl=http://YOUR-SITE.COM/ORDER-CHECK","payToken":"test_token1234567890"}</code></pre>
+              <pre><code class="always-visible language-bash">{"code":0,"checkoutPage":"https://pay.toss.im/payfront/auth?payToken=test_token1234567890",
+"payToken":"test_token1234567890"}</code></pre>
             </div>
             <p><span class="bg-info">code '0'</span>은 결제 생성에 '성공'했음을 나타냅니다.</p>
             <p>
@@ -393,8 +393,7 @@ echo "Response: ".$result;</code></pre>
             <div class="method-example">
               <pre
                 class=" language-http"
-              ><code class="always-visible  language-http">https://pay.toss.im/payfront/auth?payToken=test_token1234567890
-&amp;retUrl=http://YOUR-SITE.COM/ORDER-CHECK</code></pre>
+              ><code class="always-visible  language-http">https://pay.toss.im/payfront/auth?payToken=test_token1234567890</code></pre>
             </div>
             <p>
               그 후, 결제 인증까지의 모든 과정은 토스가 알아서 해드립니다. (결제에 사용할 계좌번호를 받고, 계좌의
@@ -581,11 +580,11 @@ echo "Response: ".$result;</code></pre>
 "apiKey":"sk_test_apikey1234567890",                     # 상점의 API Key (필수)
 "retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",   # 결제 완료 후 연결할 웹 URL (필수)
 "retCancelUrl":"http://YOUR-SITE.COM/close",             # 결제 취소 시 연결할 웹 URL (필수)
+"autoExecute":true,                                      # 자동 승인 설정
+"resultCallback":"http://YOUR-SITE.COM/callback",        # 결제 결과 callback 웹 URL (필수-자동승인설정 true의 경우)
 "amountTaxable":22727,                                   # 결제 금액 중 과세금액
 "amountVat":2273,                                        # 결제 금액 중 부가세
 "amountServiceFee":0,                                    # 결제 금액 중 봉사료
-"autoExecute":true,                                      # 자동 승인 설정
-"resultCallback":"http://YOUR-SITE.COM/callback",        # 결제 결과 callback 웹 URL (자동 승인 설정 true일 경우 필수)
 "expiredTime":"2019-04-01 12:47:35",                     # 결제 만료 예정 시각
 "cashReceipt":true,                                      # 현금영수증 발급 가능 여부
 "metadata":"{'size':'XL','color':'Red'}"                 # metadata 값

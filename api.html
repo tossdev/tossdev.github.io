@@ -78,7 +78,10 @@
                 <a href="#payments">결제 생성</a>
             </li>
             <li>
-                <a href="#execute">결제 승인</a>
+                <a href="#resultcallback">결제 결과 callback</a>
+            </li>
+            <li>
+                <a href="#execute">가맹점 승인</a>
             </li>
             <li>
                 <a href="#cancel">결제 취소</a>
@@ -114,12 +117,22 @@
                             <br>
                             <br><a href="gettingstarted.html">&gt;&gt; '토스 결제 시작하기' 문서로 바로가기</a>
                         </p>
-
                         <div class="alert alert-warning" role="alert">
                           <i class="fa fa-exclamation-triangle pull-left" aria-hidden="true" style="margin-top:8px;margin-left:6px"></i>
-                            pay.toss.im의 결제 API HTTPS는 TLS v1.1, v1.2만을 지원합니다. <br />
-                            웹뷰를 통해 토스 결제를 실행할 경우, Android 5.0(롤리팝), iOS 5.0 이상에서만 동작합니다.
+                            토스 결제는 결제 과정 중의 보안을 위해 pay.toss.im의 결제 API HTTPS는 TLS v1.1 이상만을 지원합니다.
+                            SSL은 필수이며 적용이 되어 있지 않은 서버에서는 이용이 불가합니다.                        
                         </div>
+                        <p><br><strong>토스 결제 서비스를 지원하는 브라우저는 다음과 같습니다.</strong></p>
+                        <p>
+                            PC 브라우저, Android, iOS 모두 TLS 1.1 이상의 환경에서 동작이 가능하며, 디바이스 같은 경우 토스 앱의 최소 지원 버전 기준입니다.
+                        </p>
+                            <ul>
+                                <li>IE 11, Safari 7, Chrome 38, Firefox 27 부터 지원</li>
+                                <li>IE 9, 10 는 일부 지원 (Window 8.1 이상, Enable TLS 1.1, 1.2)</li>
+                                <li>Android 5.0 Lollipop 부터 지원</li>
+                                <li>iOS 9 부터 지원</li>
+                                <li>Java 를 사용하시는 경우, jdk 1.8 이상 버전 사용을 권장합니다</li>
+                            </ul>
                     </div>
                 </div>
             </div>
@@ -141,7 +154,7 @@
                                 </div>
                                 <div class="desc">
                                     결제 대기 중
-                                    <br /> : 결제 건이 생성되었고, 구매자의 결제 진행을 대기 중인 상태. 이 상태에서 구매자나 가맹점이 결제를 취소할 수 있습니다. 또한 설정한 '만료 기간'이 도래하면 자동으로 취소됩니다.
+                                    <br /> 결제 건이 생성되었고, 구매자의 결제 진행을 대기 중인 상태. 이 상태에서 구매자나 가맹점이 결제를 취소할 수 있습니다. 또한 설정한 '만료 기간'이 도래하면 자동으로 취소됩니다.
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -151,7 +164,7 @@
                                 </div>
                                 <div class="desc">
                                     구매자 인증 완료
-                                    <br /> : 결제를 위한 구매자 인증 완료되고, 가맹점의 최종 승인을 기다리는 상태.
+                                    <br /> 결제를 위한 구매자 인증 완료되고, 가맹점의 최종 승인을 기다리는 상태.
                                     <br />(결제 생성 시 'autoExecute'를 false로 설정한 경우에만 이 단계를 거칩니다)
                                 </div>
                             </div>
@@ -161,7 +174,7 @@
                                 </div>
                                 <div class="desc">
                                     결제 취소
-                                    <br /> : 결제가 완료되기 전에 구매자나 가맹점이 결제를 취소한 상태입니다. (결론적으론 금액의 이동 없이 종료된 건)
+                                    <br /> 결제가 완료되기 전에 구매자나 가맹점이 결제를 취소한 상태입니다. (결론적으론 금액의 이동 없이 종료된 건)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -170,7 +183,7 @@
                                 </div>
                                 <div class="desc">
                                     결제 진행 중
-                                    <br /> : 구매자가 결제를 승인하여 구매자의 계좌에서 결제 금액을 출금 처리 중인 상태입니다.
+                                    <br /> 구매자가 결제를 승인하여 구매자의 계좌에서 결제 금액을 출금 처리 중인 상태입니다.
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -179,7 +192,7 @@
                                 </div>
                                 <div class="desc">
                                     결제 완료
-                                    <br /> : 구매자 및 가맹점의 결제 승인 및 출금이 정상적으로 완료된 상태입니다
+                                    <br /> 구매자 및 가맹점의 결제 승인 및 출금이 정상적으로 완료된 상태입니다
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -188,7 +201,7 @@
                                 </div>
                                 <div class="desc">
                                     환불 진행 중
-                                    <br /> : 전액 또는 부분 환불을 진행 중인 상태로, 완료되기 전 까지 다른 환불을 진행할 수 없습니다.
+                                    <br /> 전액 또는 부분 환불을 진행 중인 상태로, 완료되기 전 까지 다른 환불을 진행할 수 없습니다.
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -197,7 +210,7 @@
                                 </div>
                                 <div class="desc">
                                     환불 성공
-                                    <br /> : 전액 또는 부분 환불이 완료되어, 환불 처리한 금액이 구매자의 계좌로 입금 완료된 상태입니다.
+                                    <br /> 전액 또는 부분 환불이 완료되어, 환불 처리한 금액이 구매자의 계좌로 입금 완료된 상태입니다.
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -206,7 +219,7 @@
                                 </div>
                                 <div class="desc">
                                     정산 완료
-                                    <br /> : 결제 완료된 금액에 대해 정산이 완료되어 더 이상 환불이 불가한 상태입니다. (승인일 또는 구매 확정일로부터 1년 경과)
+                                    <br /> 결제 완료된 금액에 대해 정산이 완료되어 더 이상 환불이 불가한 상태입니다. (승인일 또는 구매 확정일로부터 1년 경과)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -215,7 +228,7 @@
                                 </div>
                                 <div class="desc">
                                     환불 정산 완료
-                                    <br /> : 전액 또는 부분 환불에 대한 정산이 완료되어 더 이상 환불이 불가한 상태입니다. (승인일 또는 구매 확정일로부터 1년 경과했거나 전액 환불에 대한 정산 완료된 경우)
+                                    <br />전액 또는 부분 환불에 대한 정산이 완료되어 더 이상 환불이 불가한 상태입니다. (승인일 또는 구매 확정일로부터 1년 경과했거나 전액 환불에 대한 정산 완료된 경우)
                                 </div>
                             </div>
                         </div>
@@ -282,6 +295,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="method" id="payments">
                 <div class="method-section clearfix">
                     <div class="method-description">
@@ -290,9 +305,9 @@
                             결제 건을 생성합니다.
                         </p>
                         <p>
-                            결제 생성 완료 후, 구매자의 승인을 얻어 완료처리하는 방법은 아래 문서를 참고하세요.
+                            결제 생성 완료 후, 구매자의 결제 인증을 얻어 완료처리하는 방법은 아래 문서를 참고하세요.
                             <br>
-                            <a href="gettingstarted.html#overview-3">토스 결제 시작하기 > 3. 구매자 승인 받기</a>
+                            <a href="gettingstarted.html#overview-3">토스 결제 시작하기 > 3. 구매자 인증 받기</a>
                         </p>
                         <div class="info">
                             <h4>endpoint</h4>
@@ -302,9 +317,6 @@
                                 </div>
                                 <div class="desc">
                                   https://pay.toss.im/api/v1/payments <br/>
-                                  <p>
-                                  (이전) https://toss.im/tosspay/api/v1/payments
-                                  </p>
                                 </div>
                             </div>
                         </div>
@@ -318,6 +330,8 @@
                                 </div>
                                 <div class="desc">
                                     가맹점 key
+                                    <br>
+                                    <span class="text-muted">웹 브라우저 혹은 외부에 노출되지 않도록 유의해 주시기 바랍니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -329,7 +343,9 @@
                                 <div class="desc">
                                     가맹점의 상품 주문번호
                                     <br>
-                                    <span class="text-muted">주문번호는 50자 이내여야 하고, '숫자, 영문자, 특수문자 _-:.^@'만 사용할 수 있습니다.</span>
+                                    <span class="text-muted">주문번호는 50자 이내여야 하고, '숫자, 영문자, 특수문자 _-:.^@'만 사용할 수 있습니다.<br>
+                                    가맹점 주문번호 테스트와 라이브 환경 사이에서 중복되지 않도록 가맹점의 관리가 필요합니다. 중복되는 경우, "PAYMENT_EXISTING_PAYMENT" 오류가 발생합니다.
+                                    </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -340,6 +356,9 @@
                                 </div>
                                 <div class="desc">
                                     결제 금액
+                                    <br>
+                                    <font color=red>금액과 관련된 모든 파라미터는 Number 형태로 보내주셔야 에러가 발생하지 않습니다.</font>
+                                    </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -351,7 +370,8 @@
                                 <div class="desc">
                                     상품 설명
                                     <br>
-                                    <span class="text-muted">상품 설명은 공백으로만 설정할 수 없고, 백슬래시(\)와 따옴표(",')를 포함할 수 없으며 총 255자 이내여야 합니다.</span>
+                                    <span class="text-muted">상품 설명은 공백으로만 설정할 수 없고, 백슬래시(\)와 따옴표(",')를 포함할 수 없으며 총 255자 이내여야 합니다.
+                                    이 값에 한글이 포함되었다면 인코딩에 유의해주세요. </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -361,7 +381,8 @@
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    Web 결제 완료 후 연결할 웹페이지의 URL (결제 최종 승인 및 완료 처리할 페이지)
+                                    Web 결제 완료 후 연결할 웹페이지의 URL (결제 최종 승인 및 완료 처리할 페이지)<br>
+                                    <span class="text-muted">결제 완료 화면으로의 이동일 뿐, 정확한 결제 성공 유무를 보장할 수 없으니 반드시 resultCallback 을 통하여 처리하시기 바랍니다. </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -371,7 +392,9 @@
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    토스 브릿지 페이지에서 사용자가 결제를 중단할때 사용자를 이동시킬 가맹점 페이지
+                                    토스 브릿지 페이지에서 사용자가 결제를 중단할때 사용자를 이동시킬 가맹점 페이지<br>
+                                    <span class="text-muted">이 값을 사용하면 토스 서버가 retCancelUrl 을 실행시킬 취소 버튼을 생성하고,
+                                        구매자는 브라우저나 앱을 종료하지 않고 취소 버튼을 통하여 가맹점이 설정한 URL로 redirect됩니다.<br> 구매자 편의를 위하 반드시 활용해주세요!
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -380,7 +403,8 @@
                                     <span class="type">string</span>
                                 </div>
                                 <div class="desc">
-                                    App 결제 완료 후 연결할 app scheme (결제 최종 승인 및 완료 처리할 페이지). retAppScheme을 사용할 경우 retUrl은 사용하지 않아도 됩니다.
+                                    App 결제 완료 후 연결할 app scheme (결제 최종 승인 및 완료 처리할 페이지). retAppScheme을 사용할 경우 retUrl은 사용하지 않아도 됩니다. <br>
+                                    <span class="text-muted">앱 결제를 이용하는 경우를 대비하여 이 곳에 가맹점 앱 스킴값을 적용하면, 결제 완료 후 토스앱 이동의 이탈을 막고 가맹점 앱으로 redirect 됩니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -389,7 +413,7 @@
                                     <span class="type">boolean</span>
                                 </div>
                                 <div class="desc">
-                                    자동 승인 여부 설정(기본 값: false)
+                                    자동 승인 여부 설정(기본 값: true)
                                     <br />
                                     <br>
                                     <table class="table">
@@ -401,7 +425,7 @@
                                         <tr>
                                             <td>false</td>
                                             <td>구매자 인증 완료 후 가맹점의 최종 승인 시 결제 완료 처리
-                                                <br>('결제 승인 API'를 통해 최종 승인합니다)</td>
+                                                <br>('execute API'를 통해 최종 승인합니다)</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -412,7 +436,8 @@
                                     <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액 중 과세금액 (복합과세)
+                                    결제 금액 중 과세금액 (복합과세)<br>
+                                    <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -422,7 +447,8 @@
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액 중 비과세금액 (복합과세), 없으면 0으로 설정
+                                    결제 금액 중 비과세금액 (복합과세)<br>
+                                    <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -431,7 +457,8 @@
                                     <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액 중 부가세 (복합과세)
+                                    결제 금액 중 부가세 (복합과세)<br>
+                                    <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -440,7 +467,8 @@
                                     <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액 중 봉사료 (복합과세)
+                                    결제 금액 중 봉사료 (복합과세)<br>
+                                    <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -457,11 +485,13 @@
                                 <div class="key">
                                     resultCallback
                                     <span class="type">string</span>
-                                    <span class="type">자동 승인 설정시 필수</span>
+                                    <span class="auto-required"></span>
                                 </div>
                                 <div class="desc">
-                                    결제 결과 callback URL (성공, 취소, 환불 등)
-                                    <br />
+                                    결제 결과 callback URL (결제 성공)<br>
+                                    <span class="text-muted">토스 서버가 정상 출금 완료 후 이 곳에 입력한 URL로 결과를 전송하기 때문에 가맹점 서버에서 반드시 확인하셔야 합니다.<br>
+                                    <font color="red"> callback URL에 80, 443 이외의 port가 포함되면 이용할 수 없으니 유의해주세요.</font>
+                                    </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -471,32 +501,9 @@
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    현금영수증 발급 가능 여부
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    checkoutType
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    결제창 타입을 선택합니다. (앱/웹) 지문인증을 지원하려면 'app' 또는 'both'를 선택하세요. (기본값 web)
-                                    <br />
-                                    <br />
-                                    <table class="table">
-                                        <tr>
-                                            <td>web</td>
-                                            <td>토스 앱 없이 웹에서 결제</td>
-                                        </tr>
-                                        <tr>
-                                            <td>app</td>
-                                            <td>토스 앱을 통해서만 결제 가능</td>
-                                        </tr>
-                                        <tr>
-                                            <td>both</td>
-                                            <td>웹결제 / 앱을 통한 결제를 구매자가 선택</td>
-                                        </tr>
-                                    </table>
+                                    현금영수증 발급 가능 여부<br>
+                                    <span class="text-muted">현금영수증 기능을 활용하시는 경우 true, 미 사용의 경우 false로 선언해 주시기 바랍니다.
+                                    그러나, 기본 값이 true이기 때문에 현금영수증 사용 시 별도로 선언하지 않으셔도 됩니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -509,7 +516,6 @@
                                     <br /> (지정 시 구매자가 번호를 변경할 수 없으므로 전화번호 정보가 정확할 때만 이용하십시오)
                                 </div>
                             </div>
-                            
                             <div class="field clearfix">
                                 <div class="key">
                                     metadata
@@ -549,7 +555,8 @@
                                     <span class="type">string</span>
                                 </div>
                                 <div class="desc">
-                                    생성된 결제를 진행하는 웹페이지 URL (구매자를 이 URL로 보내야 함)
+                                    생성된 결제를 진행하는 웹페이지 URL (구매자를 이 URL로 보내야 함)<br>
+                                    <span class="text-muted">토스가 전달한 값 그대로 사용하세요.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -581,66 +588,30 @@
                                     <br />
                                     <table class="table">
                                         <tr>
+                                            <td>COMMON_PAY_ERROR</td>
+                                            <td>시스템 에러가 발생 하였습니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORE_USER_ERROR</td>
+                                            <td>존재하지 않는 사용자 입니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>COMMON_TEMP_DENIAL_ERROR</td>
+                                            <td>일시적 시스템 에러가 발생하였습니다.</td>
+                                        </tr>
+                                        <tr>
                                             <td>COMMON_INVALID_PARAMETER</td>
                                             <td>요청한 값이 부족하거나 올바르지 않습니다.</td>
                                         </tr>
+                                        <tr>
+                                            <td>PAYMENT_UNDER_CONSTRUCTION</td>
+                                            <td>동일한 결제가 이미 존재합니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PAYMENT_DUPLICATION_ORDER_NO</td>
+                                            <td>중복된 주문번호(orderNo) 가 전달되었습니다.</td>
+                                        </tr>
                                     </table>
-                                </div>
-                            </div>
-                        </div>
-                        <h4>결제 결과 Callback (resultCallback)</h4>
-                        <p>
-                            결제 상태가 변경될 때 토스가 판매자에게 변경 사항을 알립니다. 자동 승인 설정을 사용 시 (autoExecute가 true) 필수적으로 활용해야합니다.
-                        </p>
-                        <p>
-                            * 생성된 결제 건에 resultCallback 파라미터 값이 있을 경우에만 동작합니다.
-                        </p>
-                        <div class="info">
-                            <h4>parameter</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    status
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    PAY_SUCCESS, PAY_CANCEL, REFUND_SUCCESS 중 하나
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    payToken
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    Toss 결제 토큰
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    orderNo
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    Toss 결제와 이어진 주문번호
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    metadata
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    결제 생성 시 저장한 연관 정보
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h4>response</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                </div>
-                                <div class="desc">
-                                    기대하지 않음 (미사용)
                                 </div>
                             </div>
                         </div>
@@ -655,11 +626,15 @@
         "orderNo":"2015072012211",
         "amount":10000,
         "amountTaxFree":0,
-        "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
-        "retCancelUrl": "http://YOUR-SITE.COM/close",
         "productDesc":"테스트결제",
-        "apiKey":"sk_test_apikey1234567890"
-        }'</code><code class="java language-java">URL url = null;
+        "apiKey":"sk_test_apikey1234567890",
+        "autoExecute":"true",
+        "resultCallback":"http://YOUR-SITE.COM/callback",
+        "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
+        "retCancelUrl": "http://YOUR-SITE.COM/close"
+        }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
@@ -675,15 +650,19 @@ try {
 	jsonBody.put("amountTaxFree", 0);
 	jsonBody.put("productDesc", "테스트 결제");
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
+    jsonBody.put("autoExecute", "true");
+    jsonBody.put("resultCallback", "http://"http://YOUR-SITE.COM/callback");
     jsonBody.put("retUrl", "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1");
     jsonBody.put("retCancelUrl", "http://YOUR-SITE.COM/close");
 
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
-	bos.write(jsonBody.toJSONString().getBytes());
+	<!--bos.write(jsonBody.toJSONString().getBytes());-->
+    bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
 	bos.flush();
 	bos.close();
 
-	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	<!--BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));-->
+    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
 	String line = null;
 	while ((line = br.readLine()) != null) {
 		responseBody.append(line);
@@ -698,6 +677,8 @@ $arrayBody["amount"] = 10000;
 $arrayBody["amountTaxFree"] = 0;
 $arrayBody["productDesc"] = "테스트 결제";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890";
+$arrayBody["autoExecute"] = "true";
+$arrayBody["resultCallback"] = "http://YOUR-SITE.COM/callback";
 $arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1";
 $arrayBody["retCancelUrl"] = "http://YOUR-SITE.COM/close";
 $jsonBody = json_encode($arrayBody);
@@ -722,6 +703,8 @@ data = data & "&orderNo=2015072012211"
 data = data & "&amount=10000"
 data = data & "&amountTaxFree=0"
 data = data & "&productDesc=ASPtestProduct"
+data = data & "&autoExecute=true"
+data = data & "&resultCallback=http://YOUR-SITE.COM/callback"
 data = data & "&retUrl=http://YOUR-SITE.COM/ORDER-CHECK?orderno=1"
 data = data & "&retCancelUrl=http://YOUR-SITE.COM/close"
 
@@ -739,10 +722,12 @@ params = {
     "orderNo": "2015072012211",
     "amount": 10000,
     "amountTaxFree": 0,
-    "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
-    "retCancelUrl": "http://YOUR-SITE.COM/close",
     "productDesc":"테스트 결제",
-    "apiKey": "sk_test_apikey1234567890"
+    "apiKey": "sk_test_apikey1234567890",
+    "autoExecute": "true",
+    "resultCallback": "http://YOUR-SITE.COM/callback",
+    "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
+    "retCancelUrl": "http://YOUR-SITE.COM/close"
 }
 
 response = urllib.urlopen(url, urllib.urlencode(params))
@@ -757,6 +742,8 @@ params = {
         "amountTaxFree"=> 0,
         "productDesc" => "테스트 결제",
         "apiKey" => "sk_test_apikey1234567890",
+        "autoExecute" => "true",
+        "resultCallback" => "http://YOUR-SITE.COM/callback",
         "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
         "retCancelUrl": "http://YOUR-SITE.COM/close"
 }
@@ -769,21 +756,145 @@ response = http.request(request)
 
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
-                        <pre><div><code style="border:none;box-shadow:none;" class="language-javascript always-visible">{"code":0,"checkoutPage":"https://pay.toss.im/payfront/auth?payToken=test_token1234567890&retUrl=http://YOUR-SITE.COM","payToken":"test_token1234567890"}
+                        <pre><div><code style="border:none;box-shadow:none;" class="language-javascript always-visible">{"code":0,"checkoutPage":"https://pay.toss.im/payfront/auth?payToken=test_token1234567890","payToken":"test_token1234567890"}
                         </code></div></pre>
                     </div>
                 </div>
             </div>
+            
+
+            <!--추가-->
+            <div class="method" id="resultcallback">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h4>결제 결과 Callback (resultCallback)</h4>
+                        <p>
+                            결제 처리가 완료되면 결제 상태가 변경되고, 토스는 가맹점 서버로 변경 사항을 알려드립니다. <br><br>
+                            다시 한번 말씀드립니다. <br>
+                            ‘결제완료’ callback을 받았을 때, 결제완료 상태를 변경하시고 재고차감 등의 로직을 처리해 주세요.<br>
+                            자동 승인 설정을 사용 시 (autoExecute가 true) 필수적으로 활용해야 합니다.
+                        </p>
+                        <p>
+                            * 생성된 결제 건에 resultCallback 파라미터 값이 있을 경우에만 동작합니다.
+                        </p>
+                        <div class="info">
+                            <h4>parameter</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    status
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    PAY_COMPLETE
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    payToken
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    Toss 결제 토큰
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    orderNo
+                                    <span class="type">timestamp</span>
+                                </div>
+                                <div class="desc">
+                                    결제 처리 시각<br>
+                                    형식 : 2019-04-01 00:00:00
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    paidTs
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    Toss 결제와 이어진 주문번호
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    metadata
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    결제 생성 시 저장한 연관 정보
+                                </div>
+                            </div>
+                        </div>
+                        <h3>HTTP 응답 코드</h3>
+                        <div class="info">
+                            <h4>HTTP Response Code</h4>
+                            <div class="field clearfix">
+                                <div class="key">200</div>
+                                <div class="desc">
+                                    OK : 정상
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">400</div>
+                                <div class="desc">
+                                    Bad Request : 파라미터 오류
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">401</div>
+                                <div class="desc">
+                                    Unauthorized : 가맹점 key 오류
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">404</div>
+                                <div class="desc">
+                                    Not Found : 존재하지 않는 요청
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">50x</div>
+                                <div class="desc">
+                                    Server error : 서버 오류
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">xxx</div>
+                                <div class="desc">
+                                    Server error : 기타 등등
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="method-example">
+                        <div class="title">Definition</div>
+                        <pre><code class="language-bash always-visible">POST http://YOUR-SITE.COM/callback (결제 생성 시 가맹점에서 설정한 callback URL)</code></pre>
+                        <div class="title">Example Request</div>
+                        <pre><code class="language-bash always-visible">{
+ "status": "PAY_COMPLETE",
+ "payToken": "test_token1234567890",
+ "orderNo": "2015072012211",
+ "paidTs": "2019-04-01 00:00:00"
+}                            
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+            <!--추가 끝-->
+
             <div class="method" id="execute">
                 <div class="method-section clearfix">
                     <div class="method-description">
-                        <h3>결제 승인</h3>
+                        <h3>가맹점 결제 승인</h3>
                         <p>
-                            구매자 인증 완료 상태(PAY_APPROVED)의 결제 건을 최종 승인하여 결제를 완료 처리합니다.
-                            <br>
+                            자동 승인 설정을 false로 사용하는 가맹점에서만 처리하는 로직입니다.<br>
+                            구매자 인증 완료 상태(PAY_APPROVED)의 결제 건을 가맹점이 주체가 되어 최종 승인하고 결제를 완료 처리합니다.<br>
                             <br> 결제 승인에 관한 자세한 내용은 아래 문서를 참고하세요.
                             <br>
-                            <a href="gettingstarted.html#execute">토스 결제 시작하기 > 결제 승인하기</a>
+                            <a href="gettingstarted.html#create-9">토스 결제 시작하기 > 결제 승인하기</a><br><br>
+                            필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 최종 승인할지 알려주세요.<br>
+                            필요에 따라 결제건의 유효성 검증을 할 수 있습니다.
                         </p>
                         <div class="info">
                             <h4>endpoint</h4>
@@ -793,7 +904,6 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                   https://pay.toss.im/api/v1/execute</br>
-                                  <p>(이전) https://toss.im/tosspay/api/v1/execute</p>
                                 </div>
                             </div>
                         </div>
@@ -806,7 +916,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    가맹점 key
+                                    가맹점 key<br>
+                                    <span class="text-muted">웹 브라우저 혹은 외부에 노출되지 않도록 유의해 주시기 바랍니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -825,8 +936,9 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액
-                                    <br> (입력하는 경우, 구매자가 승인한 결제 금액과 이 값이 일치할 경우에만 승인 처리)
+                                    결제 금액<br>
+                                    <span class="text-muted">결제 승인 시 orderNo와 amount를 함께 보내면 일치 여부를 확인합니다.
+                                    payToken과 연결된 결제건과 orderNo나 amount가 다르면 승인 실패처리하여 다시 한번 유효성을 검증합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -835,8 +947,9 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">string</span>
                                 </div>
                                 <div class="desc">
-                                    가맹점의 상품 주문번호
-                                    <br> (입력하는 경우, 구매자가 승인한 주문번호와 이 값이 일치할 경우에만 승인 처리)
+                                    가맹점의 상품 주문번호<br>
+                                    <span class="text-muted">결제 승인 시 orderNo와 amount를 함께 보내면 일치 여부를 확인합니다.
+                                    payToken과 연결된 결제건과 orderNo나 amount가 다르면 승인 실패처리하여 다시 한번 유효성을 검증합니다.</span>
                                 </div>
                             </div>
                         </div>
@@ -906,6 +1019,50 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     에러 코드
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>PAY_EXPIRED</td>
+                                            <td>결제 기한이 만료되었습니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>COMMON_TIMEOUT</td>
+                                            <td>출금 타임 아웃이 발생하였습니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PAY_UNAUTHORIZED</td>
+                                            <td>본인의 결제가 아닙니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>COMMON_EXCEED_LIMIT</td>
+                                            <td>결제한도를 초과 하였습니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PAY_ALREADY_COMPLETED</td>
+                                            <td>이미 완료된 결제입니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PAY_ITS_NOT_ABLE_TO_PAY</td>
+                                            <td>결제를 진행 할 수 없는 상태 입니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>COMMON_NOT_ENOUGH_CASH</td>
+                                            <td>잔고가 부족합니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>EXECUTE_PAY_NOT_APPROVED</td>
+                                            <td>승인 되지 않은 결제 입니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>COMMON_SIGN_FAILED_CS_CALL</td>
+                                            <td>전자서명에 실패 하였습니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>COMMON_BREAK_TIME_OF_BANK</td>
+                                            <td>은행 점검시간 입니다.</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -919,7 +1076,9 @@ p JSON.parse(response.body)</code></pre>
     -d '{
         "payToken":"test_token1234567890",
         "apiKey":"sk_test_apikey1234567890"
-        }'</code><code class="java language-java">URL url = null;
+        }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
@@ -934,11 +1093,13 @@ try {
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
 
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
-	bos.write(jsonBody.toJSONString().getBytes());
+	<!--bos.write(jsonBody.toJSONString().getBytes());-->
+    bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
 	bos.flush();
 	bos.close();
 
-	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	<!--BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));-->
+    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
 	String line = null;
 	while ((line = br.readLine()) != null) {
 		responseBody.append(line);
@@ -1025,7 +1186,6 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                   https://pay.toss.im/api/v1/cancel </br>
-                                  <p>(이전) https://toss.im/tosspay/api/v1/cancel</p>
                                 </div>
                             </div>
                         </div>
@@ -1038,7 +1198,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    가맹점 key
+                                    가맹점 key<br>
+                                    <span class="text-muted">웹 브라우저 혹은 외부에 노출되지 않도록 유의해 주시기 바랍니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1113,7 +1274,9 @@ p JSON.parse(response.body)</code></pre>
     -d '{
         "payToken":"test_token1234567890",
         "apiKey":"sk_test_apikey1234567890"
-        }'</code><code class="java language-java">URL url = null;
+        }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
@@ -1129,11 +1292,13 @@ try {
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
 
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
-	bos.write(jsonBody.toJSONString().getBytes());
+	<!--bos.write(jsonBody.toJSONString().getBytes());-->
+    bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
 	bos.flush();
 	bos.close();
 
-	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	<!--BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));-->
+    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
 	String line = null;
 	while ((line = br.readLine()) != null) {
 		responseBody.append(line);
@@ -1225,7 +1390,6 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                   https://pay.toss.im/api/v1/refunds </br>
-                                  <p>(이전) https://toss.im/tosspay/api/v1/refunds</p>
                                 </div>
                             </div>
                         </div>
@@ -1238,7 +1402,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    가맹점 key
+                                    가맹점 key<br>
+                                    <span class="text-muted">웹 브라우저 혹은 외부에 노출되지 않도록 유의해 주시기 바랍니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1362,6 +1527,15 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="text-muted">환불 상태 확인 시 필요</span>
                                 </div>
                             </div>
+                                <div class="field clearfix">
+                                <div class="key">
+                                    refundableAmount
+                                    <span class="type">integer</span>
+                                </div>
+                                <div class="desc">
+                                    환불 가능 금액
+                                </div>
+                            </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     approvalTime
@@ -1391,16 +1565,28 @@ p JSON.parse(response.body)</code></pre>
                                     <br />
                                     <table class="table">
                                         <tr>
+                                            <td>INACTIVE_USER</td>
+                                            <td>계정이 비활성화/삭제된 사용자의 결제.</td>
+                                        </tr>
+                                        <tr>
                                             <td>COMMON_REFUND_ERROR</td>
                                             <td>이미 환불된 결제, 환불 가능 기간 180일이 지난 결제.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>REFUND_EXCEED_DAILY</td>
+                                            <td>환불 금액이 상점의 일 환불 한도보다 클수 없습니다.</td>
                                         </tr>
                                         <tr>
                                             <td>REFUND_EXCEED_AMOUNT</td>
                                             <td>환불금액이 결제금액보다 더 클수 없습니다.</td>
                                         </tr>
                                         <tr>
-                                            <td>INACTIVE_USER</td>
-                                            <td>계정이 비활성화/삭제된 사용자의 결제.</td>
+                                            <td>REFUND_PENDING_SUCCESS</td>
+                                            <td>점검이 끝난 후 자동으로 환불이 될 예정입니다. 잠시만 기다려주세요.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>REFUND_NO_TAXFREE_ON_COMPLEX_TAX</td>
+                                            <td>과세정보가 올바르지 않습니다.</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -1416,7 +1602,9 @@ p JSON.parse(response.body)</code></pre>
     -d '{
         "payToken":"test_token1234567890",
         "apiKey":"sk_test_apikey1234567890"
-        }'</code><code class="java language-java">URL url = null;
+        }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
@@ -1432,11 +1620,13 @@ try {
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
 
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
-	bos.write(jsonBody.toJSONString().getBytes());
+	<!--bos.write(jsonBody.toJSONString().getBytes());-->
+    bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
 	bos.flush();
 	bos.close();
 
-	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	<!--BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));-->
+    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
 	String line = null;
 	while ((line = br.readLine()) != null) {
 		responseBody.append(line);
@@ -1526,7 +1716,6 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                   https://pay.toss.im/api/v1/status </br>
-                                  <p>(이전) https://toss.im/tosspay/api/v1/status</p>
                                 </div>
                             </div>
                         </div>
@@ -1539,7 +1728,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    가맹점 key
+                                    가맹점 key<br>
+                                    <span class="text-muted">웹 브라우저 혹은 외부에 노출되지 않도록 유의해 주시기 바랍니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1799,6 +1989,19 @@ p JSON.parse(response.body)</code></pre>
                                     에러 코드
                                 </div>
                             </div>
+                            <!--
+                            <div class="field clearfix">
+                                <div class="key">
+                                    payMethod
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    결제 수단<br>
+                                    <span class="text-muted">토스머니(TOSS_MONEY) 혹은 토스카드(CARD)</span>
+                                </div>
+                            </div>  
+                            -->
+
                         </div>
                     </div>
                     <div class="method-example">
@@ -1810,7 +2013,9 @@ p JSON.parse(response.body)</code></pre>
     -d '{
         "payToken":"test_token1234567890",
         "apiKey":"sk_test_apikey1234567890"
-        }'</code><code class="java language-java">URL url = null;
+        }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
@@ -1825,11 +2030,13 @@ try {
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
 
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
-	bos.write(jsonBody.toJSONString().getBytes());
+	<!--bos.write(jsonBody.toJSONString().getBytes());-->
+    bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
 	bos.flush();
 	bos.close();
 
-	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	<!--BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));-->
+    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
 	String line = null;
 	while ((line = br.readLine()) != null) {
 		responseBody.append(line);
@@ -1958,7 +2165,6 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                   https://pay.toss.im/api/v1/refunds/{refundNo} </br>
-                                  <p>(이전) https://toss.im/tosspay/api/v1/refunds/{refundNo}</p>
                                 </div>
                             </div>
                         </div>
@@ -1971,7 +2177,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="required"></span>
                                 </div>
                                 <div class="desc">
-                                    가맹점 key
+                                    가맹점 key<br>
+                                    <span class="text-muted">웹 브라우저 혹은 외부에 노출되지 않도록 유의해 주시기 바랍니다.</span>
                                 </div>
                             </div>
                         </div>
