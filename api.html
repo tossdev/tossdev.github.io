@@ -2018,13 +2018,14 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">string</span>
                                 </div>
                                 <div class="desc">
-                                    결제 카드사명<br><span class="text-muted">토스카드 결제의 경우에만 리턴</span>
+                                    결제 카드사명<br><span class="text-muted">토스카드 결제의 경우에만 리턴</span><br>
+                                    TEST apiKey로 결제 진행 시 리턴되지 않습니다.
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     spreadOut
-                                    <span class="type">string</span>
+                                    <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     할부 개월<br><span class="text-muted">토스카드 결제의 경우에만 리턴</span>
@@ -2033,10 +2034,11 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     isInterest
-                                    <span class="type">string</span>
+                                    <span class="type">boolean</span>
                                 </div>
                                 <div class="desc">
-                                    무이자 여부<br><span class="text-muted">토스카드 결제의 경우에만 리턴</span>
+                                    무이자 여부<br><span class="text-muted">토스카드 결제의 경우에만 리턴</span><br>
+                                    true : 적용, false : 미적용
                                 </div>
                             </div>
                         </div>
