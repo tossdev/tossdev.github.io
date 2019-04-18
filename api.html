@@ -357,7 +357,7 @@
                                 <div class="desc">
                                     결제 금액
                                     <br>
-                                    <font color=red>금액과 관련된 모든 파라미터는 Number 형태로 보내주셔야 에러가 발생하지 않습니다.</font>
+                                    <font color=#AA1212>금액과 관련된 모든 파라미터는 Number 형태로 보내주셔야 에러가 발생하지 않습니다.</font>
                                     </span>
                                 </div>
                             </div>
@@ -490,7 +490,7 @@
                                 <div class="desc">
                                     결제 결과 callback URL (결제 성공)<br>
                                     <span class="text-muted">토스 서버가 정상 출금 완료 후 이 곳에 입력한 URL로 결과를 전송하기 때문에 가맹점 서버에서 반드시 확인하셔야 합니다.<br>
-                                    <font color="red"> callback URL에 80, 443 이외의 port가 포함되면 이용할 수 없으니 유의해주세요.</font>
+                                    <font color="#AA1212"> callback URL에 80, 443 이외의 port가 포함되면 이용할 수 없으니 유의해주세요.</font>
                                     </span>
                                 </div>
                             </div>
@@ -1914,6 +1914,7 @@ p JSON.parse(response.body)</code></pre>
                                     상품 설명
                                 </div>
                             </div>
+                            <!--
                             <div class="field clearfix">
                                 <div class="key">
                                     hasOwner
@@ -1923,6 +1924,7 @@ p JSON.parse(response.body)</code></pre>
                                     구매자의 결제 정보 입력 여부
                                 </div>
                             </div>
+                            -->
                             <div class="field clearfix">
                                 <div class="key">
                                     availableActions
@@ -1989,19 +1991,54 @@ p JSON.parse(response.body)</code></pre>
                                     에러 코드
                                 </div>
                             </div>
-                            <!--
                             <div class="field clearfix">
                                 <div class="key">
                                     payMethod
                                     <span class="type">string</span>
                                 </div>
                                 <div class="desc">
-                                    결제 수단<br>
-                                    <span class="text-muted">토스머니(TOSS_MONEY) 혹은 토스카드(CARD)</span>
+                                    결제수단
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>TOSS_MONEY</td>
+                                            <td>토스 머니</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CARD</td>
+                                            <td>토스 카드</td>
+                                        </tr>
+                                    </table>
                                 </div>
-                            </div>  
-                            -->
-
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardCompanyName
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    결제 카드사명<br><span class="text-muted">토스카드 결제의 경우에만 리턴</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    spreadOut
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    할부 개월<br><span class="text-muted">토스카드 결제의 경우에만 리턴</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    isInterest
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    무이자 여부<br><span class="text-muted">토스카드 결제의 경우에만 리턴</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="method-example">
@@ -2106,16 +2143,16 @@ p JSON.parse(response.body)</code></pre>
     "payToken": "test_token1234567890",
     "payStatus": "REFUND_SUCCESS",
     "orderNo": "2015072012211",
-    "amount":11000,
-    "amountTaxable":10000,
+    "amount":110000,
+    "amountTaxable":100000,
     "amountTaxFree":0,
-    "amountVat":1000,
+    "amountVat":10000,
     "amountServiceFee":0,
     "timeCreated":"2017-02-15 11:59:48",
 	"timePayComplete":"2017-02-15 12:01:19",
 	"timePayCancel":"",
     "productDesc":"테스트 상품",
-    "hasOwner": true,
+    <!--"hasOwner": true,-->
     "availableActions": [
     "REFUND"
     ],
@@ -2144,7 +2181,11 @@ p JSON.parse(response.body)</code></pre>
     ],
     "code": 0,
     "status": 200,
-    "metadata": "metadata"
+    "metadata": "metadata",
+    "payMethod": "CARD",
+    "cardCompanyName": "현대카드",
+    "spreadOut": "06",
+    "isInterest": "true"
 }</code>
             </pre>
                     </div>
