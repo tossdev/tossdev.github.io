@@ -169,17 +169,6 @@
             </ul>
           </li>
           <li>
-            <a href="#faq">자주 묻는 질문</a>
-            <ul class="nav">
-              <li><a href="#faq-1">토스 연동을 위한 방화벽 설정</a></li>
-              <li><a href="#faq-2">토스 인코딩 방식</a></li>
-              <li><a href="#faq-3">Time Out 처리</a></li>
-              <li><a href="#faq-4">retUrl 이동의 실패</a></li>
-              <li><a href="#faq-5">resultCallback 처리방안</a></li>
-              <li><a href="#faq-6">resultCallback 실패</a></li>
-            </ul>
-          </li>
-          <li>
             <a href="api.html" target="_blank"
               >API 문서 참조 <i class="fa fa-external-link" style="margin-left:4px;"></i></a>
           </li>
@@ -1003,76 +992,6 @@ echo "Response: ".$result;</code></pre>
             </table>
           </div>
         </div>
-
-        <!--190415 추가-->
-        <div class="method" id="faq">
-          <div class="method-description">
-            <h3>자주 묻는 질문</h3>
-            <p>
-              이제, 토스 결제 서비스에 대해 좀 더 자세하게 안내드립니다.<br> 이 항목은 지속적으로 업데이트될 예정이며, 궁금하신 사항은 언제든지 토스 결제팀(support-pay@toss.im)으로 의견주세요!
-            </p>
-            <h4 id="faq-1">토스 연동을 위한 방화벽 설정</h4>
-            <p>구매자는 인증을 완료했지만 가맹점 retUrl로 결제 결과가 오지 않는 경우나, 토스 서버로 부터 resultCallback 결과를 받지<br> 못한다면 먼저 방화벽 설정을 살펴봐야 합니다.</p>
-            <ol>
-              <li><strong>가맹점에서 토스서버로 접근하는 경우 (결제 생성, 결제 승인 등의 API)</strong><br>가맹점 --> 가맹점 방화벽 --> 토스 결제</li><br>
-              위의 경우에는 가맹점 방화벽의 outbound 정책에 아래 토스 IP를 추가해 주시면 됩니다. <br>
-              <strong>domain : <font color="blue">pay.toss.im</font></strong>
-              <ul>
-                <li>58.229.176.202</li>
-              </ul>
-              <ul>
-                <li>117.52.3.202</li><br>
-              </ul>
-
-              <li><strong>토스서버에서 가맹점으로 접근하는 경우 (resultCallback를 포함하는 경우만 사용)</strong><br>토스결제 --> 가맹점 방화벽 --> 가맹점</li><br>
-              위의 경우에서는 가맹점 방화벽의 inbound 정책에 아래 토스 IP를 추가해 주시면 됩니다. <br>
-              <strong>domain : <font color="blue">pay.toss.im</font></strong>
-              <ul>
-                <li>118.217.181.219</li>
-              </ul>
-              <ul>
-                <li>117.52.3.11</li>
-              </ul>
-              <ul>
-                <li>117.52.3.4</li>
-              </ul>
-            </ol>
-            <p>* 각 케이스 별 구분이 어렵다면 outbound, inbound 정책에 맞게 토스 IP를 모두 추가해 주셔도 됩니다.</p>
-            
-
-            <h4 id="faq-2">토스 인코딩 방식</h4>
-            <p><strong>토스 인코딩 방식은 UTF-8 형식을 사용합니다.</strong> 
-               가맹점에서 토스 서버로 한글이 포함된 값(주문번호, 상품명 등)을 보내주실 때 UTF-8 형식으로 보내주셔야 정상적인 response값을 확인하실 수 있습니다. <br>
-               <strong> 유의해 주세요! 깨진 한글이 유입되면 토스 서버는 필수 값 체크를 못해 오류가 발생할 수 있습니다. </strong>
-
-            <h4 id="faq-3">토스가 권장하는 Time Out 처리 시간은 무엇인가요?</h4>
-            <p>토스는 일반 은행계좌에서 토스머니로 충전 시 최대 30초의 타임아웃 시간을 설정합니다. (토스 카드도 동일합니다)<br>
-               따라서, 가맹점에서는 <strong>30초 + 3~5초 정도</strong>의 대기 시간을 잡아주시면 대사 불일치 거래건이 발생하지 않습니다.(처리 지연으로 가맹점은 취소 처리했으나 토스는 승인되는 케이스 방지)<br>
-               토스 이슈가 아닌 은행망 이슈를 제외하면 타임아웃으로 인한 거래 지연은 발생하지 않습니다.
-
-            <h4 id="faq-4">retUrl 이동이 실패할 수 있나요?</h4>
-            <p>retUrl의 이동은 토스 web page에서 처리되는 로직으로 일반적인 경우 처리를 보장하지만 특별한 상황에서 실패할 수 있습니다.<br>
-              특별한 상황이란, <strong>구매자가 결제 중에 앱을 종료하거나 백그라운드 처리를 하는 등의 이탈</strong>로 javascript 로직이 처리될 수 없는 경우입니다.
-              이 경우 구매자가 다시 결제 화면으로 돌아와서 '결제완료' 버튼을 클릭한다면 retUrl 로의 이동을 재시도 하게 됩니다.<br>
-              다만, 구매자가 재시도를 하지 않는 경우에는 retUrl로 이동하지 못하는 상황이 발생할 수 있습니다.</p>
-
-            <h4 id="faq-5">resultCallback을 반드시 활용해야 하나요?</h4>
-            <p>토스 서버에서 결제처리가 완료되고 나면 해당 결제건의 상태는 <strong>PAY_COMPLETE</strong>로 변경되고, 구매자를<strong>retUrl로 이동</strong>시킵니다.<br>
-               <strong>동시에 토스 서버에서 가맹점 서버의 resultCallback URL로 callback을 요청합니다.</strong>
-               retUrl은 단순 web page의 이동으로<br> 토스에서 결제 성공 여부를 확인 할 수 없고, 구매자 상황에 따라 실행을 보장할 수 없기 때문에 resultCallback을 활용하시길 권장드립니다. <br>
-               또한, resultCallback 은 <strong>토스 서버<->가맹점 서버 통신</strong>이므로 데이터 유실이 없고 안전합니다.
-            <br><br>
-            <ul>
-              <li>자동 승인 설정(autoExecute)을 true로 사용하는 가맹점에서는 필수 값입니다.</li>
-              <li>반대로, false를 사용하는 가맹점에서는 retUrl이동 후에 결제 승인(Execcute) API를 호출하는 시점에 resultCallback을 비동기로 호출합니다. 
-                   사용을 위해선 자동 승인 설정을 true로 변경해주셔야 합니다.</li>
-            </ul>
-
-            <h4 id="faq-6">resultCallback이 실패하는 이유가 뭘까요?</h4>
-            <p>토스에서는 장애 상황이 아닌 한 resultCallback 요청을 보장합니다. 단, 방화벽 이슈를 제외하고 callback 요청을 받아 처리하는 것은 가맹점 서버로 많은 트래픽, 개발 중의 버그 등의
-               특별한 사유로 callback 요청이 실패할 수 있습니다. <br>
-               <strong>토스에서는 callback 실패 시 가맹점 서버로 10분 이내에 총 4회의 재시도 요청</strong>을 하고 있으니 안심하세요.
-        <!--추가 끝-->
 
         <div class="method" id="maintenance">
           <div class="method-description">
