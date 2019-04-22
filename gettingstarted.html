@@ -237,7 +237,13 @@
               <li>
                 <strong>실거래용 Key</strong> : 이 Key를 사용해야 진짜 '출금'되는 결제를 할 수 있습니다. 상점에 오신
                 손님과 결제를 진행할 땐 꼭 이것을 사용해야 합니다.
-              </li>
+              </li><br>
+            <p>
+              <span class="bg-info"><strong><font color="#AA1212">*주의* </font></strong><br>
+                테스트가 완료되면 운영 오픈 전 반드시 '실 거래용 Key'로 변경 후 체크해주세요!<br>
+                테스트용 Key로 서비스를 오픈하게 되는 경우, 고객의 결제는 성공했으나 가맹점에서는 금액을 받지 못한채로 무료 서비스를 제공하게 되는 위험이 있으니 반드시 확인해 주셔야 합니다.
+              </span>
+            </p>
             </ul>
             <!--<p>토스 결제를 한번 테스트 해보고싶지만 당장 가입하긴 귀찮다면, 아래 테스트용 Key를 사용하세요.</p>-->
             <!--<div class="well">테스트용 API Key : sk_test_apikey1234567890</div>-->
@@ -1032,7 +1038,7 @@ echo "Response: ".$result;</code></pre>
               </ul>
             </ol>
             <p>* 각 케이스 별 구분이 어렵다면 outbound, inbound 정책에 맞게 토스 IP를 모두 추가해 주셔도 됩니다.</p>
-            </ol>
+            
 
             <h4 id="faq-2">토스 인코딩 방식</h4>
             <p><strong>토스 인코딩 방식은 UTF-8 형식을 사용합니다.</strong> 
