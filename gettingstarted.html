@@ -265,7 +265,9 @@
 "resultCallback":"http://YOUR-SITE.COM/callback",
 "retUrl":"http://YOUR-SITE.COM/ORDER-CHECK",
 "retCancelUrl":"http://YOUR-SITE.COM/close"
-}'</code><code class="language-java">URL url = null;
+}'</code><code class="language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
@@ -287,11 +289,11 @@ jsonBody.put("retUrl", "http://YOUR-SITE.COM/ORDER-CHECK");
 jsonBody.put("retCancelUrl", "http://YOUR-SITE.COM/close");
 
 BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
-bos.write(jsonBody.toJSONString().getBytes());
+bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
 bos.flush();
 bos.close();
 
-BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
 String line = null;
 while ((line = br.readLine()) != null) {
 responseBody.append(line);
@@ -661,8 +663,9 @@ echo "Response: ".$result;</code></pre>
             <p>
               현금영수증 발급 가능 여부를 설정할 수 있습니다.
               <br />
-              (참고 : 문화상품권이나 백화점상품권, 모바일 쿠폰 등 과세 대상에서 제외되는 유가증권 등의 상품은 현금영수증
-              발행 대상에서 제외됩니다)
+              카드결제 혹은 문화상품권이나 백화점상품권, 모바일 쿠폰 등 과세 대상에서 제외되는 유가증권 등의 상품은
+              현금영수증 발행이<br> 불가하며, 토스 머니(현금성) 결제건만 현금영수증 발행이 가능합니다.
+
             </p>
             <ul>
               <li><strong>true</strong> : 현금영수증 발급 가능 (값을 설정하지 않으면 true)</li>
