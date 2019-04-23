@@ -345,7 +345,7 @@
                                     가맹점의 상품 주문번호
                                     <br>
                                     <span class="text-muted">주문번호는 50자 이내여야 하고, '숫자, 영문자, 특수문자 _-:.^@'만 사용할 수 있습니다.<br>
-                                    가맹점 주문번호 테스트와 라이브 환경 사이에서 중복되지 않도록 가맹점의 관리가 필요합니다. 중복되는 경우, "PAYMENT_EXISTING_PAYMENT" 오류가 발생합니다.
+                                    가맹점 주문번호 테스트와 라이브 환경 사이에서 중복되지 않도록 가맹점의 관리가 필요합니다. 중복되는 경우 오류가 발생합니다.
                                     </span>
                                 </div>
                             </div>
@@ -601,16 +601,8 @@
                                             <td>일시적 시스템 에러가 발생하였습니다.</td>
                                         </tr>
                                         <tr>
-                                            <td>COMMON_INVALID_PARAMETER</td>
-                                            <td>요청한 값이 부족하거나 올바르지 않습니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>PAYMENT_UNDER_CONSTRUCTION</td>
-                                            <td>동일한 결제가 이미 존재합니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>PAYMENT_DUPLICATION_ORDER_NO</td>
-                                            <td>중복된 주문번호(orderNo) 가 전달되었습니다.</td>
+                                            <td><a href="qna.html#faq-7">그 외의 에러 코드</td>
+                                            <td></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -1062,6 +1054,10 @@ p JSON.parse(response.body)</code></pre>
                                         <tr>
                                             <td>COMMON_BREAK_TIME_OF_BANK</td>
                                             <td>은행 점검시간 입니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="qna.html#faq-7">그 외의 에러 코드</td>
+                                            <td></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -1567,27 +1563,19 @@ p JSON.parse(response.body)</code></pre>
                                     <table class="table">
                                         <tr>
                                             <td>INACTIVE_USER</td>
-                                            <td>계정이 비활성화/삭제된 사용자의 결제.</td>
+                                            <td>비활성화 처리된 유저입니다.</td>
                                         </tr>
                                         <tr>
                                             <td>COMMON_REFUND_ERROR</td>
-                                            <td>이미 환불된 결제, 환불 가능 기간 180일이 지난 결제.</td>
+                                            <td>환불이 불가능한 상태입니다.</td>
                                         </tr>
                                         <tr>
                                             <td>REFUND_EXCEED_DAILY</td>
                                             <td>환불 금액이 상점의 일 환불 한도보다 클수 없습니다.</td>
                                         </tr>
                                         <tr>
-                                            <td>REFUND_EXCEED_AMOUNT</td>
-                                            <td>환불금액이 결제금액보다 더 클수 없습니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>REFUND_PENDING_SUCCESS</td>
-                                            <td>점검이 끝난 후 자동으로 환불이 될 예정입니다. 잠시만 기다려주세요.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>REFUND_NO_TAXFREE_ON_COMPLEX_TAX</td>
-                                            <td>과세정보가 올바르지 않습니다.</td>
+                                            <td><a href="qna.html#faq-7">그 외의 에러 코드</td>
+                                            <td></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -2186,7 +2174,7 @@ p JSON.parse(response.body)</code></pre>
     "status": 200,
     "metadata": "metadata",
     "payMethod": "CARD",
-    "cardCompanyName": "롯데카드",
+    "cardCompanyName": "현대카드",
     "spreadOut": "06",
     "isInterest": "true"
 }</code>
