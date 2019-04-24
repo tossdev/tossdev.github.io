@@ -90,9 +90,8 @@
                         <li><a href="#refund-2">환불 과정</a></li>
                         <li><a href="#refund-3">상점의 환불 한도</a></li>
                         <li><a href="#refund-4">전액/부분 환불 가능 여부</a></li>
-                        <li><a href="#refund-5">환불 시 수수료 처리</a></li>
-                        <li><a href="#refund-6">환불 금액은 어디로 가는가?</a></li>
-                        <li><a href="#refund-7">환불 가능 기간</a></li>
+                        <li><a href="#refund-5">환불 금액은 어디로 가는가?</a></li>
+                        <li><a href="#refund-6">환불 가능 기간</a></li>
                     </ul>
                 </li>
                 <li>
@@ -101,17 +100,7 @@
                         <li><a href="#fee-1">수수료 정책</a></li>
                         <li><a href="#fee-2">수수료의 부가세</a></li>
                         <li><a href="#fee-3">수수료 적용 시점</a></li>
-                        <li><a href="#fee-4">상점별 수수료</a></li>
-                        <li><a href="#fee-5">원단위 미만의 수수료 및 부가세 처리</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#escrow">에스크로 결제</a>
-                    <ul class="nav">
-                        <li><a href="#escrow-1">전체 흐름</a></li>
-                        <li><a href="#escrow-2">'배송등록 대기 중' 상태</a></li>
-                        <li><a href="#escrow-3">'구매확정 대기 중' 상태</a></li>
-                        <li><a href="#escrow-4">'구매자 지급 거부' 상태</a></li>
+                        <li><a href="#fee-4">원단위 미만 수수료 및 부가세 처리</a></li>
                     </ul>
                 </li>
                 <li>
@@ -123,9 +112,6 @@
                         <li><a href="#settle-4">전자 세금 계산서 발행</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#maintenance">은행별 정기 점검시간</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -136,7 +122,7 @@
                 <div class="method-description">
                     <h3>구매자 회원 가입 조건</h3>
                     <p>만 14세 이상이면 누구나 회원 가입 후 토스 결제를 이용할 수 있습니다.<br>
-                    토스머니는 자신의 은행 계좌를 통해 자동충전할 수 있고, 토스카드는 본인 소유의 카드를 등록해서 사용할 수 있습니다.</p>
+                    토스머니는 자신의 은행 계좌를 통해 자동 충전할 수 있고, 토스카드는 본인 명의의 카드를 등록해서 사용할 수 있습니다.</p>
                     <h5>토스 머니</h5>
                     <ul>
                         <li><strong>지원 은행</strong> : 우리 / KB국민 / IBK기업 / 부산 / 경남 / 우체국 / 광주 / 전북 / 새마을 / NH농협 / 신협 / SC / 대구 / KDB산업 / 제주 / KEB하나 (구 외환은행 포함) / 수협 / 신한 / 카카오뱅크</li>
@@ -165,7 +151,8 @@
                         <li>회원당 1개월 누적 1,000,000원 까지 결제 가능</li>
                     </ul>
                     <p>
-                        * 단, 위 한도는 표준 한도이며, 각 가맹점별/고객별 판매 품목이나 Risk 등급에 따라 결제 가능 한도를 제한할 수 있습니다.
+                        * 단, 위 한도는 토스 머니에 해당하는 표준 한도입니다. 토스 카드는 구매자 개인의 카드 한도에 따라 적용됩니다.<br>
+                        * 결제수단 상관없이 각 가맹점별/고객별 판매 품목이나 Risk 등급에 따라 결제 가능 한도를 제한할 수 있습니다.<br>
                     </p>
                     <h4 id="limit-2">취소/환불 시 한도 회복</h4>
                     <p>당일 취소/환불 시 일 한도 회복되며, 당월 취소/환불 시 월 한도 회복</p>
@@ -218,36 +205,21 @@
                     <ul>
                         <li>환불 한도는 각 '상점'별로 부여한다.</li>
                         <li>환불 한도는 매일 자정(00:00)에 기본값으로 초기화된다.</li>
-                        <li>결제 완료 시, 결제 금액 만큼 환불 한도가 늘어난다.</li>
+                        <li>결제 완료 시, 3분 후 결제 금액 만큼 환불 한도가 늘어난다.</li>
                         <li>환불 완료 시, 환불 금액 만큼 환불 한도가 줄어든다.</li>
                         <li>환불 한도 기본값은 상점의 거래량에 따라 늘어나거나 줄어든다. (급히 높여야 할 경우, 토스 고객센터로 연락바랍니다. 1599-4905)</li>
                     </ul>
                     <h4 id="refund-4">전액/부분 환불 가능 여부</h4>
                     <ul>
-                        <li>일반 결제의 경우, 전액 환불과 부분 환불 모두 가능</li>
-                        <li>에스크로 결제의 경우, 정산 이후에만 부분 환불 가능</li>
-                        <ul>
-                            <li>에스크로 진행중인 상태 (요청/해제/거부) → 전액 환불만 가능</li>
-                            <li>에스크로 상태가 끝나고 정산이 완료 → 부분 환불 가능</li>
-                        </ul>
-                        <li>토스를 탈퇴할 경우 환불 불가</li>
+                        <li>일반 토스머니/토스카드 결제의 경우, 전액 환불과 부분 환불 모두 가능</li>
+                        <li>토스를 탈퇴할 경우 환불이 불가하오니 가맹점 자체 환불 처리 해주셔야합니다.</li>
                     </ul>
-                    <h4 id="refund-5">환불 시 수수료 처리</h4>
+                    <h4 id="refund-5">환불 금액은 어디로 가는가?</h4>
+                    <p>토스카드로 결제 했다면 결제를 시도한 카드로 환불 처리되고,<br>
+                       토스머니로 결제 했다면 환불금액은 토스머니로 돌아가기 때문에 따로 '환불 계좌'를 수집하지 않아도 됩니다.</p>
+                    <h4 id="refund-6">환불 가능 기간</h4>
                     <ul>
-                        <li>전액 환불하는 경우 : 가맹점으로부터 받았던 결제 대행 수수료(+VAT)를 모두 돌려주고, 환불 처리 수수료(+VAT)를 부과</li>
-                        <li>부분 환불하는 경우</li>
-                        <ul>
-                            <li>해당 부분 환불 후 남은 거래금액이 있을 경우 : 환불 수수료 부과 X, 결제 대행 수수료 및 부과세 반환 X</li>
-                            <li>해당 부분 환불 후 남은 거래금액이 없는 경우 : 환불 수수료 부과 O, 결제 대행 수수료 및 부과세 전액 반환</li>
-                        </ul>
-                        <li>환불 처리 수수료는 아래 '수수료' 절 참고</li>
-                    </ul>
-                    <h4 id="refund-6">환불 금액은 어디로 가는가?</h4>
-                    <p>환불 금액은 토스머니로 돌아갑니다. 따라서 따로 '환불 계좌'를 수집하지 않아도 됩니다.</p>
-                    <h4 id="refund-7">환불 가능 기간</h4>
-                    <ul>
-                        <li>일반 결제는 결제 승인일로부터 1년까지</li>
-                        <li>에스크로 결제는 구매확정일로부터 180일까지</li>
+                        <li>일반적인 토스머니/토스카드 결제는 결제 승인일로부터 1년까지</li>
                     </ul>
                 </div>
             </div>
@@ -256,10 +228,9 @@
                     <h3>결제 대행 수수료</h3>
                     <h4 id="fee-1">표준 수수료 정책</h4>
                     <ul>
-                        <li>수수료 : 결제 수단 상관없이 결제 금액의 3%</li>
-                        <li>환불 처리 수수료 : 400원 (전액 환불 시에만 부과)</li>
+                        <li>수수료 : 결제수단 상관없이 결제 금액의 3%</li>
                         <li>부가세는 별도입니다</li>
-                        <li>(수수료는 업종/팬매물품 별로 상이할 수 있으며, 당사와 협의 후 조정 가능합니다)</li>
+                        <li>(수수료는 업종/팬매물품 별로 상이할 수 있으며, 당사 협의 후 조정 가능합니다)</li>
                     </ul>
                     <h4 id="fee-2">수수료의 부가세</h4>
                     <p>결제 대행 수수료의 10%를 부가세로 책정한다. (매출건별)</p>
@@ -271,42 +242,6 @@
                     <ul>
                         <li>결제 대행 수수료는 소수점 부분을 '버림' (ex. 1100.7원 → 1100원)</li>
                         <li>부가세는 소수점 부분에서 '반올림' (ex. 110.7원 → 111원)</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="method" id="escrow">
-                <div class="method-description">
-                    <h3>에스크로 결제</h3>
-                    <b>에스크로 결제가 필요하신 경우 별도 문의해주세요.</b>
-                    <p>에스크로 결제는 구매자 보호를 위한 결제안전장치입니다. 결제가 끝났으나 물품을 받지 못하거나 올바르지 않은 물품을 받았을 때 결제 대금을 잃어버리는 피해를 막기 위해 제공하는 서비스로, 결제 대금을 제3자인 '토스'가 예치하고 있다가 상품배송이 끝나고 구매자가 구매를 확정하면 지급하는 결제 방식입니다.</p>
-                    <p>구매자는 안심하고 구매할 수 있고, 판매자는 신뢰를 얻을 수 있는 결제 수단으로, '온라인 상'에서 '유형의 물품'을 판매하는 경우 구매자에게 에스크로 결제 선택권을 반드시 제공해야 합니다.</p>
-                    <h4 id="escrow-1">전체 흐름</h4>
-                    <p>
-                        <a href="images/flow_escrow_full.jpeg" target="_blank"><img src="images/flow_escrow_full.jpeg" alt="에스크로 결제 전체 흐름" width="100%"></a>
-                    </p>
-                    <ul>
-                        <li>에스크로 결제의 경우, 결제 성공 후 바로 '배송등록 대기 중'상태로 변경되어 결제금액 보호가 시작됩니다.</li>
-                        <li>가맹점이 물품을 발송하고 '배송등록'합니다. 구매자는 물품을 받은 후 '구매확정'함으로써 결제가 완료됩니다.</li>
-                        <li>구매자는 거래에 이상이 있는 경우, '지급거부'함으로써 결제대금을 보호받을 수 있습니다.</li>
-                    </ul>
-                    <h4 id="escrow-2">'배송등록 대기 중' 상태</h4>
-                    <ul>
-                        <li>이 상태에서 가맹점 측에서는 '배송 등록' 또는 '전액 환불' 처리할 수 있습니다. (부분환불 불가)</li>
-                        <li>가맹점측에서 물품을 배송한 후, '배송 등록'을 실시하면 '구매확정 대기 중'상태로 변경됩니다. (구매자에게는 배송 시작 안내 push 또는 SMS 발송)</li>
-                        <li>이 단계에서 가맹점이 120일간 아무런 행동을 하지 않으면 '구매자 지급 거부'상태로 변경됩니다.</li>
-                    </ul>
-                    <h4 id="escrow-3">'구매확정 대기 중' 상태</h4>
-                    <ul>
-                        <li>이 상태에서 구매자는 '구매확정' 또는 '지급거부'할 수 있으며, 가맹점은 '전액 환불' 처리할 수 있습니다. (부분 환불 불가)</li>
-                        <li>구매자가 '구매확정'을 하면 '에스크로 승인' 상태로 변경되고, 곧 가맹점 대금 정산이 시작됩니다.</li>
-                        <li>구매자가 '지급거부'하면 '구매자 지급 거부'상태로 변경됩니다. (이 상태가 해결될 때 까지 대금 정산은 이루어지지 않습니다)</li>
-                        <li>구매자가 7영업일간 아무런 행동을 하지 않으면 자동으로 구매확정 처리합니다. (자동 처리 전날 경고 push 또는 SMS 발송)</li>
-                    </ul>
-                    <h4 id="escrow-4">'구매자 지급 거부' 상태</h4>
-                    <ul>
-                        <li>이 상태에서 가맹점은 '구매확정 재요청'하거나 '전액 환불' 처리할 수 있습니다. (부분 환불 불가)</li>
-                        <li>가맹점이 구매자와 문제를 해결한 후, '구매확정 재요청'할 수 있습니다. 재요청 시 해당 결제 건은 '구매확정 대기 중'상태로 변경되며, 구매확정 요청 push/SMS가 재발송됩니다.</li>
-                        <li>구매자와의 문제가 해결되지 않은 채로 '구매확정 재요청'할 경우, 구매자에 의해 다시 '지급거부'처리되므로 반드시 구매자와 연락 후 재요청하시기 바랍니다.</li>
                     </ul>
                 </div>
             </div>
@@ -335,768 +270,16 @@
                                 </ul>
                             </li>
                     </ol>
-                    <h4 id="settle-2">집계 및 정산 예시</h4>
-                    <p>토스에서 정산 집계가 어떻게 이루어지는지, 예시와 함께 자세히 설명드리겠습니다.
-                        <br> 2019. 4. 19 새벽, 정산 집계하는 상황을 가정하고 살펴봐주세요.</p>
-                    <h5>[상점 A의 Case : 일반적인 결제/환불 처리]</h5>
-                    <ul>
-                        <li>
-                            상점 A에선 4월 15일에 아래와 같은 일이 있었습니다.
-                            <ul>
-                                <li>68,100원 토스 카드로 결제</li>
-                                <li>220,000원 토스 머니로 결제했다가 곧 전액 환불 처리</li>
-                                <li>98,000원 토스 카드로 결제했다가 그 중 12,000원만 환불 처리</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <strong>집계 결과</strong>는 아래와 같습니다.
-                            <table class="table table-bordered table-hover table-condensed">
-                                <tr class="active">
-                                    <td width="6%">번호</td>
-                                    <td width="13%">승인확정일</td>
-                                    <td width="13%">종류</td>
-                                    <td width="10%">결제금액</td>
-                                    <td width="10%">수수료</td>
-                                    <td width="10%">부가세</td>
-                                    <td width="12%">지급액</td>
-                                    <td width="13%">정산 상태</td>
-                                    <td width="13%">지급예정일</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">68,100</td>
-                                    <td class="text-right">-2,043</td>
-                                    <td class="text-right">-204</td>
-                                    <td class="text-right">65,853</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">220,000</td>
-                                    <td class="text-right">-6,600</td>
-                                    <td class="text-right">-660</td>
-                                    <td class="text-right">212,740</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td>4/15</td>
-                                    <td>환불</td>
-                                    <td class="text-right">-220,000</td>
-                                    <td class="text-right">6,600</td>
-                                    <td class="text-right">660</td>
-                                    <td class="text-right">-212,740</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">4</td>
-                                    <td>4/15</td>
-                                    <td>환불 수수료</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-400</td>
-                                    <td class="text-right">-40</td>
-                                    <td class="text-right">-440</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">5</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">98,000</td>
-                                    <td class="text-right">-2,940</td>
-                                    <td class="text-right">-294</td>
-                                    <td class="text-right">94,766</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">6</td>
-                                    <td>4/15</td>
-                                    <td>환불 (부분)</td>
-                                    <td class="text-right">-12,000</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-12,000</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                            </table>
-                            <!--
-                            <ul>
-                                <li><strong>1번</strong> - 68,100원의 결제금액에서 수수료와 수수료에 대한 부가세를 제외한 65,104원을 지급합니다. 수수료는 68,100원의 4%에 해당하는 2,724원이고, 수수료에 대한 부가세는 2,724원의 10%인 272.4원입니다만, <a href="#fee-5">'원단위 미만의 수수료 및 부가세 처리'</a> 정책에 따라 소수점 부분에서 반올림하여 272원으로 처리하였습니다.</li>
-                                <li><strong>2, 5번</strong> - '결제'건으로 1과 동일하게 처리되었습니다.</li>
-                                <li><strong>3번</strong> - 2번 결제에 대해 전액 환불이 발생하여, 결제 금액을 모두 차감하고, 받았던 수수료와 부가세는 모두 돌려드리는 것으로 처리하였습니다.</li>
-                                <li><strong>4번</strong> - 2번 결제가 전액 환불됨에 따라 환불 수수료가 발생하였습니다. 환불 수수료는 400원이며, 그에 대한 부가세 40원도 함께 부과됩니다.</li>
-                                <li><strong>6번</strong> - 부분 환불이 발생하여 환불한 금액 만큼 결제 금액을 차감합니다. 부분 환불이기 때문에 수수료나 부가세를 반환하지 않습니다. (부분 환불이 누적되어 '전액' 환불이 될 때 반환합니다)</li>
-                            </ul>
-                            -->
-                            <ul>
-                                <li><strong>1번</strong> - 68,100원의 결제금액에서 수수료와 수수료에 대한 부가세를 제외한 65,853원을 지급합니다. 수수료는 68,100원의 3%에 해당하는 2,043원이고, 수수료에 대한 부가세는 2,043원의 10%인 204.3원입니다만, <a href="#fee-5">'원단위 미만의 수수료 및 부가세 처리'</a> 정책에 따라 소수점 부분에서 반올림하여 204원으로 처리하였습니다.</li>
-                                <li><strong>2, 5번</strong> - '결제'건으로 1과 동일하게 처리되었습니다.</li>
-                                <li><strong>3번</strong> - 2번 결제에 대해 전액 환불이 발생하여 결제 금액을 모두 차감하고, 받았던 수수료와 부가세 모두 돌려드립니다.</li>
-                                <li><strong>4번</strong> - 환불 수수료는 없습니다.</li>
-                                <li><strong>6번</strong> - 부분 환불이 발생하여 환불한 금액 만큼 결제 금액을 차감합니다. 이 경우에도 환불 수수료는 없습니다.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <strong>정산 결과</strong>는 아래와 같습니다.
-                            <table class="table table-bordered table-hover table-condensed">
-                                <tr class="active">
-                                    <td width="6%">번호</td>
-                                    <td width="13%">승인확정일</td>
-                                    <td width="13%">종류</td>
-                                    <td width="10%">결제금액</td>
-                                    <td width="10%">수수료</td>
-                                    <td width="10%">부가세</td>
-                                    <td width="12%">지급액</td>
-                                    <td width="13%">정산 상태</td>
-                                    <td width="13%">지급예정일</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">68,100</td>
-                                    <td class="text-right">-2,043</td>
-                                    <td class="text-right">-204</td>
-                                    <td class="text-right">65,853</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">220,000</td>
-                                    <td class="text-right">-6,600</td>
-                                    <td class="text-right">-660</td>
-                                    <td class="text-right">212,740</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td>4/15</td>
-                                    <td>환불</td>
-                                    <td class="text-right">-220,000</td>
-                                    <td class="text-right">6,600</td>
-                                    <td class="text-right">660</td>
-                                    <td class="text-right">-212,740</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">4</td>
-                                    <td>4/15</td>
-                                    <td>환불 수수료</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-400</td>
-                                    <td class="text-right">-40</td>
-                                    <td class="text-right">-440</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">5</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">98,000</td>
-                                    <td class="text-right">-2,940</td>
-                                    <td class="text-right">-294</td>
-                                    <td class="text-right">94,766</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">6</td>
-                                    <td>4/15</td>
-                                    <td>환불 (부분)</td>
-                                    <td class="text-right">-12,000</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-12,000</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr class="bg-info">
-                                    <td colspan="6" class="text-right">총 지급 예정 금액</td>
-                                    <td class="text-right">148,179</td>
-                                </tr>
-                            </table>
-                            <ul>
-                                <li>상점 A의 4/15 결제/환불 건들은 모두 정상 처리되었고,</li>
-                                <li>4/19에 148,179원이 입금될 예정입니다.</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    
-                    <h5>[상점 B의 Case : 정산 이연 발생]</h5>
-                    <ul>
-                        <li>
-                            상점 B에선 4월 15일에 아래와 같은 일이 있었습니다.
-                            <ul>
-                                <li>150,000 결제 후 곧 전액 환불 처리</li>
-                                <li>이것이 유일한 결제건이었습니다...</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <strong>집계 결과</strong>는 아래와 같습니다.
-                            <table class="table table-bordered table-hover table-condensed">
-                                <tr class="active">
-                                    <td width="6%">번호</td>
-                                    <td width="13%">승인확정일</td>
-                                    <td width="13%">종류</td>
-                                    <td width="10%">결제금액</td>
-                                    <td width="10%">수수료</td>
-                                    <td width="10%">부가세</td>
-                                    <td width="12%">지급액</td>
-                                    <td width="13%">정산 상태</td>
-                                    <td width="13%">지급예정일</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">150,000</td>
-                                    <td class="text-right">-4,500</td>
-                                    <td class="text-right">-450</td>
-                                    <td class="text-right">145,050</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>4/15</td>
-                                    <td>환불</td>
-                                    <td class="text-right">-150,000</td>
-                                    <td class="text-right">4,500</td>
-                                    <td class="text-right">450</td>
-                                    <td class="text-right">-145,050</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td>4/15</td>
-                                    <td>환불 수수료</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-400</td>
-                                    <td class="text-right">-40</td>
-                                    <td class="text-right">-440</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                            </table>
-                        </li>
-                        <li><strong>문제 발생</strong> : 지급액을 모두 합하면 -440원이 됩니다. 이러한 경우에는, 일부 결제건을 '이연' 처리하여 지급액을 '0' 이상이 되도록 합니다. (이연된 결제건은 다음 '집계'에 들어갑니다.)</li>
-                        <li>
-                            <strong>정산 결과</strong>는 아래와 같습니다.
-                            <table class="table table-bordered table-hover table-condensed">
-                                <tr class="active">
-                                    <td width="6%">번호</td>
-                                    <td width="13%">승인확정일</td>
-                                    <td width="13%">종류</td>
-                                    <td width="10%">결제금액</td>
-                                    <td width="10%">수수료</td>
-                                    <td width="10%">부가세</td>
-                                    <td width="12%">지급액</td>
-                                    <td width="13%">정산 상태</td>
-                                    <td width="13%">지급예정일</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">150,000</td>
-                                    <td class="text-right">-4,500</td>
-                                    <td class="text-right">-450</td>
-                                    <td class="text-right">145,050</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>4/15</td>
-                                    <td>환불</td>
-                                    <td class="text-right">-150,000</td>
-                                    <td class="text-right">4,500</td>
-                                    <td class="text-right">450</td>
-                                    <td class="text-right">-145,050</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td>4/15</td>
-                                    <td>환불 수수료</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-400</td>
-                                    <td class="text-right">-40</td>
-                                    <td class="text-right">-440</td>
-                                    <td class="bg-danger">정산 이연</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr class="bg-info">
-                                    <td colspan="6" class="text-right">총 지급 예정 금액</td>
-                                    <td class="text-right">0</td>
-                                </tr>
-                            </table>
-                            <ul>
-                                <li>정산 이연된 '3'번 건은 이번 지급에는 포함되지 않습니다. (따라서 지급예정일은 여전히 지정되지 않았습니다) 이 건은 다음 집계에 다시 반영될 것입니다.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <h5>[상점 C의 Case : 이연된 결제건과 새 결제건의 충돌]</h5>
-                    <ul>
-                        <li>
-                            상점 C에선 4월 15일에 아래와 같은 일이 있었습니다.
-                            <ul>
-                                <li>1,000원 결제</li>
-                                <li>68,100원 결제 후 곧 전액 환불 처리</li>
-                                <li>4,000원 결제 후 3,300원 부분 환불 처리</li>
-                                <li>4/10 부터 이연되어온 1,000원 환불 건</li>
-                                <li>4/09 부터 이연되어온 440원 환불 수수료 건</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <strong>집계 결과</strong>는 아래와 같습니다.
-                            <table class="table table-bordered table-hover table-condensed">
-                                <tr class="active">
-                                    <td width="6%">번호</td>
-                                    <td width="13%">승인확정일</td>
-                                    <td width="13%">종류</td>
-                                    <td width="10%">결제금액</td>
-                                    <td width="10%">수수료</td>
-                                    <td width="10%">부가세</td>
-                                    <td width="12%">지급액</td>
-                                    <td width="13%">정산 상태</td>
-                                    <td width="13%">지급예정일</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">1,000</td>
-                                    <td class="text-right">-30</td>
-                                    <td class="text-right">-3</td>
-                                    <td class="text-right">967</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">68,100</td>
-                                    <td class="text-right">-2,043</td>
-                                    <td class="text-right">-204</td>
-                                    <td class="text-right">65,853</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td>4/15</td>
-                                    <td>환불</td>
-                                    <td class="text-right">-68,100</td>
-                                    <td class="text-right">2,043</td>
-                                    <td class="text-right">204</td>
-                                    <td class="text-right">-65,853</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">4</td>
-                                    <td>4/15</td>
-                                    <td>환불 수수료</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-400</td>
-                                    <td class="text-right">-40</td>
-                                    <td class="text-right">-440</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">5</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">4,000</td>
-                                    <td class="text-right">-120</td>
-                                    <td class="text-right">-12</td>
-                                    <td class="text-right">3,868</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">6</td>
-                                    <td>4/15</td>
-                                    <td>환불 (부분)</td>
-                                    <td class="text-right">-3,300</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-3,300</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">7</td>
-                                    <td>4/10</td>
-                                    <td>환불 (부분)</td>
-                                    <td class="text-right">-1,000</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-1,000</td>
-                                    <td>정산 이연</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">8</td>
-                                    <td>4/09</td>
-                                    <td>환불 수수료</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-400</td>
-                                    <td class="text-right">-40</td>
-                                    <td class="text-right">-440</td>
-                                    <td>정산 이연</td>
-                                    <td class="text-center">-</td>
-                                </tr>
-                            </table>
-                            <ul>
-                                <li><strong>1번</strong> - 1,000원의 3%에 해당하는 수수료와 수수료에 대한 부가세를 처리한다. </li>
-                                <li><strong>2, 3, 4번</strong> - 결제 및 전액 환불에 의한 수수료 환급 및 환불 수수료 발생</li>
-                                <li><strong>5, 6번</strong> - 결제 및 부분 환불 처리</li>
-                                <li><strong>7, 8번</strong> - 지난 집계에서 처리되지 못하고 이연된 정산 건들</li>
-                            </ul>
-                        </li>
-                        <li><strong>문제 발생</strong> : 지급액을 모두 합하면 -345원이 됩니다. 이러한 경우에는, 일부 결제건을 '이연' 처리해야 하는데, 어떤 결제건을 이연 시켜야 할까요?</li>
-                        <li>
-                            <strong>정산 결과</strong>는 아래와 같습니다.
-                            <table class="table table-bordered table-hover table-condensed">
-                                <tr class="active">
-                                    <td width="6%">번호</td>
-                                    <td width="13%">승인확정일</td>
-                                    <td width="13%">종류</td>
-                                    <td width="10%">결제금액</td>
-                                    <td width="10%">수수료</td>
-                                    <td width="10%">부가세</td>
-                                    <td width="12%">지급액</td>
-                                    <td width="13%">정산 상태</td>
-                                    <td width="13%">지급예정일</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">1,000</td>
-                                    <td class="text-right">-30</td>
-                                    <td class="text-right">-3</td>
-                                    <td class="text-right">967</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">68,100</td>
-                                    <td class="text-right">-2,043</td>
-                                    <td class="text-right">-204</td>
-                                    <td class="text-right">65,853</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td>4/15</td>
-                                    <td>환불</td>
-                                    <td class="text-right">-68,100</td>
-                                    <td class="text-right">2,043</td>
-                                    <td class="text-right">204</td>
-                                    <td class="text-right">-65,853</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">4</td>
-                                    <td>4/15</td>
-                                    <td>환불 수수료</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-400</td>
-                                    <td class="text-right">-40</td>
-                                    <td class="text-right">-440</td>
-                                    <td class="bg-danger">정산 이연</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">5</td>
-                                    <td>4/15</td>
-                                    <td>결제</td>
-                                    <td class="text-right">4,000</td>
-                                    <td class="text-right">-120</td>
-                                    <td class="text-right">-12</td>
-                                    <td class="text-right">3,868</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">6</td>
-                                    <td>4/15</td>
-                                    <td>환불 (부분)</td>
-                                    <td class="text-right">-3,300</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-3,300</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">7</td>
-                                    <td>4/10</td>
-                                    <td>환불 (부분)</td>
-                                    <td class="text-right">-1,000</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-1,000</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">8</td>
-                                    <td>4/09</td>
-                                    <td>환불 수수료</td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right">-400</td>
-                                    <td class="text-right">-40</td>
-                                    <td class="text-right">-440</td>
-                                    <td class="bg-success">지급 대기</td>
-                                    <td>4/19</td>
-                                </tr>
-                                <tr class="bg-info">
-                                    <td colspan="6" class="text-right">총 지급 예정 금액</td>
-                                    <td class="text-right">95</td>
-                                </tr>
-                            </table>
-                            <ul>
-                                <li>이 Case처럼 정산 이연 발생하고 이연 대상이 충돌할 경우, 아래와 같은 기준으로 처리됩니다.</li>
-                                <ol>
-                                    <li>집계된 정산 대상건 중 지급액이 (+)인 건들을 모두 더한다.</li>
-                                    <li>지급액이 (-)인 건들 중 가장 큰 건부터 순차적으로 빼고, 뺄 수 없는 건은 이연 처리한다.</li>
-                                    <li>(-)크기가 동일할 경우, 승인확정일이 빠른 것을 우선 지급 처리한다.</li>
-                                </ol>
-                                <li>위 기준 2에 따르면 4번 혹은 8번 건이 이연 대상이 됩니다. 그리고 기준 3에 따라 승인확정일이 더 빠른 8번 건을 우선 지급처리하여 최종적으로 4번 건이 이연 처리되었습니다.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    
+                                       
                     <h4 id="settle-3">지급 주기</h4>
                     <ul>
                         <li>전 결제 수단 모두 최소 4일(D+4) 후 정산으로 적용됩니다.</li>
                         <li>결제 정산 주기와 별개로 영중소 가맹점 카드 결제 수수료 차액 정산은 6일(D+6) 후 정산입니다.</li>
-                        <li>주정산 / 월정산 옵션이 필요하신 경우, 문의바랍니다. (support-pay@toss.im)</li>
+                        <li>기본적으로 일 지급을 원칙으로 하고 있으나, 주 지급/ 월 지급 옵션이 필요하신 가맹점은 별도 협의가 필요합니다.<br>(support-pay@toss.im)</li>
                     </ul>
                     <h4 id="settle-4">전자 세금 계산서 발행</h4>
                     <p>결제 대행 수수료에 대한 전자 세금 계산서를 매월 초, 이메일을 통해 발송합니다.</p>
                 </div>
             </div>
-            <div class="method" id="maintenance">
-                <div class="method-section clearfix">
-                    <div class="method-description">
-                        <h3>은행 정기 점검시간</h3>
-                        <p>은행 점검 시간에는 해당 은행 계좌를 통한 토스머니 충전이 불가합니다.</p>
-                        <div class="info">
-                            <h4>전체 은행 공통 점검시간</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    (매일)
-                                </div>
-                                <div class="desc">
-                                    23:20 ~ 익일 00:40
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h4>은행별 정기 점검시간</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    KDB산업
-                                </div>
-                                <div class="desc">
-                                    매주 일요일 00:00~04:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    IBK기업
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    KB국민
-                                </div>
-                                <div class="desc">
-                                    매월 세번째 (not 셋째주) 일요일 전날 23:50~00:30, 일요일 05:00~05:30
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    외환은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    수협은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    NH농협
-                                </div>
-                                <div class="desc">
-                                    매월 셋째주 월요일 00:00~04:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    우리은행
-                                </div>
-                                <div class="desc">
-                                    매주 목요일 23:45 ~ 금요일 00:45, 매달 둘째주 일요일 02:00 ~ 06:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    SC은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    신한은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    씨티은행
-                                </div>
-                                <div class="desc">
-                                    공휴일 다음날(매주 월요일 포함) 00:00~02:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    대구은행
-                                </div>
-                                <div class="desc">
-                                    분기말에 한번 토요일 00:00~06:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    부산은행
-                                </div>
-                                <div class="desc">
-                                    매월 셋째주 월요일 00:00~04:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    광주은행
-                                </div>
-                                <div class="desc">
-                                    둘째주 일요일 02:00~06:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    제주은행
-                                </div>
-                                <div class="desc">
-                                    월, 목 04:30~05:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    전북은행
-                                </div>
-                                <div class="desc">
-                                    매월 둘째주 토요일 00:00~04:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    경남은행
-                                </div>
-                                <div class="desc">
-                                    매월 둘째주 일요일 00:00~03:00
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    새마을은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    신협은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    저축은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    우체국
-                                </div>
-                                <div class="desc">
-                                    매일 04:00~05:00 점검
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    하나은행
-                                </div>
-                                <div class="desc">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        </div>
-    </div>
 </body>
-
 </html>
