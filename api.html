@@ -756,8 +756,6 @@ p JSON.parse(response.body)</code></pre>
                 </div>
             </div>
             
-
-            <!--추가-->
             <div class="method" id="resultcallback">
                 <div class="method-section clearfix">
                     <div class="method-description">
@@ -797,7 +795,17 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">string</span>
                                 </div>
                                 <div class="desc">
-                                	Toss 결제와 이어진 주문번호
+                                    Toss 결제와 이어진 주문번호
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    discountedAmount
+                                    <span class="type">integer</span>
+                                </div>
+                                <div class="desc">
+                                    할인된 금액<br>
+                                    <span class="text-muted">할인된 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -869,13 +877,13 @@ p JSON.parse(response.body)</code></pre>
  "status": "PAY_COMPLETE",
  "payToken": "test_token1234567890",
  "orderNo": "2015072012211",
- "paidTs": "2019-04-01 00:00:00"
+ "discountedAmount": 600,
+ "paidTs": "2016-11-16 13:59:59"
 }                            
                         </code></pre>
                     </div>
                 </div>
             </div>
-            <!--추가 끝-->
 
             <div class="method" id="execute">
                 <div class="method-section clearfix">
@@ -986,6 +994,16 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     승인한 결제 금액
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    discountedAmount
+                                    <span class="type">integer</span>
+                                </div>
+                                <div class="desc">
+                                    할인된 금액<br>
+                                    <span class="text-muted">할인된 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1163,8 +1181,14 @@ response = http.request(request)
 
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
-                        <pre><code class="language-javascript always-visible">
-{"code":0,"approvalTime":"2016-11-16 13:59:59"}</code>
+                        <pre><code class="language-javascript always-visible">{
+ "code":0,
+ "approvalTime":"2016-11-16 13:59:59",
+ "orderNo": "2015072012211",
+ "amount": 10000,
+ "discountedAmount": 1000
+}
+</code>
             </pre>
                     </div>
                 </div>
@@ -1525,13 +1549,28 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="text-muted">환불 상태 확인 시 필요</span>
                                 </div>
                             </div>
-                                <div class="field clearfix">
+                            <div class="field clearfix">
                                 <div class="key">
                                     refundableAmount
                                     <span class="type">integer</span>
                                 </div>
                                 <div class="desc">
                                     환불 가능 금액
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    discountedAmount
+                                    <span class="type">integer</span>
+                                </div>
+                                <div class="desc">
+                                    할인된 금액<br>
+                                    <span class="text-muted">할인된 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.<br>
+                                    부분 환불 시 discountedAmount 값은 부분 환불 이후의 최종적으로 할인된 금액입니다. <br>
+                                    예를들어, 10% 할인을 받아
+                                    10,000원 결제를 9,000에 결제했고, 4,000원을 부분 환불하면 최종적으로 6,000원 결제의 600원 할인을 받은 것이 되므로
+                                    discountedAmount 값은 600원으로 리턴됩니다.
+                                    </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1686,7 +1725,14 @@ response = http.request(request)
 
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
-                        <pre><code class="language-javascript always-visible">{"code":0,"refundNo":"cc92a9ef-8a81-2938-dda9-ff8a78ae29b8","approvalTime":"2016-11-16 13:59:59"}</code>
+                        <pre><code class="language-javascript always-visible">{
+"code":0,
+"refundNo":"cc92a9ef-8a81-2938-dda9-ff8a78ae29b8",
+"approvalTime":"2016-11-16 13:59:59",
+"refundableAmount": 6000,
+"discountedAmount": 600
+}
+</code>
             </pre>
                     </div>
                 </div>
