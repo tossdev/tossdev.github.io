@@ -131,16 +131,6 @@
               <li><a href="#create-11">복합과세 처리</a></li>
             </ul>
           </li>
-          <!--
-          <li>
-            <a href="#execute">결제 승인하기</a>
-            <ul class="nav">
-              <li><a href="#execute-1">API Endpoint</a></li>
-              <li><a href="#execute-2">필수 Parameters</a></li>
-              <li><a href="#execute-3">유효성 추가 검증</a></li>
-            </ul>
-          </li>
-          -->
           <li>
             <a href="#cancel">결제 취소하기</a>
             <ul class="nav">
@@ -432,13 +422,13 @@ echo "Response: ".$result;</code></pre>
             </p>
 
             <p>
-              retUrl로 고객을 보내면서, 주문 번호 (orderNo)와 인증 결과 (status) query string 파라미터로 함께
+              retUrl로 고객을 보내면서, 인증 결과 (status) 와 함께 주문 번호 (orderNo), 결제수단(payMethod) 을 query string 파라미터로 함께
               보내드립니다. 예시는 다음과 같습니다.
             </p>
             <div class="method-example">
               <pre
                 class=" language-http"
-              ><code class="always-visible  language-http">http://YOUR-SITE.COM/ORDER-CHECK?orderNo=1&status=PAY_COMPLETE</code></pre>
+              ><code class="always-visible  language-http">http://YOUR-SITE.COM/ORDER-CHECK?status=PAY_COMPLETE&orderNo=1&payMethod=TOSS_MONEY   </code></pre>
             </div>
             <p>여기서 status 값을 확인해주세요.</p>
             <ul>
@@ -448,118 +438,6 @@ echo "Response: ".$result;</code></pre>
               결제를 취소한 경우에는 결제 취소 안내 화면을 보여주시고, 인증을 완료한 경우에는 결제 완료 화면을 보여주세요.
             </p>
 
-            <!--
-            <h4 id="overview-5">5. 가맹점 최종 승인</h4>
-            <p>
-              고객은 결제를 확인하고 인증 완료했으나, 아직 결제가 완료된 상태는 아닙니다. '토스몰'의 최종 승인 단계가 남아있습니다.
-            </p>
-            <p>
-              최종 승인 전, 토스몰은 토스티셔츠의 재고가 충분한지 다시 한번 확인하고 문제가 없음을 확인한 후 '승인
-              요청'을 보내고자 합니다.
-            </p>
-            <div class="well">
-              결제 승인 API Endpoint
-              <br />
-              <strong>POST https://pay.toss.im/api/v1/execute</strong>
-            </div>
-            <p>결제 승인 요청은 아래와 같이 '상점 API key'와 'payToken'값을 담아 보냅니다.</p>
-            <div class="method-example">
-              <div class="languages">
-                <a class="language selected" data-lang="language-bash" href="#">curl</a>
-                <a class="language" data-lang="language-java" href="#">Java</a>
-                <a class="language" data-lang="language-php" href="#">PHP</a>
-              </div>
-              <pre><code class="language-bash">curl https://pay.toss.im/api/v1/execute \
--H "Content-Type: application/json" \
--d '{
-"apiKey":"sk_test_apikey1234567890",
-"payToken":"test_token1234567890"
-}'</code><code class="language-java">URL url = null;
-URLConnection connection = null;
-StringBuilder responseBody = new StringBuilder();
-try {
-url = new URL("https://pay.toss.im/api/v1/execute");
-connection = url.openConnection();
-connection.addRequestProperty("Content-Type", "application/json");
-connection.setDoOutput(true);
-connection.setDoInput(true);
-
-org.json.simple.JSONObject jsonBody = new JSONObject();
-jsonBody.put("apiKey", "sk_test_apikey1234567890");
-jsonBody.put("payToken", "test_token1234567890");
-
-BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
-bos.write(jsonBody.toJSONString().getBytes());
-bos.flush();
-bos.close();
-
-BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-String line = null;
-while ((line = br.readLine()) != null) {
-responseBody.append(line);
-}
-br.close();
-} catch (Exception e) {
-responseBody.append(e);
-}
-System.out.println(responseBody.toString());</code><code class="language-php">$arrayBody = array();
-$arrayBody["apiKey"] = "sk_test_apikey1234567890";
-$arrayBody["payToken"] = "test_token1234567890";
-$jsonBody = json_encode($arrayBody);
-
-$ch = curl_init('https://pay.toss.im/api/v1/execute');
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'Content-Type: application/json',
-'Content-Length: ' . strlen($jsonBody))
-);
-
-$result = curl_exec($ch);
-curl_close($ch);
-
-echo "Response: ".$result;</code></pre>
-            </div>
-            <p>
-              토스몰의 승인 요청을 받으면 토스 결제 서버는 먼저 구매자의 인증이 정말 완료되었는지 다시 한번 확인합니다.
-              (구매자가 악의적으로 URL 변조를 통해 인증 완료인 척 했다면 여기서 결제가 중지됩니다)
-            </p>
-            <p>
-              인증 완료된 것을 확인한 후, 구매자의 결제 계좌에서 결제 금액을 출금합니다. 출금이 완료되면 승인 요청에
-              대한 응답을 토스몰로 보냅니다.
-            </p>
-            <div class="method-example">
-              <pre><code class="always-visible language-bash">{"code":0}</code></pre>
-            </div>
-            <p>
-              '성공'을 의미하는 '0' 코드를 받으셨다면, 결제를 완료 처리하고 구매자를 결제 완료 페이지로 안내해주세요.
-            </p>
-            <p>실패를 의미하는 '-1' 코드를 받으셨거나, 응답을 받지 못했다면 결제를 완료 처리하지 마십시오.</p>
-            <div class="alert alert-warning" role="alert">
-              <i
-                class="fa fa-exclamation-triangle pull-left"
-                aria-hidden="true"
-                style="margin-top:8px;margin-left:6px"
-              ></i>
-              <p style="margin-left:10px">
-                다시 한번 말씀드리지만, 결제 승인 API 요청의 응답이 '성공' (코드 0)인지 반드시 확인하셔야 합니다.
-                <br />
-                계좌 잔액 부족이나 구매자의 URL 변조가 확인되어 '실패' (코드 -1)응답을 받을 수 있습니다. 응답을 확인하지
-                않고 결제 완료 처리하는 경우, 결제는 실패했으나 물품은 발송되어버릴 수도 있으니 주의하세요!
-              </p>
-            </div>
-            <div class="alert alert-info" role="alert">
-              <i class="fa fa-info-circle pull-left" aria-hidden="true" style="margin-top:8px;margin-left:6px"></i>
-              <p style="margin-left:10px">
-                결제 상태가 명확하지 않거나 다시 한번 확인하고 싶다면 <a href="#checkstatus">'결제 상태 확인 API'</a>를
-                통해 결제 상태를 조회하세요.
-              </p>
-            </div>
-          </div>
-        </div>
-        -->
         <div class="method" id="create">
           <div class="method-description">
             <h3>결제 생성하기</h3>
