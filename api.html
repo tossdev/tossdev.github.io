@@ -778,7 +778,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">string</span>
                                 </div>
                                 <div class="desc">
-                                    PAY_COMPLETE
+                                    PAY_SUCCESS
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -876,7 +876,7 @@ p JSON.parse(response.body)</code></pre>
                         <pre><code class="language-bash always-visible">POST http://YOUR-SITE.COM/callback (결제 생성 시 가맹점에서 설정한 callback URL)</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="language-bash always-visible">{
- "status": "PAY_COMPLETE",
+ "status": "PAY_SUCCESS",
  "payToken": "test_token1234567890",
  "orderNo": "2015072012211",
  "discountedAmount": 600,
