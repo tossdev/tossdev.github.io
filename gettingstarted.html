@@ -817,6 +817,7 @@ echo "Response: ".$result;</code></pre>
 "code":0,                           # 응답코드
 "payToken":"test_token1234567890"   # 결제 고유 번호
 "orderNo":"2015072012211",          # 상점의 주문번호
+"payMethod":"TOSS_MONEY",           # 결제 수단
 "payStatus":"REFUND_SUCCESS",       # 결제 상태
 "availableActions ":["REFUND"],     # 가능한 액션 목록
 "metadata":"metadata"               # 결제 생성 시 입력한 metadata
@@ -834,19 +835,16 @@ echo "Response: ".$result;</code></pre>
                 <strong>상점의 주문번호</strong> : 상점에서 사용하는 주문번호. 'payToken'으로 상태를 조회하면 이 값을
                 참조하여 '주문번호'를 알 수 있습니다.
               </li>
-              <li><strong>결제 상태</strong> : 조회 당시의 결제 상태 (아래 '결제 상태 목록'을 참고하세요)</li>
+              <li>
+                <strong>결제 수단</strong> : 구매자가 선택한 결제수단을 확인할 수 있습니다.
+              </li>
+              <li>
+                <strong>결제 상태</strong> : 조회 당시의 결제 상태 (아래 '결제 상태 목록'을 참고하세요)
+              </li>
               <li>
                 <strong>가능한 액션 목록</strong> : 조회 당시에 가능한 액션(취소, 환불 등) 목록 (예를 들어, '결제 완료'
                 상태에서는 '환불'이 가능하나 '전액 환불'한 상태에서는 환불 불가)
               </li>
-              <!--subin_20190410_삭제
-              <li>
-                <strong>결제할 사람의 정보 입력 여부</strong> : 당신의 상점에서 결제를 생성하고 결제 진행 웹페이지를
-                구매자에게 제공하고 나면 구매자는 결제 승인에 필요한 정보를 입력합니다. 결제를 진행할 사람에 대한 정보가
-                올바르게 입력되면 이 값은 <span class="bg-info">true</span>가 됩니다. 반면, 아직 정보를 입력하지 않은
-                상태라면 <span class="bg-info">false</span> 입니다.
-              </li>
-              -->
               <li>
                 <strong>결제 연관 data</strong> : 결제 생성 시 가맹점 측에서 해당 결제건과 연관된 정보를 metadata
                 field를 통헤 기록할 수 있고, 결제 상태 조회를 통해 기록하셨던 data에 다시 접근하실 수 있습니다.
