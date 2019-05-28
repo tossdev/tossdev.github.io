@@ -801,6 +801,27 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    payMethod
+                                    <span class="type">String</span>
+                                </div>
+                                <div class="desc">
+                                    결제수단
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>TOSS_MONEY</td>
+                                            <td>토스머니</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CARD</td>
+                                            <td>카드</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     discountedAmount
                                     <span class="type">integer</span>
                                 </div>
@@ -879,6 +900,7 @@ p JSON.parse(response.body)</code></pre>
  "status": "PAY_SUCCESS",
  "payToken": "test_token1234567890",
  "orderNo": "2015072012211",
+ "payMethod": "TOSS_MONEY",
  "discountedAmount": 600,
  "paidTs": "2016-11-16 13:59:59"
 }                            
@@ -2043,11 +2065,11 @@ p JSON.parse(response.body)</code></pre>
                                     <table class="table">
                                         <tr>
                                             <td>TOSS_MONEY</td>
-                                            <td>토스 머니</td>
+                                            <td>토스머니</td>
                                         </tr>
                                         <tr>
                                             <td>CARD</td>
-                                            <td>토스 카드</td>
+                                            <td>카드</td>
                                         </tr>
                                     </table>
                                 </div>
