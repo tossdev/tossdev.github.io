@@ -30,7 +30,7 @@
       rel="apple-touch-icon"
     <link
       sizes="152x152"
-      href="https://static.toss.im/tds/favicon/apple-touch-icon-152x152.png"
+      href="https://static.toss.im/tds/favicon/apple-touch-icon-152x152.png"fdsffsdf
     />
     <meta name="msapplication-TileImage" content="https://static.toss.im/tds/favicon/mstile-144x144.png" />
 
@@ -79,29 +79,15 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-TPTMLG');
     </script>
+
+
     <!-- End Google Tag Manager -->
     <div id="guide">
       <h1 class="logo">
-        <a href="index.html"
-          ><img src="https://static.toss.im/tds/icon/svg/logo-only-icon.svg" alt="toss developers logo"
-        /></a>
+          <img src="https://static.toss.im/tds/icon/svg/logo-only-icon.svg" alt="toss developers logo"/>
+          <span>결제 정산 API v1</span>
       </h1>
-      <ul class="menu nav">
-        <h5>Toss 정산 API</h5>
-        <li>
-          <a href="#intro">소개</a>
-        </li>
-        <li>
-          <a href="#terms">용어</a>
-        </li>
-        <li>
-          <a href="#httpResponse">HTTP 응답 코드</a>
-        </li>
-        <h5>API 목록</h5>
-        <li>
-          <a href="#settlementDetail">정산 내역 상세 조회</a>
-        </li>
-      </ul>
+      
     </div>
 
     <div id="api-docs">
@@ -117,7 +103,7 @@
         <div class="method" id="intro">
           <div class="method-section clearfix">
             <div class="method-description">
-              <h3>Toss 정산 API 소개</h3>
+              <h3>Toss 정산 API v1 소개</h3>
               <p>
                 Toss 결제 서비스를 통한 매출과 정산 금액 확인을 도와드리기 위한 API입니다. 가맹점 여러분들의 피드백을
                 받아 개선 및 추가해나갈 예정입니다.
@@ -319,7 +305,7 @@
                         <td>환불</td>
                       </tr>
                       <tr>
-                        <td>ETC</td>
+                        <td>FEE</td>
                         <td>환불수수료 등 기타 건</td>
                       </tr>
                     </table>
@@ -387,6 +373,25 @@
                     부가세<br />(부가세 부과는 '-', 전액 환불 등 사유로 부가세를 돌려드리는 경우 '+'로 표시됨)
                   </div>
                 </div>
+
+                <div class="field clearfix">
+                  <div class="key">
+                    tossChargeAmount
+                  </div>
+                  <div class="desc">
+                    토스 부담 금액<br />
+                  </div>
+                </div>
+
+                <div class="field clearfix">
+                  <div class="key">
+                    rewardReturnAmount
+                  </div>
+                  <div class="desc">
+                    캐시백 회수 금액<br />캐시백 받았던 결제건을 환불했을 때, 환불 결제금액에서 차감될 캐시백 회수 금액
+                  </div>
+                </div>
+
               </div>
               <div class="info">
                 <h4>response (TELEGRAM, 총 250 bytes)</h4>
@@ -598,24 +603,26 @@ p JSON.parse(response.body)</code></pre>
               <div class="title">Example Response (JSON)</div>
               <pre><code style="border:none;box-shadow:none;" class="language-javascript always-visible">[{
     "transactionType": "PAY",
-	"productDesc": "토스공",
-	"amount": 11000,
-	"orderNo": "toss_orderNo_1234",
-	"dueDate": "20160530",
-	"fee": -400,
-	"vat": -40,
-	"settleDate": "20160527",
-	"payToken": "1234abcdef"
-}, {
-	"transactionType": "PAY",
 	"productDesc": "토스모자",
 	"amount": 5500,
-	"orderNo": "toss_orderNo_1235",
-	"dueDate": "20160530",
+	"orderNo": "toss_orderNo_1234",
+	"dueDate": "20180530",
 	"fee": -400,
 	"vat": -40,
-	"settleDate": "20160527",
-	"payToken": "1235abcdef"
+	"settleDate": "20180529",
+	"payToken": "1234abcdef"
+}, {
+	"transactionType": "REFUND",
+	"productDesc": "토스모자",
+	"amount": -5300,
+	"orderNo": "toss_orderNo_1234",
+	"dueDate": "20180530",
+	"fee": -400,
+	"vat": -40,
+	"settleDate": "20180529",
+	"payToken": "1235abcdef",
+    "tossChargeAmount": 0,
+    "rewardReturnAmount": -200
 },
 {....}
 ]</code></pre>
