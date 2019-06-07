@@ -255,7 +255,7 @@
 "productDesc":"토스티셔츠",
 "apiKey":"sk_test_apikey1234567890",
 "autoExecute":true,
-"resultCallback":"http://YOUR-SITE.COM/callback",
+"resultCallback":"https://YOUR-SITE.COM/callback",
 "retUrl":"http://YOUR-SITE.COM/ORDER-CHECK",
 "retCancelUrl":"http://YOUR-SITE.COM/close"
 }'</code><code class="language-java">import java.nio.charset.StandardCharsets;
@@ -277,7 +277,7 @@ jsonBody.put("amountTaxFree", 0);
 jsonBody.put("productDesc", "토스티셔츠");
 jsonBody.put("apiKey", "sk_test_apikey1234567890");
 jsonBody.put("autoExecute", true);
-jsonBody.put("resultCallback", "http://YOUR-SITE.COM/callback");
+jsonBody.put("resultCallback", "https://YOUR-SITE.COM/callback");
 jsonBody.put("retUrl", "http://YOUR-SITE.COM/ORDER-CHECK");
 jsonBody.put("retCancelUrl", "http://YOUR-SITE.COM/close");
 
@@ -302,7 +302,7 @@ $arrayBody["amountTaxFree"] = 0;
 $arrayBody["productDesc"] = "토스티셔츠";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890";
 $arrayBody["autoExecute"] = true;
-$arrayBody["resultCallback"] = "http://YOUR-SITE.COM/callback";
+$arrayBody["resultCallback"] = "https://YOUR-SITE.COM/callback";
 $arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK";
 $arrayBody["retCancelUrl"] = "http://YOUR-SITE.COM/close";
 $jsonBody = json_encode($arrayBody);
@@ -396,7 +396,7 @@ echo "Response: ".$result;</code></pre>
             </p>
             <p>
               그 후, 결제 인증까지의 모든 과정은 토스가 알아서 해드립니다. (토스머니를 선택했다면 계좌 유효성 검증 후
-              충전의 단계를 거치고, 카드 결제를 선택했다면 카드 소유자의 일치 여부를 확인하고 카드 추가부터 진행할 수
+              충전의 단계를 거치고, 토스카드를 선택했다면 카드 소유자의 일치 여부를 확인하고 카드 추가부터 진행할 수
               있습니다)<br />
               토스 앱과 토스 서버 간의 통신이 이루어지므로 가맹점에서는 추가 개발하거나 수정해야 되는 부분이 없습니다.
               <br /><br />
@@ -424,7 +424,7 @@ echo "Response: ".$result;</code></pre>
                 “웹/앱 둘다 선택” 하는 경우 구매자가 직접 결제 유형을 선택해서 진행할 수 있습니다. <br />
                 <font color="#AA1212"
                   ><strong>
-                    * 카드 결제 이용을 위해서는 앱 결제는 필수이며, 웹 결제의 경우 협의 후 이용 가능합니다.</strong
+                    * 토스 카드 이용을 위해서는 앱 결제는 필수이며, 웹 결제의 경우 협의 후 이용 가능합니다.</strong
                   ></font
                 >
               </p>
@@ -477,7 +477,7 @@ echo "Response: ".$result;</code></pre>
 "retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",   # 결제 완료 후 연결할 웹 URL (필수)
 "retCancelUrl":"http://YOUR-SITE.COM/close",             # 결제 취소 시 연결할 웹 URL (필수)
 "autoExecute":true,                                      # 자동 승인 설정
-"resultCallback":"http://YOUR-SITE.COM/callback",        # 결제 결과 callback 웹 URL (필수-자동승인설정 true의 경우)
+"resultCallback":"https://YOUR-SITE.COM/callback",       # 결제 결과 callback 웹 URL (필수-자동승인설정 true의 경우)
 "amountTaxable":22727,                                   # 결제 금액 중 과세금액
 "amountVat":2273,                                        # 결제 금액 중 부가세
 "amountServiceFee":0,                                    # 결제 금액 중 봉사료
