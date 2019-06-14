@@ -627,7 +627,7 @@
         "amountTaxFree":0,
         "productDesc":"테스트결제",
         "apiKey":"sk_test_apikey1234567890",
-        "autoExecute":"true",
+        "autoExecute":true,
         "resultCallback":"https://YOUR-SITE.COM/callback",
         "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
         "retCancelUrl": "http://YOUR-SITE.COM/close"
@@ -649,7 +649,7 @@ try {
 	jsonBody.put("amountTaxFree", 0);
 	jsonBody.put("productDesc", "테스트 결제");
 	jsonBody.put("apiKey", "sk_test_apikey1234567890");
-    jsonBody.put("autoExecute", "true");
+    jsonBody.put("autoExecute", true);
     jsonBody.put("resultCallback", "http://"http://YOUR-SITE.COM/callback");
     jsonBody.put("retUrl", "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1");
     jsonBody.put("retCancelUrl", "http://YOUR-SITE.COM/close");
@@ -676,7 +676,7 @@ $arrayBody["amount"] = 10000;
 $arrayBody["amountTaxFree"] = 0;
 $arrayBody["productDesc"] = "테스트 결제";
 $arrayBody["apiKey"] = "sk_test_apikey1234567890";
-$arrayBody["autoExecute"] = "true";
+$arrayBody["autoExecute"] = true;
 $arrayBody["resultCallback"] = "http://YOUR-SITE.COM/callback";
 $arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1";
 $arrayBody["retCancelUrl"] = "http://YOUR-SITE.COM/close";
@@ -723,7 +723,7 @@ params = {
     "amountTaxFree": 0,
     "productDesc":"테스트 결제",
     "apiKey": "sk_test_apikey1234567890",
-    "autoExecute": "true",
+    "autoExecute": true,
     "resultCallback": "http://YOUR-SITE.COM/callback",
     "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
     "retCancelUrl": "http://YOUR-SITE.COM/close"
@@ -741,7 +741,7 @@ params = {
         "amountTaxFree"=> 0,
         "productDesc" => "테스트 결제",
         "apiKey" => "sk_test_apikey1234567890",
-        "autoExecute" => "true",
+        "autoExecute" => true,
         "resultCallback" => "http://YOUR-SITE.COM/callback",
         "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
         "retCancelUrl": "http://YOUR-SITE.COM/close"
@@ -2408,7 +2408,7 @@ p JSON.parse(response.body)</code></pre>
     "metadata": "metadata",
     "payMethod": "CARD",
     "cardCompanyName": "롯데카드",
-    "spreadOut": "06",
+    "spreadOut": "6",
     "isInterest": "true"
 }</code>
             </pre>
