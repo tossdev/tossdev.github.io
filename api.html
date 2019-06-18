@@ -1205,7 +1205,34 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">string</span>
                                 </div>
                                 <div class="desc">
-                                    승인한 상품 주문번호
+                                    승인된 결제의 가맹점 주문번호
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    payToken
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    승인된 결제의 토큰
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    transactionId
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    결제 트랜잭션 코드
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    salesCheckLinkUrl
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    매출전표 호출 URL
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1379,7 +1406,10 @@ p JSON.parse(response.body)</code></pre>
  "approvalTime":"2016-11-16 13:59:59",
  "orderNo": "2015072012211",
  "amount": 10000,
- "discountedAmount": 1000
+ "discountedAmount": 1000,
+ "payToken" : "vzwuQze43GuG8G5XggYWf8",
+ "transactionId": "fa82b3a2-a7a6-4122-8a0f-0c6ebcce43b5",
+ "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=vzwuQze43GuG8G5XggYWf8&transactionId=fa82b3a2-a7a6-4122-8a0f-0c6ebcce43b5"
 }
 </code>
             </pre>
@@ -1781,6 +1811,16 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    transactionId
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    결제 트랜잭션 코드<br>
+                                    <span class="text-muted">매출전표 호출 시 필요하므로 가맹점에서 관리가 필요합니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     msg
                                     <span class="type">string</span>
                                 </div>
@@ -1925,6 +1965,7 @@ p JSON.parse(response.body)</code></pre>
                         <pre><code class="language-javascript always-visible">{
 "code":0,
 "refundNo":"cc92a9ef-8a81-2938-dda9-ff8a78ae29b8",
+"transactionId": "cc92a9ef-8a81-2938-dda9-ff8a78ae29b8",
 "approvalTime":"2016-11-16 13:59:59",
 "refundableAmount": 6000,
 "discountedAmount": 600
