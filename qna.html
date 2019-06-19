@@ -70,6 +70,9 @@
                     <a href="#faq-1">토스 연동을 위한 방화벽 설정</a>
                 </li>
                 <li>
+                    <a href="#faq-8">토스 앱 가이드</a>
+                </li>
+                <li>
                     <a href="#faq-2">토스 인코딩 방식</a>
                 </li>
                 <li>
@@ -104,9 +107,9 @@
                     구매자는 인증을 완료했지만 가맹점 retUrl로 결제 결과가 오지 않는 경우나, 토스 서버로 부터 resultCallback 결과를 받지<br> 못한다면 먼저 방화벽 설정을 살펴봐야 합니다.<br><br>
                 </p>
                 <ol>
-                <li><strong>가맹점에서 토스서버로 접근하는 경우 (결제 생성, 결제 승인 등의 API)</strong><br>
-                    가맹점 --> 가맹점 방화벽 --> 토스 결제
-                    </li><br>
+                <strong><li>가맹점에서 토스서버로 접근하는 경우 (결제 생성, 결제 승인 등의 API)<br>
+                    가맹점 --> 가맹점 방화벽 --> 토스 결제</li>
+                </strong><br>
                     위의 경우에는 가맹점 방화벽의 outbound 정책에 아래 토스 IP를 추가해 주시면 됩니다. <br>
                 <strong>domain : <font color="blue">pay.toss.im</font></strong>
                 <ul>
@@ -127,9 +130,9 @@
                 <ul>
                     <li>211.115.96.210</li><br>
                 </ul>
-                <li><strong>토스서버에서 가맹점으로 접근하는 경우 (resultCallback를 포함하는 경우만 사용)</strong><br>
+                <strong><li>토스서버에서 가맹점으로 접근하는 경우 (resultCallback를 포함하는 경우만 사용)<br>
                     토스결제 --> 가맹점 방화벽 --> 가맹점
-                </li><br>
+                </li></strong><br>
                     위의 경우에서는 가맹점 방화벽의 inbound 정책에 아래 토스 IP를 추가해 주시면 됩니다. <br>
                 <strong>domain : <font color="blue">pay.toss.im</font></strong>
                 <ul>
@@ -144,11 +147,33 @@
                 <ul>
                     <li>211.115.96.11</li>
                 </ul>
-                </ol>
-                <p>* 각 케이스 별 구분이 어렵다면 outbound, inbound 정책에 맞게 토스 IP를 모두 추가해 주셔도 됩니다.</p>
-                <p>* 토스 서버의 IP가 추가되는 경우 사전에 공지메일을 발송해 드립니다.</p>
+                </ol><br>
+                <p> ✓ 각 케이스 별 구분이 어렵다면 outbound, inbound 정책에 맞게 토스 IP를 모두 추가해 주셔도 됩니다.</p>
+                <p> ✓ 토스 서버의 IP가 추가되는 경우 사전에 공지메일을 발송해 드립니다.</p>
                 </div>
             </div>
+
+            <div class="method" id="member">
+                <div class="method-description">
+                    <h4 id="faq-8">토스 앱 가이드</h4><br>
+                        <p>앱 결제를 위하여 토스에서 지원하는 스펙은 다음과 같습니다.<br>
+                        <ul>
+                            <li>안드로이드의 경우 Intent URI 사용 </li>
+                            <li>아이폰(iOS)의 경우 Universal Link 사용 </li> <br>
+
+                            <strong> Android 예시</strong> <br>
+                            intent://pay?payToken={payToken}#Intent;scheme=supertoss;package=viva.republica.toss;end <br><br>
+
+                            <strong>iOS 예시</strong><br>
+                            https://ul.toss.im?scheme=supertoss%3A%2F%2Fpay%3FpayToken%3D{payToken}
+                        </ul><br>
+                        <p> ✓ 안드로이드의 경우, 가맹점 측의 Intent URI 파싱처리가 필요합니다.
+                        <p> ✓ '앱으로 결제하기' 를 클릭했을 때, 토스 앱 설치유무를 체크하고 곧바로 토스 앱을 호출하거나 앱 스토어로 이동합니다.
+                        <p> ✓ 토스에서는 iframe 방식을 공식 지원하지 않습니다만, 부득이하게 iframe 으로 토스 앱을 호출하시는 경우<br> 
+                               앱이 호출되지 않거나 오류가 발생할 수 있으니 새 창을 띄워 호출하시길 권고드립니다.
+                </div>
+            </div>
+            
 
             <div class="method" id="member">
                 <div class="method-description">
@@ -167,7 +192,7 @@
                         따라서, 가맹점에서는 <strong>30초 + 3~5초 정도</strong>의 대기 시간을 잡아주시면 타임아웃으로 인한 대사 불일치 거래건이 발생하지 않습니다.
                         (처리 지연으로 가맹점은 취소 처리했으나 토스는 승인되는 케이스 방지)<br>
                         토스 이슈가 아닌 은행망 이슈를 제외하면 타임아웃으로 인한 거래 지연은 발생하지 않습니다. <br><br>
-                        * 결제수단 구분 없이 모두 동일하게 설정하셔도 무방합니다.
+                        ✓ 결제수단 구분 없이 모두 동일하게 설정하셔도 무방합니다.
                 </div>
             </div>
 
@@ -201,9 +226,11 @@
             <div class="method" id="member">
                 <div class="method-description">
                         <h4 id="faq-6">resultCallback이 실패하는 이유가 뭘까요?</h4><br>
-                        <p>토스에서는 장애 상황이 아닌 한 resultCallback 요청을 보장합니다. 단, 방화벽 이슈를 제외하고 callback 요청을 받아 처리하는 것은 가맹점 서버로 많은 트래픽, 개발 중의 버그 등의
+                        <p>토스에서는 장애 상황이 아닌 한 resultCallback 요청을 보장합니다. 단, <a href="qna.html#faq-1">방화벽</a> 이슈를 제외하고 callback 요청을 받아 처리하는 것은 가맹점 서버로 많은 트래픽, 개발 중의 버그 등의
                         특별한 사유로 callback 요청이 실패할 수 있습니다. <br>
-                        <strong>토스에서는 callback 실패 시, 가맹점 서버로 10분 이내에 총 6회의 재시도 요청</strong>을 하고 있으니 안심하세요.
+                        <strong>토스에서는 callback 실패 시, 가맹점 서버로 10분 이내에 총 4회의 재시도 요청</strong>을 하고 있으니 안심하세요. <br><br>
+
+                        ✓ callback 재전송 기능은 토스 가맹점 관리자 페이지에서도 확인하실 수 있습니다.
                 </div>
             </div>
 
@@ -372,10 +399,6 @@
                             </table>
                 </div>
             </div>
-
-
-
-
         </div>
     </div>
 </body>
