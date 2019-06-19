@@ -846,7 +846,7 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     결제 처리 시각<br>
-                                    형식 : 2019-04-01 00:00:00
+                                    형식 : 2019-06-19 12:57:22
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -912,7 +912,7 @@ Content-Type application/x-www-form-urlencoded;charset=UTF-8</code></pre>
  "orderNo": "2015072012211",
  "payMethod": "TOSS_MONEY",
  "discountedAmount": 600,
- "paidTs": "2016-11-16 13:59:59"
+ "paidTs": "2019-06-19 12:57:22"
 }                            
                         </code></pre>
 
@@ -1159,7 +1159,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">timestamp</span>
                                 </div>
                                 <div class="desc">
-                                    결제건의 승인 처리 시각 (yyyy-MM-dd HH:mm:ss)
+                                    결제건의 승인 처리 시각 (yyyy-MM-dd HH:mm:ss)<br>
+                                    <span class="text-muted">요청에 따른 결제건 처리 시각입니다. 환불시에도 동일한 변수로 리턴되므로 구분하여 관리하시기 바랍니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1379,7 +1380,7 @@ p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{
  "code":0,
- "approvalTime":"2016-11-16 13:59:59",
+ "approvalTime":"2019-06-19 12:57:22",
  "orderNo": "2015072012211",
  "amount": 10000,
  "discountedAmount": 1000
@@ -1779,7 +1780,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">timestamp</span>
                                 </div>
                                 <div class="desc">
-                                    결제건의 환불 처리 시각 (yyyy-MM-dd HH:mm:ss)
+                                    결제건의 환불 처리 시각 (yyyy-MM-dd HH:mm:ss)<br>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1928,7 +1929,7 @@ p JSON.parse(response.body)</code></pre>
                         <pre><code class="language-javascript always-visible">{
 "code":0,
 "refundNo":"cc92a9ef-8a81-2938-dda9-ff8a78ae29b8",
-"approvalTime":"2016-11-16 13:59:59",
+"approvalTime":"2019-06-19 12:57:22",
 "refundableAmount": 6000,
 "discountedAmount": 600
 }
