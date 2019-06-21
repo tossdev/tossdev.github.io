@@ -155,28 +155,6 @@
 
             <div class="method" id="member">
                 <div class="method-description">
-                    <h4 id="faq-8">토스 앱 가이드</h4><br>
-                        <p>앱 결제를 위하여 토스에서 지원하는 스펙은 다음과 같습니다.<br>
-                        <ul>
-                            <li>안드로이드의 경우 Intent URI 사용 </li>
-                            <li>아이폰(iOS)의 경우 Universal Link 사용 </li> <br>
-
-                            <strong> Android 예시</strong> <br>
-                            intent://pay?payToken={payToken}#Intent;scheme=supertoss;package=viva.republica.toss;end <br><br>
-
-                            <strong>iOS 예시</strong><br>
-                            https://ul.toss.im?scheme=supertoss%3A%2F%2Fpay%3FpayToken%3D{payToken}
-                        </ul><br>
-                        <p> ✓ 안드로이드의 경우, 가맹점 측의 Intent URI 파싱처리가 필요합니다.
-                        <p> ✓ '앱으로 결제하기' 를 클릭했을 때, 토스 앱 설치유무를 체크하고 곧바로 토스 앱을 호출하거나 앱 스토어로 이동합니다.
-                        <p> ✓ 토스에서는 iframe 방식을 공식 지원하지 않습니다만, 부득이하게 iframe 으로 토스 앱을 호출하시는 경우<br> 
-                               앱이 호출되지 않거나 오류가 발생할 수 있으니 새 창을 띄워 호출하시길 권고드립니다.
-                </div>
-            </div>
-            
-
-            <div class="method" id="member">
-                <div class="method-description">
                     <h4 id="faq-2">토스 인코딩 방식</h4><br>
                         <p><strong>토스 인코딩 방식은 UTF-8 형식을 사용합니다.</strong><br>
                         가맹점에서 토스 서버로 한글이 포함된 값(주문번호, 상품명 등)을 보내주실 때, UTF-8 형식으로 보내주셔야<br>
