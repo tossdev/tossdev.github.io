@@ -44,7 +44,7 @@ pre[class*="language-"],
 pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
-	overflow: auto;
+	overflow: field clearfix;
 	border: .3em solid hsl(30, 20%, 40%);
 	border-radius: .5em;
 	box-shadow: 1px 1px .5em black inset;
