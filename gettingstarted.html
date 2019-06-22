@@ -271,7 +271,7 @@ connection.setDoOutput(true);
 connection.setDoInput(true);
 
 org.json.simple.JSONObject jsonBody = new JSONObject();
-jsonBody.put("orderNo", "2015072012211");
+jsonBody.put("orderNo", "1");
 jsonBody.put("amount", 35000);
 jsonBody.put("amountTaxFree", 0);
 jsonBody.put("productDesc", "토스티셔츠");
@@ -296,7 +296,7 @@ br.close();
 responseBody.append(e);
 }
 System.out.println(responseBody.toString());</code><code class="language-php">$arrayBody = array();
-$arrayBody["orderNo"] = "2015072012211";
+$arrayBody["orderNo"] = "1";
 $arrayBody["amount"] = 10000;
 $arrayBody["amountTaxFree"] = 0;
 $arrayBody["productDesc"] = "토스티셔츠";
@@ -366,7 +366,7 @@ echo "Response: ".$result;</code></pre>
             <p>요청하신 결제 생성이 무사히 완료되면, 토스는 아래와 같이 응답합니다.</p>
             <div class="method-example">
               <pre><code class="always-visible language-bash">{"code":0,"checkoutPage":"https://pay.toss.im/payfront/auth?payToken=test_token1234567890",
-"payToken":"test_token1234567890"}</code></pre>
+"payToken":"example-payToken"}</code></pre>
             </div>
             <p><span class="bg-info">code '0'</span>은 결제 생성에 '성공'했음을 나타냅니다.</p>
             <p>
@@ -388,7 +388,7 @@ echo "Response: ".$result;</code></pre>
             <div class="method-example">
               <pre
                 class=" language-http"
-              ><code class="always-visible  language-http">https://pay.toss.im/payfront/auth?payToken=test_token1234567890</code></pre>
+              ><code class="always-visible  language-http">https://pay.toss.im/payfront/auth?payToken=example-payToken</code></pre>
             </div>
             <p>
               <br />
@@ -396,7 +396,7 @@ echo "Response: ".$result;</code></pre>
             </p>
             <p>
               그 후, 결제 인증까지의 모든 과정은 토스가 알아서 해드립니다. (토스머니를 선택했다면 계좌 유효성 검증 후
-              충전의 단계를 거치고, 토스카드를 선택했다면 카드 소유자의 일치 여부를 확인하고 카드 추가부터 진행할 수
+              충전의 단계를 거치고, 카드 결제를 선택했다면 카드 소유자의 일치 여부를 확인하고 카드 추가부터 진행할 수
               있습니다)<br />
               토스 앱과 토스 서버 간의 통신이 이루어지므로 가맹점에서는 추가 개발하거나 수정해야 되는 부분이 없습니다.
               <br /><br />
@@ -424,9 +424,7 @@ echo "Response: ".$result;</code></pre>
                 “웹/앱 둘다 선택” 하는 경우 구매자가 직접 결제 유형을 선택해서 진행할 수 있습니다. <br />
                 <font color="#AA1212"
                   ><strong>
-                    * 토스 카드 이용을 위해서는 앱 결제는 필수이며, 웹 결제의 경우 협의 후 이용 가능합니다.</strong
-                  ></font
-                >
+                    * 카드 결제를 위하여 앱 결제는 필수입니다.</strong></font>
               </p>
             </div>
 
@@ -481,7 +479,7 @@ echo "Response: ".$result;</code></pre>
 "amountTaxable":22727,                                   # 결제 금액 중 과세금액
 "amountVat":2273,                                        # 결제 금액 중 부가세
 "amountServiceFee":0,                                    # 결제 금액 중 봉사료
-"expiredTime":"2019-04-01 12:47:35",                     # 결제 만료 예정 시각
+"expiredTime":"2019-06-17 12:47:35",                     # 결제 만료 예정 시각
 "cashReceipt":true,                                      # 현금영수증 발급 가능 여부
 "metadata":"{'size':'XL','color':'Red'}"                 # metadata 값
 }'</code></pre>
@@ -718,7 +716,7 @@ echo "Response: ".$result;</code></pre>
 -H "Content-Type: application/json" \
 -d '{
 "apiKey":"sk_test_apikey1234567890",    # 상점의 API Key (필수)
-"payToken":"test_token1234567890",      # 결제 고유 번호 (필수)
+"payToken":"example-payToken",      # 결제 고유 번호 (필수)
 "reason":"재고 부족"                      # 취소 사유
 }'
 </code></pre>
@@ -743,6 +741,7 @@ echo "Response: ".$result;</code></pre>
             </p>
           </div>
         </div>
+
         <div class="method" id="refund">
           <div class="method-description">
             <h3>환불하기</h3>
@@ -760,7 +759,7 @@ echo "Response: ".$result;</code></pre>
 -H "Content-Type: application/json" \
 -d '{
 "apiKey":"sk_test_apikey1234567890",    # 상점의 API Key (필수)
-"payToken":"test_token1234567890",      # 결제 고유 번호 (필수)
+"payToken":"example-payToken",          # 결제 고유 번호 (필수)
 "amount":10000                          # 환불할 금액 (필수)
 "amountTaxable":5000,                   # 환불할 금액 중 과세금액
 "amountTaxFree":4000,                   # 환불할 금액 중 비과세금액 (필수)
@@ -775,7 +774,7 @@ echo "Response: ".$result;</code></pre>
             <p>
               '결제 환불'의 필수 파라미터는 4가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 환불하는지만 알려주세요!
             </p>
-            <ol>
+            <ol>z
               <li><strong>상점 API Key</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
               <li><strong>결제 고유 토큰 (payToken)</strong> : 결제 생성 완료 후 받은 결제 고유번호</li>
               <li><strong>환불할 금액 (amount)</strong> : 환불 할 금액</li>
@@ -816,7 +815,7 @@ echo "Response: ".$result;</code></pre>
 -H "Content-Type: application/json" \
 -d '{
 "apiKey":"sk_test_apikey1234567890",    # 상점의 API Key (필수)
-"payToken":"test_token1234567890",      # 결제 고유 번호 (필수)
+"payToken":"example-payToken",          # 결제 고유 번호 (필수)
 }'
 </code></pre>
             </div>
@@ -834,8 +833,8 @@ echo "Response: ".$result;</code></pre>
             <div class="method-example">
               <pre><code class="always-visible language-bash">{
 "code":0,                           # 응답코드
-"payToken":"test_token1234567890"   # 결제 고유 번호
-"orderNo":"2015072012211",          # 상점의 주문번호
+"payToken":"example-payToken"       # 결제 고유 번호
+"orderNo":"1",                      # 상점의 주문번호
 "payMethod":"TOSS_MONEY",           # 결제 수단
 "payStatus":"REFUND_SUCCESS",       # 결제 상태
 "availableActions ":["REFUND"],     # 가능한 액션 목록
