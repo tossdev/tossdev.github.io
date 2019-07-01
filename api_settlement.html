@@ -350,13 +350,15 @@
                     상품 설명
                   </div>
                 </div>
-                  <div class="field clearfix">
+                <div class="field clearfix">
                   <div class="key">
                     payMethod
                   </div>
                   <div class="desc">
-                    결제수단<br><br>
-                      <table class="table">
+                    결제 수단
+                    <br/>
+                    <br/>
+                    <table class="table">
                       <tr>
                         <td>TOSS_MONEY</td>
                         <td>토스머니</td>
@@ -367,7 +369,7 @@
                       </tr>
                     </table>
                   </div>
-                </div>
+                </div> 
                 <div class="field clearfix">
                   <div class="key">
                     amount
@@ -623,7 +625,7 @@ p JSON.parse(response.body)</code></pre>
 	"productDesc": "토스모자",
 	"amount": 5500,
 	"orderNo": "toss_orderNo_1234",
-  "payMethod": "TOSS_MONEY",
+    "payMethod": "TOSS_MONEY",
 	"dueDate": "20180530",
 	"fee": -400,
 	"vat": -40,
@@ -633,15 +635,15 @@ p JSON.parse(response.body)</code></pre>
 	"transactionType": "REFUND",
 	"productDesc": "토스모자",
 	"amount": -5300,
-	"orderNo": "toss_orderNo_1234",
-  "payMethod": "TOSS_MONEY",
+    "orderNo": "toss_orderNo_1234",
+    "payMethod": "TOSS_MONEY",
 	"dueDate": "20180530",
 	"fee": -400,
 	"vat": -40,
 	"settleDate": "20180529",
 	"payToken": "1235abcdef",
-  "tossChargeAmount": 0,
-  "rewardReturnAmount": -200
+    "tossChargeAmount": 0,
+    "rewardReturnAmount": -200
 },
 {....}
 ]</code></pre>
