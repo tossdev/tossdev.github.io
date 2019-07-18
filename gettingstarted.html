@@ -115,7 +115,6 @@
               <li><a href="#overview-2">2. 토스 결제 생성 요청</a></li>
               <li><a href="#overview-3">3. 구매자 인증 받기</a></li>
               <li><a href="#overview-4">4. 구매자 인증 완료</a></li>
-              <!--<li><a href="#overview-5">5. 가맹점 최종 승인</a></li>-->
             </ul>
           </li>
           <li>
@@ -126,7 +125,6 @@
               <li><a href="#create-3">토스 앱 가이드</a></li>
               <li><a href="#create-6">결제 만료 기한</a></li>
               <li><a href="#create-8">현금영수증 발급 가능 여부</a></li>
-              <li><a href="#create-9">자동 승인 여부</a></li>
               <li><a href="#create-10">결제 연관 data 기록</a></li>
               <li><a href="#create-11">복합과세 처리</a></li>
             </ul>
@@ -157,6 +155,9 @@
               <li><a href="#checkstatus-3">결제 상태 확인 요청에 대한 응답</a></li>
               <li><a href="#checkstatus-4">결제 상태 목록</a></li>
             </ul>
+          </li>
+          <li>
+            <a href="#salesCheckLinkUrl">신용카드 매출전표</a>
           </li>
           <li>
             <a href="api.html" target="_blank"
@@ -227,8 +228,6 @@
                 </span>
               </p>
             </ul>
-            <!--<p>토스 결제를 한번 테스트 해보고싶지만 당장 가입하긴 귀찮다면, 아래 테스트용 Key를 사용하세요.</p>-->
-            <!--<div class="well">테스트용 API Key : sk_test_apikey1234567890</div>-->
             <h4 id="overview-2">2. 토스 결제 생성을 요청합니다</h4>
             <p>
               고객은 토스몰을 둘러보다가 35,000원짜리 '토스 티셔츠'를 선택하여 결제를 요청합니다. 이 때 토스몰은 토스
@@ -446,9 +445,10 @@ echo "Response: ".$result;</code></pre>
             </div>
             <p>여기서 status 값을 확인해주세요.</p>
             <ul>
-              <li><strong>인증 완료 후 정상 출금된 경우</strong> : ?status=PAY_COMPLETE</li>
+              <li><strong>인증 완료 후 정상 출금된 경우 : ?status=PAY_COMPLETE</li></strong>
             </ul>
             <p>
+              status가 PAY_COMPLETE 이외의 값이라면 승인이 정상적으로 진행되지 않은 경우입니다. 반드시 PAY_COMPLETE 상태일 때만 결제완료 처리해주세요. <br>
               결제를 취소한 경우에는 결제 취소 안내 화면을 보여주시고, 인증을 완료한 경우에는 결제 완료 화면을
               보여주세요.
             </p>
@@ -536,6 +536,7 @@ echo "Response: ".$result;</code></pre>
                         <li><strong>REFUND_SUCCESS</strong> : 완료된 결제가 환불 처리됨</li>
                     </ul>
 -->
+
 
                 <h4 id="create-3">토스 앱 가이드</h4>
                 <p>앱 결제를 위하여 토스에서 지원하는 스펙은 다음과 같습니다.<br>
@@ -796,6 +797,7 @@ echo "Response: ".$result;</code></pre>
             </p>
           </div>
         </div>
+
         <div class="method" id="checkstatus">
           <div class="method-description">
             <h3>결제 상태 알아보기</h3>
@@ -837,7 +839,7 @@ echo "Response: ".$result;</code></pre>
 "orderNo":"1",                      # 상점의 주문번호
 "payMethod":"TOSS_MONEY",           # 결제 수단
 "payStatus":"REFUND_SUCCESS",       # 결제 상태
-"availableActions":["REFUND"],     # 가능한 액션 목록
+"availableActions":["REFUND"],      # 가능한 액션 목록
 "metadata":"metadata"               # 결제 생성 시 입력한 metadata
 }
 </code></pre>
@@ -917,6 +919,38 @@ echo "Response: ".$result;</code></pre>
             </table>
           </div>
         </div>
+
+
+
+        <div class="method" id="salesCheckLinkUrl">
+          <div class="method-description">
+            <h3>신용카드 매출전표</h3>
+            <p>
+              매출전표 호출 시 필요한 파라미터는 2가지 입니다. '어떤 결제건'의 '어떤 상태'를 호출하는지 알려주세요!
+            </p>
+            <ol>
+              <li><strong>결제 토큰 (payToken)</strong> : 거래상태를 확인할 승인건의 결제토큰</li>
+              <li><strong>거래 트랜잭션 코드 (transactionId)</strong> : 결제 혹은 환불 API 결과로 확인할 수 있는 거래 트랜잭션 값</li>
+            </ol>
+            <br>  
+            <p>
+              호출 URL은 다음과 같습니다. 호출에 필요한 파라미터를 query string 형식으로 전송해 주시기 바랍니다.
+            </p>
+            <div class="method-example">
+              <pre
+                class=" language-http"
+              ><code class="always-visible  language-http">https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=12637496-8a46-488c-bc30-febded96656f</code></pre>
+            </div>
+            <br>
+            <p> ✓ 신용카드 결제건만 확인 가능합니다. 토스머니 결제건은 현금영수증 발급내역으로 확인해 주세요.
+            <p> ✓ 매출전표 확인을 위해서는 구매자의 '생년월일' 과 '휴대폰번호'으로 추가 인증이 필요합니다.
+            <p> ✓ 결제대기(PAY_APPROVED) 혹은 결제취소(PAY_CANCEL) 등의 미완료 거래건은 확인이 불가합니다.
+          </div>
+        </div>
+
+
+
+
       </div>
     </div>
 

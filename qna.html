@@ -223,7 +223,7 @@
             <div class="method" id="member">
                 <div class="method-description">
                         <h4 id="faq-6">resultCallback이 실패하는 이유가 뭘까요?</h4><br>
-                        <p>토스에서는 장애 상황이 아닌 한 resultCallback 요청을 보장합니다. 단, <a href="qna.html#faq-1">방화벽</a> 이슈를 제외하고 callback 요청을 받아 처리하는 것은 가맹점 서버로 많은 트래픽, 개발 중의 버그 등의
+                        <p>토스에서는 장애 상황이 아닌 한 resultCallback 요청을 보장합니다. 단, <a href="qna.html#faq-1">결제 방화벽</a> 이슈를 제외하고 callback 요청을 받아 처리하는 것은 가맹점 서버로 많은 트래픽, 개발 중의 버그 등의
                         특별한 사유로 callback 요청이 실패할 수 있습니다. <br>
                         <strong>토스에서는 callback 실패 시, 가맹점 서버로 10분 이내에 총 4회의 재시도 요청</strong>을 하고 있으니 안심하세요. <br><br>
 
@@ -246,7 +246,7 @@
                                 </tr>
                                 <tr>
                                     <td width="50%">COMMON_INVALID_PARAMETER</td>
-                                    <td width="50%">파라미터가 올바르지 않습니다.</td>
+                                    <td width="50%">요청한 값이 바르지 않습니다.</td>
                                 </tr>
                                 <tr>
                                     <td width="50%">COMMON_PAY_ERROR</td>
@@ -254,7 +254,7 @@
                                 </tr>
                                 <tr>
                                     <td width="50%">CORE_USER_ERROR</td>
-                                    <td width="50%">존재하지 않는 사용자 입니다.</td>
+                                    <td width="50%">사용자 정보 오류</td>
                                 </tr>
                                 <tr>
                                     <td width="50%">ACCOUNT_DOMAIN_ERROR</td>
@@ -277,6 +277,10 @@
                                     <td width="50%">결제 정보가 일치하지 않습니다.</td>
                                 </tr>
                                 <tr>
+                                    <td width="50%">TOSS_APP_UPDATE_IS_REQUIRED</td>
+                                    <td width="50%">결제를 진행하시려면 최신 버전의 토스앱을 이용하세요.</td>
+                                </tr>
+                                <tr>
                                     <td width="50%">PAYMENT_UNDER_CONSTRUCTION</td>
                                     <td width="50%">시스템 점검 중입니다. 잠시만 기다려 주세요.</td>
                                 </tr>
@@ -296,7 +300,7 @@
                                     <td width="50%">중복된 주문번호(orderNo) 가 전달되었습니다.</td>
                                 </tr>
                                 <tr class="active">
-                                    <td colspan="2" class="text-left"><strong>결제 실행(execute)</strong></td>
+                                    <td colspan="2" class="text-left"><strong>결제 승인(execute)</strong></td>
                                 </tr>
                                 <tr>
                                     <td width="50%">PAY_ALREADY_COMPLETED</td>
@@ -308,7 +312,7 @@
                                 </tr>
                                 <tr>
                                     <td width="50%">EXECUTE_PAY_NOT_APPROVED</td>
-                                    <td width="50%">승인 되지 않은 결제 입니다.</td>
+                                    <td width="50%">아직 구매자가 결제를 승인하지 않았습니다</td>
                                 </tr>
                                 <tr>
                                     <td width="50%">COMMON_BREAK_TIME_OF_BANK</td>
@@ -344,7 +348,7 @@
                                 </tr>
                                 <tr>
                                     <td width="50%">COMMON_SIGN_FAILED_CS_CALL</td>
-                                    <td width="50%">전자서명에 실패 하였습니다.</td>
+                                    <td width="50%">전자서명에 실패 하였습니다. 다시 시도해 주세요.</td>
                                 </tr>
                                 <tr>
                                     <td width="50%">CARD_NOT_FOUND_PAYMENT</td>
@@ -355,6 +359,21 @@
                                     <td width="50%">등록된 카드 정보를 찾을 수 없습니다.</td>
                                 </tr>
                                 <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>결제 취소(cancel)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CANCEL_IMPOSSIBLE_STATUS</td>
+                                    <td width="50%">취소할 수 없습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CANCEL_ALREADY_CANCELED</td>
+                                    <td width="50%">이미 취소된 결제입니다.
+                                </tr>
+                                <tr>
+                                    <td width="50%">CANCEL_INVALID_PARAMETER</td>
+                                    <td width="50%">payToken 또는 orderNo를 입력해야합니다</td>
+                                </tr>
+                                <tr class="active">
                                     <td colspan="2" class="text-left"><strong>결제 환불(refunds)</strong></td>
                                 </tr>
                                 <tr>
@@ -362,20 +381,63 @@
                                     <td width="50%">환불이 불가능 한 상태 입니다.</td>
                                 </tr>
                                 <tr>
+                                    <td width="50%">REFUND_REFUND_NO_DUPLICATE</td>
+                                    <td width="50%">동일한 refundNo가 이미 존재합니다. <br>
+                                    중복되지 않는 refundNo 로 요청해야 합니다.</td>
+                                </tr>
+                                <tr>
                                     <td width="50%">REFUND_EXCEED_DAILY</td>
                                     <td width="50%">환불 금액이 상점의 일 환불 한도보다 클수 없습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">REFUND_REQUIRED_AMOUNT</td>
+                                    <td width="50%">세금 정보가 있을 경우, amount는 필수 값 입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">REFUND_NO_TAXFREE_ON_COMPLEX_TAX</td>
+                                    <td width="50%">복합 과세 결제에 대한 환불은 환불할 비과세 금액 정보가 필요합니다.</td>
                                 </tr>
                                 <tr>
                                     <td width="50%">INACTIVE_USER</td>
                                     <td width="50%">탈퇴한 사용자입니다. 환불이 불가능합니다.</td>
                                 </tr>
                                 <tr>
-                                    <td width="50%">REFUND_NO_TAXFREE_ON_COMPLEX_TAX</td>
-                                    <td width="50%">과세정보가 올바르지 않습니다.</td>
-                                </tr>
-                                <tr>
                                     <td width="50%">REFUND_PENDING_SUCCESS</td>
                                     <td width="50%">점검이 끝난 후 자동으로 환불이 될 예정입니다. 잠시만 기다려주세요.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">REFUND_UNKNOWN_ERROR</td>
+                                    <td width="50%">환불 처리 중 알 수 없는 오류가 발생하였습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">DISCOUNT_REFUND_LIMIT_AMOUNT</td>
+                                    <td width="50%">할인이 적용된 경우, 할인금액을 제외하고 환불이 가능합니다. 할인금액: "</td>
+                                </tr>
+                                <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>매출전표</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">SALES_CHECK_NOT_FOUND_USER</td>
+                                    <td width="50%">매출전표 조회를 위한 사용자 정보가 존재하지 않습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">SALES_CHECK_USER_AUTH_FAIL</td>
+                                    <td width="50%">매출전표 조회를 위한 사용자 정보 인증에 실패하였습니다.
+                                </tr>
+                                <tr>
+                                    <td width="50%">SALES_CHECK_CARD_ONLY</td>
+                                    <td width="50%">카드결제 건에 대해서만 매출전표 조회가 가능합니다.</td>
+                                </tr>
+                                <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>기타</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">INVALID_DISCOUNT</td>
+                                    <td width="50%">유효하지 않은 할인 입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COUPON_ASSIGN_FAIL</td>
+                                    <td width="50%">쿠폰 발급에 실패하였습니다.
                                 </tr>
                             </table>
                 </div>
