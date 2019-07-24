@@ -329,8 +329,8 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 30 </span>
                                 </div>
                                 <div class="desc">
                                     가맹점 key
@@ -342,8 +342,8 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     orderNo
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 50 </span>
                                 </div>
                                 <div class="desc">
                                     가맹점의 상품 주문번호
@@ -356,8 +356,8 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     amount
-                                    <span class="type">integer</span>
-                                    <span class="required"></span>
+                                    <span class="type">integer <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
                                     결제 금액
@@ -369,8 +369,8 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     productDesc
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 255 </span>
                                 </div>
                                 <div class="desc">
                                     상품 설명
@@ -382,8 +382,8 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     retUrl
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 255 </span>
                                 </div>
                                 <div class="desc">
                                     Web 결제 완료 후 연결할 웹페이지의 URL (결제 최종 승인 및 완료 처리할 페이지)<br>
@@ -393,8 +393,8 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     retCancelUrl
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 255 </span>
                                 </div>
                                 <div class="desc">
                                     토스 브릿지 페이지에서 사용자가 결제를 중단할때 사용자를 이동시킬 가맹점 페이지<br>
@@ -406,6 +406,7 @@
                                 <div class="key">
                                     retAppScheme
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 255 </span>
                                 </div>
                                 <div class="desc">
                                     App 결제 완료 후 연결할 app scheme (결제 최종 승인 및 완료 처리할 페이지). retAppScheme을 사용할 경우 retUrl은 사용하지 않아도 됩니다. <br>
@@ -418,8 +419,8 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     autoExecute
-                                    <span class="type">boolean</span>
-                                    <span class="required"></span>
+                                    <span class="type">boolean <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 5 </span>
                                 </div>
                                 <div class="desc">
                                     자동 승인 여부 설정 <br>
@@ -431,8 +432,8 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     resultCallback
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 255 </span>
                                 </div>
                                 <div class="desc">
                                     결제 결과 callback URL<br>
@@ -444,28 +445,32 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxable
-                                    <span class="type">integer</span>
+                                    <span class="type">integer <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 과세금액 (복합과세)<br>
                                     <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxFree
-                                    <span class="type">integer</span>
-                                    <span class="required"></span>
+                                    <span class="type">integer <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 비과세금액 (복합과세)<br>
                                     <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountVat
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 부가세 (복합과세)<br>
@@ -476,16 +481,19 @@
                                 <div class="key">
                                     amountServiceFee
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 봉사료 (복합과세)<br>
                                     <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     expiredTime
                                     <span class="type">timestamp</span>
+                                    <span class="type">Max Length: 20 </span>
                                 </div>
                                 <div class="desc">
                                     결제 만료 기한 (기본값 15분, 최대 1시간 설정 가능)
@@ -495,8 +503,8 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     cashReceipt
-                                    <span class="type">boolean</span>
-                                    <span class="required"></span>
+                                    <span class="type">boolean <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 5 </span>
                                 </div>
                                 <div class="desc">
                                     현금영수증 발급 가능 여부<br>
@@ -507,21 +515,12 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    userPhone
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    구매자가 결제 시 이용할 휴대전화번호 지정
-                                    <br /> (지정 시 구매자가 번호를 변경할 수 없으므로 전화번호 정보가 정확할 때만 이용하십시오)
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
                                     metadata
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 1024 </span>
                                 </div>
                                 <div class="desc">
-                                    결제와 연관된 추가 데이터 (최대 1024자)
+                                    결제와 연관된 추가 데이터
                                 </div>
                             </div>
                         </div>
@@ -531,6 +530,7 @@
                                 <div class="key">
                                     code
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 2 </span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -552,6 +552,7 @@
                                 <div class="key">
                                     checkoutPage
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 255 </span>
                                 </div>
                                 <div class="desc">
                                     생성된 결제를 진행하는 웹페이지 URL (구매자를 이 URL로 보내야 함)<br>
@@ -562,6 +563,7 @@
                                 <div class="key">
                                     payToken
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 30 </span>
                                 </div>
                                 <div class="desc">
                                     Toss 결제 토큰
@@ -571,6 +573,7 @@
                                 <div class="key">
                                     msg
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 120 </span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -580,6 +583,7 @@
                                 <div class="key">
                                     errorCode
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 40 </span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -773,6 +777,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     status
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 20 </span>
                                 </div>
                                 <div class="desc">
                                     PAY_SUCCESS <br>
@@ -783,6 +788,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     payToken
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 30 </span>
                                 </div>
                                 <div class="desc">
                                     Toss 결제 토큰
@@ -792,6 +798,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     orderNo
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 50 </span>
                                 </div>
                                 <div class="desc">
                                     Toss 결제와 이어진 주문번호
@@ -801,6 +808,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     payMethod
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 10 </span>
                                 </div>
                                 <div class="desc">
                                     결제수단
@@ -822,6 +830,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     discountedAmount
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
                                     할인된 금액<br>
@@ -832,6 +841,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     paidTs
                                     <span class="type">timestamp</span>
+                                    <span class="type">Max Length: 20 </span>
                                 </div>
                                 <div class="desc">
                                     결제 처리 시각<br>
@@ -842,6 +852,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     metadata
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 1024 </span>
                                 </div>
                                 <div class="desc">
                                     결제 생성 시 저장한 연관 정보
@@ -1080,8 +1091,8 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 30 </span>
                                 </div>
                                 <div class="desc">
                                     가맹점 key<br>
@@ -1091,8 +1102,8 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 30 </span>
                                 </div>
                                 <div class="desc">
                                     토스 결제 토큰 (승인할 결제 건의 토큰값)
@@ -1102,6 +1113,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     amount
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
                                     결제 금액<br>
@@ -1113,6 +1125,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     orderNo
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 50 </span>
                                 </div>
                                 <div class="desc">
                                     가맹점의 상품 주문번호<br>
@@ -1127,6 +1140,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     code
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 2 </span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -1148,6 +1162,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     approvalTime
                                     <span class="type">timestamp</span>
+                                    <span class="type">Max Length: 20 </span>
                                 </div>
                                 <div class="desc">
                                     결제건의 승인 처리 시각 (yyyy-MM-dd HH:mm:ss)<br>
@@ -1158,6 +1173,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     amount
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
                                     승인한 결제 금액
@@ -1167,6 +1183,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     discountedAmount
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
                                     할인된 금액<br>
@@ -1177,6 +1194,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     paidPoint
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
                                     토스 포인트 사용금액<br>
@@ -1187,6 +1205,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     payMethod
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 10 </span>
                                 </div>
                                 <div class="desc">
                                     결제수단
@@ -1208,6 +1227,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     orderNo
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 50 </span>
                                 </div>
                                 <div class="desc">
                                     승인한 상품 주문번호
@@ -1217,6 +1237,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     payToken
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 30 </span>
                                 </div>
                                 <div class="desc">
                                     승인된 결제토큰
@@ -1226,6 +1247,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     transactionId
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 40</span>
                                 </div>
                                 <div class="desc">
                                     결제 트랜잭션 코드<br>
@@ -1237,6 +1259,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     cardCompanyName
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
                                     결제 카드사명
@@ -1246,6 +1269,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     cardCompanyCode
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
                                     결제 카드사 코드<br><span class="text-muted">그 외의 카드사는 현재 준비중이며, 카드사 추가될 경 예고없이 업데이트 될 수 있습니다.
@@ -1282,6 +1306,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     cardAuthorizationNo
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 8</span>
                                 </div>
                                 <div class="desc">
                                     구매자가 확인할 수 있는 카드사 승인번호입니다.
@@ -1291,6 +1316,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     spreadOut
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
                                     카드 할부개월<br>
@@ -1301,6 +1327,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     noInterest
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 5</span>
                                 </div>
                                 <div class="desc">
                                     무이자 여부<br>
@@ -1323,6 +1350,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     msg
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 120</span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -1332,6 +1360,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     errorCode
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 40</span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -1530,8 +1559,8 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
                                     가맹점 key<br>
@@ -1541,8 +1570,8 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
                                     Toss 결제 토큰
@@ -1552,9 +1581,10 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     reason
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 50</span>
                                 </div>
                                 <div class="desc">
-                                    취소 사유 (최대 50자)
+                                    취소 사유
                                 </div>
                             </div>
                         </div>
@@ -1564,6 +1594,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     code
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -1585,6 +1616,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     msg
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 120</span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -1594,6 +1626,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     errorCode
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 40</span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -1733,8 +1766,8 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
                                     가맹점 key<br>
@@ -1744,8 +1777,8 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
                                     토스 결제 토큰
@@ -1755,6 +1788,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     refundNo
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 40</span>
                                 </div>
                                 <div class="desc">
                                     환불 번호
@@ -1767,16 +1801,17 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     reason
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 50</span>
                                 </div>
                                 <div class="desc">
-                                    환불 사유 (최대 50자)
+                                    환불 사유
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     amount
-                                    <span class="type">integer</span>
-                                    <span class="required"></span>
+                                    <span class="type">integer <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액
@@ -1788,6 +1823,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     amountTaxable
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액 중 과세금액
@@ -1797,35 +1833,40 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxFree
-                                    <span class="type">integer</span>
-                                    <span class="required"></span>
+                                    <span class="type">integer <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액 중 비과세금액
                                     <br />
                                     <span class="text-muted">환불할 금액중 비과세 금액, 없으면 0으로 설정</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountVat
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액 중 부가세
                                     <br />
                                     <span class="text-muted">값이 없으면 환불할 과세금액을 11로 나눈 후 소수점 첫째 자리에서 올림</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountServiceFee
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액 중 봉사료
                                     <br />
                                     <span class="text-muted">결제 생성 시 봉사료 설정한 경우에만 입력 가능</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                             </div>
                         </div>
@@ -1835,6 +1876,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     code
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -1856,6 +1898,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     refundNo
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 40</span>
                                 </div>
                                 <div class="desc">
                                     환불 번호
@@ -1867,6 +1910,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     refundableAmount
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     환불 가능 금액
@@ -1876,6 +1920,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     discountedAmount
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     할인된 금액<br>
@@ -1895,6 +1940,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     paidPoint
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     토스 포인트 사용금액<br>
@@ -1905,6 +1951,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     approvalTime
                                     <span class="type">timestamp</span>
+                                    <span class="type">Max Length: 20</span>
                                 </div>
                                 <div class="desc">
                                     결제건의 환불 처리 시각 (yyyy-MM-dd HH:mm:ss)<br>
@@ -1914,6 +1961,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     payToken
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
                                     환불된 결제토큰
@@ -1923,6 +1971,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     transactionId
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 40</span>
                                 </div>
                                 <div class="desc">
                                     결제 트랜잭션 코드<br>
@@ -1933,6 +1982,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     msg
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 120</span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -1942,6 +1992,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     errorCode
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 40</span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -2111,19 +2162,20 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     apiKey
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
                                     가맹점 key<br>
                                     <span class="text-muted">웹 브라우저 혹은 외부에 노출되지 않도록 유의해 주시기 바랍니다.</span>
+                                    <span class="type">Max Length: 30</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken 또는 orderNo
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 50</span>
                                 </div>
                                 <div class="desc">
                                     토스 결제 토큰 또는 가맹점 주문번호 (payToken의 우선순위 높음)
@@ -2136,6 +2188,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     code
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
                                     응답코드
@@ -2157,6 +2210,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     payToken
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
                                     토스 결제 토큰
@@ -2166,6 +2220,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     payStatus
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
                                     결제 상태
@@ -2215,6 +2270,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     orderNo
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 50</span>
                                 </div>
                                 <div class="desc">
                                     토스 결제와 이어진 주문번호
@@ -2224,6 +2280,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     amount
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액
@@ -2233,6 +2290,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     amountTaxable
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 과세금액 (복합과세)
@@ -2242,6 +2300,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     amountTaxFree
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 비과세금액 (복합과세)
@@ -2251,6 +2310,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     amountVat
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 부가세 (복합과세)
@@ -2260,6 +2320,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     amountServiceFee
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 봉사료 (복합과세)
@@ -2269,6 +2330,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     timeCreated
                                     <span class="type">timestamp</span>
+                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     결제 생성 시각
@@ -2278,6 +2340,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     timePayComplete
                                     <span class="type">timestamp</span>
+                                    <span class="type">Max Length: 20</span>
                                 </div>
                                 <div class="desc">
                                     결제 완료 시각
@@ -2287,6 +2350,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     timePayCancel
                                     <span class="type">timestamp</span>
+                                    <span class="type">Max Length: 20</span>
                                 </div>
                                 <div class="desc">
                                     결제 취소 시각
@@ -2296,6 +2360,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     productDesc
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 255</span>
                                 </div>
                                 <div class="desc">
                                     상품 설명
@@ -2335,6 +2400,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     timeRefundSuccess
                                     <span class="type">timestamp</span>
+                                    <span class="type">Max Length: 20</span>
                                 </div>
                                 <div class="desc">
                                     환불 완료 시각
@@ -2344,6 +2410,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     metadata
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 1024</span>
                                 </div>
                                 <div class="desc">
                                     결제와 연관된 추가 데이터
@@ -2353,6 +2420,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     msg
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 120</span>
                                 </div>
                                 <div class="desc">
                                     응답이 성공이 아닌 경우 설명 메세지
@@ -2362,6 +2430,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     errorCode
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 40</span>
                                 </div>
                                 <div class="desc">
                                     에러 코드
@@ -2371,6 +2440,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     payMethod
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 10</span>
                                 </div>
                                 <div class="desc">
                                     결제수단
@@ -2392,6 +2462,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     cardCompanyName
                                     <span class="type">string</span>
+                                    <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
                                     결제 카드사명<br><span class="text-muted">카드 결제의 경우에만 리턴<br>
@@ -2402,6 +2473,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     spreadOut
                                     <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
                                     할부 개월<br><span class="text-muted">카드 결제의 경우에만 리턴</span>
@@ -2411,6 +2483,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     noInterest
                                     <span class="type">boolean</span>
+                                    <span class="type">Max Length: 5</span>
                                 </div>
                                 <div class="desc">
                                     무이자 여부<br><span class="text-muted">
@@ -2570,177 +2643,6 @@ p JSON.parse(response.body)</code></pre>
                 </div>
             </div>
 
-
-<!--
-            <div class="method" id="refundStatus">
-                <div class="method-section clearfix">
-                    <div class="method-description">
-                        <h3>환불 상태 확인</h3>
-                        <p>
-                            요청하신 환불 건의 현재 상태를 조회합니다. (요청 건별 조회)
-                        </p>
-                        <div class="info">
-                            <h4>endpoint</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    (GET)
-                                </div>
-                                <div class="desc">
-                                  https://pay.toss.im/api/v1/refunds/{refundNo} </br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h4>parameters</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    apiKey
-                                    <span class="type">string</span>
-                                    <span class="required"></span>
-                                </div>
-                                <div class="desc">
-                                    가맹점 key<br>
-                                    <span class="text-muted">웹 브라우저 혹은 외부에 노출되지 않도록 유의해 주시기 바랍니다.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h4>response</h4>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    code
-                                    <span class="type">integer</span>
-                                </div>
-                                <div class="desc">
-                                    응답코드
-                                    <br />
-                                    <br />
-                                    <table class="table">
-                                        <tr>
-                                            <td>0</td>
-                                            <td>성공</td>
-                                        </tr>
-                                        <tr>
-                                            <td>-1</td>
-                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    refund
-                                    <span class="type">list</span>
-                                </div>
-                                <div class="desc">
-                                    환불 번호와 금액, 상태, 사유
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    msg
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    응답이 성공이 아닌 경우 설명 메세지
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    errorCode
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    에러 코드
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="method-example">
-                        <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">GET https://pay.toss.im/api/v1/refunds/{refundNo}</code></pre>
-                        <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl -X GET \
-  'https://pay.toss.im/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890' \
-  -H 'content-type: application/json'</code><code class="java language-java">OkHttpClient client = new OkHttpClient();
-
-MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"apiKey\":\"sk_test_LY5kmjV2l7LY5kmjV2l7\"\n}");
-Request request = new Request.Builder()
-  .url("https://pay.toss.im/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890")
-  .get()
-  .addHeader("content-type", "application/json")
-  .build();
-
-Response response = client.newCall(request).execute();</code><code class="php language-php">$request = new HttpRequest();
-$request->setUrl('https://pay.toss.im/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e');
-$request->setMethod(HTTP_METH_GET);
-
-$request->setQueryData(array(
-  'apiKey' => 'sk_test_apikey1234567890'
-));
-
-$request->setHeaders(array(
-  'content-type' => 'application/json'
-));
-
-$request->setBody('{
-    "apiKey":"sk_test_LY5kmjV2l7LY5kmjV2l7"
-}');
-
-try {
-  $response = $request->send();
-
-  echo $response->getBody();
-} catch (HttpException $ex) {
-  echo $ex;
-}</code><code class="aspnet language-aspnet"></code><code class="python language-python">import http.client
-
-conn = http.client.HTTPSConnection("pay.toss.im")
-
-payload = "{\n    \"apiKey\":\"sk_test_LY5kmjV2l7LY5kmjV2l7\"\n}"
-
-headers = {
-    'content-type': "application/json"
-    }
-
-conn.request("GET", "/tosspay/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890", payload, headers)
-
-res = conn.getresponse()
-data = res.read()
-
-print(data.decode("utf-8"))</code><code class="ruby language-ruby">require 'uri'
-require 'net/http'
-
-url = URI("https://pay.toss.im/api/v1/refunds/f0fe4083-fe1b-44e5-ba04-4390bc19bc5e?apiKey=sk_test_apikey1234567890")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-request = Net::HTTP::Get.new(url)
-request["content-type"] = 'application/json'
-request.body = "{\n    \"apiKey\":\"sk_test_LY5kmjV2l7LY5kmjV2l7\"\n}"
-
-response = http.request(request)
-puts response.read_body</code></pre>
-                        <div class="title">Example Response</div>
-                        <pre><code class="language-javascript always-visible">{
-    "code": 0,
-    "refund": {
-        "refundNo": "7161b8e3-4b79-49d7-ab3c-3ae898aa073b",
-        "status": "SUCCESS",
-        "amount": 100,
-        "reason": "부분 환불 테스트"
-    }
-}</code>
-            </pre>
-                    </div>
-                </div>
-            </div>
-
-
--->
 
     <script type="text/javascript">
         $(function () {
