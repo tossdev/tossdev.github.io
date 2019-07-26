@@ -1111,26 +1111,24 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    amount
-                                    <span class="type">integer</span>
-                                    <span class="type">Max Length: 7 </span>
-                                </div>
-                                <div class="desc">
-                                    결제 금액<br>
-                                    <span class="text-muted">결제 승인 시 orderNo와 amount를 함께 보내면 일치 여부를 확인합니다.
-                                    payToken과 연결된 결제건과 orderNo나 amount가 다르면 승인 실패처리하여 다시 한번 유효성을 검증합니다.</span>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
                                     orderNo
                                     <span class="type">string</span>
                                     <span class="type">Max Length: 50 </span>
                                 </div>
                                 <div class="desc">
                                     가맹점의 상품 주문번호<br>
-                                    <span class="text-muted">결제 승인 시 orderNo와 amount를 함께 보내면 일치 여부를 확인합니다.
-                                    payToken과 연결된 결제건과 orderNo나 amount가 다르면 승인 실패처리하여 다시 한번 유효성을 검증합니다.</span>
+                                    <span class="text-muted">결제 승인 시 orderNo를 함께 보내면 일치 여부를 확인합니다.
+                                    payToken과 연결된 결제건과 orderNo가 다르면 승인 실패처리하여 다시 한번 유효성을 검증합니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액
                                 </div>
                             </div>
                         </div>
