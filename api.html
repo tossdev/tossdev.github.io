@@ -1329,12 +1329,12 @@ p JSON.parse(response.body)</code></pre>
                             <div class="field clearfix">
                                 <div class="key">
                                     noInterest
-                                    <span class="type">string</span>
+                                    <span class="type">boolean</span>
                                     <span class="type">Max Length: 5</span>
                                 </div>
                                 <div class="desc">
-                                    무이자 여부<br>
-                                    <span class="text-muted">true : 무이자, false : 일반</span>
+                                    무이자 여부<br><span class="text-muted">
+                                    true : 무이자, false : 일반</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2530,7 +2530,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
-                                    할부 개월
+                                    카드 할부개월<br>
+                                    <span class="text-muted">일시불 결제의 경우 0으로 리턴됩니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
