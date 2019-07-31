@@ -1283,6 +1283,10 @@ p JSON.parse(response.body)</code></pre>
                                             <td>1</td>
                                         </tr>
                                         <tr>
+                                            <td>현대</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
                                             <td>삼성</td>
                                             <td>3</td>
                                         </tr>
@@ -1308,7 +1312,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 8</span>
                                 </div>
                                 <div class="desc">
-                                    구매자가 확인할 수 있는 카드사 승인번호입니다.
+                                    구매자가 확인할 수 있는 카드사 승인번호
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2470,12 +2474,63 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    cardCompanyCode
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
+                                </div>
+                                <div class="desc">
+                                    결제 카드사 코드<br><span class="text-muted">그 외의 카드사는 현재 준비중이며, 카드사 추가될 경 예고없이 업데이트 될 수 있습니다.
+                                    </span><br><br>
+                                     <table class="table">
+                                        <tr>
+                                            <td>cardCompanyName</td>
+                                            <td>cardCompanyCode</td>
+                                        </tr>
+                                        <tr>
+                                            <td>신한</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>현대</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>삼성</td>
+                                            <td>3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>롯데</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>하나</td>
+                                            <td>6</td>
+                                        </tr>
+                                        <tr>
+                                            <td>비씨</td>
+                                            <td>10</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardAuthorizationNo
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 8</span>
+                                </div>
+                                <div class="desc">
+                                    구매자가 확인할 수 있는 카드사 승인번호
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     spreadOut
                                     <span class="type">integer</span>
                                     <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
-                                    할부 개월<br><span class="text-muted">카드 결제의 경우에만 리턴</span>
+                                    할부 개월
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2487,6 +2542,18 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     무이자 여부<br><span class="text-muted">
                                     true : 무이자, false : 일반</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    salesCheckLinkUrl
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    신용카드 매출전표 호출URL<br>
+                                    <span class="text-muted">승인된 카드 결제건의 매출전표를 확인할 수 있는 URL 입니다.
+                                        구매자의 추가인증 완료 후 거래내역을 확인할 수 있습니다.<br>
+                                        <a href="gettingstarted.html#salesCheckLinkUrl">토스 매출전표 참고사항</a></span>
                                 </div>
                             </div>
                         </div>
@@ -2633,9 +2700,12 @@ p JSON.parse(response.body)</code></pre>
     "status": 200,
     "metadata": "metadata",
     "payMethod": "CARD",
-    "cardCompanyName": "롯데",
+    "cardCompanyCode": 3,
+    "cardCompanyName": "삼성",
+    "cardAuthorizationNo": "87654321",
     "spreadOut": "6",
     "noInterest": "false"
+    "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a"
 }</code>
             </pre>
                     </div>
