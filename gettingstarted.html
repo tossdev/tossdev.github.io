@@ -234,7 +234,7 @@
               결제 서버에게 '결제 생성'을 요청해야합니다. 결제 생성 API를 호출하세요.
             </p>
             <div class="well">
-              결제 생성 API Endpoint
+              Payment Creation API Endpoint
               <br />
               <strong>POST https://pay.toss.im/api/v1/payments</strong>
             </div>
@@ -336,10 +336,8 @@ echo "Response: ".$result;</code></pre>
                 알아서 승인을 진행합니다.
               </li>
               <li>
-                <strong>resultCallback (결제 결과 Callback URL)</strong> : 자동 승인 설정을 true로 설정할 경우, 반드시
-                함께 보내주셔야 합니다. <br />
-                토스 서버는 출금을 성공한 후 이 곳에 입력한 가맹점 서버로 callback을 요청합니다. 최종적으로 토스
-                결제완료 여부를 확인할 수 있습니다.
+                <strong>resultCallback (결제 결과 Callback URL)</strong> : 토스 서버는 출금을 성공한 후 이 곳에 입력한 가맹점 서버로 callback을 <br>
+                요청합니다. 최종적으로 토스 결제완료 여부를 확인할 수 있습니다.
               </li>
               <li>
                 <strong>retUrl (인증 완료 후 연결할 URL)</strong> : 구매자가 결제 인증을 완료하면 이 곳에 입력한 URL로
@@ -358,7 +356,7 @@ echo "Response: ".$result;</code></pre>
                 style="margin-top:8px;margin-left:6px"
               ></i>
               <p style="margin-left:10px">
-                앞서 말씀 드렸듯이, API Key는 절대 유출되어선 안됩니다.<br />
+                앞서 말씀 드렸듯, API Key는 절대 유출되어선 안됩니다.<br />
                 결제 요청 내용이 웹페이지에 그대로 드러나지 않게 다시 한번 주의해주세요!
               </p>
             </div>
@@ -474,8 +472,8 @@ echo "Response: ".$result;</code></pre>
 "apiKey":"sk_test_apikey1234567890",                     # 상점의 API Key (필수)
 "retUrl":"http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",   # 결제 완료 후 연결할 웹 URL (필수)
 "retCancelUrl":"http://YOUR-SITE.COM/close",             # 결제 취소 시 연결할 웹 URL (필수)
-"autoExecute":true,                                      # 자동 승인 설정
-"resultCallback":"https://YOUR-SITE.COM/callback",       # 결제 결과 callback 웹 URL (필수-자동승인설정 true의 경우)
+"autoExecute":true,                                      # 자동 승인 설정 (필수)
+"resultCallback":"https://YOUR-SITE.COM/callback",       # 결제 결과 callback 웹 URL (필수)
 "amountTaxable":22727,                                   # 결제 금액 중 과세금액
 "amountVat":2273,                                        # 결제 금액 중 부가세
 "amountServiceFee":0,                                    # 결제 금액 중 봉사료
@@ -590,30 +588,6 @@ echo "Response: ".$result;</code></pre>
                   <li><strong>true</strong> : 현금영수증 발급 가능 (값을 설정하지 않으면 true)</li>
                   <li><strong>false</strong> : 현금영수증 발급 불가</li>
                 </ul>
-                <h4 id="create-9">자동 승인 여부 (autoExecute)</h4>
-                <p>
-                  토스 결제는 기본적으로 '구매자'의 인증이 완료되면 바로 출금을 시도하고 결제를 완료시킵니다.<br />
-                  하지만, 재고 상황이 빠르게 변하는 경우나 서비스 흐름 상 결제를 '최종 승인'하는 주체가 가맹점이어야
-                  하는 경우가 있습니다.<br />
-                  그럴땐 아래 두 가지 조치를 통해 대응할 수 있습니다.
-                </p>
-                <br />
-                <ol>
-                  <li>
-                    <strong>결제 생성 시, autoExecute를 'false'로 설정</strong> : 해당 결제건은 가맹점의 최종 승인
-                    전까진 대기 상태에 머무르게 됩니다. (PAY_APPROVED 상태)
-                  </li>
-                  <li>
-                    <strong>결제 승인 API를 통해 최종 승인 (execute API)</strong> : PAY_APPROVED 상태의 결제건에 대해
-                    승인을 요청하면 출금을 시도하고 출금 완료 시 결제 완료로 상태를 변경합니다.
-                  </li>
-                </ol>
-                <br />
-                <p>
-                  아래 그림을 참고하세요.
-                  <img src="images/flow_autoExecute_modify.png" alt="결제 승인 흐름" />
-                </p>
-
                 <h4 id="create-10">결제 연관 data 기록 (metadata)</h4>
                 <p>
                   생성하는 결제 건과 연관된 추가적인 데이터가 있다면 이 파라미터를 활용하여 저장해둘 수 있습니다.
@@ -862,7 +836,7 @@ echo "Response: ".$result;</code></pre>
                 <strong>결제 상태</strong> : 조회 당시의 결제 상태 (아래 '결제 상태 목록'을 참고하세요)
               </li>
               <li>
-                <strong>가능한 액션 목록</strong> : 조회 당시에 가능한 액션(취소, 환불 등) 목록 (예를 들어, '결제 완료'
+                <strong>가능한 액션 목록</strong> : 조회 당시에 가능한 액션(환불 등) 목록 (예를 들어, '결제 완료'
                 상태에서는 '환불'이 가능하나 '전액 환불'한 상태에서는 환불 불가)
               </li>
               <li>
@@ -883,10 +857,7 @@ echo "Response: ".$result;</code></pre>
               </tr>
               <tr>
                 <td>PAY_APPROVED</td>
-                <td>
-                  구매자 인증 완료 <br />
-                  (결제 생성 시 'autoExecute'를 'false'일 경우에만 해당)
-                </td>
+                <td>구매자 인증 완료</td>
               </tr>
               <tr>
                 <td>PAY_CANCEL</td>
