@@ -356,19 +356,6 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    amount
-                                    <span class="type">integer <font color=#c25300>필수</font></span>
-                                    <span class="type">Max Length: 7 </span>
-                                </div>
-                                <div class="desc">
-                                    결제 금액
-                                    <br>
-                                    <font color=#AA1212>금액과 관련된 모든 파라미터는 Number 형태로 보내주셔야 에러가 발생하지 않습니다.</font>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
                                     productDesc
                                     <span class="type">string <font color=#c25300>필수</font></span>
                                     <span class="type">Max Length: 255 </span>
@@ -447,25 +434,35 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    amountTaxable
+                                    amount
+                                    <span class="type">integer <font color=#c25300>필수</font></span>
                                     <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액 중 과세금액 (복합과세)<br>
-                                    <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
-                                    <span class="type">Max Length: 7 </span>
+                                    결제 금액
+                                    <br>
+                                    <font color=#AA1212>금액과 관련된 모든 파라미터는 Number 형태로 보내주셔야 에러가 발생하지 않습니다.</font>
+                                    </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxFree
                                     <span class="type">integer <font color=#c25300>필수</font></span>
+                                </div>
+                                <div class="desc">
+                                    결제 금액 중 비과세금액<br>
+                                    <span class="text-muted">판매하시는 상품이 과세 품목이면 해당 값을 0으로 보내주세요. 비과세액은 필수 값이니 빈 값으로 보내주시는 경우 에러가 발생합니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxable
                                     <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액 중 비과세금액 (복합과세)<br>
-                                    <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
-                                    <span class="type">Max Length: 7 </span>
+                                    결제 금액 중 과세금액<br>
+                                    <span class="text-muted">별도의 과세액을 설정하지 않고, 비과세 금액을 0원으로 보내주시면 토스 결제 서버에서 자동으로 과세와 부가세를 계산합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -475,8 +472,8 @@
                                     <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액 중 부가세 (복합과세)<br>
-                                    <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
+                                    결제 금액 중 부가세<br>
+                                    <span class="text-muted">값이 없으면 환불할 과세금액을 11로 나눈 후 소수점 첫째 자리에서 올림으로 계산합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -486,9 +483,8 @@
                                     <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
-                                    결제 금액 중 봉사료 (복합과세)<br>
-                                    <span class="text-muted">해당 값이 없을 경우 0 으로 보내주셔야 합니다. 빈 값의 경우 에러가 발생합니다.</span>
-                                    <span class="type">Max Length: 7 </span>
+                                    결제 금액 중 봉사료<br>
+                                    <span class="text-muted"></span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1831,12 +1827,23 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="key">
                                     amount
                                     <span class="type">integer <font color=#c25300>필수</font></span>
-                                    <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
                                     환불할 금액
                                     <br />
                                     <span class="text-muted">미입력시 환불할 결제건의 남은 전액을 환불 처리</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxFree
+                                    <span class="type">integer <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    환불할 금액 중 비과세금액
+                                    <br />
+                                    <span class="text-muted">환불할 금액중 비과세 금액, 없으면 0으로 설정</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1852,19 +1859,6 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    amountTaxFree
-                                    <span class="type">integer <font color=#c25300>필수</font></span>
-                                    <span class="type">Max Length: 7</span>
-                                </div>
-                                <div class="desc">
-                                    환불할 금액 중 비과세금액
-                                    <br />
-                                    <span class="text-muted">환불할 금액중 비과세 금액, 없으면 0으로 설정</span>
-                                    <span class="type">Max Length: 7</span>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
                                     amountVat
                                     <span class="type">integer</span>
                                     <span class="type">Max Length: 7</span>
@@ -1872,8 +1866,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     환불할 금액 중 부가세
                                     <br />
-                                    <span class="text-muted">값이 없으면 환불할 과세금액을 11로 나눈 후 소수점 첫째 자리에서 올림</span>
-                                    <span class="type">Max Length: 7</span>
+                                    <span class="text-muted">값이 없으면 환불할 과세금액을 11로 나눈 후 소수점 첫째 자리에서 올림으로 계산합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1886,7 +1879,6 @@ p JSON.parse(response.body)</code></pre>
                                     환불할 금액 중 봉사료
                                     <br />
                                     <span class="text-muted">결제 생성 시 봉사료 설정한 경우에만 입력 가능</span>
-                                    <span class="type">Max Length: 7</span>
                                 </div>
                             </div>
                         </div>
