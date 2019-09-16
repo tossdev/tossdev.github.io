@@ -500,6 +500,34 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    enablePayMethods
+                                    <span class="type">string </span>
+                                    <span class="type">Max Length: 100 </span>
+                                </div>
+                                <div class="desc">
+                                    결제수단 구분변수<br>
+                                    <span class="text-muted">가맹점 필요에 따라 결제창에 노출하는 결제수단을 제어할 수 있습니다.
+                                    아래 옵션 값에 따라 설정 가능합니다.</span>
+                                    <br>
+                                    <br>
+                                    <table class="table">
+                                        <tr>
+                                            <td>TOSS_MONEY</td>
+                                            <td>결제수단 중 토스머니만 노출</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CARD</td>
+                                            <td>결제수단 중 카드만 노출</td>
+                                        </tr>
+                                        <tr>
+                                            <td>null 혹은 그 외의 값</td>
+                                            <td>상점에 설정된 기본 결제수단으로 노출</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     cashReceipt
                                     <span class="type">boolean </span>
                                     <span class="type">Max Length: 5 </span>
@@ -509,6 +537,33 @@
                                     <span class="text-muted">현금영수증 기능을 활용하시는 경우 true, 미 사용의 경우 false로 선언해 주시기 바랍니다.
                                     그러나, 기본 값이 true이기 때문에 현금영수증 사용 시 별도로 선언하지 않으셔도 됩니다.<br>
                                     토스 머니 결제건에 한해서 현금영수증 발행 여부를 설정할 수 있습니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cashReceiptTradeOption
+                                    <span class="type">string </span>
+                                    <span class="type">Max Length: 10 </span>
+                                </div>
+                                <div class="desc">
+                                    현금영수증 발급타입<br>
+                                    <span class="text-muted">문화비 관련 상품의 경우, 발급 타입을 설정하여 보내주세요.</span>
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>CULTURE</td>
+                                            <td>문화비</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GENERAL</td>
+                                            <td>일반(default)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PUBLIC_TP</td>
+                                            <td>교통비</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                             <div class="field clearfix">
