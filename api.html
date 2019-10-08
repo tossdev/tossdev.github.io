@@ -575,7 +575,18 @@
                                     결제와 연관된 추가 데이터
                                 </div>
                             </div>
-                        </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardOptions
+                                    <span class="type">Object</span>
+                                </div>
+                                <div class="desc">
+                                    결제창에 특정 카드만 노출하고 싶다면, options 변수에 토스 카드코드를 추가해 주세요.
+                                    예를들어, 삼성카드와 현대카드만 결제가 가능하도록 노출을 제어한다면 아래와 같이 토스 카드코드를 넘겨주시면 됩니다.
+                                    "cardOptions": {"options": [{"cardCompanyCode":3},{"cardCompanyCode":5}]}
+                                </div>
+                            </div>
+                            </div>
                         <div class="info">
                             <h4>response</h4>
                             <div class="field clearfix">
