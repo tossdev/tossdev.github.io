@@ -768,7 +768,7 @@ data = data & "&retCancelUrl=http://YOUR-SITE.COM/close"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
 httpRequest.Open "POST", "https://pay.toss.im/api/v1/payments", False
-httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.SetRequestHeader "Content-Type", "application/json"
 httpRequest.Send data
 
 postResponse = httpRequest.ResponseText
@@ -1551,7 +1551,7 @@ data = data & "&payToken=example-payToken"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
 httpRequest.Open "POST", "https://pay.toss.im/api/v2/execute", False
-httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.SetRequestHeader "Content-Type", "application/json"
 httpRequest.Send data
 
 postResponse = httpRequest.ResponseText
@@ -2156,7 +2156,7 @@ data = data & "&amount=1000"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
 httpRequest.Open "POST", "https://pay.toss.im/api/v2/refunds", False
-httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.SetRequestHeader "Content-Type", "application/json"
 httpRequest.Send data
 
 postResponse = httpRequest.ResponseText
@@ -2705,7 +2705,7 @@ data = data & "&orderNo=1"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
 httpRequest.Open "POST", "https://pay.toss.im/api/v1/status", False
-httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.SetRequestHeader "Content-Type", "application/json"
 httpRequest.Send data
 
 postResponse = httpRequest.ResponseText
