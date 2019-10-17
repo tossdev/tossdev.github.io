@@ -685,7 +685,7 @@
         "amount":10000,
         "amountTaxFree":0,
         "productDesc":"테스트결제",
-        "apiKey":"sk_test_apikey1234567890",
+        "apiKey":"sk_test_w5lNQylNqa5lNQe013Nq",
         "autoExecute":true,
         "resultCallback":"https://YOUR-SITE.COM/callback",
         "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
@@ -707,7 +707,7 @@ try {
 	jsonBody.put("amount", 10000);
 	jsonBody.put("amountTaxFree", 0);
 	jsonBody.put("productDesc", "테스트 결제");
-	jsonBody.put("apiKey", "sk_test_apikey1234567890");
+	jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
     jsonBody.put("autoExecute", true);
     jsonBody.put("resultCallback", "http://"http://YOUR-SITE.COM/callback");
     jsonBody.put("retUrl", "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1");
@@ -734,7 +734,7 @@ $arrayBody["orderNo"] = "1";
 $arrayBody["amount"] = 10000;
 $arrayBody["amountTaxFree"] = 0;
 $arrayBody["productDesc"] = "테스트 결제";
-$arrayBody["apiKey"] = "sk_test_apikey1234567890";
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
 $arrayBody["autoExecute"] = true;
 $arrayBody["resultCallback"] = "http://YOUR-SITE.COM/callback";
 $arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1";
@@ -756,7 +756,7 @@ curl_close($ch);
 
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
-data = "apiKey=sk_test_apikey1234567890"
+data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
 data = data & "&orderNo=1"
 data = data & "&amount=10000"
 data = data & "&amountTaxFree=0"
@@ -781,7 +781,7 @@ params = {
     "amount": 10000,
     "amountTaxFree": 0,
     "productDesc":"테스트 결제",
-    "apiKey": "sk_test_apikey1234567890",
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
     "autoExecute": true,
     "resultCallback": "http://YOUR-SITE.COM/callback",
     "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
@@ -799,7 +799,7 @@ params = {
         "amount"=> 10000,
         "amountTaxFree"=> 0,
         "productDesc" => "테스트 결제",
-        "apiKey" => "sk_test_apikey1234567890",
+        "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq",
         "autoExecute" => true,
         "resultCallback" => "http://YOUR-SITE.COM/callback",
         "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
@@ -1510,7 +1510,7 @@ try {
 
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("payToken", "example-payToken");
-	jsonBody.put("apiKey", "sk_test_apikey1234567890");
+	jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
 
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
     bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
@@ -1528,7 +1528,7 @@ try {
 }
 System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
 $arrayBody["payToken"] = "example-payToken";
-$arrayBody["apiKey"] = "sk_test_apikey1234567890";
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
 $jsonBody = json_encode($arrayBody);
 
 $ch = curl_init('https://pay.toss.im/api/v2/execute');
@@ -1546,7 +1546,7 @@ curl_close($ch);
 
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
-data = "apiKey=sk_test_apikey1234567890"
+data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
 data = data & "&payToken=example-payToken"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
@@ -1561,7 +1561,7 @@ Response.Write postResponse</code><code class="python language-python">import ur
 url = "https://pay.toss.im/api/v2/execute"
 params = {
     "payToken": "example-payToken",
-    "apiKey": "sk_test_apikey1234567890"
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq"
 }
 
 response = urllib.urlopen(url, urllib.urlencode(params))
@@ -1572,7 +1572,7 @@ uri = URI.parse("https://pay.toss.im/api/v2/execute")
 
 params = {
         "payToken" => "example-payToken",
-        "apiKey" => "sk_test_apikey1234567890"
+        "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq"
 }
 
 http = Net::HTTP.new(uri.host, uri.port)
@@ -1729,7 +1729,7 @@ try {
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("payToken", "example-payToken");
 	jsonBody.put("reason", "재고 부족");
-	jsonBody.put("apiKey", "sk_test_apikey1234567890");
+	jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
 
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
     bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
@@ -1748,7 +1748,7 @@ try {
 System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
 $arrayBody["payToken"] = "example-payToken";
 $arrayBody["reason"] = "재고 부족";
-$arrayBody["apiKey"] = "sk_test_apikey1234567890";
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
 $jsonBody = json_encode($arrayBody);
 
 $ch = curl_init('https://pay.toss.im/api/v1/cancel');
@@ -1784,7 +1784,7 @@ url = "https://pay.toss.im/api/v1/cancel"
 params = {
     "payToken": "example-payToken",
     "reason":"재고 부족",
-    "apiKey": "sk_test_apikey1234567890"
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq"
 }
 
 response = urllib.urlopen(url, urllib.urlencode(params))
@@ -1796,7 +1796,7 @@ uri = URI.parse("https://pay.toss.im/api/v1/cancel")
 params = {
         "payToken" => "example-payToken",
         "reason" => "재고 부족",
-        "apiKey" => "sk_test_apikey1234567890"
+        "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq"
 }
 
 http = Net::HTTP.new(uri.host, uri.port)
@@ -2111,7 +2111,7 @@ try {
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("payToken", "example-payToken");
 	jsonBody.put("amount", "5000");
-	jsonBody.put("apiKey", "sk_test_apikey1234567890");
+	jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
 
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	<!--bos.write(jsonBody.toJSONString().getBytes());-->
@@ -2132,7 +2132,7 @@ try {
 System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
 $arrayBody["payToken"] = "example-payToken";
 $arrayBody["amount"] = 5000;
-$arrayBody["apiKey"] = "sk_test_apikey1234567890";
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
 $jsonBody = json_encode($arrayBody);
 
 $ch = curl_init('https://pay.toss.im/api/v2/refunds');
@@ -2150,7 +2150,7 @@ curl_close($ch);
 
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
-data = "apiKey=sk_test_apikey1234567890"
+data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
 data = data & "&payToken=example-payToken"
 data = data & "&amount=1000"
 
@@ -2167,7 +2167,7 @@ url = "https://pay.toss.im/api/v2/refunds"
 params = {
     "payToken": "example-payToken",
     "amount": 5000,
-    "apiKey": "sk_test_apikey1234567890"
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq"
 }
 
 response = urllib.urlopen(url, urllib.urlencode(params))
@@ -2179,7 +2179,7 @@ uri = URI.parse("https://pay.toss.im/api/v2/refunds")
 params = {
         "payToken" => "example-payToken",
         "amount"=> 5000,
-        "apiKey" => "sk_test_apikey1234567890"
+        "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq"
 }
 
 http = Net::HTTP.new(uri.host, uri.port)
@@ -2662,7 +2662,7 @@ try {
 
 	org.json.simple.JSONObject jsonBody = new JSONObject();
 	jsonBody.put("orderNo", "1");
-	jsonBody.put("apiKey", "sk_test_apikey1234567890");
+	jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
 
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	<!--bos.write(jsonBody.toJSONString().getBytes());-->
@@ -2682,7 +2682,7 @@ try {
 }
 System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
 $arrayBody["orderNo"] = "1";
-$arrayBody["apiKey"] = "sk_test_apikey1234567890";
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
 $jsonBody = json_encode($arrayBody);
 // echo "Request: ".$request."<br>";
 $ch = curl_init('https://pay.toss.im/api/v1/status');
@@ -2715,7 +2715,7 @@ Response.Write postResponse</code><code class="python language-python">import ur
 url = "https://pay.toss.im/api/v1/status"
 params = {
     "orderNo": "1",
-    "apiKey": "sk_test_apikey1234567890"
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq"
 }
 
 response = urllib.urlopen(url, urllib.urlencode(params))
@@ -2726,7 +2726,7 @@ uri = URI.parse("https://pay.toss.im/api/v1/status")
 
 params = {
         "orderNo" => "1",
-        "apiKey" => "sk_test_apikey1234567890"
+        "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq"
 }
 
 http = Net::HTTP.new(uri.host, uri.port)
