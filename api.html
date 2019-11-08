@@ -654,15 +654,11 @@
                                     <table class="table">
                                         <tr>
                                             <td>COMMON_PAY_ERROR</td>
-                                            <td>시스템 에러가 발생 하였습니다.</td>
+                                            <td>문제가 발생하였습니다.</td>
                                         </tr>
                                         <tr>
-                                            <td>CORE_USER_ERROR</td>
-                                            <td>존재하지 않는 사용자 입니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>COMMON_TEMP_DENIAL_ERROR</td>
-                                            <td>일시적 시스템 에러가 발생하였습니다.</td>
+                                            <td>COMMON_INVALID_PARAMETER</td>
+                                            <td>요청한 값이 바르지 않습니다.</td>
                                         </tr>
                                         <tr>
                                             <td><a href="qna.html#faq-7">그 외의 에러 코드</td>
@@ -1438,44 +1434,16 @@ p JSON.parse(response.body)</code></pre>
                                     <br />
                                     <table class="table">
                                         <tr>
-                                            <td>PAY_EXPIRED</td>
-                                            <td>결제 기한이 만료되었습니다.</td>
+                                            <td>PAYMENT_EXISTING_PAYMENT</td>
+                                            <td>이미 존재하는 결제입니다.</td>
                                         </tr>
                                         <tr>
-                                            <td>COMMON_TIMEOUT</td>
-                                            <td>출금 타임 아웃이 발생하였습니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>PAY_UNAUTHORIZED</td>
-                                            <td>본인의 결제가 아닙니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>COMMON_EXCEED_LIMIT</td>
-                                            <td>결제한도를 초과 하였습니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>PAY_ALREADY_COMPLETED</td>
-                                            <td>이미 완료된 결제입니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>PAY_ITS_NOT_ABLE_TO_PAY</td>
-                                            <td>결제를 진행 할 수 없는 상태 입니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>COMMON_NOT_ENOUGH_CASH</td>
-                                            <td>잔고가 부족합니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>EXECUTE_PAY_NOT_APPROVED</td>
-                                            <td>승인 되지 않은 결제 입니다.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>COMMON_SIGN_FAILED_CS_CALL</td>
-                                            <td>전자서명에 실패 하였습니다.</td>
+                                            <td>COMMON_INVALID_API_KEY</td>
+                                            <td>바르지 않은 API key 입니다.</td>
                                         </tr>
                                         <tr>
                                             <td>COMMON_BREAK_TIME_OF_BANK</td>
-                                            <td>은행 점검시간 입니다.</td>
+                                            <td>지금은 은행 점검 시간입니다. 점검이 끝난 후 사용해주세요.</td>
                                         </tr>
                                         <tr>
                                             <td><a href="qna.html#faq-7">그 외의 에러 코드</td>
@@ -1979,7 +1947,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
-                                    환불 가능 금액
+                                    환불 가능 금액<br>
+                                    <span class="text-muted">환불 성공 후 남은 환불 가능 금액</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2009,8 +1978,10 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 7</span>
                                 </div>
                                 <div class="desc">
-                                    토스 포인트 사용금액<br>
-                                    <span class="text-muted">결제에 사용된 토스 포인트 금액이 리턴되며, 미사용의 경우 0 으로 리턴됩니다.</span>
+                                    토스 포인트 잔액<br>
+                                    <span class="text-muted">
+                                    환불 성공 후 남은 포인트 잔액    
+                                    </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2075,7 +2046,7 @@ p JSON.parse(response.body)</code></pre>
                                         </tr>
                                         <tr>
                                             <td>REFUND_EXCEED_DAILY</td>
-                                            <td>환불 금액이 상점의 일 환불 한도보다 클수 없습니다.</td>
+                                            <td>환불 금액이 상점의 일일 환불 한도보다 클 수 없습니다.</td>
                                         </tr>
                                         <tr>
                                             <td><a href="qna.html#faq-7">그 외의 에러 코드</td>
