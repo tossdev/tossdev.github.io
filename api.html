@@ -127,12 +127,13 @@
                         </div>
                         <p><br><strong>토스 결제 서비스를 지원하는 브라우저는 다음과 같습니다.</strong></p>
                         <p>
-                            PC 브라우저, Android, iOS 모두 TLS 1.1 이상의 환경에서 동작이 가능하며, 디바이스 같은 경우 토스 앱의 최소 지원 버전 기준입니다.
+                            PC 브라우저, Android, iOS 모두 TLS 1.1 이상의 환경에서 동작이 가능하며, 디바이스 같은 경우 토스 앱의 최소 지원 버전 기준입니다.<br>
+                            토스 앱 최신버전이 아닌 경우, 결제 진행이 원활하지 않을 수 있으니 가급적 최신 버전의 토스앱을 이용해 주시길 부탁드립니다.
                         </p>
                             <ul>
                                 <li>IE 11, Safari 7, Chrome 38, Firefox 27 부터 지원</li>
                                 <li>Android 5.0 Lollipop 부터 지원</li>
-                                <li>iOS 10 부터 지원</li>
+                                <li>iOS 11 부터 지원</li>
                                 <li>Java 를 사용하시는 경우, jdk 1.8 이상 버전 사용을 권장합니다</li>
                             </ul>
 
@@ -350,6 +351,7 @@
                                     <br>
                                     <span class="text-muted">주문번호는 50자 이내여야 하고, '숫자, 영문자, 특수문자 _-:.^@'만 사용할 수 있습니다.<br>
                                     가맹점 주문번호 테스트와 라이브 환경 사이에서 중복되지 않도록 가맹점의 관리가 필요합니다. 중복되는 경우 오류가 발생합니다.
+                                    주문번호는 매회 유니크한 값으로 활용해 주셔야하며, 구매자 인증완료(PAY_STANDBY) 전의 주문번호는 재사용이 가능합니다. 단, 사용자 인증완료 후에는 재 사용이 불가합니다.
                                     </span>
                                 </div>
                             </div>
@@ -374,7 +376,9 @@
                                 </div>
                                 <div class="desc">
                                     Web 결제 완료 후 연결할 웹페이지의 URL (결제 최종 승인 및 완료 처리할 페이지)<br>
-                                    <span class="text-muted">결제 완료 화면으로의 이동일 뿐, 정확한 결제 성공 유무를 보장할 수 없으니 반드시 resultCallback 을 통하여 처리하시기 바랍니다. </span>
+                                    <span class="text-muted"> 사용자 인증이 완료되는 시점에 인증 데이터와 함께 결제완료 페이지로 이동시킵니다. 이 때, 전달되는 인증 데이터는 아래 링크에서 확인해 보실 수 있습니다. (단, 인증 데이터는 결제수단 별로 상이합니다.)<br>
+                                        <a href="gettingstarted.html#overview-4">구매자 인증완료</a></td>
+                                    </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -397,10 +401,9 @@
                                     <span class="type">Max Length: 255 </span>
                                 </div>
                                 <div class="desc">
-                                    App 결제 완료 후 연결할 앱 스킴 값 (결제 최종 승인 및 완료 처리할 페이지)<br> 
-                                    가맹점의 결제 구현환경이 App to App인 경우 retAppScheme을 선언해 주시고, Web인 경우 retUrl을 활용해 주세요. <br>
-                                    <span class="text-muted">앱 결제를 이용하는 경우를 대비하여 이 곳에 가맹점 앱 스킴값을 적용하면, 결제 완료 후 토스앱 이동의 이탈을 막고 가맹점 앱으로 redirect 됩니다. <br>
-                                        iOS 앱 결제의 경우 필수 구현을 권장합니다. iOS 특성 상, 자동 앱 전환이 되지 않기 때문에 가맹점 앱 스킴 값을 이 곳에 선언해 주셔야 인증 후 가맹점 앱으로 랜딩됩니다. <br>
+                                    App 결제 완료 후 연결할 가맹점 측 앱 스킴 값<br> 
+                                    <span class="text-muted">가맹점의 결제 구현환경이 App to App인 경우 retAppScheme을 선언해 주시면 토스 결제 완료 후 가맹점 앱으로 redirect 할 수 있습니다. 단, 사용자의 진입점이 App이 아닌 일반 Web인 경우 retAppScheme가 포함되어 있다면 이전 브라우저가 뜨지 않아 결제가 완료될 수 없으니 반드시 유념해 주세요. <br>
+                                    iOS 앱 결제의 경우 필수 구현을 권장합니다. iOS 특성 상, 자동 앱 전환이 되지 않기 때문에 가맹점 앱 스킴 값을 이 곳에 선언해 주셔야 인증 후 가맹점 앱으로 랜딩됩니다.<br>
                                         <a href="gettingstarted.html#create-3">토스 앱 가이드 참고사항</a></td>
                                     </span>
                                 </div>
@@ -420,12 +423,12 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     resultCallback
-                                    <span class="type">string <font color=#c25300>필수</font></span>
                                     <span class="type">Max Length: 255 </span>
                                 </div>
                                 <div class="desc">
                                     결제 결과 callback URL<br>
-                                    <span class="text-muted">토스 서버가 정상 출금 완료 후 이 곳에 입력한 URL로 성공 결과를 전송하기 때문에 가맹점 서버에서 반드시 확인하셔야 합니다.<br>
+                                    <span class="text-muted"> 이 값은 autoExecute를 true로 사용하시는 경우에만 필수 값입니다.
+                                        토스 서버가 정상 출금 완료 후 이 곳에 입력한 URL로 성공 결과를 전송하기 때문에 가맹점 서버에서 반드시 확인하셔야 합니다.<br>
                                     <font color="#AA1212"> callback URL에 80, 443 이외의 port가 포함되면 이용할 수 없으니 유의해주세요.</font>
                                     </span>
                                 </div>
@@ -1893,7 +1896,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     환불할 금액
                                     <br />
-                                    <span class="text-muted">미입력시 환불할 결제건의 남은 전액을 환불 처리</span>
+                                    <span class="text-muted">미입력시 환불할 결제건의 남은 전액을 환불 처리합니다. 부분환불 시 필수로 활용해주세요.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1905,7 +1908,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     환불할 금액 중 비과세금액
                                     <br />
-                                    <span class="text-muted">환불할 금액중 비과세 금액, 없으면 0으로 설정</span>
+                                    <span class="text-muted">환불할 금액중 비과세 금액, 없으면 0으로 설정합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">

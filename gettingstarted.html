@@ -432,7 +432,9 @@ echo "Response: ".$result;</code></pre>
 
             <p>
               retUrl로 고객을 보내면서, 인증 결과 (status) 와 함께 주문 번호 (orderNo), 결제수단(payMethod) 을 query
-              string 파라미터로 함께 보내드립니다. 예시는 다음과 같습니다.
+              string 파라미터로 함께 보내드립니다. 예시는 다음과 같습니다. <br>
+              카드 결제건의 경우, 아래 인증 데이터에 추가로 결제카드 코드 (cardCompany)가 함께 리턴됩니다.
+
             </p>
             <div class="method-example">
               <pre
@@ -445,8 +447,7 @@ echo "Response: ".$result;</code></pre>
             </ul>
             <p>
               status가 PAY_COMPLETE 이외의 값이라면 승인이 정상적으로 진행되지 않은 경우입니다. 반드시 PAY_COMPLETE 상태일 때만 결제완료 처리해주세요. <br>
-              결제를 취소한 경우에는 결제 취소 안내 화면을 보여주시고, 인증을 완료한 경우에는 결제 완료 화면을
-              보여주세요.
+              결제를 취소한 경우에는 결제 취소 안내 화면을 보여주시고, 인증을 완료한 경우에는 결제 완료 화면을 보여주세요.
             </p>
 
             <div class="method" id="create">
