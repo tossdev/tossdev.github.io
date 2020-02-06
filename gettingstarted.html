@@ -249,7 +249,7 @@
 -H "Content-Type: application/json" \
 -d '{
 "orderNo":"1",
-"amount":35000,
+"amount":25000,
 "amountTaxFree":0,
 "productDesc":"토스티셔츠",
 "apiKey":"sk_test_apikey1234567890",
@@ -271,7 +271,7 @@ connection.setDoInput(true);
 
 org.json.simple.JSONObject jsonBody = new JSONObject();
 jsonBody.put("orderNo", "1");
-jsonBody.put("amount", 35000);
+jsonBody.put("amount", 25000);
 jsonBody.put("amountTaxFree", 0);
 jsonBody.put("productDesc", "토스티셔츠");
 jsonBody.put("apiKey", "sk_test_apikey1234567890");
@@ -465,7 +465,7 @@ echo "Response: ".$result;</code></pre>
 -H "Content-Type: application/json" \
 -d '{
 "orderNo":"1",                                           # 토스몰 고유의 주문번호 (필수)
-"amount":35000,                                          # 결제 금액 (필수)
+"amount":25000,                                          # 결제 금액 (필수)
 "amountTaxFree":0,                                       # 비과세 금액 (필수)
 "productDesc":"토스티셔츠",                                 # 상품 정보 (필수)
 "apiKey":"sk_test_apikey1234567890",                     # 상점의 API Key (필수)
