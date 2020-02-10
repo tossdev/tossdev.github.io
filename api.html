@@ -1662,7 +1662,7 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     취소 사유
                                     <br>
-                                    <span class="text-muted">환불 사유는 한글 및 숫자, 영문자, 특수문자 _-:.^@()[]#/!%?& 만 허용합니다.</span>
+                                    <span class="text-muted">환불 사유는 한글 및 숫자, 영문자, 특수문자 중 _-:.^@()[]#/!%?& 만 허용합니다.</span>
                                 </div>
                             </div>
                         </div>
@@ -1895,7 +1895,9 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     환불할 금액
                                     <br />
-                                    <span class="text-muted">미입력시 환불할 결제건의 남은 전액을 환불 처리합니다. 부분환불 시 필수로 활용해주세요.</span>
+                                    <span class="text-muted">미입력시 환불할 결제건의 남은 전액을 환불 처리합니다. 부분환불 시 필수로 활용해주세요. <br>
+                                        <font color="#AA1212"> 기 환불처리된 거래는 원복이 불가하오니 환불전 반드시 가맹점 측의 체크가 필요합니다.</font>
+                                    </span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2001,15 +2003,9 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     할인된 금액<br>
-                                    <span class="text-muted">결제 시 할인된 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.<br>
-                                    부분 환불 시 discountedAmount 값은 부분 환불 이후의 최종적으로 할인된 금액입니다. <br>
-                                    예를들어, 10% 할인을 받아
-                                    10,000원 결제를 9,000에 결제했고, 4,000원을 부분 환불하면 최종적으로 6,000원 결제의 600원 할인을 받은 것이 되므로
-                                    discountedAmount 값은 600원으로 리턴됩니다.<br>
-
-                                    <font color="#AA1212"> 
-                                    할인 속성에 따라 부분환불 가능 최소 금액이 설정되어 있을 수 있으며, 최소 금액을 초과하여 환불을 진행하시는 경우 오류가 발생할 수 있습니다.
-                                    </font>
+                                    <span class="text-muted">환불 성공 후 남은 할인적용 금액이 전달되고, 전액 환불이거나 할인 적용이 안되었다면 0 을 리턴합니다.<br>
+                                    예를들어, 10% 할인을 받아 10,000원 결제를 9,000에 결제했고, 4,000원을 부분 환불하면 최종적으로 6,000원 결제의 600원 할인을 받은 것이 되므로 discountedAmount 값은 600원으로 리턴됩니다.<br>
+                                    가맹점 측에서는 환불요청 금액만 전달해 주시면 되고, 토스 결제 서버에서 자동으로 우선순위를 지정하여 할인금액을 차감합니다.
                                     </span>
                                 </div>
                             </div>
