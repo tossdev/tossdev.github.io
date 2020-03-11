@@ -1367,7 +1367,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
-                                    결제 카드사 코드<br><span class="text-muted">그 외의 카드사는 현재 준비중입니다. (매입 카드사 기준)
+                                    결제 카드사 코드<br><span class="text-muted">그 외의 카드사는 현재 준비중이며, 카드사 추가될 경 예고없이 업데이트 될 수 있습니다.
                                     </span><br><br>
                                      <table class="table">
                                         <tr>
@@ -1460,29 +1460,6 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="text-muted">승인된 카드 결제건의 매출전표를 확인할 수 있는 URL 입니다.
                                         구매자의 추가인증 완료 후 거래내역을 확인할 수 있습니다.<br>
                                         <a href="gettingstarted.html#salesCheckLinkUrl">토스 매출전표 참고사항</a></span>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    cardMethodType
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 10</span>
-                                </div>
-                                <div class="desc">
-                                    카드 타입 <br>
-                                    <span class="text-muted">승인된 카드의 타입을 구분할 수 있습니다. 예를들어, 상점의 신용카드 결제 비율을 알고 싶다면 이 값을 활용해 주세요! <br>
-                                    옵션은 두 가지로 구분됩니다.<br></span>
-                                    <br/>
-                                    <table class="table">
-                                        <tr>
-                                            <td>CREDIT</td>
-                                            <td>신용카드</td>
-                                        </tr>
-                                        <tr>
-                                            <td>CHECK</td>
-                                            <td>체크카드</td>
-                                        </tr>
-                                    </table>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1640,8 +1617,7 @@ p JSON.parse(response.body)</code></pre>
     "cardAuthorizationNo": "87654321",
     "spreadOut": 0,
     "noInterest": false,
-    "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a",
-    "cardMethodType": "CREDIT"
+    "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a"
 }
 </code>
             </pre>
@@ -2698,33 +2674,6 @@ p JSON.parse(response.body)</code></pre>
                                         <a href="gettingstarted.html#salesCheckLinkUrl">토스 매출전표 참고사항</a></span>
                                 </div>
                             </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    cardMethodType
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 10</span>
-                                </div>
-                                <div class="desc">
-                                    카드 타입 <br>
-                                    <span class="text-muted">승인된 카드의 타입을 구분할 수 있습니다. 예를들어, 상점의 신용카드 결제 비율을 알고 싶다면 이 값을 활용해 주세요! <br>
-                                    상태조회에서 옵션은 세 가지로 구분됩니다.<br></span>
-                                    <br/>
-                                    <table class="table">
-                                        <tr>
-                                            <td>CREDIT</td>
-                                            <td>신용카드</td>
-                                        </tr>
-                                        <tr>
-                                            <td>CHECK</td>
-                                            <td>체크카드</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NONE</td>
-                                            <td>토스머니 결제</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="method-example">
@@ -2874,9 +2823,7 @@ p JSON.parse(response.body)</code></pre>
     "cardAuthorizationNo": "87654321",
     "spreadOut": "6",
     "noInterest": "false"
-    "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a",
-    "cardMethodType": "CREDIT"
-
+    "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a"
 }</code>
             </pre>
                     </div>
