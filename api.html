@@ -900,6 +900,17 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    amount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                    결제요청된 금액<br>
+                                    <span class="text-muted">최초 가맹점에서 결제 요청된 금액이 리턴됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     discountedAmount
                                     <span class="type">integer</span>
                                     <span class="type">Max Length: 7 </span>
@@ -940,6 +951,17 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     결제 처리 시각<br>
                                     형식 : 2020-03-03 14:22:37
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    transactionId
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 40 </span>
+                                </div>
+                                <div class="desc">
+                                    거래 트랜잭션 아이디<br>
+                                    <span class="text-muted">결제의 거래구분을 위하여 토스 서버에서 유니크한 값을 생성해서 전달드립니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1005,9 +1027,12 @@ Content-Type application/x-www-form-urlencoded;charset=UTF-8</code></pre>
  "payToken": "example-payToken",
  "orderNo": "1",
  "payMethod": "TOSS_MONEY",
+ "amount": 3000,
  "discountedAmount": 600,
  "paidPoint": 100,
- "paidTs": "2019-06-17 13:59:59"
+ "paidAmount": 2300,
+ "paidTs": "2019-06-17 13:59:59",
+ "transactionId" : "dc3b951a-9781-462e-ab5a-b8a0bea0222a"
 }                            
                         </code></pre>
 
@@ -1343,7 +1368,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 40</span>
                                 </div>
                                 <div class="desc">
-                                    결제 트랜잭션 코드<br>
+                                    거래 트랜잭션 아이디<br>
                                     <span class="text-muted">결제의 거래구분을 위하여 토스서버에서 유니크한 값을 생성해서 전달드립니다.
                                     매출전표를 호출하거나 환불 진행 시 구분 값으로 활용할 수 있습니다.</span>
                                 </div>
@@ -2102,7 +2127,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 40</span>
                                 </div>
                                 <div class="desc">
-                                    결제 트랜잭션 코드<br>
+                                    거래 트랜잭션 아이디<br>
                                     <span class="text-muted">환불된 거래건의 매출전표 확인을 위하여 필요한 옵션 값이므로 가맹점의 관리가 필요합니다.</span>
                                 </div>
                             </div>
