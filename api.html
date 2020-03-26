@@ -93,20 +93,15 @@
             <li>
                 <a href="#status">결제 상태 확인</a>
             </li>
-            <!--
-            <li>
-                <a href="#refundStatus">환불 상태 확인</a>
-            </li>
-            -->
         </ul>
     </div>
 
     <div id="api-docs">
         <div id="methods">
             <div class="languages">
-                <a class="language selected" data-lang="php" href="#">PHP</a>
+                <a class="language selected" data-lang="curl" href="#">curl</a>
                 <a class="language" data-lang="java" href="#">Java</a>
-                <a class="language" data-lang="curl" href="#">curl</a>
+                <a class="language" data-lang="php" href="#">PHP</a>
                 <a class="language" data-lang="python" href="#">Python</a>
                 <a class="language" data-lang="ruby" href="#">Ruby</a>
                 <a class="language" data-lang="aspnet" href="#">ASP</a>
@@ -116,7 +111,11 @@
                     <div class="method-description">
                         <h3>토스 결제 API 소개</h3>
                         <p>
-                            토스를 통한 결제 서비스를 사용하기 위한 API입니다. 토스 결제를 활용한 개발을 처음 시작하신다면, 좀 더 친절한 안내를 먼저 확인해보세요!
+                            토스를 통한 결제 서비스를 사용하기 위한 API입니다.<br>
+                            토스 결제를 활용한 개발을 처음 시작하신다면, 좀 더 친절한 안내를 먼저 확인해보세요! <br><br>
+
+                            <strong>토스 결제 개발 가이드는 수시로 업데이트 됩니다. 사전 예고없이 업데이트 될 수 있으니 지속적으로 확인해 주시길 부탁드립니다.</strong>
+
                             <br>
                             <br><a href="gettingstarted.html">&gt;&gt; '토스 결제 시작하기' 문서로 바로가기</a>
                         </p>
@@ -323,7 +322,7 @@
                                     (POST)
                                 </div>
                                 <div class="desc">
-                                  https://pay.toss.im/api/v1/payments <br/>
+                                  https://pay.toss.im/api/v2/payments <br/>
                                 </div>
                             </div>
                         </div>
@@ -685,7 +684,7 @@
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/payments</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v2/payments</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/payments \
     -H "Content-Type: application/json" \
@@ -705,7 +704,7 @@ URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-	url = new URL("https://pay.toss.im/api/v1/payments");
+	url = new URL("https://pay.toss.im/api/v2/payments");
 	connection = url.openConnection();
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
@@ -750,7 +749,7 @@ $arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1";
 $arrayBody["retCancelUrl"] = "http://YOUR-SITE.COM/close";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://pay.toss.im/api/v1/payments');
+$ch = curl_init('https://pay.toss.im/api/v2/payments');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -776,7 +775,7 @@ data = data & "&retUrl=http://YOUR-SITE.COM/ORDER-CHECK?orderno=1"
 data = data & "&retCancelUrl=http://YOUR-SITE.COM/close"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/api/v1/payments", False
+httpRequest.Open "POST", "https://pay.toss.im/api/v2/payments", False
 httpRequest.SetRequestHeader "Content-Type", "application/json"
 httpRequest.Send data
 
@@ -784,7 +783,7 @@ postResponse = httpRequest.ResponseText
 
 Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
 
-url = "https://pay.toss.im/api/v1/payments"
+url = "https://pay.toss.im/api/v2/payments"
 params = {
     "orderNo": "1",
     "amount": 10000,
@@ -801,7 +800,7 @@ response = urllib.urlopen(url, urllib.urlencode(params))
 print(response.read())</code><code class="ruby language-ruby">require 'net/http'
 require 'json'
 
-uri = URI.parse("https://pay.toss.im/api/v1/payments")
+uri = URI.parse("https://pay.toss.im/api/v2/payments")
 
 params = {
         "orderNo" => "1",
@@ -949,7 +948,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 20 </span>
                                 </div>
                                 <div class="desc">
-                                    결제 처리 시각<br>
+                                    결제 완료 처리 시간<br>
                                     형식 : 2020-03-03 14:22:37
                                 </div>
                             </div>
@@ -1272,8 +1271,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 20 </span>
                                 </div>
                                 <div class="desc">
-                                    결제건의 승인 처리 시각 (yyyy-MM-dd HH:mm:ss)<br>
-                                    <span class="text-muted">요청에 따른 결제건 처리 시각입니다. 환불시에도 동일한 변수로 리턴되므로 구분하여 관리하시기 바랍니다.</span>
+                                    결제건의 승인 처리 시간 (yyyy-MM-dd HH:mm:ss)<br>
+                                    <span class="text-muted">요청에 따른 결제건 처리 시간입니다. 환불시에도 동일한 변수로 리턴되므로 구분하여 관리하시기 바랍니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1380,7 +1379,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
-                                    결제 카드사명<br>
+                                    승인 카드사명<br>
                                     <span class="text-muted">아래 테이블을 참고해 주세요.
                                     </span>
                                 </div>
@@ -1392,7 +1391,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
-                                    결제 카드사 코드<br><span class="text-muted">그 외의 카드사는 현재 준비중입니다. (매입 카드사 기준)
+                                    카드사 코드<br><span class="text-muted">토스에서 정의한 카드사 코드는 다음과 같으며, <br>
+                                    미지원 카드사는 현재 준비중입니다. (매입 카드사 기준입니다.)
                                     </span><br><br>
                                      <table class="table">
                                         <tr>
@@ -1460,8 +1460,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
-                                    카드 할부개월<br>
-                                    <span class="text-muted">일시불 결제의 경우 0으로 리턴됩니다.</span>
+                                    사용자가 선택한 카드 할부개월<br>
+                                    <span class="text-muted">5만원 미만 금액 및 일시불 결제의 경우 0으로 리턴됩니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1471,8 +1471,19 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 5</span>
                                 </div>
                                 <div class="desc">
-                                    무이자 여부<br><span class="text-muted">
-                                    true : 무이자, false : 일반</span>
+                                    카드 무이자 적용 여부
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>true</td>
+                                            <td>무이자</td>
+                                        </tr>
+                                        <tr>
+                                            <td>false</td>
+                                            <td>일반</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2107,7 +2118,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 20</span>
                                 </div>
                                 <div class="desc">
-                                    결제건의 환불 처리 시각 (yyyy-MM-dd HH:mm:ss)<br>
+                                    결제건의 환불 처리 시간 (yyyy-MM-dd HH:mm:ss)<br>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2298,7 +2309,8 @@ p JSON.parse(response.body)</code></pre>
                     <div class="method-description">
                         <h3>결제 상태 확인</h3>
                         <p>
-                            생성된 결제의 현재 상태를 조회합니다.
+                            생성된 결제건의 거래 상태와 거래 드랜잭션을 조회할 수 있습니다. <br>
+                            상황에 따라, 승인 혹은 환불 응답을 수신하지 못한 경우에도 활용 가능합니다.
                         </p>
                         <div class="info">
                             <h4>endpoint</h4>
@@ -2307,7 +2319,7 @@ p JSON.parse(response.body)</code></pre>
                                     (POST)
                                 </div>
                                 <div class="desc">
-                                  https://pay.toss.im/api/v1/status </br>
+                                  https://pay.toss.im/api/v2/status </br>
                                 </div>
                             </div>
                         </div>
@@ -2331,7 +2343,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 50</span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제 토큰 또는 가맹점 주문번호 (payToken의 우선순위 높음)
+                                    토스 결제 토큰 또는 가맹점 주문번호
                                 </div>
                             </div>
                         </div>
@@ -2366,7 +2378,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제 토큰
+                                    토스 결제 토큰 <br>
+                                    <span class="text-muted">상태조회가 필요한 거래건의 결제토큰을 입력해 주세요.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2426,167 +2439,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 50</span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제와 이어진 주문번호
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    amount
-                                    <span class="type">integer</span>
-                                    <span class="type">Max Length: 7</span>
-                                </div>
-                                <div class="desc">
-                                    결제 금액
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    amountTaxable
-                                    <span class="type">integer</span>
-                                    <span class="type">Max Length: 7</span>
-                                </div>
-                                <div class="desc">
-                                    결제 금액 중 과세금액 (복합과세)
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    amountTaxFree
-                                    <span class="type">integer</span>
-                                    <span class="type">Max Length: 7</span>
-                                </div>
-                                <div class="desc">
-                                    결제 금액 중 비과세금액 (복합과세)
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    amountVat
-                                    <span class="type">integer</span>
-                                    <span class="type">Max Length: 7</span>
-                                </div>
-                                <div class="desc">
-                                    결제 금액 중 부가세 (복합과세)
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    amountServiceFee
-                                    <span class="type">integer</span>
-                                    <span class="type">Max Length: 7</span>
-                                </div>
-                                <div class="desc">
-                                    결제 금액 중 봉사료 (복합과세)
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    timeCreated
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 7</span>
-                                </div>
-                                <div class="desc">
-                                    결제 생성 시각
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    timePayComplete
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 20</span>
-                                </div>
-                                <div class="desc">
-                                    결제 완료 시각
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    timePayCancel
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 20</span>
-                                </div>
-                                <div class="desc">
-                                    결제 취소 시각
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    productDesc
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 255</span>
-                                </div>
-                                <div class="desc">
-                                    상품 설명
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    availableActions
-                                    <span class="type">list</span>
-                                </div>
-                                <div class="desc">
-                                    가능한 액션 목록
-                                    <br />
-                                    <br />
-                                    <table class="table">
-                                        <tr>
-                                            <td>CANCEL</td>
-                                            <td>결제 취소</td>
-                                        </tr>
-                                        <tr>
-                                            <td>REFUND</td>
-                                            <td>결제 환불</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    refunds
-                                    <span class="type">list</span>
-                                </div>
-                                <div class="desc">
-                                    조회한 결제건에 대한 환불 요청 및 결과
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    timeRefundSuccess
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 20</span>
-                                </div>
-                                <div class="desc">
-                                    환불 완료 시각
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    metadata
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 1024</span>
-                                </div>
-                                <div class="desc">
-                                    결제와 연관된 추가 데이터
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    msg
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 120</span>
-                                </div>
-                                <div class="desc">
-                                    응답이 성공이 아닌 경우 설명 메세지
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    errorCode
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 40</span>
-                                </div>
-                                <div class="desc">
-                                    에러 코드
+                                    토스 결제와 연계된 상점 주문번호
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2613,12 +2466,141 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    amount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    가맹점이 토스로 전달한 결제 총 금액
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    discountedAmount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    즉시할인이 적용된 금액<br>
+                                    <span class="text-muted">토스 결제창에서 자동으로 적용된 즉시할인 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    paidPoint
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    토스 포인트가 적용된 금액<br>
+                                    <span class="text-muted">토스 결제창에서 적용된 토스 포인트 금액이 리턴되며, 적용이 없으면 0으로 리턴됩니다.<br>
+                                    단, 포인트 사용 유무는 상점별로 상이할 수 있습니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    paidAmount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    지불수단 승인금액<br>
+                                    <span class="text-muted">가맹점이 요청한 총 금액(amount) 중 할인된 금액을 제외한 순수 지불수단 승인금액입니다. <br>
+                                    토스 자동발행 현금영수증을 사용하지 않는 가맹점에서는 이 필드를 통해 현금영수증 발행처리 해주시면 됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxFree
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    총 결제 금액 중 적용된 비과세 금액
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxable
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    총 결제 금액 중 적용된 과세 금액<br>
+                                    <span class="text-muted">결제생성에서 비과세 금액(amountTaxFree) 을 0으로 보내주시면 토스 서버에서 자동으로 과세처리 하고, 해당 필드로 적용사항을 확인해 볼 수 있습니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountVat
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    총 결제 금액 중 적용된 부가세 금액<br>
+                                    <span class="text-muted">결제생성에서 비과세 금액(amountTaxFree) 을 0으로 보내주시면 토스 서버에서 자동으로 과세처리 하고, 해당 필드로 적용사항을 확인해 볼 수 있습니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    amountServiceFee
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    총 결제 금액 중 적용된 봉사료
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    card
+                                    <span class="type">list</span>
+                                </div>
+                                <div class="desc">
+                                    조회건이 카드 결제일 경우에만 내려가는 카드정보
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    noInterest
+                                    <span class="type">boolean</span>
+                                    <span class="type">Max Length: 5</span>
+                                </div>
+                                <div class="desc">
+                                    카드 무이자 적용 여부
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>true</td>
+                                            <td>무이자</td>
+                                        </tr>
+                                        <tr>
+                                            <td>false</td>
+                                            <td>일반</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    spreadOut
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
+                                </div>
+                                <div class="desc">
+                                    사용자가 선택한 카드 할부개월<br>
+                                    <span class="text-muted">5만원 미만 금액 및 일시불 결제의 경우 0으로 리턴됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     cardCompanyName
                                     <span class="type">string</span>
                                     <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
-                                    결제 카드사명<br><span class="text-muted">카드 결제의 경우에만 리턴됩니다.</span>
+                                    승인 카드사명
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2628,55 +2610,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 2</span>
                                 </div>
                                 <div class="desc">
-                                    결제 카드사 코드<br><span class="text-muted">
-                                    그 외의 카드사는 현재 준비중입니다. (매입 카드사 기준)
-                                    </span><br><br>
-                                     <table class="table">
-                                        <tr>
-                                            <td>cardCompanyName</td>
-                                            <td>cardCompanyCode</td>
-                                        </tr>
-                                        <tr>
-                                            <td>신한</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>현대</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>삼성</td>
-                                            <td>3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>국민</td>
-                                            <td>4</td>
-                                        </tr>
-                                        <tr>
-                                            <td>롯데</td>
-                                            <td>5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>하나</td>
-                                            <td>6</td>
-                                        </tr>
-                                        <tr>
-                                            <td>우리 (현재 미지원)</td>
-                                            <td>7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>농협</td>
-                                            <td>8</td>
-                                        </tr>
-                                        <tr>
-                                            <td>씨티 (현재 미지원)</td>
-                                            <td>9</td>
-                                        </tr>
-                                        <tr>
-                                            <td>비씨</td>
-                                            <td>10</td>
-                                        </tr>
-                                    </table>
+                                    카드사 코드
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2691,48 +2625,14 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    spreadOut
-                                    <span class="type">integer</span>
-                                    <span class="type">Max Length: 2</span>
-                                </div>
-                                <div class="desc">
-                                    카드 할부개월<br>
-                                    <span class="text-muted">일시불 결제의 경우 0으로 리턴됩니다.</span>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    noInterest
-                                    <span class="type">boolean</span>
-                                    <span class="type">Max Length: 5</span>
-                                </div>
-                                <div class="desc">
-                                    무이자 여부<br><span class="text-muted">
-                                    true : 무이자, false : 일반</span>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
-                                    salesCheckLinkUrl
-                                    <span class="type">string</span>
-                                </div>
-                                <div class="desc">
-                                    신용카드 매출전표 호출URL<br>
-                                    <span class="text-muted">승인된 카드 결제건의 매출전표를 확인할 수 있는 URL 입니다.
-                                        구매자의 추가인증 완료 후 거래내역을 확인할 수 있습니다.<br>
-                                        <a href="gettingstarted.html#salesCheckLinkUrl">토스 매출전표 참고사항</a></span>
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
                                     cardMethodType
                                     <span class="type">string</span>
                                     <span class="type">Max Length: 10</span>
                                 </div>
                                 <div class="desc">
                                     카드 타입 <br>
-                                    <span class="text-muted">승인된 카드의 타입을 구분할 수 있습니다. 예를들어, 상점의 신용카드 결제 비율을 알고 싶다면 이 값을 활용해 주세요! <br>
-                                    상태조회에서 옵션은 세 가지로 구분됩니다.<br></span>
+                                    <span class="text-muted">승인된 카드의 타입을 구분할 수 있습니다. 예를들어, 상점의 신용카드 결제 비율을 알고 싶다면 이 값을 활용해 주세요!
+                                    옵션은 두 가지로 구분됩니다.<br></span>
                                     <br/>
                                     <table class="table">
                                         <tr>
@@ -2743,20 +2643,107 @@ p JSON.parse(response.body)</code></pre>
                                             <td>CHECK</td>
                                             <td>체크카드</td>
                                         </tr>
-                                        <tr>
-                                            <td>NONE</td>
-                                            <td>토스머니 결제</td>
-                                        </tr>
                                     </table>
                                 </div>
                             </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    salesCheckLinkUrl
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    신용카드 매출전표 호출URL
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    <font color=#c25300>transactionId</font>
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 40 </span>
+                                </div>
+                                <div class="desc">
+                                    거래 트랜잭션 아이디<br>
+                                    <span class="text-muted">결제의 거래구분을 위하여 토스 서버에서 유니크한 값을 생성해서 전달드립니다. 거래 대사 시, 이 값을 활용하시길 권장드립니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    <font color=#c25300>transactionAmount</font>
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">요청된 거래 타입(stepType) 의 가맹점 전달금액<br>
+                                    <span class="text-muted">가맹점에서 전달한 요청 금액이 리턴됩니다.<br>
+                                     '환불' 요청의 경우 -(마이너스) 금액이 리턴됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    <font color=#c25300>discountAmount</font>
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">요청된 거래 타입(stepType) 중 적용된 할인금액
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    <font color=#c25300>pointAmount</font>
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">요청된 거래 타입(stepType) 중 적용된 포인트 금액
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    <font color=#c25300>paidAmount</font>
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">요청된 거래 타입(stepType) 중 적용된 지불수단 금액<br>
+                                    <span class="text-muted">예를들어, '환불(REFUND)' 요청 이라면 환불 요청된 금액 중 실제 환불 처리된 지불수단 금액이 리턴됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    <font color=#c25300>regTs</font>
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    요청 처리 시간
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    createdTs
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    사용자 최초 결제 요청 시간<br>
+                                    <span class="text-muted">결제 생성 시간</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    paidTs
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    결제 완료 처리 시간
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/status</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v2/status</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/status" \
+                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v2/status" \
     -H "Content-Type: application/json" \
     -d '{
         "payToken":"example-payToken",
@@ -2767,7 +2754,7 @@ URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-	url = new URL("https://pay.toss.im/api/v1/status");
+	url = new URL("https://pay.toss.im/api/v2/status");
 	connection = url.openConnection();
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
@@ -2798,7 +2785,7 @@ $arrayBody["orderNo"] = "1";
 $arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
 $jsonBody = json_encode($arrayBody);
 // echo "Request: ".$request."<br>";
-$ch = curl_init('https://pay.toss.im/api/v1/status');
+$ch = curl_init('https://pay.toss.im/api/v2/status');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -2817,7 +2804,7 @@ data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
 data = data & "&orderNo=1"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/api/v1/status", False
+httpRequest.Open "POST", "https://pay.toss.im/api/v2/status", False
 httpRequest.SetRequestHeader "Content-Type", "application/json"
 httpRequest.Send data
 
@@ -2825,7 +2812,7 @@ postResponse = httpRequest.ResponseText
 
 Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
 
-url = "https://pay.toss.im/api/v1/status"
+url = "https://pay.toss.im/api/v2/status"
 params = {
     "orderNo": "1",
     "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq"
@@ -2835,7 +2822,7 @@ response = urllib.urlopen(url, urllib.urlencode(params))
 print(response.read())</code><code class="ruby language-ruby">require 'net/http'
 require 'json'
 
-uri = URI.parse("https://pay.toss.im/api/v1/status")
+uri = URI.parse("https://pay.toss.im/api/v2/status")
 
 params = {
         "orderNo" => "1",
@@ -2851,56 +2838,41 @@ response = http.request(request)
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{
+    "code": 0,
     "payToken": "example-payToken",
-    "payStatus": "REFUND_SUCCESS",
     "orderNo": "1",
-    "amount":110000,
-    "amountTaxable":100000,
-    "amountTaxFree":0,
-    "amountVat":10000,
-    "amountServiceFee":0,
-    "timeCreated":"2017-02-15 11:59:48",
-	"timePayComplete":"2017-02-15 12:01:19",
-	"timePayCancel":"",
-    "productDesc":"테스트 상품",
-    <!--"hasOwner": true,-->
-    "availableActions": [
-    "REFUND"
-    ],
-    "refunds": [
+    "payStatus": "REFUND_SUCCESS",
+    "payMethod": "TOSS_MONEY",
+    "amount": 15000,
+    "discountedAmount": 0,
+    "paidPoint": 0,
+    "paidAmount": 0,
+    "amountTaxable": 0,
+    "amountTaxFree": 0,
+    "amountVat": 0,
+    "amountServiceFee": 0,
+    "transactions": [
         {
-        "reason": "일부 상품 환불",
-        "amount": 100,
-        "refundNo": "7161b8e3-4b79-49d7-ab3c-3ae898aa073b",
-        "timeRefundSuccess": "2017-02-15 16:12:40",
-        "status": "SUCCESS"
+            "stepType": "PAY",
+            "transactionId": "3243c76e-e9cf-4669-881b-33a3b82ddf49",
+            "transactionAmount": 15000,
+            "discountAmount": 300,
+            "pointAmount": 0,
+            "paidAmount": 14700,
+            "regTs": "2020-03-01 12:33:20"
         },
         {
-        "reason": "일부 상품 환불",
-        "amount": 200,
-        "refundNo": "a636fe94-4e1e-41c8-90d9-b17180bdaf04",
-        "timeRefundSuccess": "2017-02-15 16:12:43",
-        "status": "SUCCESS"
-        },
-        {
-        "reason": "일부 상품 환불",
-        "amount": 500,
-        "refundNo": "cc92a9ef-8a81-2938-dda9-ff8a78ae29b8",
-        "timeRefundSuccess": "2017-02-15 16:12:46",
-        "status": "SUCCESS"
+            "stepType": "REFUND",
+            "transactionId": "2da1ca05-d91d-410f-976d-7a610242da8a",
+            "paidAmount": -14700,
+            "transactionAmount": -15000,
+            "discountAmount": -300,
+            "pointAmount": 0,
+            "regTs": "2020-03-01 12:34:11"
         }
     ],
-    "code": 0,
-    "status": 200,
-    "metadata": "metadata",
-    "payMethod": "CARD",
-    "cardCompanyCode": 3,
-    "cardCompanyName": "삼성",
-    "cardAuthorizationNo": "87654321",
-    "spreadOut": "6",
-    "noInterest": "false"
-    "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a",
-    "cardMethodType": "CREDIT"
+    "createdTs": "2020-03-01 12:33:04",
+    "paidTs": "2020-03-01 12:33:20"
 
 }</code>
             </pre>
