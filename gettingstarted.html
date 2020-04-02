@@ -247,7 +247,7 @@
             <div class="well">
               결제 생성 API Endpoint
               <br />
-              <strong>POST https://pay.toss.im/api/v1/payments</strong>
+              <strong>POST https://pay.toss.im/api/v2/payments</strong>
             </div>
             <p>고객의 결제는 아래와 같이 요청합니다.</p>
             <div class="method-example">
@@ -256,7 +256,7 @@
                 <a class="language" data-lang="language-java" href="#">Java</a>
                 <a class="language" data-lang="language-php" href="#">PHP</a>
               </div>
-              <pre><code class="language-bash">curl https://pay.toss.im/api/v1/payments \
+              <pre><code class="language-bash">curl https://pay.toss.im/api/v2/payments \
 -H "Content-Type: application/json" \
 -d '{
 "orderNo":"1",
@@ -274,7 +274,7 @@ URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-url = new URL("https://pay.toss.im/api/v1/payments");
+url = new URL("https://pay.toss.im/api/v2/payments");
 connection = url.openConnection();
 connection.addRequestProperty("Content-Type", "application/json");
 connection.setDoOutput(true);
@@ -317,7 +317,7 @@ $arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK";
 $arrayBody["retCancelUrl"] = "http://YOUR-SITE.COM/close";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://pay.toss.im/api/v1/payments');
+$ch = curl_init('https://pay.toss.im/api/v2/payments');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -416,7 +416,6 @@ echo "Response: ".$result;</code></pre>
               1. <strong>토스 회원</strong> : 결제 수단 선택 후 토스 비밀번호를 입력하면 결제 완료 <br />
               2. <strong>토스 비회원</strong> : 토스 앱 설치, 가입 후 결제 진행
               <br />
-              <br /><a href="https://pay.toss.im/payfront/demo/payments" target="_blank"><strong> 결제 데모 페이지 바로가기</strong></a>
             </div>
             <div class="alert alert-warning" role="alert">
               <i
@@ -469,7 +468,7 @@ echo "Response: ".$result;</code></pre>
                   <div class="languages">
                     <a class="language selected" data-lang="language-bash" href="#">curl</a>
                   </div>
-                  <pre><code class="language-bash">curl https://pay.toss.im/api/v1/payments \
+                  <pre><code class="language-bash">curl https://pay.toss.im/api/v2/payments \
 -H "Content-Type: application/json" \
 -d '{
 "orderNo":"1",                                           # 토스몰 고유의 주문번호 (필수)
@@ -490,7 +489,7 @@ echo "Response: ".$result;</code></pre>
 }'</code></pre>
                 </div>
                 <h4 id="create-1">결제 생성 API의 Endpoint</h4>
-                <div class="well">POST https://pay.toss.im/api/v1/payments</div>
+                <div class="well">POST https://pay.toss.im/api/v2/payments</div>
                 <h4 id="create-2">필수 Parameters</h4>
                 <p>결제 생성 요청 시 반드시 아래 9가지 값을 함께 보내주셔야합니다.</p>
                 <ol>
@@ -796,13 +795,14 @@ echo "Response: ".$result;</code></pre>
               주문은 잘 환불 되었는지...
             </p>
             <p>
-              그럴땐 망설이지 말고 '결제 상태 확인 API'를 찾아주세요. 아래 예제는 결제 상태 확인 API 호출 코드입니다.
+              그럴땐 '결제 상태 확인 API'를 찾아주세요. 상황에 따라 승인,환불 응답을 수신하지 못한 경우에도 활용할 수 있습니다. <br>
+              아래 예제는 결제 상태 확인 API 호출 코드입니다.
             </p>
             <div class="method-example">
               <div class="languages">
                 <a class="language selected" data-lang="language-bash" href="#">curl</a>
               </div>
-              <pre><code class="language-bash">curl "https://pay.toss.im/api/v1/status" \
+              <pre><code class="language-bash">curl "https://pay.toss.im/api/v2/status" \
 -H "Content-Type: application/json" \
 -d '{
 "apiKey":"sk_test_w5lNQylNqa5lNQe013Nq",   # 상점의 API Key (필수)
@@ -811,7 +811,7 @@ echo "Response: ".$result;</code></pre>
 </code></pre>
             </div>
             <h4 id="checkstatus-1">결제 상태 확인 API의 Endpoint</h4>
-            <div class="well">POST https://pay.toss.im/api/v1/status</div>
+            <div class="well">POST https://pay.toss.im/api/v2/status</div>
             <h4 id="checkstatus-2">필수 Parameters</h4>
             <p>필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 일어난 '어떤 결제건'을 조회하고 싶은지 알려주세요.</p>
             <ol>
@@ -820,16 +820,29 @@ echo "Response: ".$result;</code></pre>
             </ol>
             <p>* '결제 고유 토큰 (payToken)' 대신 '상점의 주문번호 (orderNo)'값을 사용할 수도 있습니다.</p>
             <h4 id="checkstatus-3">결제 상태 확인 요청에 대한 응답</h4>
-            <p>결제 상태 확인 요청에 대한 응답은 아래와 같은 형태로 받게됩니다.</p>
+            <p>결제 상태 확인 요청에 대한 응답은 아래와 같은 형태로 받게됩니다. <br>
+            응답의 일부이며, 상세한 내용은 <a href="api.html#status">결제상태 API</a>를 확인해주세요.</p>
             <div class="method-example">
               <pre><code class="always-visible language-bash">{
-"code":0,                           # 응답코드
-"payToken":"example-payToken"       # 결제 고유 번호
-"orderNo":"1",                      # 상점의 주문번호
-"payMethod":"TOSS_MONEY",           # 결제 수단
-"payStatus":"REFUND_SUCCESS",       # 결제 상태
-"availableActions":["REFUND"],      # 가능한 액션 목록
-"metadata":"metadata"               # 결제 생성 시 입력한 metadata
+"code": 0,                            # 응답코드
+"payToken": "example-payToken",       # 결제 고유 토큰
+"orderNo": "1",                       # 상점의 주문번호
+"payStatus": "PAY_COMPLETE",          # 결제 상태
+"payMethod": "TOSS_MONEY",            # 결제 수단
+"amount": 15000,                      # 결제 요청금액
+"transactions": [                     # 거래 트랜잭션 목록
+ {
+    "stepType": "PAY",
+    "transactionId": "3243c76e-4669-881b-33a3b82ddf49",
+    "transactionAmount": 15000,
+    "discountAmount": 300,
+    "pointAmount": 0,
+    "paidAmount": 14700,
+    "regTs": "2020-03-01 12:33:20"
+  }
+],
+"createdTs": "2020-03-01 12:33:04",   # 최초 결제요청 시간
+"paidTs": "2020-03-01 12:33:20"       # 결제 완료 처리 시간
 }
 </code></pre>
             </div>
@@ -837,7 +850,7 @@ echo "Response: ".$result;</code></pre>
             <ul>
               <li><strong>응답코드</strong> : 요청에 대한 결과. 성공하면 '0' 입니다.</li>
               <li>
-                <strong>결제 고유 번호</strong> : 결제 생성 완료 후 받은 결제 고유번호. '주문번호'로 상태를 조회하면 이
+                <strong>결제 고유 토큰</strong> : 결제 생성 완료 후 받은 결제토큰. '주문번호'로 상태를 조회하면 이
                 값을 참조하여 '결제 고유번호 값을 알 수 있습니다.
               </li>
               <li>
@@ -851,12 +864,13 @@ echo "Response: ".$result;</code></pre>
                 <strong>결제 상태</strong> : 조회 당시의 결제 상태 (아래 '결제 상태 목록'을 참고하세요)
               </li>
               <li>
-                <strong>가능한 액션 목록</strong> : 조회 당시에 가능한 액션(취소,환불 등) 목록 (예를 들어, '결제 완료'
-                상태에서는 '환불'이 가능하나 '전액 환불'한 상태에서는 환불 불가)
+                <strong>거래 트랜잭션 목록</strong> : 조회 당시에 처리된 트랜잭션 목록(취소,환불 등)
               </li>
               <li>
-                <strong>결제 연관 data</strong> : 결제 생성 시 가맹점 측에서 해당 결제건과 연관된 정보를 metadata
-                field를 통해 기록할 수 있고, 결제 상태 조회를 통해 기록하셨던 data에 다시 접근하실 수 있습니다.
+                <strong>최초 결제요청 시간</strong> : 구매자가 최초 결제요청한 시간을 확인할 수 있습니다.
+              </li>
+              <li>
+                <strong>결제완료 처리 시간</strong> : 요청에 대한 처리를 완료한 시간을 확인할 수 있습니다.
               </li>
             </ul>
             <h4 id="checkstatus-4">결제 상태 목록</h4>
