@@ -84,9 +84,11 @@
             <li>
                 <a href="#execute">가맹점 승인</a>
             </li>
+            <!--
             <li>
                 <a href="#cancel">결제 취소</a>
             </li>
+            -->
             <li>
                 <a href="#refunds">결제 환불</a>
             </li>
@@ -180,7 +182,7 @@
                                 </div>
                                 <div class="desc">
                                     결제 취소
-                                    <br /> 결제가 완료되기 전에 구매자나 가맹점이 결제를 취소한 상태입니다. (결론적으론 금액의 이동 없이 종료된 건)
+                                    <br /> 결제가 완료되기 전에 구매자가 결제를 취소하거나 유효기간이 만료된 거래. (결론적으론 금액의 이동 없이 종료된 건)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -417,12 +419,12 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     autoExecute
-                                    <span class="type">boolean <font color=#c25300>필수</font></span>
                                     <span class="type">Max Length: 5 </span>
                                 </div>
                                 <div class="desc">
                                     자동 승인 여부 설정 <br>
-                                    <span class="text-muted">가맹점의 판매 상품에 따라 '자동 승인 설정' 을 활용할 수 있습니다. true 를 선언한 경우 resultCallback 을 필수 값으로 체크합니다. <br>
+                                    <span class="text-muted">가맹점의 판매 상품에 따라 '자동 승인 설정' 을 활용할 수 있습니다. <br>
+                                    true 를 선언한 경우 resultCallback 을 필수 값으로 체크합니다. <br>
                                     <a href="gettingstarted.html#create-9">자동 승인 설정 참고사항</a></td>
                                     </span>
                                 </div>
@@ -434,9 +436,21 @@
                                 </div>
                                 <div class="desc">
                                     결제 결과 callback URL<br>
-                                    <span class="text-muted"> 이 값은 autoExecute를 true로 사용하시는 경우에만 필수 값입니다.
+                                    <span class="text-muted"> 이 값은 autoExecute를 true로 사용하시는 경우에만 필수 값입니다.<br>
                                         토스 서버가 정상 출금 완료 후 이 곳에 입력한 URL로 성공 결과를 전송하기 때문에 가맹점 서버에서 반드시 확인하셔야 합니다.<br> callback 데이터가 수신되지 않았다면 네트워크의 문제일 수 있으니 
                                     '<a href="qna.html#faq-1">토스 방화벽 설정</a>' 을 확인해 주세요!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    callbackVersion
+                                    <span class="type">Max Length: 2 </span>
+                                </div>
+                                <div class="desc">
+                                    결제 결과 callback 버전<br>
+                                    <span class="text-muted"> 이 값은 autoExecute를 true로 사용하시는 경우에만 필수 값입니다. <br>
+                                        callback 버전에 따라 전달되는 응답 값이 다를 수 있으니 최신 버전(V2) 이용을 권장합니다. 이 값이 포함되지 않을 경우 기존의 V1 버전의 데이터가 전달됩니다.
                                     </span>
                                 </div>
                             </div>
@@ -576,16 +590,6 @@
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    metadata
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 1024 </span>
-                                </div>
-                                <div class="desc">
-                                    결제와 연관된 추가 데이터
-                                </div>
-                            </div>
-                            <div class="field clearfix">
-                                <div class="key">
                                     cardOptions
                                     <span class="type">Object</span>
                                 </div>
@@ -686,7 +690,7 @@
                         <div class="title">Definition</div>
                         <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v2/payments</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/payments \
+                        <pre><code class="curl language-bash">curl https://pay.toss.im/api/v2/payments \
     -H "Content-Type: application/json" \
     -d '{
         "orderNo":"1",
@@ -696,6 +700,7 @@
         "apiKey":"sk_test_w5lNQylNqa5lNQe013Nq",
         "autoExecute":true,
         "resultCallback":"https://YOUR-SITE.COM/callback",
+        "callbackVersion":"V2",
         "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
         "retCancelUrl": "http://YOUR-SITE.COM/close"
         }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
@@ -718,6 +723,7 @@ try {
 	jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
     jsonBody.put("autoExecute", true);
     jsonBody.put("resultCallback", "http://"http://YOUR-SITE.COM/callback");
+    jsonBody.put("callbackVersion", "V2");  
     jsonBody.put("retUrl", "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1");
     jsonBody.put("retCancelUrl", "http://YOUR-SITE.COM/close");
 
@@ -745,6 +751,7 @@ $arrayBody["productDesc"] = "테스트 결제";
 $arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
 $arrayBody["autoExecute"] = true;
 $arrayBody["resultCallback"] = "http://YOUR-SITE.COM/callback";
+$arrayBody["callbackVersion"] = "V2";
 $arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1";
 $arrayBody["retCancelUrl"] = "http://YOUR-SITE.COM/close";
 $jsonBody = json_encode($arrayBody);
@@ -771,6 +778,7 @@ data = data & "&amountTaxFree=0"
 data = data & "&productDesc=ASPtestProduct"
 data = data & "&autoExecute=true"
 data = data & "&resultCallback=http://YOUR-SITE.COM/callback"
+data = data & "&callbackVersion=V2"
 data = data & "&retUrl=http://YOUR-SITE.COM/ORDER-CHECK?orderno=1"
 data = data & "&retCancelUrl=http://YOUR-SITE.COM/close"
 
@@ -792,6 +800,7 @@ params = {
     "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
     "autoExecute": true,
     "resultCallback": "http://YOUR-SITE.COM/callback",
+    "callbackVersion": "V2",
     "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
     "retCancelUrl": "http://YOUR-SITE.COM/close"
 }
@@ -810,6 +819,7 @@ params = {
         "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq",
         "autoExecute" => true,
         "resultCallback" => "http://YOUR-SITE.COM/callback",
+        "callbackVersion" => "V2",
         "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
         "retCancelUrl": "http://YOUR-SITE.COM/close"
 }
@@ -831,15 +841,16 @@ p JSON.parse(response.body)</code></pre>
             <div class="method" id="resultcallback">
                 <div class="method-section clearfix">
                     <div class="method-description">
-                        <h4>결제 결과 Callback (resultCallback)</h4>
+                        <h4>결제 결과 callback (resultCallback)</h4>
                         <p>
                             결제 처리가 완료되면 결제 상태가 변경되고, 토스는 가맹점 서버로 변경 사항을 알려드립니다. <br><br>
                             결제완료 callback을 받았을 때, 결제완료 상태를 변경하시고 재고차감 등의 로직을 처리해 주세요.<br>
                             자동 승인 설정 시 (autoExecute가 true) 필수적으로 활용해야 합니다.
                         </p>
                         <p>
-                            * Callback 연동 전, <a href="qna.html#faq-1">방화벽 정보</a>를 반드시 확인해 주세요! <br>
+                            * callback 연동 전, <a href="qna.html#faq-1">방화벽 정보</a>를 반드시 확인해 주세요! <br>
                             * 생성된 결제 건에 resultCallback 파라미터 값이 있을 경우에만 동작합니다. <br>
+                            * 아래는 callback V2버전이며, 가맹점 측에서는 최신버전의 callback 을 이용해 주시길 부탁드립니다. (callbackVersion 설명참고)<br>
                             <font color="#AA1212"><strong>* 사전 예고 없이 field 가 추가될 수 있습니다. 추가되더라도 오류가 발생하지 않도록 연동 부탁드립니다.</strong></font>
                         </p>
                         <div class="info">
@@ -851,8 +862,9 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 20 </span>
                                 </div>
                                 <div class="desc">
-                                    PAY_SUCCESS <br>
-                                    <span class="text-muted">결제완료</span>
+                                    PAY_COMPLETE <br>
+                                    <span class="text-muted">결제 완료<br>
+                                    환불 등 '결제 완료' 이외 상태는 전달되지 않습니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -862,7 +874,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 30 </span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제 토큰
+                                    승인된 결제 토큰
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -872,7 +884,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 50 </span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제와 이어진 가맹점 생성 주문번호
+                                    결제생성 구간에서 전달된 가맹점 주문번호
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -882,9 +894,11 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 10 </span>
                                 </div>
                                 <div class="desc">
-                                    결제수단
-                                    <br/>
-                                    <br/>
+                                    승인된 결제수단
+                                    <br>
+                                    <span class="text-muted">카드 승인건의 경우, 카드 데이터가 함께 포함되어 전달됩니다.</span>
+                                    <br>
+                                    <br>
                                     <table class="table">
                                         <tr>
                                             <td>TOSS_MONEY</td>
@@ -949,7 +963,7 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     결제 완료 처리 시간<br>
-                                    형식 : 2020-03-03 14:22:37
+                                    형식 : 2020-04-03 14:22:37
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -965,15 +979,89 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
-                                    metadata
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 1024 </span>
+                                    cardCompanyCode
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 2 </span>
                                 </div>
                                 <div class="desc">
-                                    결제 생성 시 가맹점이 전달한 결제 연관정보
+                                    승인된 카드사 코드
                                 </div>
                             </div>
-
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardAuthorizationNo
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 8 </span>
+                                </div>
+                                <div class="desc">
+                                    카드 승인번호
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    spreadOut
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 8 </span>
+                                </div>
+                                <div class="desc">
+                                    사용자가 선택한 카드 할부개월<br>
+                                    <span class="text-muted">5만원 미만 금액 및 일시불 결제의 경우 0으로 리턴됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    noInterest
+                                    <span class="type">boolean</span>
+                                    <span class="type">Max Length: 5</span>
+                                </div>
+                                <div class="desc">
+                                    카드 무이자 적용 여부
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>true</td>
+                                            <td>무이자</td>
+                                        </tr>
+                                        <tr>
+                                            <td>false</td>
+                                            <td>일반</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardMethodType
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 10</span>
+                                </div>
+                                <div class="desc">
+                                    카드 타입 <br>
+                                    <span class="text-muted">승인된 카드의 타입을 구분할 수 있습니다.<br></span>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>CREDIT</td>
+                                            <td>신용카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CHECK</td>
+                                            <td>체크카드</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    salesCheckLinkUrl
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    신용카드 매출전표 호출URL<br>
+                                    <span class="text-muted">승인된 카드 결제건의 매출전표를 확인할 수 있는 URL<br></span>
+                                </div>
+                            </div>
                         </div>
                         <h3>HTTP 응답 코드</h3>
                         <div class="info">
@@ -1022,16 +1110,22 @@ p JSON.parse(response.body)</code></pre>
 Content-Type application/x-www-form-urlencoded;charset=UTF-8</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="language-bash always-visible">{
- "status": "PAY_SUCCESS",
+ "status": "PAY_COMPLETE",
  "payToken": "example-payToken",
  "orderNo": "1",
- "payMethod": "TOSS_MONEY",
+ "payMethod": "CARD",
  "amount": 3000,
  "discountedAmount": 600,
  "paidPoint": 100,
  "paidAmount": 2300,
- "paidTs": "2019-06-17 13:59:59",
- "transactionId" : "dc3b951a-9781-462e-ab5a-b8a0bea0222a"
+ "paidTs": "2020-04-03 14:22:37",
+ "transactionId" : "dc3b951a-9781-462e-ab5a-b8a0bea0222a",
+ "cardCompanyCode": 3,
+ "cardAuthorizationNo": "87654321",
+ "spreadOut": 0,
+ "noInterest": false,
+ "cardMethodType": "CREDIT",
+ "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a"
 }                            
                         </code></pre>
 
@@ -1685,6 +1779,8 @@ p JSON.parse(response.body)</code></pre>
                 </div>
             </div>
 
+
+<!--
       <div class="method" id="cancel">
                 <div class="method-section clearfix">
                     <div class="method-description">
@@ -1893,6 +1989,9 @@ p JSON.parse(response.body)</code></pre>
 
                 </div>
             </div>
+
+
+-->
 
             <div class="method" id="refunds">
                 <div class="method-section clearfix">

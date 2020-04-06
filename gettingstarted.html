@@ -128,10 +128,10 @@
               <li><a href="#create-6">결제 만료 기한</a></li>
               <li><a href="#create-8">현금영수증 발급 가능 여부</a></li>
               <li><a href="#create-9">자동 승인 설정 여부</a></li>
-              <li><a href="#create-10">결제 연관 data 기록</a></li>
               <li><a href="#create-11">복합과세 처리</a></li>
             </ul>
           </li>
+          <!-- 큰 의미가 없어 삭제처리함
           <li>
             <a href="#cancel">결제 취소하기</a>
             <ul class="nav">
@@ -141,6 +141,7 @@
               <li><a href="#cancel-4">구매자의 결제 취소 대응</a></li>
             </ul>
           </li>
+          -->
           <li>
             <a href="#execute">승인하기</a>
             <ul class="nav">
@@ -480,12 +481,12 @@ echo "Response: ".$result;</code></pre>
 "retCancelUrl":"http://YOUR-SITE.COM/close",             # 결제 취소 시 연결할 웹 URL (필수)
 "autoExecute":true,                                      # 자동 승인 설정 (필수)
 "resultCallback":"https://YOUR-SITE.COM/callback",       # 결제 결과 callback 웹 URL (필수-자동승인설정 true의 경우)
+"callbackVersion":"V2",                                  # callback 버전 (필수-자동승인설정 true의 경우)
 "amountTaxable":22727,                                   # 결제 금액 중 과세금액
 "amountVat":2273,                                        # 결제 금액 중 부가세
 "amountServiceFee":0,                                    # 결제 금액 중 봉사료
 "expiredTime":"2019-06-17 12:47:35",                     # 결제 만료 예정 시각
 "cashReceipt":true,                                      # 현금영수증 발급 가능 여부
-"metadata":"{'size':'XL','color':'Red'}"                 # metadata 값
 }'</code></pre>
                 </div>
                 <h4 id="create-1">결제 생성 API의 Endpoint</h4>
@@ -616,10 +617,6 @@ echo "Response: ".$result;</code></pre>
                   아래 그림을 참고하세요.
                   <img src="images/flow_autoExecute_modify.png" alt="결제 승인 흐름" />
                 </p>
-                <h4 id="create-10">결제 연관 data 기록 (metadata)</h4>
-                <p>
-                  생성하는 결제 건과 연관된 추가적인 데이터가 있다면 이 파라미터를 활용하여 저장해둘 수 있습니다.
-                </p>
                 <h4 id="create-11">복합과세 처리 (amount-)</h4>
                 <p>
                   전체 결제 금액 중 '비과세' 처리해야할 금액이 섞여있거나 부가세, 봉사료 비중을 원하는대로 설정하고
@@ -655,6 +652,8 @@ echo "Response: ".$result;</code></pre>
               </div>
             </div>
 
+
+<!--
         <div class="method" id="cancel">
           <div class="method-description">
             <h3>결제 취소하기</h3>
@@ -695,6 +694,9 @@ echo "Response: ".$result;</code></pre>
             </p>
           </div>
         </div>
+-->
+
+
         <div class="method" id="execute">
           <div class="method-description">
             <h3>승인하기</h3>
