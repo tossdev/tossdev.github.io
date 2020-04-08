@@ -591,7 +591,7 @@
                             <div class="field clearfix">
                                 <div class="key">
                                     cardOptions
-                                    <span class="type">Object</span>
+                                    <span class="type">object</span>
                                 </div>
                                 <div class="desc">
                                     결제창에 특정 카드만 노출하고 싶다면, options 변수에 토스 카드코드를 추가해 주세요.
@@ -599,6 +599,32 @@
                                     "cardOptions": <br>{"options": [{"cardCompanyCode":3},{"cardCompanyCode":5}]}
                                 </div>
                             </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    installment
+                                    <span class="type">string </span>
+                                    <span class="type">Max Length: 10 </span>
+                                </div>
+                                <div class="desc">
+                                    할부 제한 타입<br>
+                                    <span class="text-muted">신용카드 결제 시, 사용자의 할부 선택을 제한할 수 있습니다.</span>
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>USE</td>
+                                            <td>할부 사용(default)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NOT_USE</td>
+                                            <td>할부 미사용</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+
+
                             </div>
                         <div class="info">
                             <h4>response</h4>
