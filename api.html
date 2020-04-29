@@ -1063,7 +1063,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 10</span>
                                 </div>
                                 <div class="desc">
-                                    카드 타입 <br>
+                                    카드 타입<br>
                                     <span class="text-muted">승인된 카드의 타입을 구분할 수 있습니다.<br></span>
                                     <br/>
                                     <table class="table">
@@ -1076,6 +1076,17 @@ p JSON.parse(response.body)</code></pre>
                                             <td>체크카드</td>
                                         </tr>
                                     </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    마스킹된 카드번호<br>
+                                    <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹됩니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1643,6 +1654,17 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    cardNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    마스킹된 카드번호<br>
+                                    <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     msg
                                     <span class="type">string</span>
                                     <span class="type">Max Length: 120</span>
@@ -1797,7 +1819,8 @@ p JSON.parse(response.body)</code></pre>
     "spreadOut": 0,
     "noInterest": false,
     "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a",
-    "cardMethodType": "CREDIT"
+    "cardMethodType": "CREDIT",
+    "cardNumber": "536100******9087"
 }
 </code>
             </pre>
@@ -2818,6 +2841,17 @@ p JSON.parse(response.body)</code></pre>
                                             <td>체크카드</td>
                                         </tr>
                                     </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    마스킹된 카드번호<br>
+                                    <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹됩니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
