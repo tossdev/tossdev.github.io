@@ -2236,6 +2236,53 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    refundedAmount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                    환불요청 금액<br>
+                                    <span class="text-muted">가맹점에서 환불 요청시 전달한 amount 금액</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    refundedDiscountAmount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                    환불요청 금액 중 실 차감된 즉시할인 금액<br>
+                                    <span class="text-muted">환불요청 시 전달한 amount 금액 중 토스 서버에서 자동 차감된 즉시할인 금액으로
+                                    차감액이 없으면 0으로 리턴됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    refundedPoint
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                    환불요청 금액 중 실 차감된 토스포인트 금액<br>
+                                    <span class="text-muted">환불요청 시 전달한 amount 금액 중 토스 서버에서 자동 차감된 토스포인트 금액으로
+                                    차감액이 없으면 0으로 리턴됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    refundedPaidAmount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                    환불요청 금액 중 실 차감된 지불수단 금액<br>
+                                    <span class="text-muted">환불요청 시 전달한 amount 금액 중 토스 서버에서 자동 차감된 지불수단 금액으로
+                                    차감액이 없으면 0으로 리턴됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     approvalTime
                                     <span class="type">string</span>
                                     <span class="type">Max Length: 20</span>
@@ -2413,11 +2460,15 @@ p JSON.parse(response.body)</code></pre>
                         <pre><code class="language-javascript always-visible">{ 
  "code": 0,
  "refundNo": "3243c76e-e9cf-4669-881b-33a3b82ddf49",
- "approvalTime": "2019-07-18 11:32:52",
+ "approvalTime": "2020-04-29 11:32:52",
  "refundableAmount": 2000,
  "discountedAmount": 0,
- "paidPoint": 0,
- "paidAmount": 2000,
+ "paidPoint": 1000,
+ "paidAmount": 1000,
+ "refundedAmount": -2000,
+ "refundedDiscountAmount": 0,
+ "refundedPoint": 0,
+ "refundedPaidAmount": -2000,
  "payToken": "example-payToken",
  "transactionId": "3243c76e-e9cf-4669-881b-33a3b82ddf49"
 }
@@ -2934,7 +2985,7 @@ httpRequest.Send data
 postResponse = httpRequest.ResponseText
 
 Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
-
+ 
 url = "https://pay.toss.im/api/v2/status"
 params = {
     "orderNo": "1",
