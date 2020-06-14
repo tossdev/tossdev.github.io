@@ -450,7 +450,9 @@
                                 <div class="desc">
                                     결제 결과 callback 버전<br>
                                     <span class="text-muted"> 이 값은 autoExecute를 true로 사용하시는 경우에만 필수 값입니다. <br>
-                                        callback 버전에 따라 전달되는 응답 값이 다를 수 있으니 최신 버전(V2) 이용을 권장합니다. 이 값이 포함되지 않을 경우 기존의 V1 버전의 데이터가 전달됩니다.
+                                        callback 버전에 따라 전달되는 응답 값이 다를 수 있으니 최신 버전(V2) 이용을 권장합니다. 이 값이 포함되지 않을 경우 기존의 V1 버전의 데이터가 전달됩니다. <br>
+                                        V1 : callback 리턴값을 파라미터로 받을 수 있습니다.<br>
+                                        V2 : callback 리턴값을 JSON으로 받을 수 있습니다.
                                     </span>
                                 </div>
                             </div>
@@ -1144,7 +1146,7 @@ p JSON.parse(response.body)</code></pre>
                     <div class="method-example">
                         <div class="title">Definition</div>
                         <pre><code class="language-bash always-visible">POST https://YOUR-SITE.COM/callback (결제 생성 시 가맹점에서 설정한 callback URL)
-Content-Type application/x-www-form-urlencoded;charset=UTF-8</code></pre>
+Content-Type application/json;charset=UTF-8</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="language-bash always-visible">{
  "status": "PAY_COMPLETE",
