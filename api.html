@@ -961,6 +961,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="text-muted">할인된 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.</span>
                                 </div>
                             </div>
+			    <!--
                             <div class="field clearfix">
                                 <div class="key">
                                     paidPoint
@@ -972,6 +973,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="text-muted">결제에 사용된 토스 포인트 금액이 리턴되며, 미사용의 경우 0 으로 리턴됩니다.</span>
                                 </div>
                             </div>
+			    -->
                             <div class="field clearfix">
                                 <div class="key">
                                     paidAmount
@@ -1155,7 +1157,6 @@ Content-Type application/json;charset=UTF-8</code></pre>
  "payMethod": "CARD",
  "amount": 3000,
  "discountedAmount": 600,
- "paidPoint": 100,
  "paidAmount": 2300,
  "paidTs": "2020-04-03 14:22:37",
  "transactionId" : "dc3b951a-9781-462e-ab5a-b8a0bea0222a",
@@ -1293,6 +1294,7 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                     <span class="text-muted">할인된 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.</span>
                                 </div>
                             </div>
+			    <!--
                             <div class="field clearfix">
                                 <div class="key">
                                     paidPoint
@@ -1304,6 +1306,7 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                     <span class="text-muted">결제에 사용된 토스 포인트 금액이 리턴되며, 미사용의 경우 0 으로 리턴됩니다.</span>
                                 </div>
                             </div>
+			    -->
                             <div class="field clearfix">
                                 <div class="key">
                                     paidAmount
@@ -1674,7 +1677,6 @@ p JSON.parse(response.body)</code></pre>
     "amount": 2000,
     "approvalTime": "2019-07-18 11:28:02",
     "discountedAmount": 0,
-    "paidPoint": 0,
     "paidAmount": 2000,
     "payMethod": "CARD",
     "payToken": "example-payToken",
@@ -2099,6 +2101,7 @@ p JSON.parse(response.body)</code></pre>
                                     </span>
                                 </div>
                             </div>
+			    <!--
                             <div class="field clearfix">
                                 <div class="key">
                                     paidPoint
@@ -2112,6 +2115,7 @@ p JSON.parse(response.body)</code></pre>
                                     </span>
                                 </div>
                             </div>
+			    -->
                             <div class="field clearfix">
                                 <div class="key">
                                     paidAmount
@@ -2352,7 +2356,6 @@ p JSON.parse(response.body)</code></pre>
  "approvalTime": "2020-04-29 11:32:52",
  "refundableAmount": 2000,
  "discountedAmount": 0,
- "paidPoint": 1000,
  "paidAmount": 1000,
  "refundedAmount": -2000,
  "refundedDiscountAmount": 0,
@@ -2548,6 +2551,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="text-muted">토스 결제창에서 자동으로 적용된 즉시할인 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.</span>
                                 </div>
                             </div>
+			    <!--
                             <div class="field clearfix">
                                 <div class="key">
                                     paidPoint
@@ -2560,6 +2564,7 @@ p JSON.parse(response.body)</code></pre>
                                     단, 포인트 사용 유무는 상점별로 상이할 수 있습니다.</span>
                                 </div>
                             </div>
+			    -->
                             <div class="field clearfix">
                                 <div class="key">
                                     paidAmount
@@ -2919,7 +2924,6 @@ p JSON.parse(response.body)</code></pre>
     "payMethod": "TOSS_MONEY",
     "amount": 15000,
     "discountedAmount": 0,
-    "paidPoint": 0,
     "paidAmount": 0,
     "amountTaxable": 0,
     "amountTaxFree": 0,
