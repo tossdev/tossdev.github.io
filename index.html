@@ -4,13 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="https://static.toss.im/tds/favicon/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="https://static.toss.im/tds/favicon/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="https://static.toss.im/tds/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="https://static.toss.im/tds/favicon/favicon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="196x196" href="https://static.toss.im/tds/favicon/favicon-196x196.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="https://static.toss.im/tds/favicon/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="https://static.toss.im/tds/favicon/apple-touch-icon-72x72.png" />
+    <link
+      rel="shortcut icon"
+      href="https://static.toss.im/tds/favicon/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://static.toss.im/tds/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://static.toss.im/tds/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="https://static.toss.im/tds/favicon/favicon-48x48.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="196x196"
+      href="https://static.toss.im/tds/favicon/favicon-196x196.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="https://static.toss.im/tds/favicon/apple-touch-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="https://static.toss.im/tds/favicon/apple-touch-icon-72x72.png"
+    />
     <link
       rel="apple-touch-icon"
       sizes="114x114"
@@ -31,11 +62,18 @@
       sizes="152x152"
       href="https://static.toss.im/tds/favicon/apple-touch-icon-152x152.png"
     />
-    <meta name="msapplication-TileImage" content="https://static.toss.im/tds/favicon/mstile-144x144.png" />
+    <meta
+      name="msapplication-TileImage"
+      content="https://static.toss.im/tds/favicon/mstile-144x144.png"
+    />
     <title>토스 결제</title>
 
     <!-- stylesheets -->
-    <link rel="stylesheet" type="text/css" href="https://static.toss.im/tds/current/css/tds.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://static.toss.im/tds/current/css/tds.min.css"
+    />
     <link rel="stylesheet" type="text/css" href="css/tossdev.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
@@ -43,40 +81,50 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
   </head>
 
-  <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+  <body
+    oncontextmenu="return false"
+    ondragstart="return false"
+    onselectstart="return false"
+  >
     <!-- Google Tag Manager -->
     <noscript
       ><iframe
         src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG"
         height="0"
         width="0"
-        style="display:none;visibility:hidden"
+        style="display: none; visibility: hidden"
       ></iframe
     ></noscript>
     <script>
-      (function(w, d, s, l, i) {
+      (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({
-          'gtm.start': new Date().getTime(),
-          event: 'gtm.js'
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
         });
         var f = d.getElementsByTagName(s)[0],
           j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
+          dl = l != "dataLayer" ? "&l=" + l : "";
         j.async = true;
-        j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+        j.src = "//www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-TPTMLG');
+      })(window, document, "script", "dataLayer", "GTM-TPTMLG");
     </script>
     <!-- End Google Tag Manager -->
 
     <nav id="header">
       <div class="logo">
-        <img class="logo-img" src="https://static.toss.im/tds/icon/svg/logo-only-icon.svg" alt="" />
+        <img
+          class="logo-img"
+          src="https://static.toss.im/tds/icon/svg/logo-only-icon.svg"
+          alt=""
+        />
         <span>결제 연동 가이드</span>
       </div>
       <div class="header-menu">
-        <a class="button button button--size-medium" href="https://product.toss.im/pay/merchant/apply.html"
+        <a
+          class="button button button--size-medium"
+          href="https://product.toss.im/pay/merchant/apply.html"
           >계약 문의</a
         >
       </div>
@@ -90,7 +138,15 @@
             토스 결제 적용 개발을 위해 작동 원리부터 <br />
             예제 코드까지, 친절하게 안내해드립니다.
           </p>
-          <a class="button button button--style-weak button--type-dark button--size-medium" href="gettingstarted.html"
+          <a
+            class="
+              button
+              button
+              button--style-weak
+              button--type-dark
+              button--size-medium
+            "
+            href="gettingstarted.html"
             >보기</a
           >
         </div>
@@ -100,18 +156,36 @@
             토스가 제공하는 각종 API 목록과 <br />
             각 API에 대한 상세한 설명을 조회할 수 있습니다.
           </p>
-          <a class="button button button--style-weak button--type-dark button--size-medium" href="api.html">보기</a>
+          <a
+            class="
+              button
+              button
+              button--style-weak
+              button--type-dark
+              button--size-medium
+            "
+            href="api.html"
+            >보기</a
+          >
         </div>
       </div>
 
       <div class="row">
-      <!--20200402 추가-->
+        <!--20200402 추가-->
         <div class="col-sm menu" data-aos="fade-in" data-aos-delay="100">
           <h3>토스 결제 데모</h3>
-          <p>
-            직접 토스 결제를 경험해보세요. <br />
-          </p>
-          <a class="button button button--style-weak button--type-dark button--size-medium" href="https://pay.toss.im/payfront/demo/payments">해보기</a>
+          <p>직접 토스 결제를 경험해보세요. <br /></p>
+          <a
+            class="
+              button
+              button
+              button--style-weak
+              button--type-dark
+              button--size-medium
+            "
+            href="https://pay.toss.im/payfront/demo/payments"
+            >해보기</a
+          >
         </div>
         <!--20190410 추가-->
         <div class="col-sm menu" data-aos="fade-in" data-aos-delay="200">
@@ -120,20 +194,39 @@
             토스 결제 연동에 도움이 될 만한 항목들을<br />
             안내 드립니다. 궁금하신 사항을 확인해보세요.
           </p>
-          <a class="button button button--style-weak button--type-dark button--size-medium" href="qna.html">보기</a>
+          <a
+            class="
+              button
+              button
+              button--style-weak
+              button--type-dark
+              button--size-medium
+            "
+            href="qna.html"
+            >보기</a
+          >
         </div>
         <!--끝-->
       </div>
 
       <div class="row">
-
         <div class="col-sm menu" data-aos="fade-in" data-aos-delay="100">
           <h3>토스 결제 서비스 정책</h3>
           <p>
             환불, 정산 등 토스 결제 서비스에 대한 <br />
             상세 정책을 확인하세요.
           </p>
-          <a class="button button button--style-weak button--type-dark button--size-medium" href="policy.html">보기</a>
+          <a
+            class="
+              button
+              button
+              button--style-weak
+              button--type-dark
+              button--size-medium
+            "
+            href="policy.html"
+            >보기</a
+          >
         </div>
         <div class="col-sm menu" data-aos="fade-in" data-aos-delay="200">
           <h3>토스 결제 브랜드 Kit</h3>
@@ -142,8 +235,14 @@
             가이드를 활용하세요.
           </p>
           <a
-            class="button button button--style-weak button--type-dark button--size-medium"
-            href="https://static.toss.im/assets/pay/files/Toss_Brand_Identity_Guide_public.zip"
+            class="
+              button
+              button
+              button--style-weak
+              button--type-dark
+              button--size-medium
+            "
+            href="https://static.toss.im/assets/pay/files/Toss_BrandKit_public.zip"
             download
             >다운로드</a
           >
