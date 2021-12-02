@@ -1,7 +1,7 @@
 package viva.republica.toss.example;
 
 /**
- * 토스 결제를 위해 필요한 URL, PARAMETER 정보를 제공합니다.
+ * 토스페이를 위해 필요한 URL, PARAMETER 정보를 제공합니다.
  */
 
 public class TossConstants {
@@ -11,17 +11,17 @@ public class TossConstants {
     }
 
     /**
-     * 토스 결제 HOME URL
+     * 토스페이 HOME URL
      */
     private static final String TOSS_PAY_HOME = "https://pay.toss.im/tosspay";
 
     /**
-     * 토스 결제 주문 HOME URL
+     * 토스페이 주문 HOME URL
      */
     private static final String ORDER_HOME = TOSS_PAY_HOME + "/order";
 
     /**
-     * 토스 결제 생성 API URL
+     * 토스페이 생성 API URL
      */
     public static final String PAYMENT_API_URL = TOSS_PAY_HOME + "/api/v1/payments";
 

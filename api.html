@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>토스 결제 API</title>
+    <title>토스페이 API</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="https://static.toss.im/tds/favicon/favicon.ico"/>
 <link rel="icon" type="image/png" sizes="16x16" href="https://static.toss.im/tds/favicon/favicon-16x16.png"/>
@@ -111,22 +111,22 @@
             <div class="method" id="intro">
                 <div class="method-section clearfix">
                     <div class="method-description">
-                        <h3>토스 결제 API 소개</h3>
+                        <h3>토스페이 API 소개</h3>
                         <p>
                             토스를 통한 결제 서비스를 사용하기 위한 API입니다.<br>
-                            토스 결제를 활용한 개발을 처음 시작하신다면, 좀 더 친절한 안내를 먼저 확인해보세요! <br><br>
+                            토스페이를 활용한 개발을 처음 시작하신다면, 좀 더 친절한 안내를 먼저 확인해보세요! <br><br>
 
-                            <strong>토스 결제 개발 가이드는 수시로 업데이트 됩니다. 사전 예고없이 업데이트 될 수 있으니 지속적으로 확인해 주시길 부탁드립니다.</strong>
+                            <strong>토스페이 개발 가이드는 수시로 업데이트 됩니다. 사전 예고없이 업데이트 될 수 있으니 지속적으로 확인해 주시길 부탁드립니다.</strong>
 
                             <br>
-                            <br><a href="gettingstarted.html">&gt;&gt; '토스 결제 시작하기' 문서로 바로가기</a>
+                            <br><a href="gettingstarted.html">&gt;&gt; '토스페이 시작하기' 문서로 바로가기</a>
                         </p>
                         <div class="alert alert-warning" role="alert">
                           <i class="fa fa-exclamation-triangle pull-left" aria-hidden="true" style="margin-top:8px;margin-left:6px"></i>
-                            토스 결제는 결제 과정 중의 보안을 위해 pay.toss.im의 결제 API HTTPS는 TLS v1.1 이상만을 지원합니다.
+                            토스페이는 결제 과정 중의 보안을 위해 pay.toss.im의 결제 API HTTPS는 TLS v1.1 이상만을 지원합니다.
                             SSL은 필수이며 적용이 되어 있지 않은 서버에서는 이용이 불가합니다.                   
                         </div>
-                        <p><br><strong>토스 결제 서비스를 지원하는 브라우저는 다음과 같습니다.</strong></p>
+                        <p><br><strong>토스페이 서비스를 지원하는 브라우저는 다음과 같습니다.</strong></p>
                         <p>
                             PC 브라우저, Android, iOS 모두 TLS 1.1 이상의 환경에서 동작이 가능하며, 디바이스 같은 경우 토스 앱의 최소 지원 버전 기준입니다.<br>
                             토스 앱 최신버전이 아닌 경우, 결제 진행이 원활하지 않을 수 있으니 가급적 최신 버전의 토스앱을 이용해 주시길 부탁드립니다.
@@ -138,10 +138,10 @@
                                 <li>Java 를 사용하시는 경우, jdk 1.8 이상 버전 사용을 권장합니다</li>
                             </ul>
 
-                        <p><br><strong>토스 결제는 iframe 방식을 공식적으로 지원하지 않습니다. <br>
+                        <p><br><strong>토스페이는 iframe 방식을 공식적으로 지원하지 않습니다. <br>
                          iframe 방식을 이용하는 경우 결제가 원활하지 않을 수 있으므로 페이지 전환방식의 연동을 권장드립니다. </strong><br><br>
 
-                        <strong>또한, 토스 결제는 기본적으로 Server to Server 호출 방식을 지향합니다. <br>
+                        <strong>또한, 토스페이는 기본적으로 Server to Server 호출 방식을 지향합니다. <br>
                          웹 브라우저를 통하여 클라이언트 단에서 토스 도메인으로 직접 결제 API를 호출하는 방식을 사용할 경우,<br>
                          결제와 관련된 데이터가 외부에 노출되어 보안사고가 발생할 수 있으니 유의해 주시길 부탁드립니다. </strong></p>
                     </div>
@@ -315,7 +315,7 @@
                         <p>
                             결제 생성 완료 후, 구매자의 결제 인증을 얻어 완료처리하는 방법은 아래 문서를 참고하세요.
                             <br>
-                            <a href="gettingstarted.html#overview-3">토스 결제 시작하기 > 3. 구매자 인증 받기</a>
+                            <a href="gettingstarted.html#overview-3">토스페이 시작하기 > 3. 구매자 인증 받기</a>
                         </p>
                         <div class="info">
                             <h4>endpoint</h4>
@@ -392,7 +392,7 @@
                                     <span class="type">Max Length: 255 </span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제창에 진입한 사용자가 결제를 중단할때 사용자를 이동시킬 가맹점 취소 페이지 <br>
+                                    토스페이창에 진입한 사용자가 결제를 중단할때 사용자를 이동시킬 가맹점 취소 페이지 <br>
                                     <span class="text-muted">이 값을 사용하면 토스 서버가 retCancelUrl 을 실행시킬 취소 버튼을 생성하고,
                                         구매자는 브라우저나 앱을 강제로 종료하지 않고 가맹점의 취소 페이지로 이동할 수 있습니다. 구매자 편의를 위하여 반드시 활용해주세요!<br>
                                     <font color="#AA1212">
@@ -409,7 +409,7 @@
                                 </div>
                                 <div class="desc">
                                     결제 완료 후 연결할 가맹점 측 앱 스킴 값<br> 
-                                    <span class="text-muted">가맹점의 결제 구현환경이 App to App인 경우 retAppScheme 값을 선언해 주시면 토스 결제 완료 후 가맹점 앱으로 redirect 할 수 있습니다. <br>
+                                    <span class="text-muted">가맹점의 결제 구현환경이 App to App인 경우 retAppScheme 값을 선언해 주시면 토스페이 완료 후 가맹점 앱으로 redirect 할 수 있습니다. <br>
                                     <font color="#AA1212">단, 사용자의 진입점이 앱이 아닌 일반 웹브라우저인 경우 retAppScheme가 포함되어 있다면 이전 브라우저가 뜨지 않아 결제가 완료될 수 없으니 반드시 유념해 주세요. </font><br>
                                     <strong>iOS 앱 결제의 경우 필수 구현을 권장합니다. iOS 특성 상, 자동 앱 전환이 되지 않기 때문에 가맹점 앱 스킴 값을 이 곳에 선언해 주셔야 인증 후 가맹점 앱으로 랜딩됩니다.</strong> safari 등 모바일 웹 브라우저에서 자동 전환되지 않는 이슈는 OS 이슈인 점 참고 부탁드립니다. (Ex. testshop://) <br>
                                     <a href="gettingstarted.html#create-3">토스 앱 가이드 참고사항</a></td>
@@ -486,7 +486,7 @@
                                 </div>
                                 <div class="desc">
                                     결제 금액 중 과세금액<br>
-                                    <span class="text-muted">별도의 과세액을 설정하지 않고, 비과세 금액을 0원으로 보내주시면 토스 결제 서버에서 자동으로 과세와 부가세를 계산합니다.</span>
+                                    <span class="text-muted">별도의 과세액을 설정하지 않고, 비과세 금액을 0원으로 보내주시면 토스페이 서버에서 자동으로 과세와 부가세를 계산합니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -661,7 +661,7 @@
                                     <span class="type">Max Length: 255 </span>
                                 </div>
                                 <div class="desc">
-                                    결제를 진행할 수 있는 토스 결제 웹페이지 URL<br>
+                                    결제를 진행할 수 있는 토스페이 웹페이지 URL<br>
                                     <span class="text-muted">토스가 전달한 값 그대로를 구매자에게 띄워주세요.</span>
                                 </div>
                             </div>
@@ -672,7 +672,7 @@
                                     <span class="type">Max Length: 30 </span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제 토큰<br>
+                                    토스페이 토큰<br>
                                     매회 유니크한 토큰 값이 생성됩니다. 가맹점에서는 이 값을 반드시 저장하고 관리하셔야 합니다.
                                 </div>
                             </div>
@@ -1184,7 +1184,7 @@ Content-Type application/json;charset=UTF-8</code></pre>
                             구매자 인증 완료 상태(PAY_APPROVED)의 결제 건을 가맹점이 주체가 되어 최종 승인하고 결제를 완료 처리합니다.<br>
                             <br> 결제 승인에 관한 자세한 내용은 아래 문서를 참고하세요.
                             <br>
-                            <a href="gettingstarted.html#create-9">토스 결제 시작하기 > 결제 승인하기</a><br><br>
+                            <a href="gettingstarted.html#create-9">토스페이 시작하기 > 결제 승인하기</a><br><br>
                             필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 최종 승인할지 알려주세요.<br>
                             필요에 따라 결제건의 유효성 검증을 할 수 있습니다.<br><br>
                             <font color="#AA1212"><strong>
@@ -1222,7 +1222,7 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                     <span class="type">Max Length: 30 </span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제 토큰 (승인할 결제 건의 토큰값)
+                                    토스페이 토큰 (승인할 결제 건의 토큰값)
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1952,7 +1952,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제 토큰
+                                    토스페이 토큰
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1990,7 +1990,7 @@ p JSON.parse(response.body)</code></pre>
                                     환불할 금액
                                     <br />
                                     <span class="text-muted">미입력시 환불할 결제건의 남은 전액을 환불 처리하며, 부분환불 시 필수로 amount를 활용해주세요. <br>
-                                    만일 즉시할인이 적용된 거래의 부분환불이 필요한 경우, 가맹점에서는 환불이 필요한 총 요청 금액만 전달해 주시면됩니다. 계산은 토스 결제 서버에서 자동으로 처리합니다.
+                                    만일 즉시할인이 적용된 거래의 부분환불이 필요한 경우, 가맹점에서는 환불이 필요한 총 요청 금액만 전달해 주시면됩니다. 계산은 토스페이 서버에서 자동으로 처리합니다.
                                     </span>
                                 </div>
                             </div>
@@ -2098,7 +2098,7 @@ p JSON.parse(response.body)</code></pre>
                                     할인된 금액<br>
                                     <span class="text-muted">환불 성공 후 남은 할인적용 금액이 전달되고, 전액 환불이거나 할인 적용이 안되었다면 0 을 리턴합니다.<br>
                                     예를들어, 10% 할인을 받아 10,000원 결제를 9,000에 결제했고, 4,000원을 부분 환불하면 최종적으로 6,000원 결제의 600원 할인을 받은 것이 되므로 discountedAmount 값은 600원으로 리턴됩니다.<br>
-                                    가맹점 측에서는 환불요청 금액만 전달해 주시면 되고, 토스 결제 서버에서 자동으로 우선순위를 지정하여 할인금액을 차감합니다.
+                                    가맹점 측에서는 환불요청 금액만 전달해 주시면 되고, 토스페이 서버에서 자동으로 우선순위를 지정하여 할인금액을 차감합니다.
                                     </span>
                                 </div>
                             </div>
@@ -2411,7 +2411,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 50</span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제 토큰 또는 가맹점 주문번호
+                                    토스페이 토큰 또는 가맹점 주문번호
                                 </div>
                             </div>
                         </div>
@@ -2446,7 +2446,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 30</span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제 토큰 <br>
+                                    토스페이 토큰 <br>
                                     <span class="text-muted">상태조회가 필요한 거래건의 결제토큰을 입력해 주세요.</span>
                                 </div>
                             </div>
@@ -2507,7 +2507,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 50</span>
                                 </div>
                                 <div class="desc">
-                                    토스 결제와 연계된 상점 주문번호
+                                    토스페이와 연계된 상점 주문번호
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2550,7 +2550,7 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     즉시할인이 적용된 금액<br>
-                                    <span class="text-muted">토스 결제창에서 자동으로 적용된 즉시할인 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.</span>
+                                    <span class="text-muted">토스페이창에서 자동으로 적용된 즉시할인 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.</span>
                                 </div>
                             </div>
 			    <!--
@@ -2562,7 +2562,7 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     토스 포인트가 적용된 금액<br>
-                                    <span class="text-muted">토스 결제창에서 적용된 토스 포인트 금액이 리턴되며, 적용이 없으면 0으로 리턴됩니다.<br>
+                                    <span class="text-muted">토스페이창에서 적용된 토스 포인트 금액이 리턴되며, 적용이 없으면 0으로 리턴됩니다.<br>
                                     단, 포인트 사용 유무는 상점별로 상이할 수 있습니다.</span>
                                 </div>
                             </div>
