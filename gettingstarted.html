@@ -402,6 +402,17 @@ echo "Response: ".$result;</code></pre>
                 class=" language-http"
               ><code class="always-visible  language-http">https://pay.toss.im/payfront/auth?payToken=example-payToken</code></pre>
             </div>
+            <p><strong>checkoutPage URL로 이동시킬때 아래 사항을 주의해주세요.</strong></p>
+            <ul>
+              <li><strong>checkoutPage를 iframe으로 열지마세요.</li></strong> iframe을 한겹 또는 여러겹을 열어 그 안에서 checkoutPage를 로드하면 토스앱에서 구매자 인증 후에 retUrl로 리다이렉트가 되지 않아 결제 승인이 되지 않을 수 있습니다.
+              <li>
+                <strong>Android 앱의 인앱브라우저(WebView)에서 checkoutPage를 여는 경우엔 <a href="https://developer.android.com/reference/android/webkit/WebViewClient#shouldOverrideUrlLoading(android.webkit.WebView,%20android.webkit.WebResourceRequest)">shouldOverrideUrlLoading</a> 메서드를 구현해서 retUrl로 리다이렉트가 잘 되도록 해주세요.</strong> 이 메서드가 모든 경우에 true를 반환하게 되면 WebView에서 리다이렉트가 되지 않아 결제 승인이 되지 않습니다. 아래 문서를 참고해주세요.
+                <ul>
+                  <li><a href="https://developer.android.com/reference/android/webkit/WebViewClient#shouldOverrideUrlLoading(android.webkit.WebView,%20android.webkit.WebResourceRequest)">shouldOverrideUrlLoading 문서</a></li>
+                  <li><a href="https://medium.com/nerd-for-tech/androids-webview-common-challenges-and-it-s-solution-part-1-9b970b95a482">https://medium.com/nerd-for-tech/androids-webview-common-challenges-and-it-s-solution-part-1-9b970b95a482</a></li>
+                </ul>
+              </li>
+            </ul>
             <p>
               <br />
               구매자는 호출된 토스 화면을 통해 결제 수단을 선택한 후 결제를 진행할 수 있습니다.
