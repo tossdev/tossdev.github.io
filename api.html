@@ -1263,6 +1263,28 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                 </div>
                             </div>
                             <div class="field clearfix">
+                                <div class="mode">
+                                    code
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 4</span>
+                                </div>
+                                <div class="desc">
+                                    결제환경
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>LIVE</td>
+                                            <td>실거래용</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TEST</td>
+                                            <td>테스트용</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
                                 <div class="key">
                                     approvalTime
                                     <span class="type">string</span>
@@ -2377,7 +2399,7 @@ p JSON.parse(response.body)</code></pre>
                     <div class="method-description">
                         <h3>결제 상태 확인</h3>
                         <p>
-                            생성된 결제건의 거래 상태와 거래 드랜잭션을 조회할 수 있습니다. <br>
+                            생성된 결제건의 거래 상태와 거래 트랜잭션을 조회할 수 있습니다. <br>
                             상황에 따라, 승인 혹은 환불 응답을 수신하지 못한 경우에도 활용 가능합니다.
                         </p>
                         <div class="info">
@@ -2435,6 +2457,28 @@ p JSON.parse(response.body)</code></pre>
                                         <tr>
                                             <td>-1</td>
                                             <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="mode">
+                                    code
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 4</span>
+                                </div>
+                                <div class="desc">
+                                    결제환경
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>LIVE</td>
+                                            <td>실거래용</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TEST</td>
+                                            <td>테스트용</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -2718,6 +2762,40 @@ p JSON.parse(response.body)</code></pre>
                             </div>
                             <div class="field clearfix">
                                 <div class="key">
+                                    cardUserType
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    카드 사용자 구분
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>PERSONAL</td>
+                                            <td>본인 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PERSONAL_FAMILY</td>
+                                            <td>가족 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PERSONAL</td>
+                                            <td>법인지정 결제계좌 임직원</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PRIVATE</td>
+                                            <td>법인 공용</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_COMPANY</td>
+                                            <td>법인지정 결제계좌 회사(하나카드만)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
                                     cardNumber
                                     <span class="type">string</span>
                                     <span class="type">Max Length: 20</span>
@@ -2921,40 +2999,47 @@ response = http.request(request)
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{
-    "code": 0,
-    "payToken": "example-payToken",
-    "orderNo": "1",
-    "payStatus": "REFUND_SUCCESS",
-    "payMethod": "TOSS_MONEY",
-    "amount": 15000,
-    "discountedAmount": 0,
-    "paidAmount": 0,
-    "amountTaxable": 0,
-    "amountTaxFree": 0,
-    "amountVat": 0,
-    "amountServiceFee": 0,
-    "transactions": [
-        {
-            "stepType": "PAY",
-            "transactionId": "3243c76e-e9cf-4669-881b-33a3b82ddf49",
-            "transactionAmount": 15000,
-            "discountAmount": 300,
-            "paidAmount": 14700,
-            "regTs": "2020-03-01 12:33:20"
-        },
-        {
-            "stepType": "REFUND",
-            "transactionId": "2da1ca05-d91d-410f-976d-7a610242da8a",
-            "paidAmount": -14700,
-            "transactionAmount": -15000,
-            "discountAmount": -300,
-            "regTs": "2020-03-01 12:34:11"
-        }
-    ],
-    "createdTs": "2020-03-01 12:33:04",
-    "paidTs": "2020-03-01 12:33:20"
-
-}</code>
+                            "code": 0,
+                            "mode": "LIVE",
+                            "payToken": "rDgrfe4YRBnTNLo5lwpqb9",
+                            "orderNo": "TEST-2023-02-09T06:44:04.217Z",
+                            "payStatus": "PAY_COMPLETE",
+                            "payMethod": "CARD",
+                            "amount": 1000,
+                            "discountedAmount": 0,
+                            "paidPoint": 0,
+                            "paidAmount": 1000,
+                            "refundableAmount": 1000,
+                            "amountTaxable": 909,
+                            "amountTaxFree": 0,
+                            "amountVat": 91,
+                            "amountServiceFee": 0,
+                            "disposableCupDeposit": 0,
+                            "card": {
+                                "noInterest": false,
+                                "spreadOut": 0,
+                                "cardAuthorizationNo": "30019610",
+                                "cardMethodType": "CREDIT",
+                                "cardUserType": "PERSONAL",
+                                "cardNumber": "557042******700*",
+                                "salesCheckLinkUrl": "https://staging.toss.im/payfront/web/external/sales-check?payToken=rDgrfe4YRBnTNLo5lwpqb9&transactionId=81a6bafc-b7b6-4959-82ba-e74034f379ea",
+                                "cardCompanyName": "국민",
+                                "cardCompanyCode": 4
+                            },
+                            "transactions": [
+                                {
+                                    "stepType": "PAY",
+                                    "transactionId": "81a6bafc-b7b6-4959-82ba-e74034f379ea",
+                                    "paidAmount": 1000,
+                                    "transactionAmount": 1000,
+                                    "discountAmount": 0,
+                                    "pointAmount": 0,
+                                    "regTs": "2023-02-09 15:44:25"
+                                }
+                            ],
+                            "createdTs": "2023-02-09 15:44:04",
+                            "paidTs": "2023-02-09 15:44:24"
+                        }</code>
             </pre>
                     </div>
                 </div>
