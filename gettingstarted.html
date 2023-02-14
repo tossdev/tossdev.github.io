@@ -456,23 +456,19 @@ echo "Response: ".$result;</code></pre>
             <p>
               retUrl로 고객을 보내면서, 인증 결과 (status) 와 함께 주문 번호 (orderNo), 결제수단(payMethod) 을 query
               string 파라미터로 함께 보내드립니다. 예시는 다음과 같습니다. <br>
-              카드 결제건의 경우, 아래 인증 데이터에 추가로 결제카드 코드 (cardCompany)가 함께 리턴됩니다.
-
+              카드 결제건의 경우 아래 인증 데이터에 추가로 결제카드 코드 (cardCompany)가, 
+              토스머니 결제건의 경우 추가로 은행 코드(bankCode)가 함께 리턴됩니다.
             </p>
             <div class="method-example">
               <pre
                 class=" language-http"
-              ><code class="always-visible  language-http">http://YOUR-SITE.COM/ORDER-CHECK?status=PAY_COMPLETE&orderNo=1&payMethod=TOSS_MONEY   </code></pre>
+              ><code class="always-visible  language-http">http://YOUR-SITE.COM/ORDER-CHECK?status=PAY_COMPLETE&orderNo=1&payMethod=TOSS_MONEY&bankCode=38</code></pre>
             </div>
             <p>여기서 status 값을 확인해주세요.</p>
             <ul>
-              <li><strong>인증 완료 후 정상 출금된 경우 : ?status=PAY_COMPLETE</li></strong>
+              <li><strong>자동승인(“autoExecute”:true) 경우 : ?status=PAY_COMPLETE</li></strong>
+              </li></strong>자동승인(“autoExecute”:false) 경우 : ?status=PAY_APPROVED</li></strong>
             </ul>
-            <p>
-              status가 PAY_COMPLETE 이외의 값이라면 승인이 정상적으로 진행되지 않은 경우입니다. 반드시 PAY_COMPLETE 상태일 때만 결제완료 처리해주세요. <br>
-              구매자가 결제를 취소한 경우에는 결제 취소 안내 화면을 보여주시고, 인증을 완료한 경우에는 결제 완료 화면을 보여주세요.
-            </p>
-
             <div class="method" id="create">
               <div class="method-description">
                 <h3>결제 생성하기</h3>
