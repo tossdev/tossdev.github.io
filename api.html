@@ -1122,7 +1122,7 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     은행 명 <br>
-                                    <span class="text-muted">은행코드 리스트</span>
+                                    <a href="qna.html#faq-8">은행코드 리스트</a>
                                 </div>
                             </div>
                         </div>
@@ -1575,6 +1575,28 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                 <div class="desc">
                                     마스킹된 카드번호<br>
                                     <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹됩니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    accountBankCode
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 3</span>
+                                </div>
+                                <div class="desc">
+                                    은행 코드 <br>
+                                    <span class="text-muted">사용자가 선택한 결제수단(payMethod) 이 '토스머니' 인 경우 토스가 정의한 은행 코드를 전달합니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    accountBankName
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    은행 명 <br>
+                                    <a href="qna.html#faq-8">은행코드 리스트</a>
                                 </div>
                             </div>
                             <div class="field clearfix">
