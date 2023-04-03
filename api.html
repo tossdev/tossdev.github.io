@@ -1097,19 +1097,6 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹됩니다.</span>
                                 </div>
                             </div>
-			    <div class="field clearfix">
-                                <div class="key">
-                                    cashReceiptMgtKey
-                                    <span class="type">string</span>
-                                    <span class="type">Max Length: 36</span>
-                                </div>
-                                <div class="desc">
-                                    현금영수증 관리번호 식별값
-                                    <br/>
-                                    <span class="text-muted">국세청 승인번호는 아니며 토스페이에서 자체적으로 만든 식별 값입니다.<br>
-                                    해당 필드 존재로 현금영수증 발급 구분 가능<br>
-                                </span>
-                                </div>
                                 <div class="field clearfix">
                                 <div class="key">
                                     salesCheckLinkUrl
@@ -1412,6 +1399,20 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                     매출전표를 호출하거나 환불 진행 시 구분 값으로 활용할 수 있습니다.</span>
                                 </div>
                             </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    cashReceiptMgtKey
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 36</span>
+                                </div>
+                                <div class="desc">
+                                    현금영수증 관리번호 식별값
+                                    <br/>
+                                    <span class="text-muted">국세청 승인번호는 아니며 토스페이에서 자체적으로 만든 식별 값입니다.<br>
+                                    해당 필드 존재로 현금영수증 발급 구분 가능<br>
+                                </span>
+                                </div>
+				</div>
                             <div class="field clearfix">
                                 <div class="key">
                                     cardCompanyName
