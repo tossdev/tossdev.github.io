@@ -2270,15 +2270,20 @@ p JSON.parse(response.body)</code></pre>
                                     결제건의 환불 처리 시간 (yyyy-MM-dd HH:mm:ss)<br>
                                 </div>
                             </div>
-			    <div class="field clearfix">
+				<div class="field clearfix">
                                 <div class="key">
                                     cashReceiptMgtKey
                                     <span class="type">string</span>
                                     <span class="type">Max Length: 36</span>
                                 </div>
                                 <div class="desc">
-                                    현금영수증 관리번호 식별값<br/>
+                                    현금영수증 관리번호 식별값
+                                    <br/>
+                                    <span class="text-muted">국세청 승인번호는 아니며 토스페이에서 자체적으로 만든 식별 값입니다.<br>
+                                    해당 필드 존재로 현금영수증 발급 구분 가능<br>
+                                </span>
                                 </div>
+				</div>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
@@ -3104,7 +3109,6 @@ uri = URI.parse("https://pay.toss.im/api/v2/status")
 
 params = {
         "orderNo" => "1",
-        "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq"
 }
 
 http = Net::HTTP.new(uri.host, uri.port)
