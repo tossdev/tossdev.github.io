@@ -1299,6 +1299,16 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                     <span class="text-muted">요청에 따른 결제건 처리 시간입니다. 환불시에도 동일한 변수로 리턴되므로 구분하여 관리하시기 바랍니다.</span>
                                 </div>
                             </div>
+			    <div class="field clearfix">
+                                <div class="key">
+                                    stateMsg
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 120 </span>
+                                </div>
+                                <div class="desc">
+                                    상태 응답 텍스트 값<br>
+                                </div>
+                            </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     amount
@@ -1742,6 +1752,7 @@ p JSON.parse(response.body)</code></pre>
     "orderNo": "TossTest20190718",
     "amount": 2000,
     "approvalTime": "2019-07-18 11:28:02",
+    "stateMsg": "결제 완료",
     "discountedAmount": 0,
     "paidAmount": 2000,
     "payMethod": "CARD", //"TOSS_MONEY"
@@ -2259,6 +2270,15 @@ p JSON.parse(response.body)</code></pre>
                                     결제건의 환불 처리 시간 (yyyy-MM-dd HH:mm:ss)<br>
                                 </div>
                             </div>
+			    <div class="field clearfix">
+                                <div class="key">
+                                    cashReceiptMgtKey
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 36</span>
+                                </div>
+                                <div class="desc">
+                                    현금영수증 관리번호 식별값<br/>
+                                </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     payToken
@@ -2429,6 +2449,7 @@ p JSON.parse(response.body)</code></pre>
  "code": 0,
  "refundNo": "3243c76e-e9cf-4669-881b-33a3b82ddf49",
  "approvalTime": "2020-04-29 11:32:52",
+ "cashReceiptMgtKey": "0123456-abcd-9abcd0Df", 
  "refundableAmount": 2000,
  "discountedAmount": 0,
  "paidAmount": 1000,
@@ -2673,6 +2694,17 @@ p JSON.parse(response.body)</code></pre>
                                     토스 자동발행 현금영수증을 사용하지 않는 가맹점에서는 이 필드를 통해 현금영수증 발행처리 해주시면 됩니다.</span>
                                 </div>
                             </div>
+			    <div class="field clearfix">
+                                <div class="key">
+                                    refundableAmount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    환불 가능 잔액<br>
+                                    <span class="text-muted">환불 성공 후 남은 환불 가능 금액</span>
+                                </div>
+                            </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     amountTaxFree
@@ -2713,6 +2745,38 @@ p JSON.parse(response.body)</code></pre>
                                 </div>
                                 <div class="desc">
                                     총 결제 금액 중 적용된 봉사료
+                                </div>
+                            </div>
+			    <div class="field clearfix">
+                                <div class="key">
+                                    disposableCupDeposit
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                    일회용 컵 보증금
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    accountBankCode
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 3</span>
+                                </div>
+                                <div class="desc">
+                                    은행 코드 <br>
+                                    <span class="text-muted">사용자가 선택한 결제수단(payMethod) 이 '토스머니' 인 경우 토스가 정의한 은행 코드를 전달합니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    accountBankName
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    은행 명 <br>
+                                    <a href="qna.html#faq-8">은행코드 리스트</a>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -3062,12 +3126,14 @@ p JSON.parse(response.body)</code></pre>
                             "discountedAmount": 0,
                             "paidPoint": 0,
                             "paidAmount": 1000,
-                            "refundableAmount": 1000,
                             "amountTaxable": 909,
                             "amountTaxFree": 0,
                             "amountVat": 91,
                             "amountServiceFee": 0,
                             "disposableCupDeposit": 0,
+                          //payMethod 가 TOSS_MONEY 일때
+                          //"accountBankCode" : "88",
+                          //"accountBankName" : "신한은행"
                             "card": {
                                 "noInterest": false,
                                 "spreadOut": 0,
