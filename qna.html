@@ -242,7 +242,7 @@
                                 </tr>
                                 <tr>
                                     <td width="50%">COMMON_NOT_ENOUGH_CASH</td>
-                                    <td width="50%">잔액이 부족합니다.</td>
+                                    <td width="50%">충전계좌의 잔액이 부족하여 토스머니 충전이 불가합니다.</td>
                                 </tr>
                                 <tr>
                                     <td width="50%">COMMON_EXCEED_LIMIT</td>
@@ -253,6 +253,14 @@
                                     <td width="50%">계좌 정보 조회에 실패 하였습니다.</td>
                                 </tr>
                                 <tr>
+                                    <td width="50%">COMMON_REFUND_ERROR</td>
+                                    <td width="50%">환불이 불가능 한 상태입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">REFUND_REFUND_NO_DUPLICATE</td>
+                                    <td width="50%">동일한 refundNo가 이미 존재합니다.<br>중복되지 않는 refundNo 로 요청해야 합니다.</td>
+                                </tr>
+                                <tr>
                                     <td width="50%">PAYMENT_DUPLICATION_ORDER_NO</td>
                                     <td width="50%">중복된 주문번호 입니다.</td>
                                 </tr>
@@ -261,21 +269,173 @@
                                     <td width="50%">이미 존재하는 결제입니다.</td>
                                 </tr>
                                 <tr>
-                                    <td width="50%">COMMON_REFUND_ERROR</td>
-                                    <td width="50%">환불이 불가능 한 상태입니다.</td>
+                                    <td width="50%">TRANSACTION_PENDING_ERROR</td>
+                                    <td width="50%">조금 전 신청하신 결제가 아직 진행중입니다. 잠시 후 다시 시도해주세요. 이 상태가 10분 이상 지속되면 토스팀에 문의해주시기 바랍니다. (1599-4905)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">INVALID_ACCOUNT_STATUS</td>
+                                    <td width="50%">계좌 상태를 확인해주세요.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">FRAUD_DETECTION_SYSTEM_ERROR</td>
+                                    <td width="50%">FDS에 의해 금융거래가 차단된 상태입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">USER_STATUS_ERROR</td>
+                                    <td width="50%">결제 진행이 불가한 사용자입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">REFUND_ALREADY_REFUNDED</td>
+                                    <td width="50%">이미 환불 되었습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">TRANSACTION_NOT_COMPLETE</td>
+                                    <td width="50%">거래가 완료되지 않았습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">TRANSACTION_NOT_FOUND</td>
+                                    <td width="50%">존재하지 않는 거래내역 입니다.</td>
                                 </tr>
                                 <tr>
                                     <td width="50%">INACTIVE_USER</td>
-                                    <td width="50%">탈퇴한 사용자입니다. 환불이 불가능합니다.</td>
+                                    <td width="50%">비활성 처리된 사용자입니다.</td>
                                 </tr>
                                 <tr>
-                                    <td width="50%">REFUND_REFUND_NO_DUPLICATE</td>
-                                    <td width="50%">동일한 refundNo가 이미 존재합니다.<br>중복되지 않는 refundNo 로 요청해야 합니다.</td>
+                                    <td width="50%">AUTO_CHARGE_NOT_YET_REGISTER_ACCOUNT</td>
+                                    <td width="50%">충전계좌가 등록되지 않았습니다.</td>
+                                </tr>
+                                
+                                 <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>user(사용자)</strong></td>
                                 </tr>
                                 <tr>
-                                    <td width="50%">REFUND_EXCEED_DAILY</td>
-                                    <td width="50%">환불 금액이 상점의 일일 환불 한도보다 클 수 없습니다.</td>
+                                    <td width="50%">PAY_UNAUTHORIZED</td>
+                                    <td width="50%">결제 요청자와 토스의 계정이 일치해야만 결제가 가능합니다. 확인 후 다시 시도해 주세요.</td>
                                 </tr>
+                                <tr>
+                                    <td width="50%">TOSS_APP_UPDATE_IS_REQUIRED</td>
+                                    <td width="50%">결제를 진행하시려면 최신 버전의 토스앱을 이용하세요.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAY_CANCEL_ITS_NOT_CANCELABLE_STATUS</td>
+                                    <td width="50%">결제를 취소할 수 없습니다. 잠시 후 다시 시도해주세요. 문제가 계속되면 토스 고객센터로 문의해주세요. (1599-4905)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COUPON_ASSIGN_FAIL</td>
+                                    <td width="50%">쿠폰 발급에 실패하였습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">DISCOUNT_CLOSED</td>
+                                    <td width="50%">할인 혜택이 마감되었습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">USER_DISCOUNT_CLOSED</td>
+                                    <td width="50%">1인당 할인 횟수를 초과하였습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">DISCOUNT_NEED_ISSUE</td>
+                                    <td width="50%">쿠폰을 발급받아 주세요.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">DISCOUNT_ALREADY_ISSUED</td>
+                                    <td width="50%">쿠폰이 이미 발급되었습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">AVAILABLE_ONLY_TOSS_MONEY_UNDER_MIN_AMT</td>
+                                    <td width="50%">%s원 미만 금액은 %s 카드 결제가 불가합니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">AUTO_PAY_TERM_INACTIVE_FAIL</td>
+                                    <td width="50%">약관 철회에 실패하였습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">AGE_POLICY_ERROR</td>
+                                    <td width="50%">%d세 미만인 경우 토스 %s 서비스를 이용하실 수 없습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAY_FRAUD_DETECTED</td>
+                                    <td width="50%">일시적으로 토스 서비스를 이용하실 수 없습니다. 문제가 계속되면 토스 고객센터로 문의해주세요. (1599-4905)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BLOCKED_THE_USE_OF_POINT</td>
+                                    <td width="50%">법원 압류 판결로 인해 토스포인트를 쓸 수 없어요. 궁금한 점이 있다면 토스 고객센터(1599-4905)로 문의해주세요.</td>
+                                </tr>   
+                                <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>카드</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_SYSTEM_ERROR</td>
+                                    <td width="50%">카드사 시스템 점검 중입니다. 잠시 후 다시 시도해주세요.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_BANK_SYSTEM_ERROR</td>
+                                    <td width="50%">카드사 거래은행 시스템 점검 중입니다. 잠시 후 다시 시도해주세요</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_NOT_AVAILABLE_SHOP</td>
+                                    <td width="50%">해당카드로 결제가 불가합니다. 다른 결제수단으로 다시 시도하거나 토스 고객센터로 문의해주세요.(1599-4905)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_NOT_AVAILABLE</td>
+                                    <td width="50%">도난/분실/거래정지 카드로 승인이 거절되었습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_EXCEED_LIMIT</td>
+                                    <td width="50%">사용한도 초과로 승인이 거절되었습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_NOT_ENOUGH_BALANCE</td>
+                                    <td width="50%">잔고 부족으로 승인이 거절되었습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_SPREADOUT_ERROR</td>
+                                    <td width="50%">할부 사용이 불가능한 카드로 승인이 거절되었습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_MIN_AMOUNT_ERROR</td>
+                                    <td width="50%">금액오류(100원 또는 1달러 미만 신용카드 승인 불가)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_MIN_AMOUNT_FOR_SPREADOUT_ERROR</td>
+                                    <td width="50%">할부 결제는 결제금액이 50,000원 이상만 가능합니다. 일시불로 결제해주세요.</td>
+                                </tr>
+                                <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>BNPL(후불결제)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_INVALID_REQUEST</td>
+                                    <td width="50%">잘못된 요청입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_NOT_EXIST_USER</td>
+                                    <td width="50%">존재하지 않는 BNPL 사용자 입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_EXCEED_PAYABLE_AMOUNT</td>
+                                    <td width="50%">BNPL 한도가 초과되었습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_ALREADY_COMPLETED_REQUEST</td>
+                                    <td width="50%">이미 처리 된 요청입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_IN_PROGRESS_REQUEST</td>
+                                    <td width="50%">이미 처리 중인 요청입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_NOT_FOUND_PAYMENT</td>
+                                    <td width="50%">존재하지 않는 결제건 입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_ALREADY_COMPLETED_REFUND</td>
+                                    <td width="50%">환불 할 수 없는 결제 건 입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">NOT_SET_BNPL_PAYMENT_ACCOUNT</td>
+                                    <td width="50%">후불결제 진행을 위해 납부계좌 설정이 필요해요.</td>
+                                </tr>
+  
+                                
                                 <tr>
                                     <td width="50%">COMMON_INVALID_API_KEY</td>
                                     <td width="50%">바르지 않은 API key 입니다.</td>
@@ -333,7 +493,7 @@
                                     <td width="50%">무이자 할부 가맹점이 아닙니다.</td>
                                 </tr>
                                 <tr class="active">
-                                    <td colspan="2" class="text-left"><strong>매출전표</strong></td>
+                                <td colspan="2" class="text-left"><strong>매출전표</strong></td>
                                 </tr>
                                 <tr>
                                     <td width="50%">SALES_CHECK_NOT_FOUND_USER</td>
@@ -343,20 +503,28 @@
                                     <td width="50%">SALES_CHECK_USER_AUTH_FAIL</td>
                                     <td width="50%">매출전표 조회를 위한 사용자 정보 인증에 실패하였습니다.</td>
                                 </tr>
+                                 <tr>
+                                    <td width="50%">SALES_CHECK_USER_AUTH_DECRYPT_FAIL</td>
+                                    <td width="50%">매출전표 조회를 위한 사용자 정보 복호화에 실패하였습니다.</td>
+                                </tr>
                                 <tr>
                                     <td width="50%">SALES_CHECK_CARD_ONLY</td>
                                     <td width="50%">카드결제 건에 대해서만 매출전표 조회가 가능합니다.</td>
                                 </tr>
                                 <tr class="active">
-                                    <td colspan="2" class="text-left"><strong>기타</strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="50%">NOT_SUPPORTED_RESELLER_SHOP</td>
-                                    <td width="50%">리셀러로 지정된 가맹점이 아닙니다.</td>
+                                    <td colspan="2" class="text-left"><strong>리셀러</strong></td>
                                 </tr>
                                 <tr>
                                     <td width="50%">COMMON_PAY_RESELLER_ERROR</td>
                                     <td width="50%">리셀러 결제 처리 중 에러가 발생했습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">RESELLER_ONLY_CARD_PAYMENT</td>
+                                    <td width="50%">카드 결제가 아닙니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">RESELLER_CALLBACK_PROCESS_ERROR</td>
+                                    <td width="50%">리셀러 콜백 처리 중 에러가 발생했습니다.</td>
                                 </tr>
                                 <tr>
                                     <td width="50%">NOT_APPROVED_CARD_PAYMENT</td>
@@ -366,8 +534,65 @@
                                     <td width="50%">PAY_CARD_AUTH_REQUEST_ERROR</td>
                                     <td width="50%">카드 인증 요청에 실패하였습니다.</td>
                                 </tr>
+                                <tr>
+                                    <td width="50%">NOT_SUPPORTED_RESELLER_SHOP</td>
+                                    <td width="50%">리셀러로 지정된 가맹점이 아닙니다.</td>
+                                </tr>
+                                  <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>기타</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAYMENT_SHOP_STATE_NOT_NORMAL</td>
+                                    <td width="50%">결제 불가 가맹점입니다. 가맹점 고객센터로 문의하여 주세요.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAYMENT_SHOP_STATE_CANNOT_REFUND</td>
+                                    <td width="50%">결제 불가 가맹점입니다. 가맹점 고객센터로 문의하여 주세요.(사고신고)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_INVALID_API_KEY</td>
+                                    <td width="50%">바르지 않은 API key 입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">NOT_INTERNAL_SHOP</td>
+                                    <td width="50%">내부 가맹점이 아닙니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_BREAK_TIME_OF_BANK</td>
+                                    <td width="50%">지금은 은행 점검 시간입니다. 점검이 끝난 후 사용해주세요.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_UNAUTHORIZED</td>
+                                    <td width="50%">Unauthorized Access</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">REFUND_EXCEED_DAILY</td>
+                                    <td width="50%">환불 금액이 상점의 일일 환불 한도보다 클 수 없습니다.</td>
+                                </tr><tr>
+                                    <td width="50%">EXECUTE_PAY_NOT_APPROVED</td>
+                                    <td width="50%">아직 구매자가 결제를 승인하지 않았습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAUSE_USER</td>
+                                    <td width="50%">일시정지 사용자입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_TIMEOUT</td>
+                                    <td width="50%">처리 중 지연이 발생하였습니다. 다시 시도해주세요.</td>
+                                </tr>
+                               <tr>
+                                    <td width="50%">COMMON_THROTTLED</td>
+                                    <td width="50%">결제 요청이 많아 서비스 이용이 원활하지 않습니다. 잠시 후에 다시 시도해주세요.</td>
+                                </tr>
+                                 <tr>
+                                    <td width="50%">COMMON_ITS_NOT_ABLE_TO_CHANGE_STATUS</td>
+                                    <td width="50%">요청 가능한 상태가 아닙니다.</td>
+                                </tr>
+                                 <tr>
+                                    <td width="50%">ESCROW_IMPOSSIBLE_STATUS</td>
+                                    <td width="50%">에스크로 상태 변경이 불가능합니다.</td>
+                                </tr>
                             </table>
-
 
                             <div class="method" id="member">
                                 <div class="method-description">
