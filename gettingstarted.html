@@ -354,7 +354,7 @@ echo "Response: ".$result;</code></pre>
               <li>
                 <strong>resultCallback (결제 결과 Callback URL)</strong> : 자동 승인 설정을 true로 설정할 경우에는 반드시
                 함께 보내주셔야 합니다. <br />
-                토스 서버는 출금을 성공한 후 이 곳에 입력한 가맹점 서버로 callback을 요청합니다. 최종적으로 토스
+                토스 서버는 출금을 성공한 후 이 곳에 입력한 가맹점 서버로 callback을 HttpMethod POST 로 요청합니다. 최종적으로 토스
                 결제완료 여부를 확인할 수 있습니다.
               </li>
               <li>
