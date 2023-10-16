@@ -2054,6 +2054,21 @@ p JSON.parse(response.body)</code></pre>
                                 </span>
                                 </div>
                             </div>
+			      <div class="field clearfix">
+                                <div class="key">
+                                    idempotent
+                                    <span class="type">boolean</span>
+                                    <span class="type">Max Length: 5</span>
+                                </div>
+                                <div class="desc">
+                                    멱등성 적용 여부
+                                    <br />
+                                    <span class="text-muted">true : 사용 (default), false : 미사용<br>
+			            멱등성 적용을 원하시는 경우 true, 미 사용의 경우 false로 선언해 주시기 바랍니다.<br>
+                                    미입력 시 기본값으로 멱등성이 활성화되어, 동일한 요청을 반복적으로 수행하더라도 동일한 결과인 성공으로 응답("code": 0) 처리됩니다.<br>
+                                </span>
+                                </div>
+                            </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     reason
