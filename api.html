@@ -1755,7 +1755,7 @@ p JSON.parse(response.body)</code></pre>
     "approvalTime": "2019-07-18 11:28:02",
     "stateMsg": "결제 완료",
     "discountedAmount": 0,
-//  "paidAmount": 2000,
+    "paidAmount": 2000,
     "payMethod": "CARD", //"TOSS_MONEY"
     "payToken": "example-payToken",
     "transactionId": "2da1ca05-d91d-410f-976d-7a610242da8a",
@@ -3150,7 +3150,7 @@ p JSON.parse(response.body)</code></pre>
     "payMethod": "CARD",
     "amount": 1000,
     "discountedAmount": 0,
-    "paidPoint": 0,
+  //"paidPoint": 0, // 2020.08.06 이후 fadeout 된 레거시 포인트 금액으로 0원으로 응답
     "paidAmount": 1000,
     "refundableAmount": 1000,
     "amountTaxable": 909,
