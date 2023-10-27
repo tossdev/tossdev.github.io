@@ -150,7 +150,7 @@
             <div class="method" id="state">
                 <div class="method-section clearfix">
                     <div class="method-description">
-                        <h3>결제 상태</h3>
+                        <h3 style="color: black;">결제 상태 확인</h3>
                         <p>
                             결제 건이 생성된 후, 결제가 진행됨에 따라 결제 상태가 변경되며, 각 결제 상태마다 판매자 또는 구매자가 요청할 수 있는 행동도 변합니다. 아래는 결제 상태 목록과 각 상태에 대한 설명입니다.
                         </p>
@@ -2711,9 +2711,32 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">integer</span>
                                     <span class="type">Max Length: 7</span>
                                 </div>
+				 <div class="desc">
+                                    할인된 금액<br>
+                                    <span class="text-muted">할인된 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다. 할인 금액에는 토스 앱에서 자동 적용되는 즉시할인과 토스 포인트 사용금액이 포함됩니다. 결제 상점에 따라 할인조건은 차이가 있을 수 있습니다.</span>
+                                </div>
+			        </div>
+				 <div class="field clearfix">
+                                <div class="key">
+                                    discountAmountV2
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
                                 <div class="desc">
                                     즉시할인이 적용된 금액<br>
                                     <span class="text-muted">토스페이창에서 자동으로 적용된 즉시할인 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.</span>
+                                </div>
+                            </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    paidPointV2
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                   토스 포인트가 적용된 금액<br>
+                                    <span class="text-muted">토스페이창에서 적용된 토스 포인트 금액이 리턴되며, 적용이 없으면 0으로 리턴됩니다.<br>
+                                    단, 포인트 사용 유무는 상점별로 상이할 수 있습니다.</span>
                                 </div>
                             </div>
 			    <!--
@@ -3007,7 +3030,7 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">integer</span>
                                     <span class="type">Max Length: 7</span>
                                 </div>
-                                <div class="desc">요청된 거래 타입(stepType) 중 적용된 할인금액
+                                <div class="desc">요청된 거래 타입(stepType) 중 적용된 할인금액(토스 앱에서 자동 적용되는 즉시할인과 토스 포인트 사용금액 포함)
                                 </div>
                             </div>
 			    <!--
@@ -3172,6 +3195,8 @@ p JSON.parse(response.body)</code></pre>
     "payMethod": "CARD",
     "amount": 1000,
     "discountedAmount": 0,
+    "discountAmountV2": 0,
+    "paidPointV2": 0,
   //"paidPoint": 0, // 2020.08.06 이후 fadeout 된 레거시 포인트 금액으로 0원으로 응답
     "paidAmount": 1000,
     "refundableAmount": 1000,
