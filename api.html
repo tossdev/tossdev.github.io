@@ -3002,6 +3002,37 @@ p JSON.parse(response.body)</code></pre>
                                     신용카드 매출전표 호출URL
                                 </div>
                             </div>
+			<div class="field clearfix">
+                                <div class="key">
+                                    transactions
+                                    <span class="type">list</span>
+                                </div>
+                                <div class="desc">
+                                    거래 트랜잭션
+                                </div>
+                            </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    <font color=#c25300>stepType</font>
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                    요청된 거래 타입
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>PAY</td>
+                                            <td>결제</td>
+                                        </tr>
+                                        <tr>
+                                            <td>REFUND</td>
+                                            <td>환불</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     <font color=#c25300>transactionId</font>
@@ -3030,7 +3061,8 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">integer</span>
                                     <span class="type">Max Length: 7</span>
                                 </div>
-                                <div class="desc">요청된 거래 타입(stepType) 중 적용된 할인금액(토스 앱에서 자동 적용되는 즉시할인과 토스 포인트 사용금액 포함)
+                                <div class="desc">요청된 거래 타입(stepType) 중 적용된 할인금액<br>
+				<span class="text-muted">할인 금액에는 토스 앱에서 자동 적용되는 즉시할인과 토스 포인트 사용금액이 포함됩니다.</span>
                                 </div>
                             </div>
 			    <!--
