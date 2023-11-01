@@ -1120,6 +1120,62 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹됩니다.</span>
                                 </div>
                             </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    cardUserType
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    카드 사용자 구분
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>PERSONAL</td>
+                                            <td>본인 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PERSONAL_FAMILY</td>
+                                            <td>가족 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PERSONAL</td>
+                                            <td>법인지정 결제계좌 임직원</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PRIVATE</td>
+                                            <td>법인 공용</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_COMPANY</td>
+                                            <td>법인지정 결제계좌 회사(하나카드만)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardBinNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 8</span>
+                                </div>
+                                <div class="desc">
+                                    카드 BIN 넘버<br>
+                                    <span class="text-muted">카드사에서 준 카드 빈번호(마스킹 되어 있을 수 있습니다), 100% 신뢰는 불가</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardNum4Print
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 4</span>
+                                </div>
+                                <div class="desc">
+                                    사용자가 선택한 카드의 끝 4자리<br>
+                                    <span class="text-muted">사용자가 선택한 결제수단(payMethod) 이 '카드' 인 경우 카드번호 끝 4자리를 전달(카드사에 따라 마스킹이 포함되어 있을 수 있습니다)</span>
+                                </div>
+                            </div>
                                 <div class="field clearfix">
                                 <div class="key">
                                     salesCheckLinkUrl
@@ -1128,6 +1184,39 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     신용카드 매출전표 호출URL<br>
                                     <span class="text-muted">승인된 카드 결제건의 매출전표를 확인할 수 있는 URL<br></span>
+                                </div>
+                            </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    accountBankCode
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 3</span>
+                                </div>
+                                <div class="desc">
+                                    은행 코드 <br>
+                                    <span class="text-muted">사용자가 선택한 결제수단(payMethod) 이 '토스머니' 인 경우 토스가 정의한 은행 코드를 전달합니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    accountBankName
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    은행 명 <br>
+                                    <a href="qna.html#faq-8">은행코드 리스트</a>
+                                </div>
+                            </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    accountNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 3</span>
+                                </div>
+                                <div class="desc">
+                                    계좌번호<br>
+                                    <span class="text-muted">계좌번호는 일부 마스킹을 포함하고 있습니다.</span>
                                 </div>
                             </div>
                         </div>
@@ -1192,6 +1281,10 @@ Content-Type application/json;charset=UTF-8</code></pre>
  "spreadOut": 0,
  "noInterest": false,
  "cardMethodType": "CREDIT",
+ "cardUserType": "PERSONAL",
+ "cardNumber": "654321******1234",
+ "cardBinNumber": "654321",
+ "cardNum4Print": "1234",
  "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a"
 }                            
                         </code></pre>
@@ -1275,8 +1368,8 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                 </div>
                                 <div class="desc">
                                     응답코드
-                                    <br />
-                                    <br />
+                                    <br/>
+                                    <br/>
                                     <table class="table">
                                         <tr>
                                             <td>0</td>
@@ -1297,8 +1390,8 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                 </div>
                                 <div class="desc">
                                     결제환경
-                                    <br />
-                                    <br />
+                                    <br/>
+                                    <br/>
                                     <table class="table">
                                         <tr>
                                             <td>LIVE</td>
@@ -1582,6 +1675,7 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                     카드 타입 <br>
                                     <span class="text-muted">승인된 카드의 타입을 구분할 수 있습니다. 예를들어, 상점의 신용카드 결제 비율을 알고 싶다면 이 값을 활용해 주세요! </span>
                                     <br/>
+				    <br/>
                                     <table class="table">
                                         <tr>
                                             <td>CREDIT</td>
@@ -1591,7 +1685,7 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                             <td>CHECK</td>
                                             <td>체크카드</td>
                                         </tr>
-					<tr>
+					 <tr>
                                             <td>PREPAYMENT</td>
                                             <td>선불카드</td>
                                         </tr>
@@ -1607,6 +1701,62 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                 <div class="desc">
                                     마스킹된 카드번호<br>
                                     <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹됩니다.</span>
+                                </div>
+                            </div>
+					<div class="field clearfix">
+                                <div class="key">
+                                    cardUserType
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    카드 사용자 구분
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>PERSONAL</td>
+                                            <td>본인 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PERSONAL_FAMILY</td>
+                                            <td>가족 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PERSONAL</td>
+                                            <td>법인지정 결제계좌 임직원</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PRIVATE</td>
+                                            <td>법인 공용</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_COMPANY</td>
+                                            <td>법인지정 결제계좌 회사(하나카드만)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardBinNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 8</span>
+                                </div>
+                                <div class="desc">
+                                    카드 BIN 넘버<br>
+                                    <span class="text-muted">카드사에서 준 카드 빈번호(마스킹 되어 있을 수 있습니다), 100% 신뢰는 불가</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardNum4Print
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 4</span>
+                                </div>
+                                <div class="desc">
+                                    사용자가 선택한 카드의 끝 4자리<br>
+                                    <span class="text-muted">사용자가 선택한 결제수단(payMethod) 이 '카드' 인 경우 카드번호 끝 4자리를 전달(카드사에 따라 마스킹이 포함되어 있을 수 있습니다)</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -1631,6 +1781,17 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                     <a href="qna.html#faq-8">은행코드 리스트</a>
                                 </div>
                             </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    accountNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 3</span>
+                                </div>
+                                <div class="desc">
+                                    계좌번호<br>
+                                    <span class="text-muted">계좌번호는 일부 마스킹을 포함하고 있습니다.</span>
+                                </div>
+                            </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     msg
@@ -1649,8 +1810,8 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                 </div>
                                 <div class="desc">
                                     에러 코드
-                                    <br />
-                                    <br />
+                                    <br/>
+                                    <br/>
                                     <table class="table">
                                         <tr>
                                             <td>PAYMENT_EXISTING_PAYMENT</td>
@@ -1790,12 +1951,17 @@ p JSON.parse(response.body)</code></pre>
     "noInterest": false,
     "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a",
     "cardMethodType": "CREDIT",
-    "cardNumber": "536100******9087"
+    "cardNumber": "654321******1234"
+    "cardUserType": "PERSONAL",
+    "cardNum4Print": "1234",
+    "cardBinNumber": "654321"
 
     //payMethod 가 TOSS_MONEY 일때
     //"cashReceiptMgtKey": "0123456-abcd-9abcd0Df",
     //"accountBankCode" : "88",
-    //"accountBankName" : "신한은행"
+    //"accountBankName" : "신한은행",
+    //"accountNumber" : "110******676"
+				
 }
 </code>
             </pre>
@@ -2345,6 +2511,142 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="text-muted">환불된 거래건의 매출전표 확인을 위하여 필요한 옵션 값이므로 가맹점의 관리가 필요합니다.</span>
                                 </div>
                             </div>
+				                            <div class="field clearfix">
+                                <div class="key">
+                                    cardMethodType
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 10</span>
+                                </div>
+                                <div class="desc">
+                                    카드 타입<br>
+                                    <span class="text-muted">승인된 카드의 타입을 구분할 수 있습니다.<br></span>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>CREDIT</td>
+                                            <td>신용카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CHECK</td>
+                                            <td>체크카드</td>
+                                        </tr>
+					 <tr>
+                                            <td>PREPAYMENT</td>
+                                            <td>선불카드</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    마스킹된 카드번호<br>
+                                    <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹됩니다.</span>
+                                </div>
+                            </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    cardUserType
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    카드 사용자 구분
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>PERSONAL</td>
+                                            <td>본인 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PERSONAL_FAMILY</td>
+                                            <td>가족 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PERSONAL</td>
+                                            <td>법인지정 결제계좌 임직원</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PRIVATE</td>
+                                            <td>법인 공용</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_COMPANY</td>
+                                            <td>법인지정 결제계좌 회사(하나카드만)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardBinNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 8</span>
+                                </div>
+                                <div class="desc">
+                                    카드 BIN 넘버<br>
+                                    <span class="text-muted">카드사에서 준 카드 빈번호(마스킹 되어 있을 수 있습니다), 100% 신뢰는 불가</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardNum4Print
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 4</span>
+                                </div>
+                                <div class="desc">
+                                    사용자가 선택한 카드의 끝 4자리<br>
+                                    <span class="text-muted">사용자가 선택한 결제수단(payMethod) 이 '카드' 인 경우 카드번호 끝 4자리를 전달(카드사에 따라 마스킹이 포함되어 있을 수 있습니다)</span>
+                                </div>
+                            </div>
+                                <div class="field clearfix">
+                                <div class="key">
+                                    salesCheckLinkUrl
+                                    <span class="type">string</span>
+                                </div>
+                                <div class="desc">
+                                    신용카드 매출전표 호출URL<br>
+                                    <span class="text-muted">승인된 카드 결제건의 매출전표를 확인할 수 있는 URL<br></span>
+                                </div>
+                            </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    accountBankCode
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 3</span>
+                                </div>
+                                <div class="desc">
+                                    은행 코드 <br>
+                                    <span class="text-muted">사용자가 선택한 결제수단(payMethod) 이 '토스머니' 인 경우 토스가 정의한 은행 코드를 전달합니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    accountBankName
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    은행 명 <br>
+                                    <a href="qna.html#faq-8">은행코드 리스트</a>
+                                </div>
+                            </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    accountNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 3</span>
+                                </div>
+                                <div class="desc">
+                                    계좌번호<br>
+                                    <span class="text-muted">계좌번호는 일부 마스킹을 포함하고 있습니다.</span>
+                                </div>
+                            </div>
                             <div class="field clearfix">
                                 <div class="key">
                                     msg
@@ -2503,6 +2805,18 @@ p JSON.parse(response.body)</code></pre>
  "refundedPaidAmount": -2000,
  "payToken": "example-payToken",
  "transactionId": "3243c76e-e9cf-4669-881b-33a3b82ddf49"
+ "cardMethodType": "CREDIT",
+ "cardNumber": "654321******1234"
+ "cardUserType": "PERSONAL",
+ "cardNum4Print": "1234",
+ "cardBinNumber": "654321"
+
+//payMethod 가 TOSS_MONEY 일때
+//"cashReceiptMgtKey": "0123456-abcd-9abcd0Df",
+//"accountBankCode" : "88",
+//"accountBankName" : "신한은행",
+//"accountNumber" : "110******676"
+				
 }
 
 </code>
@@ -2716,29 +3030,9 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="text-muted">할인된 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다. 할인 금액에는 토스 앱에서 자동 적용되는 즉시할인과 토스 포인트 사용금액이 포함됩니다. 결제 상점에 따라 할인조건은 차이가 있을 수 있습니다.</span>
                                 </div>
 			        </div>
-				 <div class="field clearfix">
-                                <div class="key">
-                                    discountAmountV2
-                                    <span class="type">integer</span>
-                                    <span class="type">Max Length: 7</span>
-                                </div>
-                                <div class="desc">
-                                    즉시할인이 적용된 금액<br>
-                                    <span class="text-muted">토스페이창에서 자동으로 적용된 즉시할인 금액이 리턴되며, 할인 적용이 없으면 0으로 리턴됩니다.</span>
-                                </div>
-                            </div>
-				<div class="field clearfix">
-                                <div class="key">
-                                    paidPointV2
-                                    <span class="type">integer</span>
-                                    <span class="type">Max Length: 7</span>
-                                </div>
-                                <div class="desc">
-                                   토스 포인트가 적용된 금액<br>
-                                    <span class="text-muted">토스페이창에서 적용된 토스 포인트 금액이 리턴되며, 적용이 없으면 0으로 리턴됩니다.<br>
-                                    단, 포인트 사용 유무는 상점별로 상이할 수 있습니다.</span>
-                                </div>
-                            </div>
+
+
+				
 			    <!--
                             <div class="field clearfix">
                                 <div class="key">
@@ -2848,6 +3142,17 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     은행 명 <br>
                                     <a href="qna.html#faq-8">은행코드 리스트</a>
+                                </div>
+                            </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    accountNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 3</span>
+                                </div>
+                                <div class="desc">
+                                    계좌번호<br>
+                                    <span class="text-muted">계좌번호는 일부 마스킹을 포함하고 있습니다.</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -2991,6 +3296,28 @@ p JSON.parse(response.body)</code></pre>
                                 <div class="desc">
                                     마스킹된 카드번호<br>
                                     <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹됩니다.</span>
+                                </div>
+                            </div>
+				                            <div class="field clearfix">
+                                <div class="key">
+                                    cardBinNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 8</span>
+                                </div>
+                                <div class="desc">
+                                    카드 BIN 넘버<br>
+                                    <span class="text-muted">카드사에서 준 카드 빈번호(마스킹 되어 있을 수 있습니다), 100% 신뢰는 불가</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardNum4Print
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 4</span>
+                                </div>
+                                <div class="desc">
+                                    사용자가 선택한 카드의 끝 4자리<br>
+                                    <span class="text-muted">사용자가 선택한 결제수단(payMethod) 이 '카드' 인 경우 카드번호 끝 4자리를 전달(카드사에 따라 마스킹이 포함되어 있을 수 있습니다)</span>
                                 </div>
                             </div>
                             <div class="field clearfix">
@@ -3240,6 +3567,7 @@ p JSON.parse(response.body)</code></pre>
     //payMethod 가 TOSS_MONEY 일때
     //"accountBankCode" : "88",
     //"accountBankName" : "신한은행"
+    //"accountNumber" : "110******676"
     "card": {
         "noInterest": false,
         "spreadOut": 0,
@@ -3247,6 +3575,8 @@ p JSON.parse(response.body)</code></pre>
         "cardMethodType": "CREDIT",
         "cardUserType": "PERSONAL",
         "cardNumber": "557042******700*",
+	"cardBinNumber": "557042",
+        "cardNum4Print": "700*",
         "salesCheckLinkUrl": "https://staging.toss.im/payfront/web/external/sales-check?payToken=rDgrfe4YRBnTNLo5lwpqb9&transactionId=81a6bafc-b7b6-4959-82ba-e74034f379ea",
         "cardCompanyName": "국민",
         "cardCompanyCode": 4
