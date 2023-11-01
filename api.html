@@ -1263,7 +1263,8 @@ Content-Type application/json;charset=UTF-8</code></pre>
  "cardNumber": "654321******1234",
  "cardBinNumber": "654321",
  "cardNum4Print": "1234",
- "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a"
+ "salesCheckLinkUrl": "https://pay.toss.im/payfront/web/external/sales-check?payToken=example-payToken&transactionId=2da1ca05-d91d-410f-976d-7a610242da8a",
+ //"paidPoint": 0, // 2020.08.06 이후 fadeout 된 레거시 포인트 금액으로 0원으로 나감
 }                            
                         </code></pre>
 
@@ -3588,7 +3589,7 @@ p JSON.parse(response.body)</code></pre>
             "paidAmount": 1000,
             "transactionAmount": 1000,
             "discountedAmount": 0,
-            "pointAmount": 0, // 2020.08.06 이후 fadeout 된 레거시 포인트 금액으로 0원으로 응답
+            "pointAmount": 0, 
             "regTs": "2023-02-09 15:44:25"
         }
     ],
