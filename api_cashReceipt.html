@@ -1,49 +1,39 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
 <head>
-    <title>토스 현금영수증 API</title>
+    <title>토스 현금영수증 API V2</title>
 </head>
 <body>
-    <h1>토스 현금영수증 API 사용 예시</h1>
-    
-    <h2>1. 현금영수증 발급</h2>
-    <button id="issueCashReceiptButton">현금영수증 발급</button>
-    <div id="issueCashReceiptResult"></div>
-    
-    <h2>2. 현금영수증 취소</h2>
-    <button id="revokeCashReceiptButton">현금영수증 취소</button>
-    <div id="revokeCashReceiptResult"></div>
-    
-    <h2>3. 현금영수증 상태 확인</h2>
-    <button id="checkCashReceiptStatusButton">현금영수증 상태 확인</button>
-    <div id="checkCashReceiptStatusResult"></div>
-    
-    <h2>4. 현금영수증 팝업 주소 전달</h2>
-    <button id="getCashReceiptPopupButton">현금영수증 팝업 주소</button>
-    <div id="getCashReceiptPopupResult"></div>
+    <h1>토스 현금영수증 API V2</h1>
 
-    <script>
-        // 현금영수증 발급 요청
-        document.getElementById("issueCashReceiptButton").addEventListener("click", function() {
-            // 작성해야 할 JavaScript 코드
-        });
+    <h2>1. 개요</h2>
+    <p>본 문서는 토스 결제 가맹점에서 현금영수증을 발급하거나 취소, 상태 확인 및 현금영수증 이미지 주소를 얻고자 할 때 사용할 API 에 대한 가이드를 제공합니다.</p>
+    <!-- 개요 내용 계속... -->
 
-        // 현금영수증 취소 요청
-        document.getElementById("revokeCashReceiptButton").addEventListener("click", function() {
-            // 작성해야 할 JavaScript 코드
-        });
+    <h2>2. API Spec</h2>
 
-        // 현금영수증 상태 확인 요청
-        document.getElementById("checkCashReceiptStatusButton").addEventListener("click", function() {
-            // 작성해야 할 JavaScript 코드
-        });
+    <h3>2.1. 현금 영수증 발급</h3>
+    <p>해당 결제가 status = PAY_COMPLETE 으로 완료되었을 때, 현금 영수증 발급이 가능합니다.</p>
+    <!-- 현금 영수증 발급 API Spec 내용 계속... -->
 
-        // 현금영수증 팝업 주소 요청
-        document.getElementById("getCashReceiptPopupButton").addEventListener("click", function() {
-            // 작성해야 할 JavaScript 코드
-        });
-    </script>
+    <h3>2.2. 현금 영수증 취소</h3>
+    <p>해당 결제가 status = PAY_COMPLETE 으로 완료되었고, 발급 요청된 현금 영수증이 있을 때에만 호출 가능합니다.</p>
+    <!-- 현금 영수증 취소 API Spec 내용 계속... -->
 
+    <h3>2.3. 현금 영수증 상태 확인</h3>
+    <p>현금 영수증 상태 확인 API</p>
+    <!-- 현금 영수증 상태 확인 API Spec 내용 계속... -->
+
+    <h3>2.4. 현금 영수증 팝업 주소 전달</h3>
+    <p>토스 결제 가맹점을 이용한 고객이 현금영수증의 발급 및 취소된 것의 발급 이미지 등을 요구할 때, 해당 API 를 호출하여 리턴되는 팝업 Uri 값으로 대응이 가능합니다.</p>
+    <!-- 현금 영수증 팝업 주소 전달 API Spec 내용 계속... -->
+
+    <h2>3. 유의할 점</h2>
+
+    <h3>3.1. 현금영수증 처리 완료 일시</h3>
+    <p>현금영수증 API 를 호출하더라도 1) 국세청으로 전송 2) 국세청에서 확인 후 승인 또는 거절 등의 단계를 거쳐 처리가 되므로, 현금영수증 API 호출 후 통상 2 ~ 3 일의 시일이 지나야 국세청에 등록이 완료됩니다.</p>
+    <!-- 유의할 점 내용 계속... -->
+</body>
 
 <head>
     <title>현금영수증 발급</title>
