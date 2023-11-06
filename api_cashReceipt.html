@@ -1,41 +1,120 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>토스 현금영수증 API V2</title>
-</head>
-<body>
-    <h1>토스 현금영수증 API V2</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>토스 현금영수증 API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="https://static.toss.im/tds/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://static.toss.im/tds/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://static.toss.im/tds/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="https://static.toss.im/tds/favicon/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="196x196" href="https://static.toss.im/tds/favicon/favicon-196x196.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="https://static.toss.im/tds/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="https://static.toss.im/tds/favicon/apple-touch-icon-72x72.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="https://static.toss.im/tds/favicon/apple-touch-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="https://static.toss.im/tds/favicon/apple-touch-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="https://static.toss.im/tds/favicon/apple-touch-icon-144x144.png"  
+    />
+    <link
+      sizes="152x152"
+      href="https://static.toss.im/tds/favicon/apple-touch-icon-152x152.png"fdsffsdf
+    />
+    <meta name="msapplication-TileImage" content="https://static.toss.im/tds/favicon/mstile-144x144.png" />
 
-    <h2>1. 개요</h2>
-    <p>본 문서는 토스 결제 가맹점에서 현금영수증을 발급하거나 취소, 상태 확인 및 현금영수증 이미지 주소를 얻고자 할 때 사용할 API 에 대한 가이드를 제공합니다.</p>
-    <!-- 개요 내용 계속... -->
+    <!-- stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+      integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/prism.css" />
+    <link rel="stylesheet" type="text/css" href="css/tossdev.css" />
 
-    <h2>2. API Spec</h2>
+    <!-- javascript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+      integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+      crossorigin="anonymous"
+    ></script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
 
-    <h3>2.1. 현금 영수증 발급</h3>
-    <p>해당 결제가 status = PAY_COMPLETE 으로 완료되었을 때, 현금 영수증 발급이 가능합니다.</p>
-    <!-- 현금 영수증 발급 API Spec 내용 계속... -->
+  <body id="docs" data-spy="scroll" data-target="#guide">
+    <!-- Google Tag Manager -->
+    <noscript
+      ><iframe
+        src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <script>
+      (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-TPTMLG');
+    </script>
 
-    <h3>2.2. 현금 영수증 취소</h3>
-    <p>해당 결제가 status = PAY_COMPLETE 으로 완료되었고, 발급 요청된 현금 영수증이 있을 때에만 호출 가능합니다.</p>
-    <!-- 현금 영수증 취소 API Spec 내용 계속... -->
 
-    <h3>2.3. 현금 영수증 상태 확인</h3>
-    <p>현금 영수증 상태 확인 API</p>
-    <!-- 현금 영수증 상태 확인 API Spec 내용 계속... -->
+    <!-- End Google Tag Manager -->
+    <div id="guide">
+      <h1 class="logo">
+          <img src="https://static.toss.im/tds/icon/svg/logo-only-icon.svg" alt="toss developers logo"/>
+          <span>토스 현금영수증 API</span>
+      </h1>
+      
+    </div>
 
-    <h3>2.4. 현금 영수증 팝업 주소 전달</h3>
-    <p>토스 결제 가맹점을 이용한 고객이 현금영수증의 발급 및 취소된 것의 발급 이미지 등을 요구할 때, 해당 API 를 호출하여 리턴되는 팝업 Uri 값으로 대응이 가능합니다.</p>
-    <!-- 현금 영수증 팝업 주소 전달 API Spec 내용 계속... -->
-
-    <h2>3. 유의할 점</h2>
-
-    <h3>3.1. 현금영수증 처리 완료 일시</h3>
-    <p>현금영수증 API 를 호출하더라도 1) 국세청으로 전송 2) 국세청에서 확인 후 승인 또는 거절 등의 단계를 거쳐 처리가 되므로, 현금영수증 API 호출 후 통상 2 ~ 3 일의 시일이 지나야 국세청에 등록이 완료됩니다.</p>
-    <!-- 유의할 점 내용 계속... -->
-</body>
-
-<head>
+    <div id="api-docs">
+      <div id="methods">
+        <div class="languages">
+          <a class="language selected" data-lang="php" href="#">PHP</a>
+          <a class="language" data-lang="java" href="#">Java</a>
+          <a class="language" data-lang="curl" href="#">curl</a>
+          <a class="language" data-lang="python" href="#">Python</a>
+          <a class="language" data-lang="ruby" href="#">Ruby</a>
+          <a class="language" data-lang="aspnet" href="#">ASP</a>
+        </div>
+        <div class="method" id="intro">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>토스 현금영수증 API 소개</h3>
+              <p>
+               본 문서는 토스 결제 가맹점에서 현금영수증을 발급하거나 취소, 상태 확인 및 현금영수증 이미지 주소를 얻고자 할 때 사용할 API 에 대한 가이드를 제공합니다.
+               토스 결제 가맹점에서는 해당하는 현금영수증 API 를 이용하여 국세청으로 현금영수증을 등록 및 취소, 상태 확인 등을 할 수 있습니다.
+               이를 위해 토스에서는 토스페이먼츠(PG)를 통해 가맹점에게 현금영수증 API 를 제공하고, 토스페이먼츠(PG)를 통해 국세청으로 정상 등록이 되면 통상 2일 안에 국세청으로부터 동기화 과정을 거쳐서 현금영수증의 발급이 완료됩니다.
+              </p>
+            </div>
+            <div class="method-example">
+              <pre></pre>
+            </div>
+          </div>
+        </div>
+      <head>
     <title>현금영수증 발급</title>
 </head>
 <body>
@@ -95,5 +174,526 @@
     </form>
   
 </body>
-</html>
+        <div class="method" id="httpResponse">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>HTTP 응답 코드</h3>
+              <div class="info">
+                <h4>HTTP Response Code</h4>
+                <div class="field clearfix">
+                  <div class="key">200</div>
+                  <div class="desc">
+                    OK : 정상
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">400</div>
+                  <div class="desc">
+                    Bad Request : 파라미터 오류
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">401</div>
+                  <div class="desc">
+                    Unauthorized : 가맹점 key 오류
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">404</div>
+                  <div class="desc">
+                    Not Found : 존재하지 않는 요청
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">50x</div>
+                  <div class="desc">
+                    Server error : 서버 오류
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="method-example">
+              <pre>
+              <code class="curl">
+              </code>
+              <code class="java">
+              </code>
+              <code class="pho">
+              </code>
+            </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="settlementDetail">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>정산 내역 상세 조회</h3>
+              <p>
+                특정 지급일에 입금된 금액이 어떻게 구성되어있는지 상세하게 알아볼 때 이용합니다. ('왜 이 금액이
+                들어왔지?')
+              </p>
+              <div class="info">
+                <h4>endpoint</h4>
+                <div class="field clearfix">
+                  <div class="key">
+                    (POST)
+                  </div>
+                  <div class="desc">
+                    https://pay.toss.im/api/v1/settlementDetails
+                  </div>
+                </div>
+              </div>
+              <div class="info">
+                <h4>parameters</h4>
+                <div class="field clearfix">
+                  <div class="key">
+                    apiKey
+                    <span class="type">string</span>
+                    <span class="required"></span>
+                  </div>
+                  <div class="desc">
+                    가맹점 key<br />
+                    (Test key도 입력 가능하나 테스트 결제는 실제 지급되지 않기 때문에 결과가 없을 것입니다)
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    mode
+                    <span class="type">string</span>
+                    <span class="required"></span>
+                  </div>
+                  <div class="desc">
+                    조회일 기준 (기본값은 DUE)<br />
+                    <br />
+                    <table class="table">
+                      <tr>
+                        <td>DUE</td>
+                        <td>지급일 (정산 계좌에 입금된 날짜 기준)</td>
+                      </tr>
+                      <tr>
+                        <td>SETTLE</td>
+                        <td>거래 승인일</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    date
+                    <span class="type">string</span>
+                    <span class="required"></span>
+                  </div>
+                  <div class="desc">
+                    조회하고자 하는 날짜 (YYYYMMDD)
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    type
+                    <span class="type">string</span>
+                    <span class="required"></span>
+                  </div>
+                  <div class="desc">
+                    결과로 받고자 하는 형식을 정합니다. JSON형식과 전문 형식을 지원합니다.<br />
+                    <br />
+                    <table class="table">
+                      <tr>
+                        <td>JSON</td>
+                        <td>JSON 형식</td>
+                      </tr>
+                      <tr>
+                        <td>TELEGRAM</td>
+                        <td>전문 형식</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="info">
+                <h4>response (JSON)</h4>
+                <div class="field clearfix">
+                  <div class="key">
+                    transactionType
+                  </div>
+                  <div class="desc">
+                    거래 종류
+                    <br />
+                    <br />
+                    <table class="table">
+                      <tr>
+                        <td>PAY</td>
+                        <td>결제</td>
+                      </tr>
+                      <tr>
+                        <td>REFUND</td>
+                        <td>환불</td>
+                      </tr>
+                      <tr>
+                        <td>FEE</td>
+                        <td>환불수수료 등 기타 건</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    settleDate
+                  </div>
+                  <div class="desc">
+                    거래 승인일
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    dueDate
+                  </div>
+                  <div class="desc">
+                    지급일
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    payToken
+                  </div>
+                  <div class="desc">
+                    Toss 결제 토큰
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    orderNo
+                  </div>
+                  <div class="desc">
+                    가맹점의 상품 주문번호
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    productDesc
+                  </div>
+                  <div class="desc">
+                    상품 설명
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    payMethod
+                  </div>
+                  <div class="desc">
+                    결제 수단
+                    <br/>
+                    <br/>
+                    <table class="table">
+                      <tr>
+                        <td>TOSS_MONEY</td>
+                        <td>토스머니</td>
+                      </tr>
+                      <tr>
+                        <td>CARD</td>
+                        <td>카드</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div> 
+                <div class="field clearfix">
+                  <div class="key">
+                    amount
+                  </div>
+                  <div class="desc">금액<br />(결제는 '+', 환불은 '-'로 표시됨)</div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    fee
+                  </div>
+                  <div class="desc">
+                    수수료<br />(수수료 부과는 '-', 전액 환불 등 사유로 수수료를 돌려드리는 경우 '+'로 표시됨)
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    vat
+                  </div>
+                  <div class="desc">
+                    부가세<br />(부가세 부과는 '-', 전액 환불 등 사유로 부가세를 돌려드리는 경우 '+'로 표시됨)
+                  </div>
+                </div>
 
+                <div class="field clearfix">
+                  <div class="key">
+                    tossChargeAmount
+                  </div>
+                  <div class="desc">
+                    토스 부담 금액<br />
+                  </div>
+                </div>
+
+                <div class="field clearfix">
+                  <div class="key">
+                    rewardReturnAmount
+                  </div>
+                  <div class="desc">
+                    캐시백 회수 금액<br />캐시백 받았던 결제건을 환불했을 때, 환불 결제금액에서 차감될 캐시백 회수 금액
+                  </div>
+                </div>
+
+              </div>
+              <div class="info">
+                <h4>response (TELEGRAM, 총 250 bytes)</h4>
+                <div class="field clearfix">
+                  <div class="key">
+                    transactionType
+                    <span class="type">IDX : 0</span>
+                    <span class="type">char(8)</span>
+                  </div>
+                  <div class="desc">거래 종류 (PAY, REFUND, ETC)<br /></div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    settleDate
+                    <span class="type">IDX : 8</span>
+                    <span class="type">char(8)</span>
+                  </div>
+                  <div class="desc">
+                    거래 승인일
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    dueDate
+                    <span class="type">IDX : 16</span>
+                    <span class="type">char(8)</span>
+                  </div>
+                  <div class="desc">
+                    지급일
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    payToken
+                    <span class="type">IDX : 24</span>
+                    <span class="type">char(20)</span>
+                  </div>
+                  <div class="desc">
+                    Toss 결제 토큰
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    orderNo
+                    <span class="type">IDX : 44</span>
+                    <span class="type">char(50)</span>
+                  </div>
+                  <div class="desc">
+                    가맹점의 상품 주문번호
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    productDesc
+                    <span class="type">IDX : 94</span>
+                    <span class="type">char(50)</span>
+                  </div>
+                  <div class="desc">
+                    상품 설명
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    amount
+                    <span class="type">IDX : 144</span>
+                    <span class="type">char(9)</span>
+                  </div>
+                  <div class="desc">
+                    금액
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    fee
+                    <span class="type">IDX : 153</span>
+                    <span class="type">char(9)</span>
+                  </div>
+                  <div class="desc">
+                    수수료
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    vat
+                    <span class="type">IDX : 162</span>
+                    <span class="type">char(9)</span>
+                  </div>
+                  <div class="desc">
+                    부가세
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    Filler
+                    <span class="type">IDX : 171</span>
+                    <span class="type">char(79)</span>
+                  </div>
+                  <div class="desc">
+                    SPACE
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="method-example">
+              <div class="title">Definition</div>
+              <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/settlementDetails</code></pre>
+              <div class="title">Example Request</div>
+              <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/settlementDetails \
+    -H "Content-Type: application/json" \
+    -d '{
+        "apiKey":"sk_test_w5lNQylNqa5lNQe013Nq",
+        "mode":"DUE",
+        "date":"20160601",
+        "type":"JSON"
+        }'</code><code class="java language-java">URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://pay.toss.im/api/v1/settlementDetails");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+	jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
+	jsonBody.put("mode", "DUE");
+    jsonBody.put("date", "20160601");
+	jsonBody.put("type", "JSON");
+
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	bos.write(jsonBody.toJSONString().getBytes());
+	bos.flush();
+	bos.close();
+
+	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
+$arrayBody["mode"] = "DUE";
+$arrayBody["date"] = "20160601";
+$arrayBody["type"] = "JSON";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://pay.toss.im/api/v1/settlementDetails');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+
+$result = curl_exec($ch);
+curl_close($ch);
+
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
+data = data & "&mode=DUE"
+data = data & "&date=20160601"
+data = data & "&type=JSON"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/settlementDetails", False
+httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://pay.toss.im/api/v1/settlementDetails"
+params = {
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
+    "mode":"DUE",
+    "date":"20160601",
+    "type":"JSON"
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://pay.toss.im/api/v1/settlementDetails")
+
+params = {
+        "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq",
+        "mode" => "DUE",
+        "date" => "20160601",
+        "type" => "JSON"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
+              <div class="title">Example Response (JSON)</div>
+              <pre><code style="border:none;box-shadow:none;" class="language-javascript always-visible">[{
+    "transactionType": "PAY",
+	"productDesc": "토스모자",
+	"amount": 5500,
+	"orderNo": "toss_orderNo_1234",
+    "payMethod": "TOSS_MONEY",
+	"dueDate": "20180530",
+	"fee": -400,
+	"vat": -40,
+	"settleDate": "20180529",
+	"payToken": "1234abcdef"
+}, {
+	"transactionType": "REFUND",
+	"productDesc": "토스모자",
+	"amount": -5300,
+    "orderNo": "toss_orderNo_1234",
+    "payMethod": "TOSS_MONEY",
+	"dueDate": "20180530",
+	"fee": -400,
+	"vat": -40,
+	"settleDate": "20180529",
+	"payToken": "1235abcdef",
+    "tossChargeAmount": 0,
+    "rewardReturnAmount": -200
+},
+{....}
+]</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(function() {
+        // language toggle
+        var $languages = $('.languages .language');
+        $languages.click(function(e) {
+          e.preventDefault();
+          var lang = $(this).data('lang');
+          $languages.removeClass('selected');
+          $(this).addClass('selected');
+
+          $('pre code').hide();
+          $('pre code.' + lang).css('display', 'block');
+        });
+        $('pre code.' + $('.language.selected').data('lang')).css('display', 'block');
+      });
+    </script>
+    <script src="js/prism.js"></script>
+  </body>
+</html>
