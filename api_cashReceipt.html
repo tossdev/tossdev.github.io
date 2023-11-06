@@ -109,30 +109,12 @@
                 이를 위해 토스에서는 토스페이먼츠(PG)를 통해 가맹점에게 현금영수증 API 를 제공하고, 토스페이먼츠(PG)를 통해 국세청으로 정상 등록이 되면 익일 동기화 작업을 거쳐서 통상 2일 안에 현금영수증의 발급이 완료됩니다.<br>
               </p>
             </div>
-
-             </div>
+            </div>
           </div>
         </div>
       </div>
 
-    <script type="text/javascript">
-      $(function() {
-        // language toggle
-        var $languages = $('.languages .language');
-        $languages.click(function(e) {
-          e.preventDefault();
-          var lang = $(this).data('lang');
-          $languages.removeClass('selected');
-          $(this).addClass('selected');
 
-          $('pre code').hide();
-          $('pre code.' + lang).css('display', 'block');
-        });
-        $('pre code.' + $('.language.selected').data('lang')).css('display', 'block');
-      });
-    </script>
-    <script src="js/prism.js"></script>
-  </body>
 <head>
     <title>토스 현금영수증 발급 API</title>
 </head>
@@ -184,5 +166,24 @@
                 });
         }
     </script>
-</body>
+    </body>
+
+    <script type="text/javascript">
+      $(function() {
+        // language toggle
+        var $languages = $('.languages .language');
+        $languages.click(function(e) {
+          e.preventDefault();
+          var lang = $(this).data('lang');
+          $languages.removeClass('selected');
+          $(this).addClass('selected');
+
+          $('pre code').hide();
+          $('pre code.' + lang).css('display', 'block');
+        });
+        $('pre code.' + $('.language.selected').data('lang')).css('display', 'block');
+      });
+    </script>
+    <script src="js/prism.js"></script>
+  </body>
 </html>
