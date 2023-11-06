@@ -107,7 +107,7 @@
                본 문서는 토스페이 결제 가맹점에서 현금영수증을 발급하거나 취소, 상태 확인 및 현금영수증 이미지 주소를 얻고자 할 때 사용할 API 에 대한 가이드를 제공합니다.<br>
                토스페이 결제 가맹점에서는 해당하는 현금영수증 API 를 이용하여 국세청으로 현금영수증을 등록 및 취소, 상태 확인 등을 할 수 있습니다.<br>
                이를 위해 토스페이에서는 토스페이먼츠(PG)를 통해 가맹점에게 현금영수증 API 를 제공하고,<br> 
-	       토스페이먼츠(PG)를 통해 국세청으로 정상 등록이 되면 통상 2일 안에 국세청으로부터 동기화 과정을 거쳐서 현금영수증의 발급이 완료됩니다.<br>
+	       토스페이먼츠(PG)를 통해 국세청으로 정상 등록이 되면 통상 2일 안에 국세청으로부터 동기화 과정을 거쳐서 현금영수증의 발급이 완료됩니다.
               </p>
             </div>
             </div>
@@ -565,7 +565,24 @@ p JSON.parse(response.body)</code></pre>
         </div>
       </div>
     </div>
-        <div class="method" id="httpResponse">
+    <script type="text/javascript">
+      $(function() {
+        // language toggle
+        var $languages = $('.languages .language');
+        $languages.click(function(e) {
+          e.preventDefault();
+          var lang = $(this).data('lang');
+          $languages.removeClass('selected');
+          $(this).addClass('selected');
+
+          $('pre code').hide();
+          $('pre code.' + lang).css('display', 'block');
+        });
+        $('pre code.' + $('.language.selected').data('lang')).css('display', 'block');
+      });
+    </script>
+    <script src="js/prism.js"></script>
+	   <div class="method" id="httpResponse">
           <div class="method-section clearfix">
             <div class="method-description">
               <h3>예시</h3>
@@ -638,24 +655,5 @@ p JSON.parse(response.body)</code></pre>
               </code>
             </pre>
             </div>
-          </div>
-        </div>
-    <script type="text/javascript">
-      $(function() {
-        // language toggle
-        var $languages = $('.languages .language');
-        $languages.click(function(e) {
-          e.preventDefault();
-          var lang = $(this).data('lang');
-          $languages.removeClass('selected');
-          $(this).addClass('selected');
-
-          $('pre code').hide();
-          $('pre code.' + lang).css('display', 'block');
-        });
-        $('pre code.' + $('.language.selected').data('lang')).css('display', 'block');
-      });
-    </script>
-    <script src="js/prism.js"></script>
   </body>
 </html>
