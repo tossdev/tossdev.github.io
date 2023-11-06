@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>토스 현금영수증 API</title>
 </head>
 <body>
-    <form id="cashReceiptForm" action="https://pay.toss.im/api/v2/issue-cash-receipt" method="POST">
-        <input type="text" name="apiKey" value="example_api_key">
-        <input type="text" name="payToken" value="example_payToken">
-        <input type="text" name="cashReceiptKey" value="01001230123">
-        <input type="text" name="cashReceiptKeyType" value="PHONE">
-        <input type="text" name="cashReceiptPurpose" value="DEDUCTION">
-        <input type="submit" value="발급 요청">
-    </form>
-
-    <div id="response"></div>
+    <h1>토스 현금영수증 API 사용 예시</h1>
+    
+    <h2>1. 현금영수증 발급</h2>
+    <button id="issueCashReceiptButton">현금영수증 발급</button>
+    <div id="issueCashReceiptResult"></div>
+    
+    <h2>2. 현금영수증 취소</h2>
+    <button id="revokeCashReceiptButton">현금영수증 취소</button>
+    <div id="revokeCashReceiptResult"></div>
+    
+    <h2>3. 현금영수증 상태 확인</h2>
+    <button id="checkCashReceiptStatusButton">현금영수증 상태 확인</button>
+    <div id="checkCashReceiptStatusResult"></div>
+    
+    <h2>4. 현금영수증 팝업 주소 전달</h2>
+    <button id="getCashReceiptPopupButton">현금영수증 팝업 주소</button>
+    <div id="getCashReceiptPopupResult"></div>
 
     <script>
-        // 이벤트 리스너를 등록하여 폼 제출 시 API 호출
-        $('#cashReceiptForm').submit(function (event) {
-            event.preventDefault(); // 폼 기본 동작 방지
+        // 현금영수증 발급 요청
+        document.getElementById("issueCashReceiptButton").addEventListener("click", function() {
+            // 작성해야 할 JavaScript 코드
+        });
 
-            // API 호출
-            $.ajax({
-                type: "POST",
-                url: "https://pay.toss.im/api/v2/issue-cash-receipt",
-                data: $('#cashReceiptForm').serialize(), // 폼 데이터를 전달
-                success: function (response) {
-                    // API 응답을 처리
-                    $('#response').html(JSON.stringify(response, null, 2));
-                },
-                error: function (xhr, status, error) {
-                    $('#response').html("API 호출에 실패했습니다. 상태 코드: " + xhr.status);
-                }
-            });
+        // 현금영수증 취소 요청
+        document.getElementById("revokeCashReceiptButton").addEventListener("click", function() {
+            // 작성해야 할 JavaScript 코드
+        });
+
+        // 현금영수증 상태 확인 요청
+        document.getElementById("checkCashReceiptStatusButton").addEventListener("click", function() {
+            // 작성해야 할 JavaScript 코드
+        });
+
+        // 현금영수증 팝업 주소 요청
+        document.getElementById("getCashReceiptPopupButton").addEventListener("click", function() {
+            // 작성해야 할 JavaScript 코드
         });
     </script>
 </body>
 </html>
+
