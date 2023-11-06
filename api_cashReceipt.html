@@ -155,45 +155,45 @@
                 <div class="field clearfix">
                   <div class="key">
                     apiKey
-                    <span class="type">string</span>
-                    <span class="required"></span>
+                  <span class="type">string <font color=#c25300>필수</font></span>
+                  <span class="type">Max Length: 255 </span>
                   </div>
                   <div class="desc">
                    결제 가맹점의 apiKey<br/>
-                   apiKey 는 LIVE 값만 동작하며 TEST 값은 무시됩니다.
+                   <br></span>apiKey 는 LIVE 값만 동작하며 TEST 값은 무시됩니다.
                   </div>
                 </div>
 		  <div class="field clearfix">
                   <div class="key">
                     payToken
-                    <span class="type">string</span>
-                    <span class="required"></span>
+                  <span class="type">string <font color=#c25300>필수</font></span>
+                  <span class="type">Max Length: 255 </span>
                   </div>
                   <div class="desc">
                    결제 토큰 <br/>
-                   현금영수증 발급 대상 결제는 결제 완료(status = PAY_COMPLETE) 상태여야 합니다.
+                   <span class="text-muted">현금영수증 발급 대상 결제는 결제 완료(status = PAY_COMPLETE) 상태여야 합니다.<br></span>
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
                     cashReceiptKey
-                    <span class="type">string</span>
-                    <span class="required"></span>
+                  <span class="type">string <font color=#c25300>필수</font></span>
+                  <span class="type">Max Length: 255 </span>
                   </div>
                   <div class="desc">
                     발급 주체를 식별할 수 있는 key 값<br/>
-                    ex) 개인의 경우 - 휴대폰번호<br/>
-		        사업장의 경우 - 사업자등록번호<br/>
+                    <span class="text-muted">ex) 개인의 경우 - 휴대폰번호<br/>
+		                                 사업장의 경우 - 사업자등록번호<br></span>
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
                     cashReceiptKeyType
-                    <span class="type">string</span>
-                    <span class="required"></span>
+                  <span class="type">string <font color=#c25300>필수</font></span>
+                  <span class="type">Max Length: 255 </span>
                   </div>
                   <div class="desc">
-                    현금영수증 keyType
+                    현금영수증 keyType<br/>
 		  <br/>
                   <table class="table">
                     <tr>
@@ -214,8 +214,8 @@
                 <div class="field clearfix">
                   <div class="key">
                     cashReceiptPurpose
-                    <span class="type">string</span>
-                    <span class="required"></span>
+                  <span class="type">string <font color=#c25300>필수</font></span>
+                  <span class="type">Max Length: 255 </span>
                   </div>
                   <div class="desc">
                     현금영수증 발급 목적<br/>
@@ -234,12 +234,13 @@
 		<div class="field clearfix">
                   <div class="key">
                     needSelfIssue
-                    <span class="type">boolean</span>
+                  <span class="type">boolean</span>
+                  <span class="type">Max Length: 5 </span>
                   </div>
                   <div class="desc">
                     자진발급 처리여부<br/>
-                    자진발급 처리를 희망하지 않을 경우, needSelfIssue 파라미터는 전달 하지 않는다. (기본값 false)<br/>
-                     * 단, cashReceiptKey, cashReceiptKeyType, cashReceiptPurpose 값들이 반드시 전달 되어야 한다.<br/>
+                    <span class="text-muted">자진발급 처리를 희망하지 않을 경우, needSelfIssue 파라미터는 전달 하지 않는다. (기본값 false)<br/>
+                     * 단, cashReceiptKey, cashReceiptKeyType, cashReceiptPurpose 값들이 반드시 전달 되어야 한다.<br></span>
                    <br/>
                   <span class="text-muted"> 자진발급 처리여부를 true 로 전달 할 경우, 자진발급 처리를 진행 할 수 있으며, 아래와 같이 자동 발행<br/>
                                             (2021년 01월부터 실행된 현금영수증 의무발행 정보에 의거)<br/>
