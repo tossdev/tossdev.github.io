@@ -176,54 +176,77 @@
                 </div>
                 <div class="field clearfix">
                   <div class="key">
-                    payToken
+                    cashReceiptKey
                     <span class="type">string</span>
                     <span class="required"></span>
                   </div>
                   <div class="desc">
-                    조회일 기준 (기본값은 DUE)<br />
-                    <br />
-                    <table class="table">
-                      <tr>
-                        <td>DUE</td>
-                        <td>지급일 (정산 계좌에 입금된 날짜 기준)</td>
-                      </tr>
-                      <tr>
-                        <td>SETTLE</td>
-                        <td>거래 승인일</td>
-                      </tr>
-                    </table>
+                    발급 주체를 식별할 수 있는 key 값<br/>
+                    ex) 개인의 경우 - 휴대폰번호<br/>
+		        사업장의 경우 - 사업자등록번호<br/>
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
-                    date
+                    cashReceiptKeyType
                     <span class="type">string</span>
                     <span class="required"></span>
                   </div>
                   <div class="desc">
-                    조회하고자 하는 날짜 (YYYYMMDD)
+                    현금영수증 keyType
+		  <br/>
+                  <table class="table">
+                    <tr>
+                     <td>PHONE</td>
+                      <td>전화번호</td>
+                    </tr>
+		     <tr>
+                     <td>CORPORATE</td>
+                      <td>사업자등록번호</td>
+                    </tr>
+		    <tr>
+                     <td>CARD</td>
+                      <td>카드번호</td>
+                    </tr>
+                  </table>
+                   </div>
                   </div>
-                </div>
                 <div class="field clearfix">
                   <div class="key">
-                    type
+                    cashReceiptPurpose
                     <span class="type">string</span>
                     <span class="required"></span>
                   </div>
                   <div class="desc">
-                    결과로 받고자 하는 형식을 정합니다. JSON형식과 전문 형식을 지원합니다.<br />
-                    <br />
+                    현금영수증 발급 목적<br/>
+                    <br/>
                     <table class="table">
                       <tr>
-                        <td>JSON</td>
-                        <td>JSON 형식</td>
+                        <td>DEDUCTION</td>
+                        <td>소득공제용</td>
                       </tr>
                       <tr>
-                        <td>TELEGRAM</td>
-                        <td>전문 형식</td>
+                        <td>EVIDENCE</td>
+                        <td>지출증빙용</td>
                       </tr>
                     </table>
+                  </div>
+		<div class="field clearfix">
+                  <div class="key">
+                    needSelfIssue
+                    <span class="type">boolean</span>
+                  </div>
+                  <div class="desc">
+                    자진발급 처리여부<br/>
+                    자진발급 처리를 희망하지 않을 경우, needSelfIssue 파라미터는 전달 하지 않는다. (기본값 false)<br/>
+                     * 단, cashReceiptKey, cashReceiptKeyType, cashReceiptPurpose 값들이 반드시 전달 되어야 한다.<br/>
+                   <br/>
+                  <span class="text-muted"> 자진발급 처리여부를 true 로 전달 할 경우, 자진발급 처리를 진행 할 수 있으며, 아래와 같이 자동 발행<br/>
+                                            (2021년 01월부터 실행된 현금영수증 의무발행 정보에 의거)<br/>
+                 * 식별번호(cashReceiptKey): 01000001234<br/>
+                 * 현금영수증 타입(cashReceiptKeyType): PHONE (전화번호)<br/>
+                 * 발급목적(cashReceiptPurpose): DEDUCTION (소득공제용)<br></span>
+                 <br/>
                   </div>
                 </div>
               </div>
