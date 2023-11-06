@@ -87,7 +87,11 @@
         </a>
       </div>
         <ul class="menu nav">
-            <h5>현금영수증 API 목록</h5>
+            <h5>현금영수증 API</h5>
+            <li>
+                <a href="#intro">소개</a>
+            </li>
+            <h5>API 목록</h5>
             <li>
                 <a href="#issue">현금 영수증 발급</a>
             </li>
@@ -99,6 +103,9 @@
             </li>
             <li>
                 <a href="#popupUri">현금 영수증 팝업 주소 전달 </a>
+            </li>
+	    <li>
+                <a href="#test">현금 영수증 테스트</a>
             </li>
         </ul>
     </div>
@@ -125,13 +132,12 @@
             </div>
             </div>
           </div>
-        <div class="method" id="cashReceiptDetail">
+        <div class="method" id="issue">
           <div class="method-section clearfix">
             <div class="method-description">
-              <h3>정산 내역 상세 조회</h3>
+              <h3>현금 영수증 발급</h3>
               <p>
-                특정 지급일에 입금된 금액이 어떻게 구성되어있는지 상세하게 알아볼 때 이용합니다. ('왜 이 금액이
-                들어왔지?')
+               해당 결제가 status = PAY_COMPLETE 으로 완료되었을 때, 현금 영수증 발급이 가능합니다.
               </p>
               <div class="info">
                 <h4>endpoint</h4>
@@ -140,7 +146,7 @@
                     (POST)
                   </div>
                   <div class="desc">
-                    https://pay.toss.im/api/v1/settlementDetails
+                    https://pay.toss.im/api/v2/issue-cash-receipt
                   </div>
                 </div>
               </div>
@@ -153,13 +159,24 @@
                     <span class="required"></span>
                   </div>
                   <div class="desc">
-                    가맹점 key<br />
-                    (Test key도 입력 가능하나 테스트 결제는 실제 지급되지 않기 때문에 결과가 없을 것입니다)
+                   결제 가맹점의 apiKey<br/>
+                   apiKey 는 LIVE 값만 동작하며 TEST 값은 무시됩니다.
+                  </div>
+                </div>
+		  <div class="field clearfix">
+                  <div class="key">
+                    payToken
+                    <span class="type">string</span>
+                    <span class="required"></span>
+                  </div>
+                  <div class="desc">
+                   결제 토큰 <br/>
+                   현금영수증 발급 대상 결제는 결제 완료(status = PAY_COMPLETE) 상태여야 합니다.
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
-                    mode
+                    payToken
                     <span class="type">string</span>
                     <span class="required"></span>
                   </div>
