@@ -110,78 +110,82 @@
               </p>
             </div>
 
+             </div>
+          </div>
+        </div>
+      </div>
+
+    <script type="text/javascript">
+      $(function() {
+        // language toggle
+        var $languages = $('.languages .language');
+        $languages.click(function(e) {
+          e.preventDefault();
+          var lang = $(this).data('lang');
+          $languages.removeClass('selected');
+          $(this).addClass('selected');
+
+          $('pre code').hide();
+          $('pre code.' + lang).css('display', 'block');
+        });
+        $('pre code.' + $('.language.selected').data('lang')).css('display', 'block');
+      });
+    </script>
+    <script src="js/prism.js"></script>
+  </body>
+</html>           
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>토스 현금영수증 API 호출 예제</title>
+    <title>토스 현금영수증 발급 API</title>
 </head>
 <body>
-    <h1>토스 현금영수증 API 호출</h1>
-    <form id="cashReceiptForm">
-        <label for="apiKey">API Key:</label>
-        <input type="text" id="apiKey" name="apiKey" required><br><br>
-        
-        <label for="payToken">Pay Token:</label>
-        <input type="text" id="payToken" name="payToken" required><br><br>
-        
-        <label for="cashReceiptKey">Cash Receipt Key:</label>
-        <input type="text" id="cashReceiptKey" name="cashReceiptKey" required><br><br>
-        
-        <label for="cashReceiptKeyType">Cash Receipt Key Type:</label>
-        <select id="cashReceiptKeyType" name="cashReceiptKeyType" required>
-            <option value="PHONE">PHONE</option>
-            <option value="CORPORATE">CORPORATE</option>
-            <option value="CARD">CARD</option>
-        </select><br><br>
-        
-        <label for="cashReceiptPurpose">Cash Receipt Purpose:</label>
-        <select id="cashReceiptPurpose" name="cashReceiptPurpose" required>
-            <option value="DEDUCTION">DEDUCTION</option>
-            <option value="EVIDENCE">EVIDENCE</option>
-        </select><br><br>
-        
-        <label for="needSelfIssue">Need Self Issue:</label>
-        <input type="checkbox" id="needSelfIssue" name="needSelfIssue"><br><br>
-        
-        <button type="button" onclick="issueCashReceipt()">현금영수증 발급</button>
-    </form>
-
-    <div id="response"></div>
+    <button onclick="issueCashReceipt()">현금영수증 발급</button>
 
     <script>
         function issueCashReceipt() {
-            const apiKey = document.getElementById("apiKey").value;
-            const payToken = document.getElementById("payToken").value;
-            const cashReceiptKey = document.getElementById("cashReceiptKey").value;
-            const cashReceiptKeyType = document.getElementById("cashReceiptKeyType").value;
-            const cashReceiptPurpose = document.getElementById("cashReceiptPurpose").value;
-            const needSelfIssue = document.getElementById("needSelfIssue").checked;
+            const apiKey = "example_api_key"; // 결제 가맹점의 apiKey
+            const payToken = "example_payToken"; // 결제 토큰
+            const cashReceiptKey = "01001230123"; // 발급 주체를 식별할 수 있는 key 값
+            const cashReceiptKeyType = "PHONE"; // 현금영수증 keyType (PHONE, CORPORATE, CARD)
+            const cashReceiptPurpose = "DEDUCTION"; // 현금영수증 발급 목적 (DEDUCTION 또는 EVIDENCE)
 
-            // TODO: Perform the API request using the provided data
-            // You can use JavaScript's Fetch API or any other library to make the API call
+            const apiUrl = "https://pay.toss.im/api/v2/issue-cash-receipt";
 
-            // Example: Using Fetch API
-            fetch('https://pay.toss.im/api/v2/issue-cash-receipt', {
-                method: 'POST',
+            // API 요청 데이터
+            const requestData = {
+                apiKey: apiKey,
+                payToken: payToken,
+                cashReceiptKey: cashReceiptKey,
+                cashReceiptKeyType: cashReceiptKeyType,
+                cashReceiptPurpose: cashReceiptPurpose,
+            };
+
+            // API 호출
+            fetch(apiUrl, {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    apiKey,
-                    payToken,
-                    cashReceiptKey,
-                    cashReceiptKeyType,
-                    cashReceiptPurpose,
-                    needSelfIssue,
-                }),
+                body: JSON.stringify(requestData),
             })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("response").innerHTML = JSON.stringify(data, null, 2);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+                .then((response) => response.json())
+                .then((data) => {
+                    // API 응답 처리
+                    if (data.status === 200 && data.code === 0) {
+                        alert("현금영수증이 발급되었습니다.");
+                        console.log("발급 요청된 현금영수증 관리번호: " + data.cashReceiptMgtKey);
+                        console.log("공급가액: " + data.supplyCost);
+                        console.log("부가세: " + data.tax);
+                        console.log("봉사료: " + data.serviceFee);
+                    } else {
+                        alert("현금영수증 발급에 실패하였습니다.");
+                    }
+                })
+                .catch((error) => {
+                    console.error("API 호출 중 오류 발생: " + error);
+                });
         }
     </script>
 </body>
