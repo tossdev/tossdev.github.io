@@ -104,19 +104,24 @@
             <div class="method-description">
               <h3>토스 현금영수증 API 소개</h3>
               <p>
-               본 문서는 토스 결제 가맹점에서 현금영수증을 발급하거나 취소, 상태 확인 및 현금영수증 이미지 주소를 얻고자 할 때 사용할 API 에 대한 가이드를 제공합니다.<br>
-               토스 결제 가맹점에서는 해당하는 현금영수증 API 를 이용하여 국세청으로 현금영수증을 등록 및 취소, 상태 확인 등을 할 수 있습니다.<br>
-               이를 위해 토스에서는 토스페이먼츠(PG)를 통해 가맹점에게 현금영수증 API 를 제공하고, 토스페이먼츠(PG)를 통해 국세청으로 정상 등록이 되면 통상 2일 안에 국세청으로부터 동기화 과정을 거쳐서 현금영수증의 발급이 완료됩니다.<br>
+               본 문서는 토스페이 결제 가맹점에서 현금영수증을 발급하거나 취소, 상태 확인 및 현금영수증 이미지 주소를 얻고자 할 때 사용할 API 에 대한 가이드를 제공합니다.<br>
+               토스페이 결제 가맹점에서는 해당하는 현금영수증 API 를 이용하여 국세청으로 현금영수증을 등록 및 취소, 상태 확인 등을 할 수 있습니다.<br>
+               이를 위해 토스페이에서는 토스페이먼츠(PG)를 통해 가맹점에게 현금영수증 API 를 제공하고,<br> 
+	       토스페이먼츠(PG)를 통해 국세청으로 정상 등록이 되면 통상 2일 안에 국세청으로부터 동기화 과정을 거쳐서 현금영수증의 발급이 완료됩니다.<br>
               </p>
             </div>
             </div>
           </div>
-      <head>
-    <title>현금영수증 발급</title>
-</head>
-<body>
-    <h1>현금영수증 발급</h1>
-    <form method="post" action="https://pay.toss.im/api/v2/issue-cash-receipt">
+        <div class="method" id="httpResponse">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>예시</h3>
+              <div class="info">
+                <h4>HTTP Response Code</h4>
+                <div class="field clearfix">
+                  <div class="key">현금영수증 발급</div>
+                  <div class="desc">
+                     <form method="post" action="https://pay.toss.im/api/v2/issue-cash-receipt">
         <input type="text" name="apiKey" placeholder="apiKey" required><br>
         <input type="text" name="payToken" placeholder="payToken" required><br>
         <input type="text" name="cashReceiptKey" placeholder="cashReceiptKey" required><br>
@@ -132,79 +137,40 @@
         <input type="checkbox" name="needSelfIssue" value="true"> 자진발급 처리여부<br>
         <input type="submit" value="발급 요청">
     </form>
-</body>
-
-<head>
-    <title>현금영수증 취소</title>
-</head>
-<body>
-    <h1>현금영수증 취소</h1>
-    <form method="post" action="https://pay.toss.im/api/v2/revoke-cash-receipt">
-        <input type="text" name="apiKey" placeholder="apiKey" required><br>
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">현금영수증 취소</div>
+                  <div class="desc">
+                   <body>
+               <form method="post" action="https://pay.toss.im/api/v2/revoke-cash-receipt">
+          <input type="text" name="apiKey" placeholder="apiKey" required><br>
         <input type="text" name="payToken" placeholder="payToken" required><br>
         <input type="submit" value="취소 요청">
     </form>
 </body>
-
-
-<head>
-    <title>현금영수증 상태 확인</title>
-</head>
-<body>
-    <h1>현금영수증 상태 확인</h1>
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">현금영수증 상태 확인</div>
+                  <div class="desc">
     <form method="post" action="https://pay.toss.im/api/v2/cash-receipt-info">
         <input type="text" name="apiKey" placeholder="apiKey" required><br>
         <input type="text" name="payToken" placeholder="payToken" required><br>
         <input type="submit" value="상태 확인 요청">
     </form>
-</body>
-
-<head>
-    <title>현금영수증 팝업 주소 전달</title>
-</head>
-<body>
-    <h1>현금영수증 팝업 주소 전달</h1>
-    <form method="post" action="https://pay.toss.im/api/v2/cash-receipt-popupUri">
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">현금영수증 팝업 주소 전달</div>
+                  <div class="desc">
+                       <form method="post" action="https://pay.toss.im/api/v2/cash-receipt-popupUri">
         <input type="text" name="apiKey" placeholder="apiKey" required><br>
         <input type="text" name="payToken" placeholder="payToken" required><br>
         <input type="submit" value="팝업 주소 전달 요청">
     </form>
-  
-</body>
-        <div class="method" id="httpResponse">
-          <div class="method-section clearfix">
-            <div class="method-description">
-              <h3>HTTP 응답 코드</h3>
-              <div class="info">
-                <h4>HTTP Response Code</h4>
-                <div class="field clearfix">
-                  <div class="key">200</div>
-                  <div class="desc">
-                    OK : 정상
                   </div>
                 </div>
-                <div class="field clearfix">
-                  <div class="key">400</div>
-                  <div class="desc">
-                    Bad Request : 파라미터 오류
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">401</div>
-                  <div class="desc">
-                    Unauthorized : 가맹점 key 오류
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">404</div>
-                  <div class="desc">
-                    Not Found : 존재하지 않는 요청
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">50x</div>
-                  <div class="desc">
-                    Server error : 서버 오류
                   </div>
                 </div>
               </div>
