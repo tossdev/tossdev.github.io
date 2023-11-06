@@ -43,6 +43,67 @@
             // 작성해야 할 JavaScript 코드
         });
     </script>
+
+
+<head>
+    <title>현금영수증 발급</title>
+</head>
+<body>
+    <h1>현금영수증 발급</h1>
+    <form method="post" action="https://pay.toss.im/api/v2/issue-cash-receipt">
+        <input type="text" name="apiKey" placeholder="apiKey" required><br>
+        <input type="text" name="payToken" placeholder="payToken" required><br>
+        <input type="text" name="cashReceiptKey" placeholder="cashReceiptKey" required><br>
+        <select name="cashReceiptKeyType" required>
+            <option value="PHONE">PHONE</option>
+            <option value="CORPORATE">CORPORATE</option>
+            <option value="CARD">CARD</option>
+        </select><br>
+        <select name="cashReceiptPurpose" required>
+            <option value="DEDUCTION">DEDUCTION</option>
+            <option value="EVIDENCE">EVIDENCE</option>
+        </select><br>
+        <input type="checkbox" name="needSelfIssue" value="true"> 자진발급 처리여부<br>
+        <input type="submit" value="발급 요청">
+    </form>
+</body>
+
+<head>
+    <title>현금영수증 취소</title>
+</head>
+<body>
+    <h1>현금영수증 취소</h1>
+    <form method="post" action="https://pay.toss.im/api/v2/revoke-cash-receipt">
+        <input type="text" name="apiKey" placeholder="apiKey" required><br>
+        <input type="text" name="payToken" placeholder="payToken" required><br>
+        <input type="submit" value="취소 요청">
+    </form>
+</body>
+
+
+<head>
+    <title>현금영수증 상태 확인</title>
+</head>
+<body>
+    <h1>현금영수증 상태 확인</h1>
+    <form method="post" action="https://pay.toss.im/api/v2/cash-receipt-info">
+        <input type="text" name="apiKey" placeholder="apiKey" required><br>
+        <input type="text" name="payToken" placeholder="payToken" required><br>
+        <input type="submit" value="상태 확인 요청">
+    </form>
+</body>
+
+<head>
+    <title>현금영수증 팝업 주소 전달</title>
+</head>
+<body>
+    <h1>현금영수증 팝업 주소 전달</h1>
+    <form method="post" action="https://pay.toss.im/api/v2/cash-receipt-popupUri">
+        <input type="text" name="apiKey" placeholder="apiKey" required><br>
+        <input type="text" name="payToken" placeholder="payToken" required><br>
+        <input type="submit" value="팝업 주소 전달 요청">
+    </form>
+  
 </body>
 </html>
 
