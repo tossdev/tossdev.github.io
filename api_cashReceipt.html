@@ -106,7 +106,7 @@
             </li>
 		<h5>유의할 점</h5>
             <li>
-                <a href="#complete">현금영수증 처리 완료 일시</a>
+                <a href="#complete">현금영수증 처리 완료 일시</a>
             </li>
 		<h5>현금영수증 에러코드</h5>
         </ul>
@@ -1041,6 +1041,18 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                 </div>
             </div>	    
+            <div class="method" id="complete">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>현금영수증 처리 완료 일시</h3>
+                        <p>
+                            현금영수증 API 를 호출하더라도 1) 국세청으로 전송 2) 국세청에서 확인 후 승인 또는 거절 등의 단계를 거쳐 처리가 되므로,  현금영수증 API 호출 후 통상 2 ~ 3 일의 시일이 지나야 국세청에 등록이 완료된다.<br>
+			     토스 내부적으로는 국세청 등록 과정에서 취소 API 가 호출 될 경우  즉시 처리가 불가능하므로, 해당 요청은 status = PENDING 으로 기록 후 일괄 배치 작업으로 현금영수증 취소 처리한다.<br>   
+			</p>
+                </div>
+            </div>
+         </div>
+	      
     <script type="text/javascript">
         $(function () {
 
