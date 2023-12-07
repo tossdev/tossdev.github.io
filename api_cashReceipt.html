@@ -259,6 +259,7 @@
                     <span class="text-muted">해당 값을 true 로 전달 할 경우 식별번호를 보내지 않아도 토스가 저장하고 있는 유저의 현재 현금영수증 식별 번호로 발급 처리됩니다.(기본값 false)<br></span>
                   </div>
                 </div>
+	       </div>
               <div class="info">
                 <h4>response (JSON)</h4>
 		 <div class="field clearfix">
@@ -273,18 +274,8 @@
                   <div class="key">
                     code
                   </div>
-                  <div class="desc">
-                    <br />
-                    <table class="table">
-                      <tr>
-                        <td>0</td>
-                        <td>정상</td>
-                      </tr>
-                      <tr>
-                        <td>그 외</td>
-                        <td>에러</td>
-                      </tr>
-                    </table>
+                   <div class="desc">
+                   0 : 정상,  그 외 값은 에러
                   </div>
                 </div>
                 <div class="field clearfix">
@@ -323,7 +314,7 @@
                   </div>
                 </div>
                 </div>
-                    </div>
+              </div>
 		    
                      <div class="method-example">
                         <div class="title">Definition</div>
@@ -446,7 +437,6 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                 </div>
             </div>
-       </div>
 		
             <div class="method" id="revoke">
                 <div class="method-section clearfix">
@@ -494,17 +484,8 @@ p JSON.parse(response.body)</code></pre>
                   <div class="key">
                     code
                   </div>
-                  <div class="desc">
-                    <table class="table">
-                      <tr>
-                        <td>0</td>
-                        <td>정상</td>
-                      </tr>
-                      <tr>
-                        <td>그 외</td>
-                        <td>에러</td>
-                      </tr>
-                    </table>
+                   <div class="desc">
+                   0 : 정상,  그 외 값은 에러
                   </div>
                 </div>
                 <div class="field clearfix">
@@ -589,7 +570,7 @@ postResponse = httpRequest.ResponseText
 
 Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
 
-url = "https://pay.toss.im/api/v2/refunds"
+url = "https://pay.toss.im/api/v2/revoke-cash-receipt"
 params = {
     "payToken": "example-payToken",
     "apiKey": "example_api_key"
@@ -629,7 +610,6 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                 </div>
             </div>
-       </div>
 			    
             <div class="method" id="info">
                 <div class="method-section clearfix">
@@ -659,6 +639,7 @@ p JSON.parse(response.body)</code></pre>
                                     결제토큰 <br> 
                                 </div>
                             </div>
+		 </div>
                  <div class="info">
                 <h4>response (JSON)</h4>
 		 <div class="field clearfix">
@@ -726,16 +707,66 @@ p JSON.parse(response.body)</code></pre>
                   거래유형 (승인거래 / 취소거래)
                   </div>
                 </div>
-
-
-
-			 
-			 
+                <div class="field clearfix">
+                  <div class="key">
+                   status
+		   </div>
+                  <div class="desc">
+                    현금영수증 상태<br>
+		    <br>
+                    <table class="table">
+                    <tr>
+                     <td>IN_PROGRESS</td>
+                     <td>국세청 전송중</td>
+                     </tr>
+                     <tr>
+                     <td>ISSUE_APPLIED</td>
+                      <td>발급 신청 완료</td>
+                      </tr>
+                     <tr>
+                     <td>ISSUE_COMPLETE</td>
+                     <td>발급 완료</td>
+                     </tr>
+		      <tr>
+                     <td>ISSUE_FAILED</td>
+                     <td>발급 실패</td>
+                     </tr>
+                   </table>
+                 </div>
+                </div>
+		<div class="field clearfix">
+                    <div class="key">
+                    tradeDate
+                  </div>
+                  <div class="desc">
+                  등록 요청 날짜
+                  </div>
+                </div>
+		<div class="field clearfix">
+                    <div class="key">
+                    confirmNum
+                  </div>
+                  <div class="desc">
+                  발행승인번호
+                  </div>
+                </div>		 
+		<div class="field clearfix">
+                    <div class="key">
+                    confirmTs
+                  </div>
+                  <div class="desc">
+                  발행일시<br>
+                  <span>ISO-8601 형식<br>
+                  예시: 2019-03-21T14:02:49</span>
+                  </div>
+                </div>	
+                </div>
+                </div>	 
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v2/revoke-cash-receipt</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v2/cash-receipt-info</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v2/revoke-cash-receipt" \
+                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v2/cash-receipt-info" \
     -H "Content-Type: application/json" \
     -d '{
     "apiKey": "example_api_key",
@@ -746,7 +777,7 @@ URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-	url = new URL("https://pay.toss.im/api/v2/revoke-cash-receipt");
+	url = new URL("https://pay.toss.im/api/v2/cash-receipt-info");
 	connection = url.openConnection();
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
@@ -777,7 +808,7 @@ $arrayBody["payToken"] = "example-payToken";
 $arrayBody["apiKey"] = "example_api_key";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://pay.toss.im/api/v2/revoke-cash-receipt');
+$ch = curl_init('https://pay.toss.im/api/v2/cash-receipt-info');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -796,7 +827,7 @@ data = "apiKey=example_api_key"
 data = data & "&payToken=example_payToken"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/api/v2/revoke-cash-receipt", False
+httpRequest.Open "POST", "https://pay.toss.im/api/v2/cash-receipt-info", False
 httpRequest.SetRequestHeader "Content-Type", "application/json"
 httpRequest.Send data
 
@@ -804,7 +835,7 @@ postResponse = httpRequest.ResponseText
 
 Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
 
-url = "https://pay.toss.im/api/v2/refunds"
+url = "https://pay.toss.im/api/v2/cash-receipt-info"
 params = {
     "payToken": "example-payToken",
     "apiKey": "example_api_key"
@@ -814,7 +845,7 @@ response = urllib.urlopen(url, urllib.urlencode(params))
 print(response.read())</code><code class="ruby language-ruby">require 'net/http'
 require 'json'
 
-uri = URI.parse("https://pay.toss.im/api/v2/revoke-cash-receipt")
+uri = URI.parse("https://pay.toss.im/api/v2/cash-receipt-info")
 
 params = {
         "payToken" => "example-payToken",
@@ -830,21 +861,183 @@ response = http.request(request)
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{ 
-    "status": 200,
-    "code": 0,
     "cashReceiptMgtKey": "123456-123456",
-    "supplyCost": 9090,
-    "tax": 910,
-    "serviceFee": 0
-				
+    "customerName": "김토스",
+    "itemName": "테스트 상품",
+    "identityNum": "01012341234",
+    "taxationType": "과세",
+    "totalAmount": "10000",
+    "tradeUsage": "소득공제용",
+    "tradeType": "승인거래",
+    "status": "ISSUE_APPLIED",
+    "tradeDate": "20180512"			
 }
 
 </code>
             </pre>
                     </div>
                 </div>
+            </div>	
+
+           <div class="method" id="popupUri">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>현금 영수증 팝업 주소 전달</h3>
+                        <p>
+                         토스 결제 가맹점을 이용한 고객이 현금영수증의 발급 및 취소된 것의 발급 이미지 등을 요구할 때, 해당 API 를 호출하여 리턴되는 팝업 Uri 값으로 대응이 가능하다. 
+			</p>
+                        <div class="info">
+                            <h4>parameter</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    apiKey
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 30 </span>
+                                </div>
+                                <div class="desc">
+                                    결제 가맹점의 apiKey <br>
+                                    <span class="text-muted">apiKey 는 LIVE 값만 동작한다. TEST 값은 무시된다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    payToken
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 30 </span>
+                                </div>
+                                <div class="desc">
+                                    결제토큰
+                                </div>
+                            </div>
+                 <div class="info">
+                <h4>response (JSON)</h4>
+                <div class="field clearfix">
+                  <div class="key">
+                    code
+                  </div>
+                   <div class="desc">
+                   0 : 정상,  그 외 값은 에러
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    popupUri
+                  </div>
+                  <div class="desc">
+                    	발급 및 취소 상태인 현금영수증을 웹브라우저에서 직접 확인할 수 있는 팝업 Uri 값<br>
+                        단, 반환된 URL의 제한시간은 30초이며, 제한시간 이후에는 정상적으로 표시되지 않는다.<br>
+                  </div>
+                </div>
+                </div>
+                </div>
+                    <div class="method-example">
+                        <div class="title">Definition</div>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v2/cash-receipt-popupUri</code></pre>
+                        <div class="title">Example Request</div>
+                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v2/cash-receipt-popupUri" \
+    -H "Content-Type: application/json" \
+    -d '{
+    "apiKey": "example_api_key",
+    "payToken": "example_payToken"
+        }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://pay.toss.im/api/v2/cash-receipt-popupUri");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+	jsonBody.put("payToken", "example-payToken");
+	jsonBody.put("apiKey", "example_payToken");
+
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	<!--bos.write(jsonBody.toJSONString().getBytes());-->
+    bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
+	bos.flush();
+	bos.close();
+
+	<!--BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));-->
+    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
+$arrayBody["payToken"] = "example-payToken";
+$arrayBody["apiKey"] = "example_api_key";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://pay.toss.im/api/v2/cash-receipt-popupUri');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+
+$result = curl_exec($ch);
+curl_close($ch);
+
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=example_api_key"
+data = data & "&payToken=example_payToken"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://pay.toss.im/api/v2/cash-receipt-popupUri", False
+httpRequest.SetRequestHeader "Content-Type", "application/json"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://pay.toss.im/api/v2/cash-receipt-popupUri"
+params = {
+    "payToken": "example-payToken",
+    "apiKey": "example_api_key"
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://pay.toss.im/api/v2/cash-receipt-popupUri")
+
+params = {
+        "payToken" => "example-payToken",
+        "apiKey" => "example_api_key"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
+                        <div class="title">Example Response</div>
+                        <pre><code class="language-javascript always-visible">{ 
+    "code": 0,
+    "popupUri": "https://pay.toss.im/payfront/web/external/cash-receipt?payToken=example_payToken&mgtKey=f017f18b-2356-bNpwieGeQp"}
+
+</code>
+            </pre>
+                    </div>
+                </div>
             </div>
-       </div>		    
+			    
     <script type="text/javascript">
         $(function () {
 
