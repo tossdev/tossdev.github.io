@@ -263,173 +263,101 @@
                 </div>
               <div class="info">
                 <h4>response (JSON)</h4>
-                <div class="field clearfix">
+		 <div class="field clearfix">
                   <div class="key">
-                    transactionType
+                    status
                   </div>
                   <div class="desc">
-                    거래 종류
+                   http status code
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    code
+                  </div>
+                  <div class="desc">
+                   http status code
                     <br />
                     <br />
                     <table class="table">
                       <tr>
-                        <td>PAY</td>
-                        <td>결제</td>
+                        <td>0</td>
+                        <td>정상</td>
                       </tr>
                       <tr>
-                        <td>REFUND</td>
-                        <td>환불</td>
-                      </tr>
-                      <tr>
-                        <td>FEE</td>
-                        <td>환불수수료 등 기타 건</td>
+                        <td>그 외</td>
+                        <td>에러</td>
                       </tr>
                     </table>
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
-                    settleDate
+                    cashReceiptMgtKey
                   </div>
                   <div class="desc">
-                    거래 승인일
+                    발급 요청된 현금영수증을 확인할 수 있는 관리번호 값 
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
-                    dueDate
+                    supplyCost
                   </div>
                   <div class="desc">
-                    지급일
+                    공급가액 = 과세 금액 + 비과세 금액 <br>
+                    supplyCost = amountTaxable + amountTaxFree
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
-                    payToken
+                    tax
                   </div>
                   <div class="desc">
-                    Toss 결제 토큰
+                    부가세 <br>
+                    tax = amountVat
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
-                    orderNo
+                    serviceFee
                   </div>
                   <div class="desc">
-                    가맹점의 상품 주문번호
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    productDesc
-                  </div>
-                  <div class="desc">
-                    상품 설명
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    payMethod
-                  </div>
-                  <div class="desc">
-                    결제 수단
-                    <br/>
-                    <br/>
-                    <table class="table">
-                      <tr>
-                        <td>TOSS_MONEY</td>
-                        <td>토스머니</td>
-                      </tr>
-                      <tr>
-                        <td>CARD</td>
-                        <td>카드</td>
-                      </tr>
-                    </table>
-                  </div>
-                </div> 
-                <div class="field clearfix">
-                  <div class="key">
-                    amount
-                  </div>
-                  <div class="desc">금액<br />(결제는 '+', 환불은 '-'로 표시됨)</div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    fee
-                  </div>
-                  <div class="desc">
-                    수수료<br />(수수료 부과는 '-', 전액 환불 등 사유로 수수료를 돌려드리는 경우 '+'로 표시됨)
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    vat
-                  </div>
-                  <div class="desc">
-                    부가세<br />(부가세 부과는 '-', 전액 환불 등 사유로 부가세를 돌려드리는 경우 '+'로 표시됨)
-                  </div>
-                </div>
-
-                <div class="field clearfix">
-                  <div class="key">
-                    tossChargeAmount
-                  </div>
-                  <div class="desc">
-                    토스 부담 금액<br />
-                  </div>
-                </div>
-
-                <div class="field clearfix">
-                  <div class="key">
-                    rewardReturnAmount
-                  </div>
-                  <div class="desc">
-                    캐시백 회수 금액<br />캐시백 받았던 결제건을 환불했을 때, 환불 결제금액에서 차감될 캐시백 회수 금액
+                    봉사료 <br>
+                    serviceFee = amountServiceFee
                   </div>
                 </div>
                 </div>
                     </div>
                     <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v2/payments</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v2/issue-cash-receipt</code></pre>
                         <div class="title">Example Request</div>
                         <pre><code class="curl language-bash">curl https://pay.toss.im/api/v2/payments \
     -H "Content-Type: application/json" \
     -d '{
-        "orderNo":"1",
-        "amount":10000,
-        "amountTaxFree":0,
-        "productDesc":"테스트결제",
-        "apiKey":"sk_test_w5lNQylNqa5lNQe013Nq",
-        "autoExecute":true,
-        "resultCallback":"https://YOUR-SITE.COM/callback",
-        "callbackVersion":"V2",
-        "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
-        "retCancelUrl": "http://YOUR-SITE.COM/close"
+    "apiKey": "example_api_key",
+    "payToken": "example_payToken",
+    "cashReceiptKey": "01001230123",
+    "cashReceiptKeyType": "PHONE",
+    "cashReceiptPurpose": "DEDUCTION"
         }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
 
 URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-	url = new URL("https://pay.toss.im/api/v2/payments");
+	url = new URL("https://pay.toss.im/api/v2/issue-cash-receipt");
 	connection = url.openConnection();
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
 	connection.setDoInput(true);
 
 	org.json.simple.JSONObject jsonBody = new JSONObject();
-	jsonBody.put("orderNo", "1");
-	jsonBody.put("amount", 10000);
-	jsonBody.put("amountTaxFree", 0);
-	jsonBody.put("productDesc", "테스트 결제");
-	jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
-    jsonBody.put("autoExecute", true);
-    jsonBody.put("resultCallback", "http://"http://YOUR-SITE.COM/callback");
-    jsonBody.put("callbackVersion", "V2");  
-    jsonBody.put("retUrl", "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1");
-    jsonBody.put("retCancelUrl", "http://YOUR-SITE.COM/close");
-
+	jsonBody.put("apiKey", "example_api_key");
+    jsonBody.put("payToken", "example_payToken");
+    jsonBody.put("cashReceiptKey", "01001230123");
+    jsonBody.put("cashReceiptKeyType", "PHONE");  
+    jsonBody.put("cashReceiptPurpose", "DEDUCTION");
 	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
 	<!--bos.write(jsonBody.toJSONString().getBytes());-->
     bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
@@ -447,19 +375,14 @@ try {
 	responseBody.append(e);
 }
 System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
-$arrayBody["orderNo"] = "1";
-$arrayBody["amount"] = 10000;
-$arrayBody["amountTaxFree"] = 0;
-$arrayBody["productDesc"] = "테스트 결제";
-$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
-$arrayBody["autoExecute"] = true;
-$arrayBody["resultCallback"] = "http://YOUR-SITE.COM/callback";
-$arrayBody["callbackVersion"] = "V2";
-$arrayBody["retUrl"] = "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1";
-$arrayBody["retCancelUrl"] = "http://YOUR-SITE.COM/close";
+$arrayBody["apiKey"] = "example_api_key";
+$arrayBody["payToken"] = "example_payToken";
+$arrayBody["cashReceiptKey"] = "01001230123";
+$arrayBody["cashReceiptKeyType"] = "PHONE";
+$arrayBody["cashReceiptPurpose"] = "DEDUCTION";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://pay.toss.im/api/v2/payments');
+$ch = curl_init('https://pay.toss.im/api/v2/issue-cash-receipt');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -474,19 +397,14 @@ curl_close($ch);
 
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
-data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
-data = data & "&orderNo=1"
-data = data & "&amount=10000"
-data = data & "&amountTaxFree=0"
-data = data & "&productDesc=ASPtestProduct"
-data = data & "&autoExecute=true"
-data = data & "&resultCallback=http://YOUR-SITE.COM/callback"
-data = data & "&callbackVersion=V2"
-data = data & "&retUrl=http://YOUR-SITE.COM/ORDER-CHECK?orderno=1"
-data = data & "&retCancelUrl=http://YOUR-SITE.COM/close"
+data = "apiKey=example_api_key"
+data = data & "&payToken=example_payToken"
+data = data & "&cashReceiptKey=01001230123"
+data = data & "&cashReceiptKeyType=PHONE"
+data = data & "&cashReceiptPurpose=DEDUCTION"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/api/v2/payments", False
+httpRequest.Open "POST", "https://pay.toss.im/api/v2/issue-cash-receipt", False
 httpRequest.SetRequestHeader "Content-Type", "application/json"
 httpRequest.Send data
 
@@ -494,37 +412,27 @@ postResponse = httpRequest.ResponseText
 
 Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
 
-url = "https://pay.toss.im/api/v2/payments"
+url = "https://pay.toss.im/api/v2/issue-cash-receipt"
 params = {
-    "orderNo": "1",
-    "amount": 10000,
-    "amountTaxFree": 0,
-    "productDesc":"테스트 결제",
-    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
-    "autoExecute": true,
-    "resultCallback": "http://YOUR-SITE.COM/callback",
-    "callbackVersion": "V2",
-    "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
-    "retCancelUrl": "http://YOUR-SITE.COM/close"
+    "apiKey": "example_api_key",
+    "payToken": "example_payToken",
+    "cashReceiptKey": "01001230123",
+    "cashReceiptKeyType": "PHONE",
+    "cashReceiptPurpose": "DEDUCTION"
 }
 
 response = urllib.urlopen(url, urllib.urlencode(params))
 print(response.read())</code><code class="ruby language-ruby">require 'net/http'
 require 'json'
 
-uri = URI.parse("https://pay.toss.im/api/v2/payments")
+uri = URI.parse("https://pay.toss.im/api/v2/issue-cash-receipt")
 
 params = {
-        "orderNo" => "1",
-        "amount"=> 10000,
-        "amountTaxFree"=> 0,
-        "productDesc" => "테스트 결제",
-        "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq",
-        "autoExecute" => true,
-        "resultCallback" => "http://YOUR-SITE.COM/callback",
-        "callbackVersion" => "V2",
-        "retUrl": "http://YOUR-SITE.COM/ORDER-CHECK?orderno=1",
-        "retCancelUrl": "http://YOUR-SITE.COM/close"
+        "apiKey" => "example_api_key",
+        "payToken" => "example_payToken",
+        "cashReceiptKey" => "01001230123",
+        "cashReceiptKeyType" => "PHONE",
+        "cashReceiptPurpose": "DEDUCTION"
 }
 
 http = Net::HTTP.new(uri.host, uri.port)
