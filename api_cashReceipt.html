@@ -452,6 +452,17 @@ p JSON.parse(response.body)</code></pre>
                             해당 결제가 status = PAY_COMPLETE 으로 완료되었고, 발급 요청된 현금 영수증이 있을 때에만 호출 가능합니다.<br>
                             <strong>* 주의 사항: 현금영수증 취소 API 의 경우에도 금액과 관련된 parameter 를 받지 않습니다. 결제 환불 API 를 통해 토스 시스템에서 기록된 남은 금액을 바탕으로 현금영수증 취소를 처리합니다. 따라서 전체 환불, 부분 환불의 구분 없이 취소 API 를 호출하면, 남은 결제 금액에 맞게 알아서 처리 됩니다. </strong>
                         </p>
+			 <div class="info">
+                <h4>endpoint</h4>
+                <div class="field clearfix">
+                  <div class="key">
+                    (POST)
+                  </div>
+                  <div class="desc">
+                    https://pay.toss.im/api/v2/revoke-cash-receipt
+                  </div>
+                </div>
+              </div>
                         <div class="info">
                             <h4>parameter</h4>
                             <div class="field clearfix">
@@ -623,6 +634,17 @@ p JSON.parse(response.body)</code></pre>
                     <div class="method-description">
                         <h3>현금 영수증 상태 확인</h3>
                         <p></p>
+			  <div class="info">
+                <h4>endpoint</h4>
+                <div class="field clearfix">
+                  <div class="key">
+                    (POST)
+                  </div>
+                  <div class="desc">
+                    https://pay.toss.im/api/v2/cash-receipt-info
+                  </div>
+                </div>
+              </div>
                         <div class="info">
                             <h4>parameter</h4>
                             <div class="field clearfix">
@@ -892,6 +914,17 @@ p JSON.parse(response.body)</code></pre>
                         <p>
                          토스 결제 가맹점을 이용한 고객이 현금영수증의 발급 및 취소된 것의 발급 이미지 등을 요구할 때, 해당 API 를 호출하여 리턴되는 팝업 Uri 값으로 대응이 가능하다. 
 			</p>
+		 <div class="info">
+                <h4>endpoint</h4>
+                <div class="field clearfix">
+                  <div class="key">
+                    (POST)
+                  </div>
+                  <div class="desc">
+                    https://pay.toss.im/api/v2/cash-receipt-popupUri
+                  </div>
+                </div>
+              </div>
                         <div class="info">
                             <h4>parameter</h4>
                             <div class="field clearfix">
@@ -1049,10 +1082,9 @@ p JSON.parse(response.body)</code></pre>
                     <div class="method-description">
                         <h3>현금영수증 처리 완료 일시</h3>
                         <p> ✓ 현금영수증 API 를 호출하더라도<br> 
-                            1) 국세청으로 전송<br>
-                            2) 국세청에서 확인 후 승인 또는 거절 등의 단계를 거쳐 처리가 되므로,  현금영수증 API 호출 후 통상 2 ~ 3 일의 시일이 지나야 국세청에 등록이 완료된다.<br>
-			    ✓ 토스 내부적으로는 국세청 등록 과정에서 취소 API 가 호출 될 경우 즉시 처리가 불가능하므로, 해당 요청은 status = PENDING 으로 기록 후 일괄 배치 작업으로 현금영수증 취소 처리한다.<br>   
-			</p>
+                              1) 국세청으로 전송<br>
+                              2) 국세청에서 확인 후 승인 또는 거절 등의 단계를 거쳐 처리가 되므로,  현금영수증 API 호출 후 통상 2 ~ 3 일의 시일이 지나야 국세청에 등록이 완료된다.<br>
+			<p> ✓ 토스 내부적으로는 국세청 등록 과정에서 취소 API 가 호출 될 경우 즉시 처리가 불가능하므로, 해당 요청은 status = PENDING 으로 기록 후 일괄 배치 작업으로 현금영수증 취소 처리한다.</p><br>   
                 </div>
             </div>
          </div>
@@ -1061,7 +1093,7 @@ p JSON.parse(response.body)</code></pre>
                     <div class="method-description">
                         <h3>현금영수증 에러 응답코드</h3>
                         <p> ✓ 토스페이 에러코드는 예고 없이 업데이트 될 수 있습니다. 추가되더라도 오류가 발생하지 않도록 연동 부탁드립니다.<br>
-                            ✓ 토스에서는 한 가지 에러코드에 상황별로 다른 오류 메시지를 전달합니다.<br>
+                        <p> ✓ 토스에서는 한 가지 에러코드에 상황별로 다른 오류 메시지를 전달합니다.<br>
                         여러 상황이 발생할 수 있으니 되도록이면 전달되는 오류 메시지 그대로를 처리해주세요.</p><br>
 
                             <table class="table table-bordered table-hover table-condensed">
