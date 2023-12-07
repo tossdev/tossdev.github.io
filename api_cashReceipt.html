@@ -457,88 +457,6 @@ p JSON.parse(response.body)</code></pre>
             </div>
 
 		
-	   <div class="method" id="test">
-          <div class="method-section clearfix">
-            <div class="method-description">
-              <h3>현금 영수증 테스트</h3>
-              <div class="info">
-                <h4>현금영수증 API 테스트</h4>
-                <div class="field clearfix">
-                  <div class="key">현금영수증 발급</div>
-                  <div class="desc">
-                     <form method="post" action="https://pay.toss.im/api/v2/issue-cash-receipt">
-        <input type="text" name="apiKey" placeholder="apiKey" required><br>
-        <input type="text" name="payToken" placeholder="payToken" required><br>
-        <input type="text" name="cashReceiptKey" placeholder="cashReceiptKey" required><br>
-        <select name="cashReceiptKeyType" required>
-            <option value="PHONE">PHONE</option>
-            <option value="CORPORATE">CORPORATE</option>
-            <option value="CARD">CARD</option>
-        </select><br>
-        <select name="cashReceiptPurpose" required>
-            <option value="DEDUCTION">DEDUCTION</option>
-            <option value="EVIDENCE">EVIDENCE</option>
-        </select><br>
-        <input type="checkbox" name="needSelfIssue" value="true"> 자진발급 처리여부<br>
-        <input type="submit" value="발급 요청">
-    </form>
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">현금영수증 취소</div>
-                  <div class="desc">
-                   <body>
-               <form method="post" action="https://pay.toss.im/api/v2/revoke-cash-receipt">
-          <input type="text" name="apiKey" placeholder="apiKey" required><br>
-        <input type="text" name="payToken" placeholder="payToken" required><br>
-        <input type="submit" value="취소 요청">
-    </form>
-</body>
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">현금영수증 상태 확인</div>
-                  <div class="desc">
-    <form method="post" action="https://pay.toss.im/api/v2/cash-receipt-info">
-        <input type="text" name="apiKey" placeholder="apiKey" required><br>
-        <input type="text" name="payToken" placeholder="payToken" required><br>
-        <input type="submit" value="상태 확인 요청">
-    </form>
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">현금영수증 팝업 주소 전달</div>
-                  <div class="desc">
-                       <form method="post" action="https://pay.toss.im/api/v2/cash-receipt-popupUri">
-        <input type="text" name="apiKey" placeholder="apiKey" required><br>
-        <input type="text" name="payToken" placeholder="payToken" required><br>
-        <input type="submit" value="팝업 주소 전달 요청">
-    </form>
-                  </div>
-                </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="method-example">
-              <pre>
-              <code class="curl">
-              </code>
-              <code class="java">
-              </code>
-              <code class="pho">
-              </code>
-            </pre>
-            </div>
-	<div id="methods">
-        <div class="languages">
-          <a class="language selected" data-lang="php" href="#">PHP</a>
-          <a class="language" data-lang="java" href="#">Java</a>
-          <a class="language" data-lang="curl" href="#">curl</a>
-          <a class="language" data-lang="python" href="#">Python</a>
-          <a class="language" data-lang="ruby" href="#">Ruby</a>
-          <a class="language" data-lang="aspnet" href="#">ASP</a>
-        </div>
     <script type="text/javascript">
         $(function () {
 
@@ -558,4 +476,5 @@ p JSON.parse(response.body)</code></pre>
     </script>
     <script src="js/prism.js"></script>
 </body>
+
 </html>
