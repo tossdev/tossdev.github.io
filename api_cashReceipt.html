@@ -324,26 +324,21 @@
                 </div>
                 </div>
               </div>       
-                     <div class="method-example">
-                        <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v2/issue-cash-receipt</code></pre>
-
-p JSON.parse(Request.body)</code></pre>
-                        <div class="title">Example Request</div>
-                        <pre><code class="language-javascript always-visible">{ 
+<div class="method-example">
+    <div class="title">Definition</div>
+    <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v2/issue-cash-receipt</code></pre>
+    <div class="title">Example Request</div>
+    <pre><code class="language-javascript always-visible">{ 
     "apiKey": "example_api_key",
     "payToken": "example_payToken",
     "cashReceiptKey": "01001230123",
     "cashReceiptKeyType": "PHONE",
     "cashReceiptPurpose": "DEDUCTION"
 }
-
-</code>
-            </pre>
-	
-p JSON.parse(response.body)</code></pre>
-                        <div class="title">Example Response</div>
-                        <pre><code class="language-javascript always-visible">{ 
+</code></pre>
+    <pre><code class="language-javascript">p JSON.parse(Request.body)</code></pre>
+    <div class="title">Example Response</div>
+    <pre><code class="language-javascript always-visible">{ 
     "status": 200,
     "code": 0,
     "cashReceiptMgtKey": "123456-123456",
@@ -351,10 +346,9 @@ p JSON.parse(response.body)</code></pre>
     "tax": 91,
     "serviceFee": 0
 }
-
-</code>
-            </pre>
-                    </div>
+</code></pre>
+    <pre><code class="language-javascript">p JSON.parse(response.body)</code></pre>
+</div>
                 </div>
             </div>
             <div class="method" id="revoke">
