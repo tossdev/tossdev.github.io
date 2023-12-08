@@ -439,7 +439,14 @@ response = http.request(request)
 
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
-                        <pre><div><code style="border:none;box-shadow:none;" class="language-javascript always-visible">{"status":200,"code":0,"cashReceiptMgtKey":"123456-123456","supplyCost":909,"tax":91,"serviceFee":0}
+                        <pre><div><code style="border:none;box-shadow:none;" class="language-javascript always-visible">{ 
+   			 "status":200,
+    			 "code":0,
+			 "cashReceiptMgtKey":"123456-123456",	
+			 "supplyCost":909,
+			 "tax":91,
+			 "serviceFee":0
+			}
                         </code></div></pre>
                     </div>
                 </div>
@@ -1070,7 +1077,8 @@ p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">{ 
     "code": 0,
-    "popupUri": "https://pay.toss.im/payfront/web/external/cash-receipt?payToken=example_payToken&mgtKey=f017f18b-2356-bNpwieGeQp"}
+    "popupUri": "https://pay.toss.im/payfront/web/external/cash-receipt?payToken=example_payToken&mgtKey=f017f18b-2356-bNpwieGeQp"
+}
 
 </code>
             </pre>
