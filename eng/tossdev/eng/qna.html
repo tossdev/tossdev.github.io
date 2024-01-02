@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>FAQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="https://static.toss.im/tds/favicon/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="16x16" href="https://static.toss.im/tds/favicon/favicon-16x16.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="https://static.toss.im/tds/favicon/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="48x48" href="https://static.toss.im/tds/favicon/favicon-48x48.png"/>
+<link rel="icon" type="image/png" sizes="196x196" href="https://static.toss.im/tds/favicon/favicon-196x196.png"/>
+<link rel="apple-touch-icon" sizes="57x57" href="https://static.toss.im/tds/favicon/apple-touch-icon-57x57.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="https://static.toss.im/tds/favicon/apple-touch-icon-72x72.png"/>
+<link rel="apple-touch-icon" sizes="114x114" href="https://static.toss.im/tds/favicon/apple-touch-icon-114x114.png"/>
+<link rel="apple-touch-icon" sizes="120x120" href="https://static.toss.im/tds/favicon/apple-touch-icon-120x120.png"/>
+<link rel="apple-touch-icon" sizes="144x144" href="https://static.toss.im/tds/favicon/apple-touch-icon-144x144.png"/>
+<link rel="apple-touch-icon" sizes="152x152" href="https://static.toss.im/tds/favicon/apple-touch-icon-152x152.png"/>
+<meta name="msapplication-TileImage" content="https://static.toss.im/tds/favicon/mstile-144x144.png"/>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://static.toss.im/tds/current/css/tds.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/tossdev.css" />
+
+    <!-- javascript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body id="gettingstarted" data-spy="scroll" data-target="#guide" data-offset="0" oncontextmenu="return false" ondragstart="return false" >
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TPTMLG');
+    </script>
+    <!-- End Google Tag Manager -->
+    <div class="sidebar">
+        <div class="logo">
+          <a href="index.html">
+            <img class="logo-img" src="https://static.toss.im/tds/icon/svg/logo-only-icon.svg" alt="">
+            <span>Tosspay Guide</span>
+          </a>
+        </div>
+        <div id="guide">
+            <h1>
+                <a href="#">FAQ</a>
+            </h1>
+            <ul class="menu nav">
+                <li>
+                    <a href="#faq-1">Firewall Set-up</a>
+                </li>
+                <li>
+                    <a href="#faq-2">Toss Encoding Method</a>
+                </li>
+                <li>
+                    <a href="#faq-3">Time Out</a>
+                </li>
+                <li>
+                    <a href="#faq-4">retUrl redirection fail</a>
+                </li>
+                <li>
+                    <a href="#faq-5">resultCallback</a>
+                </li>
+                <li>
+                    <a href="#faq-6">resultCallback fail</a>
+                </li>
+                <li>
+                    <a href="#faq-7">Payment Error Response Code</a>
+                </li>
+                <li>
+                    <a href="#faq-8">List of Bank Codes of Toss</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="contents">
+        <div id="methods">
+            <div class="method" id="member">
+                <div class="method-description">
+                <h3>FAQ</h3>
+                <p>
+                    Now, let’s learn more about Tosspay service.<br> This part will continue to be updated, and please contact the Tosspay team (support-pay@toss.im) if you have any questions.
+                </p>
+                <h4 id="faq-1">Firewall Set-up for Toss Integration</h4>
+                <p>
+                    If the payment result doesn’t come through the merchant retUrl even if the purchaser completed authentication, or if a resultCallback result from the Toss server was not received, the firewall settings should be checked first.                </p>
+                <ol>
+                <strong><li>When the merchant accesses the Toss server (payment creation, payment authorization, etc. API)<br>
+                    Merchant  --> Merchant firewall --> Tosspay</li>
+                </strong><br>
+                    In such cases, please add the following Toss IP in the outbound policy of the merchant firewall. <br>
+                <strong>domain : <font color="blue">pay.toss.im </font> (port : 443)</strong>
+                <ul>
+                    <li>117.52.3.202</li>
+                </ul>
+                <ul>
+                    <li>117.52.3.210</li>
+                </ul>
+                <ul>
+                    <li>211.115.96.202</li>
+                </ul>               
+                <ul>
+                    <li>211.115.96.210</li><br>
+                </ul>
+                <strong><li>When the Toss server accesses the merchant (used only when including resultCallback)<br>
+                    Tosspay --> Merchant firewall --> Merchant
+                </li></strong><br>
+                    In such cases, please add the following Toss IP in the inbound policy of the merchant firewall. <br>
+                <strong>domain : <font color="blue">pay.toss.im</font> (port : 443)</strong>
+                <ul>
+                    <li>117.52.3.4</li>
+                </ul>
+                <ul>
+                    <li>117.52.3.11</li>
+                </ul>
+                <ul>
+                    <li>117.52.3.80~87</li>
+                </ul>
+                <ul>
+                    <li>211.115.96.4</li>
+                </ul>
+                <ul>
+                    <li>211.115.96.11</li>
+                </ul>
+                <ul>
+                    <li>211.115.96.80~87</li>
+                </ul>
+                </ol><br>
+                <p> ✓ The Tosspay firewall is open without restrictions. </p>
+                <p> ✓ If it is difficult to distinguish each case, the Toss IPs can all be added, according to the outbound and inbound policies.</p>
+                <p> ✓ Please be aware that accessing may not be possible if there are other ports other than 443 in the resutCallback URL set by the merchant. </p>
+                <p> ✓ A notification email will be sent out when a Toss server IP is added.</p>
+                </div>
+            </div>
+
+            <div class="method" id="member">
+                <div class="method-description">
+                    <h4 id="faq-2">Toss Encoding Method</h4><br>
+                        <p><strong>The Toss encoding method uses the UTF-8 format.</strong><br>
+                            To get a valid response value, values (order number, product name, etc.) sent from the merchant to the Toss server that includes Korean should be sent in UTF-8 form.<br>
+                        Please note that if the Toss server receives distorted Korean text, the Toss server will be unable to check the mandatory values and result in errors such as 500 error.
+                </div>
+            </div>
+            
+            <div class="method" id="member">
+                <div class="method-description">
+                    <h4 id="faq-3">What is the Time Out processing time recommended by Toss?</h4><br>
+                        <p>When Toss Money is charged through a normal bank account, Toss sets the Time Out time at a maximum of 10 seconds.<br>
+                            Therefore, if the merchant sets a waiting time of <strong>10 + 3~5 seconds</strong> reconciliation mismatch cases will not occur. (This is to avoid cases in which a payment is authorized by Toss due to a delay in processing, despite the merchant canceling the payment.)<br>
+                            Excluding bank network-related issues that do not originate from Toss, transaction delays will not occur due to time out. <br><br>
+                        ✓ The time can be set the same for all payment methods.<br>
+                        ✓ We recommend integrating the settlement reconciliation as well to check transactions between both companies.<br>
+                          <strong>This is provided upon request of the merchant. Please apply through support-pay@toss.im.</strong>
+                </div>
+            </div>
+
+            <div class="method" id="member">
+                <div class="method-description">
+                    <h4 id="faq-4">Can retUrl redirection fail?</h4><br>
+                        <p>retUrl Redirection is a logic processed in the Toss webpage. Generally, the processing is guaranteed, but it may fail in special cases.<br>
+                            Special cases refer to churn cases in which JavaScript logic cannot be processed <strong>due to the purchaser closing the app during a payment or background processing.</strong><br>
+                            In such cases, if the purchaser returns to the payment screen and clicks on the ‘Complete payment’ button, redirection to retUrl is attempted again.<br>
+                            However, if the purchaser doesn’t try again, redirection to retUrl may not be possible.</p>
+                </div>
+            </div>
+
+            <div class="method" id="member">
+                <div class="method-description">
+                        <h4 id="faq-5">Do I have to use resultCallback?</h4><br>
+                        <p>Once payment processing is completed in the Toss server, the payment status is changed to <strong>PAY_COMPLETE, redirecting the purchaser to retUrl.</strong><br>
+                        <strong>Simultaneously, the Toss server requests callback to the merchant server’s result Callback URL. </strong><br>
+                        retUrl is simply a redirection of a web page, meaning that Toss cannot confirm the success or failure of payments, and cannot guarantee the execution of payments depending on the purchaser’s situation. Therefore, we recommend using resultCallback.<br>
+                        Also, resultCallback is the <strong>communication between the Toss server and merchant server,</strong> which is safe and prevents data loss.
+                        <br><br>
+                        <ul>
+                            <li>This is a mandatory value for merchants that set the automatic authorization setting (autoExecute) at true.</li>
+                        </ul>
+                </div>
+            </div>
+
+            <div class="method" id="member">
+                <div class="method-description">
+                        <h4 id="faq-6">Why does resultCallback fail?</h4><br>
+                        <p>Unless it is a failure case, Toss guarantees a resultCallback request.<br> However, except for the <a href="qna.html#faq-1">payment firewall</a> issue, processing a callback request may fail due to special reasons,<br>
+                            such as excessive traffic to the merchant server, or bugs during development.  <br>
+                            But don’t worry, because <strong>when callback fails, Toss requests 4 more tries within 10 minutes to the merchant server.</strong><br><br>
+
+                        ✓ The callback resending feature can also be found on the Toss merchant manager page.
+                </div>
+            </div>
+
+            <div class="method" id="member">
+                <div class="method-description">
+                        <h4 id="faq-7">Payment Error Response Code</h4><br>
+                        <p> ✓ Tosspay error codes may be updated without prior notice. Even if updated, please proceed with integration so that errors do not occur.<br>
+                        <p> ✓ Toss delivers different error messages for one error code depending on the situation.<br>
+                            Since a variety of situations may occur, please process the error message delivered as is.</p><br>
+
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tr class="active">
+                                    <td width="50%"><strong>Response code (errorCode)</strong></td>
+                                    <td width="50%"><strong>Reason (msg)</strong></td>
+                                </tr>
+                                <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>Common</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_SYSTEM_ERROR</td>
+                                    <td width="50%">Unstable communication due to system error. If the issue continues, please contact the Toss customer center. (1599-4905)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_INVALID_PARAMETER</td>
+                                    <td width="50%">Invalid parameter</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_PAY_ERROR</td>
+                                    <td width="50%">An error has occurred</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_NOT_ENOUGH_CASH</td>
+                                    <td width="50%">Insufficient balance</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_EXCEED_LIMIT</td>
+                                    <td width="50%">Exceeded limit</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_ASSET_GET_ACCOUNT_ERROR</td>
+                                    <td width="50%">Failed to find account information</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_REFUND_ERROR</td>
+                                    <td width="50%">Refund not possible</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">REFUND_REFUND_NO_DUPLICATE</td>
+                                    <td width="50%">The refundNo already exists.<br>Please request with a non-duplicate refundNo.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAYMENT_DUPLICATION_ORDER_NO</td>
+                                    <td width="50%">Duplicate order number</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAYMENT_EXISTING_PAYMENT</td>
+                                    <td width="50%">The payment already exists.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">TRANSACTION_PENDING_ERROR</td>
+                                    <td width="50%">The payment you applied for a while ago is still in progress. Please try again in a few minutes. If this condition persists for more than 10 minutes, please contact the Toss team.(1599-4905)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">INVALID_ACCOUNT_STATUS</td>
+                                    <td width="50%">Please check account status.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">FRAUD_DETECTION_SYSTEM_ERROR</td>
+                                    <td width="50%">Financial transactions are blocked by FDS.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">USER_STATUS_ERROR</td>
+                                    <td width="50%">This user is unable to proceed with payment.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">REFUND_ALREADY_REFUNDED</td>
+                                    <td width="50%">The refund has already been completed.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">TRANSACTION_NOT_COMPLETE</td>
+                                    <td width="50%">The transaction is not complete.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">TRANSACTION_NOT_FOUND</td>
+                                    <td width="50%">This transaction does not exist.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">INACTIVE_USER</td>
+                                    <td width="50%">Refund not possible: inactive user</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">AUTO_CHARGE_NOT_YET_REGISTER_ACCOUNT</td>
+                                    <td width="50%">The charge account has not been registered.</td>
+                                </tr>
+                                
+                                 <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>User</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAY_UNAUTHORIZED</td>
+                                    <td width="50%">Payment is only possible if the payment requester and Toss account match. Please check and try again.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">TOSS_APP_UPDATE_IS_REQUIRED</td>
+                                    <td width="50%">To make payment, use the latest version of the Toss app.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAY_CANCEL_ITS_NOT_CANCELABLE_STATUS</td>
+                                    <td width="50%">Payment cannot be canceled. Please try again in a few minutes. If the problem persists, please contact Toss Customer Center.(1599-4905)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COUPON_ASSIGN_FAIL</td>
+                                    <td width="50%">Coupon issuance failed.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">DISCOUNT_CLOSED</td>
+                                    <td width="50%">Discount offer has ended.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">USER_DISCOUNT_CLOSED</td>
+                                    <td width="50%">The number of discounts per person has been exceeded.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">DISCOUNT_NEED_ISSUE</td>
+                                    <td width="50%">Please receive a coupon.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">DISCOUNT_ALREADY_ISSUED</td>
+                                    <td width="50%">The coupon has already been issued.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">AVAILABLE_ONLY_TOSS_MONEY_UNDER_MIN_AMT</td>
+                                    <td width="50%">Amounts less than %s won cannot be paid with the %s card.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">AUTO_PAY_TERM_INACTIVE_FAIL</td>
+                                    <td width="50%">You failed to withdraw the terms and conditions.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">AGE_POLICY_ERROR</td>
+                                    <td width="50%">If you are under the age of %d, you cannot use the Toss %s service.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAY_FRAUD_DETECTED</td>
+                                    <td width="50%">Toss service is temporarily unavailable. If the problem persists, please contact Toss Customer Center.(1599-4905)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BLOCKED_THE_USE_OF_POINT</td>
+                                    <td width="50%">Due to a court seizure decision,Toss Points can not be used. If you have any questions, please contact Toss Customer Center (1599-4905)</td>
+                                </tr>   
+                                <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>Card</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_SYSTEM_ERROR</td>
+                                    <td width="50%">Card company system maintenance hours: Please try again later.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_BANK_SYSTEM_ERROR</td>
+                                    <td width="50%">Card company’s partnering bank system maintenance hours: Please try again later.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_NOT_AVAILABLE_SHOP</td>
+                                    <td width="50%">This card cannot be used for this merchant. (Please use another card.)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_NOT_AVAILABLE</td>
+                                    <td width="50%">Authorization declined: stolen/lost/suspended card</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_EXCEED_LIMIT</td>
+                                    <td width="50%">Authorization declined: exceeded limit</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_NOT_ENOUGH_BALANCE</td>
+                                    <td width="50%">Authorization declined: insufficient funds</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_SPREADOUT_ERROR</td>
+                                    <td width="50%">Authorization declined: Card does not support installment payment</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_MIN_AMOUNT_ERROR</td>
+                                    <td width="50%">Payment amount error (card authorization not possible for less than 100 KRW or $1)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">CARD_MIN_AMOUNT_FOR_SPREADOUT_ERROR</td>
+                                    <td width="50%">Installment payment is only possible if the payment amount is 50,000 won or more. Please pay in one lump sum.</td>
+                                </tr>
+                                <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>BNPL</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_INVALID_REQUEST</td>
+                                    <td width="50%">Invalid request</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_NOT_EXIST_USER</td>
+                                    <td width="50%">This is a BNPL user that does not exist.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_EXCEED_PAYABLE_AMOUNT</td>
+                                    <td width="50%">BNPL limit has been exceeded.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_ALREADY_COMPLETED_REQUEST</td>
+                                    <td width="50%">This request has already been processed.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_IN_PROGRESS_REQUEST</td>
+                                    <td width="50%">This request is already being processed.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_NOT_FOUND_PAYMENT</td>
+                                    <td width="50%">This is a payment that does not exist.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">BNPL_ALREADY_COMPLETED_REFUND</td>
+                                    <td width="50%">This is a non-refundable payment.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">NOT_SET_BNPL_PAYMENT_ACCOUNT</td>
+                                    <td width="50%">To process deferred payment, User needs to set up a payment account.</td>
+                                </tr>
+                                </tr>
+                                <tr class="active">
+                                <td colspan="2" class="text-left"><strong>Sales Slips</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">SALES_CHECK_NOT_FOUND_USER</td>
+                                    <td width="50%">User information does not exist for viewing sales slips.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">SALES_CHECK_USER_AUTH_FAIL</td>
+                                    <td width="50%">Failed to authenticate user information for viewing sales slips</td>
+                                </tr>
+                                 <tr>
+                                    <td width="50%">SALES_CHECK_USER_AUTH_DECRYPT_FAIL</td>
+                                    <td width="50%">Decryption of user information to view sales slip failed.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">SALES_CHECK_CARD_ONLY</td>
+                                    <td width="50%">Sales slips viewing available for card payments only</td>
+                                </tr>
+                                <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>Reseller</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_PAY_RESELLER_ERROR</td>
+                                    <td width="50%">An error occurred while processing the reseller payment.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">RESELLER_ONLY_CARD_PAYMENT</td>
+                                    <td width="50%">Not a card payment.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">RESELLER_CALLBACK_PROCESS_ERROR</td>
+                                    <td width="50%">An error occurred while processing the reseller callback.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">NOT_APPROVED_CARD_PAYMENT</td>
+                                    <td width="50%">Payment via card not authorized by user</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAY_CARD_AUTH_REQUEST_ERROR</td>
+                                    <td width="50%">Failed to request card authorization</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">NOT_SUPPORTED_RESELLER_SHOP</td>
+                                    <td width="50%">Not an affiliated store designated as a reseller.</td>
+                                </tr>
+                                  <tr class="active">
+                                    <td colspan="2" class="text-left"><strong>Others</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAYMENT_SHOP_STATE_NOT_NORMAL</td>
+                                    <td width="50%">This is an affiliated store that does not allow payment. Please contact the affiliated store customer service center.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAYMENT_SHOP_STATE_CANNOT_REFUND</td>
+                                    <td width="50%">This is an affiliated store that does not allow payment. Please contact the affiliated store customer service center. (Accident report)</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_INVALID_API_KEY</td>
+                                    <td width="50%">Invalid API key</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">NOT_INTERNAL_SHOP</td>
+                                    <td width="50%">Not an internal Merchant.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_BREAK_TIME_OF_BANK</td>
+                                    <td width="50%">Bank system maintenance hours: Please try again later.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_UNAUTHORIZED</td>
+                                    <td width="50%">Unauthorized Access</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">REFUND_EXCEED_DAILY</td>
+                                    <td width="50%">The refund amount may not exceed the merchant’s daily refund limit.</td>
+                                </tr><tr>
+                                    <td width="50%">EXECUTE_PAY_NOT_APPROVED</td>
+                                    <td width="50%">The purchaser has not yet authorized the payment.</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">PAUSE_USER</td>
+                                    <td width="50%">Paused user</td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">COMMON_TIMEOUT</td>
+                                    <td width="50%">A delay has occurred during processing. Please try again.</td>
+                                </tr>
+                               <tr>
+                                    <td width="50%">COMMON_THROTTLED</td>
+                                    <td width="50%">There are many payment requests, making service use difficult. Please try again later.</td>
+                                </tr>
+                                 <tr>
+                                    <td width="50%">COMMON_ITS_NOT_ABLE_TO_CHANGE_STATUS</td>
+                                    <td width="50%">The status is not available for request.</td>
+                                </tr>
+                                 <tr>
+                                    <td width="50%">ESCROW_IMPOSSIBLE_STATUS</td>
+                                    <td width="50%">Escrow status cannot be changed.</td>
+                                </tr>
+                            </table>
+
+                            <div class="method" id="member">
+                                <div class="method-description">
+                                        <h4 id="faq-8">List of Bank Codes of Toss</h4><br>
+                                        <p> For Toss Money payments, the information of the account selected by the user is delivered.<br>
+                                 <table class="table table-bordered table-hover table-condensed">
+                                    <tr class="active">
+                                     <td width="50%"><strong>Bank Code (accountBankCode)</strong></td>
+                                        <td width="50%"><strong>Bank Name (accountBankName)</strong></td>
+                                        <tr>
+                                            <td width="50%">002</td>
+                                            <td width="50%">Korea Development Bank (KDB산업은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">003</td>
+                                            <td width="50%">Industrial Bank of Korea (IBK기업은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">004</td>
+                                            <td width="50%">KB Kookmin Bank (KB국민은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">005</td>
+                                            <td width="50%">KEB Hana Bank (KEB하나은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">007</td>
+                                            <td width="50%">Suhyup Bank (수협은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">011</td>
+                                            <td width="50%">Nonghyup Bank (NH농협은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">020</td>
+                                            <td width="50%">Woori Bank (우리은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">023</td>
+                                            <td width="50%">Standard Chartered Bank (SC은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">027</td>
+                                            <td width="50%">Citybank (씨티은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">031</td>
+                                            <td width="50%">Daegu Bank (대구은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">032</td>
+                                            <td width="50%">Busan Bank (부산은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">034</td>
+                                            <td width="50%">Gwangju Bank (광주은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">035</td>
+                                            <td width="50%">Jeju Bank (제주은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">037</td>
+                                            <td width="50%">Jeonbuk Bank (전북은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">039</td>
+                                            <td width="50%">Kyongnam Bank (경남은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">045</td>
+                                            <td width="50%">MG Community Credit Cooperatives (MG새마을금고)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">048</td>
+                                            <td width="50%">National Credit Union Federation of Korea (신협)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">050</td>
+                                            <td width="50%">Savings Bank (저축은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">064</td>
+                                            <td width="50%">National Forestry Cooperative Federation (산림조합)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">071</td>
+                                            <td width="50%">Post Bank (우체국)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">081</td>
+                                            <td width="50%">Hana Bank (하나은행)</td>
+                                        </tr>
+                                         <tr>
+                                            <td width="50%">088</td>
+                                            <td width="50%">Shinhan Bank (신한은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">089</td>
+                                            <td width="50%">K Bank (케이뱅크)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">090</td>
+                                            <td width="50%">Kakao Bank (카카오뱅크)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">092</td>
+                                            <td width="50%">Toss Bank (토스뱅크)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">103</td>
+                                            <td width="50%">SBI Savings Bank (SBI저축은행)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">218</td>
+                                            <td width="50%">KB Securities (KB증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">230</td>
+                                            <td width="50%">Mirae Asset Securities (미래에셋증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">238</td>
+                                            <td width="50%">Mirae Asset Securities (미래에셋증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">240</td>
+                                            <td width="50%">Samsung Securities (삼성증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">243</td>
+                                            <td width="50%">Korea Investment & Securities (한국투자증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">247</td>
+                                            <td width="50%">NH Investment & Securities (NH투자증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">261</td>
+                                            <td width="50%">Kyobo Securities (교보증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">262</td>
+                                            <td width="50%">Hi Investment & Securities (하이투자증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">263</td>
+                                            <td width="50%">Hyundai Motor Securities (현대차투자증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">264</td>
+                                            <td width="50%">Kiwoom Securities (키움증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">265</td>
+                                            <td width="50%">eBest Investment & Securities (이베스트증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">266</td>
+                                            <td width="50%">SK Securities (SK증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">267</td>
+                                            <td width="50%">Daishin Securities (대신증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">269</td>
+                                            <td width="50%">Hanwha Investment & Securities (한화투자증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">270</td>
+                                            <td width="50%">Hana Financial Investment (하나증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">271</td>
+                                            <td width="50%">Toss Securities (토스증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">278</td>
+                                            <td width="50%">Shinhan Investment (신한투자증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">279</td>
+                                            <td width="50%">DB Financial Investment (DB금융투자)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">280</td>
+                                            <td width="50%">Eugene Investment & Securities (유진투자)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">287</td>
+                                            <td width="50%">Meritz Securities (메리츠증권)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">888</td>
+                                            <td width="50%">Toss Money (토스머니)</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">889</td>
+                                            <td width="50%">Toss Point (토스포인트)</td>
+                                        </tr>
+                                </tr>
+                            </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
