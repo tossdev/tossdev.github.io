@@ -390,145 +390,74 @@
                 </div>
             </div>
 	</div>
-            <div class="method-example">
-              <div class="title">Definition</div>
-              <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/settlementDetails</code></pre>
-              <div class="title">Example Request</div>
-              <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/settlementDetails \
-    -H "Content-Type: application/json" \
-    -d '{
-        "apiKey":"sk_test_w5lNQylNqa5lNQe013Nq",
-        "mode":"DUE",
-        "date":"20160601",
-        "type":"JSON"
-        }'</code><code class="java language-java">URL url = null;
-URLConnection connection = null;
-StringBuilder responseBody = new StringBuilder();
-try {
-	url = new URL("https://pay.toss.im/api/v1/settlementDetails");
-	connection = url.openConnection();
-	connection.addRequestProperty("Content-Type", "application/json");
-	connection.setDoOutput(true);
-	connection.setDoInput(true);
-
-	org.json.simple.JSONObject jsonBody = new JSONObject();
-	jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
-	jsonBody.put("mode", "DUE");
-    jsonBody.put("date", "20160601");
-	jsonBody.put("type", "JSON");
-
-	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
-	bos.write(jsonBody.toJSONString().getBytes());
-	bos.flush();
-	bos.close();
-
-	BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-	String line = null;
-	while ((line = br.readLine()) != null) {
-		responseBody.append(line);
-	}
-	br.close();
-} catch (Exception e) {
-	responseBody.append(e);
-}
-System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
-$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
-$arrayBody["mode"] = "DUE";
-$arrayBody["date"] = "20160601";
-$arrayBody["type"] = "JSON";
-$jsonBody = json_encode($arrayBody);
-
-$ch = curl_init('https://pay.toss.im/api/v1/settlementDetails');
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Content-Length: ' . strlen($jsonBody))
-);
-
-$result = curl_exec($ch);
-curl_close($ch);
-
-echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
-
-data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
-data = data & "&mode=DUE"
-data = data & "&date=20160601"
-data = data & "&type=JSON"
-
-Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/api/v1/settlementDetails", False
-httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
-httpRequest.Send data
-
-postResponse = httpRequest.ResponseText
-
-Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
-
-url = "https://pay.toss.im/api/v1/settlementDetails"
-params = {
-    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
-    "mode":"DUE",
-    "date":"20160601",
-    "type":"JSON"
+<div class="method-example">
+    <div class="title">Definition</div>
+    <pre><code class="language-bash always-visible">POST https://pay.toss.im/pay/api/v2/settlement-details</code></pre>
+    <div class="title">Example Request</div>
+    <pre><code class="language-javascript always-visible">{ 
+    "apiKey": "(example) sk_test_1234567...",
+    "dateType": "DUE",
+    "baseDate": "20240314",
+    "payMethod": "TOSS_MONEY"
 }
 
-response = urllib.urlopen(url, urllib.urlencode(params))
-print(response.read())</code><code class="ruby language-ruby">require 'net/http'
-require 'json'
-
-uri = URI.parse("https://pay.toss.im/api/v1/settlementDetails")
-
-params = {
-        "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq",
-        "mode" => "DUE",
-        "date" => "20160601",
-        "type" => "JSON"
-}
-
-http = Net::HTTP.new(uri.host, uri.port)
-http.use_ssl = true
-request = Net::HTTP::Post.new(uri.path)
-request.set_form_data(params)
-response = http.request(request)
-
-p JSON.parse(response.body)</code></pre>
-              <div class="title">Example Response (JSON)</div>
-              <pre><code style="border:none;box-shadow:none;" class="language-javascript always-visible">[{
-    "transactionType": "PAY",
-	"productDesc": "토스모자",
-	"amount": 5500,
-	"orderNo": "toss_orderNo_1234",
+// call with nextCursor
+{
+    "apiKey": "(example) sk_test_1234567...",
+    "dateType": "DUE",
+    "baseDate": "20240314",
     "payMethod": "TOSS_MONEY",
-	"dueDate": "20180530",
-	"fee": -400,
-	"vat": -40,
-	"settleDate": "20180529",
-	"payToken": "1234abcdef"
-}, {
-	"transactionType": "REFUND",
-	"productDesc": "토스모자",
-	"amount": -5300,
-    "orderNo": "toss_orderNo_1234",
-    "payMethod": "TOSS_MONEY",
-	"dueDate": "20180530",
-	"fee": -400,
-	"vat": -40,
-	"settleDate": "20180529",
-	"payToken": "1235abcdef",
-    "tossChargeAmount": 0,
-    "rewardReturnAmount": -200
-},
-{....}
-]</code></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    "nextCursor": "99ElA9EGCTJwXpYygHsBnA=="
+}
+	    
+</code></pre>
+    <div class="title">Example Response</div>
+    <pre><code class="language-javascript always-visible">{
+    "transactionList": [
+        {
+            "transactionType": "REFUND",
+            "transactionId": "3084ed5d-3267-4ea0-af1c-064bdf0b1462",
+            "payToken": "example-payToken",
+            "productDesc": "상품 1",
+            "orderNo": "order1",
+            "payMethod": "TOSS_MONEY",
+            "amount": 10000,
+            "fee": -40,
+            "vat": -4,
+            "payMethod": "TOSS_MONEY",
+            "feeVatSum": -44,
+            "settleDate": "20240313",
+            "dueDate": "20240314"
+        },
+        {
+            "transactionType": "PAY",
+            "transactionId": "7ba71e5c-28d2-4d8b-946e-6f6b5b3a3205",
+            "payToken": "example-payToken",
+            "productDesc": "상품 2",
+            "orderNo": "order2",
+            "payMethod": "TOSS_MONEY",
+            "amount": 33000,
+            "fee": -132,
+            "vat": -13,
+            "payMethod": "TOSS_MONEY",
+            "feeVatSum": -145,
+            "settleDate": "20240313",
+            "dueDate": "20240314"
+        },
+        {     
+             .....
+        }
+    ],
+    "nextCursor": "",
+    "totalAmount": 407000,
+    "totalFee": -1628,
+    "totalVat": -163,
+    "totalFeeVatSum": -1791
+}
 
+	    
+</code></pre>
+</div>
     <script type="text/javascript">
       $(function() {
         // language toggle
