@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>토스 정산 API</title>
+    <title>결제 정산 API</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="https://static.toss.im/tds/favicon/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="https://static.toss.im/tds/favicon/favicon-16x16.png" />
@@ -84,7 +84,7 @@
     <div id="guide">
       <h1 class="logo">
           <img src="https://static.toss.im/tds/icon/svg/logo-only-icon.svg" alt="toss developers logo"/>
-          <span>결제 정산 API v1</span>
+          <span>결제 정산 API v2</span>
       </h1>
       
     </div>
@@ -102,10 +102,10 @@
         <div class="method" id="intro">
           <div class="method-section clearfix">
             <div class="method-description">
-              <h3>Toss 정산 API v1 소개</h3>
+              <h3>토스 정산 API v2 </h3>
               <p>
-                Toss 결제 서비스를 통한 매출과 정산 금액 확인을 도와드리기 위한 API입니다. 가맹점 여러분들의 피드백을
-                받아 개선 및 추가해나갈 예정입니다.
+               토스 결제 서비스를 통한 매출과 정산 금액 확인을 위한 API 입니다.</br>
+               페이징 개념을 적용하였고 페이징의 단위는 1,000 건으로 다음 페이징이 존재하면 nextCursor 라는 응답값이 리턴됩니다. 그 후 nextCursor 를 포함하여 호출하면 바로 다음의 페이징 데이터가 리턴됩니다.
               </p>
             </div>
             <div class="method-example">
@@ -149,64 +149,10 @@
             </div>
           </div>
         </div>
-        <div class="method" id="httpResponse">
-          <div class="method-section clearfix">
-            <div class="method-description">
-              <h3>HTTP 응답 코드</h3>
-              <div class="info">
-                <h4>HTTP Response Code</h4>
-                <div class="field clearfix">
-                  <div class="key">200</div>
-                  <div class="desc">
-                    OK : 정상
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">400</div>
-                  <div class="desc">
-                    Bad Request : 파라미터 오류
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">401</div>
-                  <div class="desc">
-                    Unauthorized : 가맹점 key 오류
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">404</div>
-                  <div class="desc">
-                    Not Found : 존재하지 않는 요청
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">50x</div>
-                  <div class="desc">
-                    Server error : 서버 오류
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="method-example">
-              <pre>
-              <code class="curl">
-              </code>
-              <code class="java">
-              </code>
-              <code class="pho">
-              </code>
-            </pre>
-            </div>
-          </div>
-        </div>
         <div class="method" id="settlementDetail">
           <div class="method-section clearfix">
             <div class="method-description">
-              <h3>정산 내역 상세 조회</h3>
-              <p>
-                특정 지급일에 입금된 금액이 어떻게 구성되어있는지 상세하게 알아볼 때 이용합니다. ('왜 이 금액이
-                들어왔지?')
-              </p>
+              <h3>정산 API</h3>
               <div class="info">
                 <h4>endpoint</h4>
                 <div class="field clearfix">
@@ -214,7 +160,7 @@
                     (POST)
                   </div>
                   <div class="desc">
-                    https://pay.toss.im/api/v1/settlementDetails
+                    https://pay.toss.im/pay/api/v2/settlement-details
                   </div>
                 </div>
               </div>
@@ -227,137 +173,50 @@
                     <span class="required"></span>
                   </div>
                   <div class="desc">
-                    가맹점 key<br />
-                    (Test key도 입력 가능하나 테스트 결제는 실제 지급되지 않기 때문에 결과가 없을 것입니다)
+                    가맹점 key<br/>
+                    (Test apiKey도 입력은 가능하나 테스트 결제는 실제 지급되지 않기 때문에 정산 대상이 아니라서 수수료 계산(0원)이나 지급일자(빈값) 등 계산을 건너뛰게 됩니다 .)
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
-                    mode
+                    dateType
                     <span class="type">string</span>
                     <span class="required"></span>
                   </div>
                   <div class="desc">
-                    조회일 기준 (기본값은 DUE)<br />
+                    조회 시 기준 날짜의 형태 <br />
                     <br />
                     <table class="table">
                       <tr>
                         <td>DUE</td>
-                        <td>지급일 (정산 계좌에 입금된 날짜 기준)</td>
+                        <td>지급일 (정산 계좌에 입금된 또는 입금될 날짜)</td>
                       </tr>
                       <tr>
                         <td>SETTLE</td>
-                        <td>거래 승인일</td>
+                        <td>거래 승인일 (유저가 결제한 시점의 날짜) </td>
                       </tr>
                     </table>
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
-                    date
+                    baseDate
                     <span class="type">string</span>
                     <span class="required"></span>
                   </div>
                   <div class="desc">
-                    조회하고자 하는 날짜 (YYYYMMDD)
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    type
-                    <span class="type">string</span>
-                    <span class="required"></span>
-                  </div>
-                  <div class="desc">
-                    결과로 받고자 하는 형식을 정합니다. JSON형식과 전문 형식을 지원합니다.<br />
-                    <br />
-                    <table class="table">
-                      <tr>
-                        <td>JSON</td>
-                        <td>JSON 형식</td>
-                      </tr>
-                      <tr>
-                        <td>TELEGRAM</td>
-                        <td>전문 형식</td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="info">
-                <h4>response (JSON)</h4>
-                <div class="field clearfix">
-                  <div class="key">
-                    transactionType
-                  </div>
-                  <div class="desc">
-                    거래 종류
-                    <br />
-                    <br />
-                    <table class="table">
-                      <tr>
-                        <td>PAY</td>
-                        <td>결제</td>
-                      </tr>
-                      <tr>
-                        <td>REFUND</td>
-                        <td>환불</td>
-                      </tr>
-                      <tr>
-                        <td>FEE</td>
-                        <td>환불수수료 등 기타 건</td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    settleDate
-                  </div>
-                  <div class="desc">
-                    거래 승인일
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    dueDate
-                  </div>
-                  <div class="desc">
-                    지급일
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    payToken
-                  </div>
-                  <div class="desc">
-                    Toss 결제 토큰
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    orderNo
-                  </div>
-                  <div class="desc">
-                    가맹점의 상품 주문번호
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    productDesc
-                  </div>
-                  <div class="desc">
-                    상품 설명
+                    조회 하고자 하는 날짜 (yyyyMMdd)
                   </div>
                 </div>
                 <div class="field clearfix">
                   <div class="key">
                     payMethod
+                    <span class="type">string</span>
+                    <span class="required"></span>
                   </div>
                   <div class="desc">
-                    결제 수단
-                    <br/>
-                    <br/>
+                    조회 하고자 하는 결제수단 (보내지 않거나  null 로 보내면 모든 결제수단에 대해 응답)<br />
+                    <br />
                     <table class="table">
                       <tr>
                         <td>TOSS_MONEY</td>
@@ -367,152 +226,157 @@
                         <td>CARD</td>
                         <td>카드</td>
                       </tr>
+		       <tr>
+                        <td>RESELLER_CARD</td>
+                        <td>리셀러 카드(리셀러 가맹점에만 해당)</td>
+                      </tr>
                     </table>
                   </div>
-                </div> 
-                <div class="field clearfix">
-                  <div class="key">
-                    amount
-                  </div>
-                  <div class="desc">금액<br />(결제는 '+', 환불은 '-'로 표시됨)</div>
                 </div>
-                <div class="field clearfix">
+		 <div class="field clearfix">
                   <div class="key">
-                    fee
+                    nextCursor
+                    <span class="type">string</span>
+                    <span class="required"></span>
                   </div>
                   <div class="desc">
-                    수수료<br />(수수료 부과는 '-', 전액 환불 등 사유로 수수료를 돌려드리는 경우 '+'로 표시됨)
+                    호출할 페이징의 cursor 값을 나타냅니다.  정산 API 호출 후 리턴되는 응답값을 다음의 정산 API 호출 시 파라미터로 사용하면 됩니다.</br> 
+                    해당 파라미터가 추가되지 않고 API 가 호출되면 무조건 첫 페이징 데이터가 리턴됩니다. (index : 0 ~ 999)
                   </div>
                 </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    vat
-                  </div>
-                  <div class="desc">
-                    부가세<br />(부가세 부과는 '-', 전액 환불 등 사유로 부가세를 돌려드리는 경우 '+'로 표시됨)
-                  </div>
-                </div>
-
-                <div class="field clearfix">
-                  <div class="key">
-                    tossChargeAmount
-                  </div>
-                  <div class="desc">
-                    토스 부담 금액<br />
-                  </div>
-                </div>
-
-                <div class="field clearfix">
-                  <div class="key">
-                    rewardReturnAmount
-                  </div>
-                  <div class="desc">
-                    캐시백 회수 금액<br />캐시백 받았던 결제건을 환불했을 때, 환불 결제금액에서 차감될 캐시백 회수 금액
-                  </div>
-                </div>
-
               </div>
-              <div class="info">
-                <h4>response (TELEGRAM, 총 250 bytes)</h4>
-                <div class="field clearfix">
+		<div class="info">
+                <h4>OPTION PARAMETERS</h4>
+		 <div class="field clearfix">
                   <div class="key">
-                    transactionType
-                    <span class="type">IDX : 0</span>
-                    <span class="type">char(8)</span>
-                  </div>
-                  <div class="desc">거래 종류 (PAY, REFUND, ETC)<br /></div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    settleDate
-                    <span class="type">IDX : 8</span>
-                    <span class="type">char(8)</span>
+                    includeSettleDateTime
                   </div>
                   <div class="desc">
-                    거래 승인일
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    dueDate
-                    <span class="type">IDX : 16</span>
-                    <span class="type">char(8)</span>
-                  </div>
-                  <div class="desc">
-                    지급일
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    payToken
-                    <span class="type">IDX : 24</span>
-                    <span class="type">char(20)</span>
-                  </div>
-                  <div class="desc">
-                    Toss 결제 토큰
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    orderNo
-                    <span class="type">IDX : 44</span>
-                    <span class="type">char(50)</span>
-                  </div>
-                  <div class="desc">
-                    가맹점의 상품 주문번호
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    productDesc
-                    <span class="type">IDX : 94</span>
-                    <span class="type">char(50)</span>
-                  </div>
-                  <div class="desc">
-                    상품 설명
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    amount
-                    <span class="type">IDX : 144</span>
-                    <span class="type">char(9)</span>
-                  </div>
-                  <div class="desc">
-                    금액
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    fee
-                    <span class="type">IDX : 153</span>
-                    <span class="type">char(9)</span>
-                  </div>
-                  <div class="desc">
-                    수수료
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    vat
-                    <span class="type">IDX : 162</span>
-                    <span class="type">char(9)</span>
-                  </div>
-                  <div class="desc">
-                    부가세
-                  </div>
-                </div>
-                <div class="field clearfix">
-                  <div class="key">
-                    Filler
-                    <span class="type">IDX : 171</span>
-                    <span class="type">char(79)</span>
-                  </div>
-                  <div class="desc">
-                    SPACE
+                   응답으로 '거래 처리 일시' 가 필요한 경우 URI query string 으로 includeSettleDateTime=true 를 넘겨주시면 됩니다.</br>
+                   호출 URI 예시) https://pay.toss.im/pay/api/v2/settlement-details?includeSettleDateTime=true
                   </div>
                 </div>
               </div>
+              <div class="info">
+                <h4>RESPONSE</h4>
+                <div class="field clearfix">
+                  <div class="key">
+                    transactionList
+                  </div>
+		 <span class="type">string</span>
+                  <div class="desc">
+                   정산 내역 리스트 - 최대 1000 개
+                    <table class="table">
+                      <tr>
+                        <td>transactionType: 거래종류 <br/>
+			    <li>PAY: 결제</li>
+			    <li>REFUND: 환불</li>
+			</td>
+			 </tr>
+			<tr>
+                        <td>transactionId: 거래 고유 번호 <br/>
+			    <li>결제 및 환불 시의 거래 고유 번호</li>
+			    <li>동일 결제 건의 부분 환불을 여러번 할 때, 각각의 부분 환불건을 구분하기 위함 </li>
+			</td>
+                      </tr>
+                      <tr>
+                        <td>settleDate: 거래 승인일</td>
+                      </tr>
+                      <tr>
+                        <td>dueDate: 정산일 (지급일)</td>
+                      </tr>
+		       <tr>
+                        <td>payToken: 토스 결제 토큰</td>
+                      </tr>
+		       <tr>
+                        <td>orderNo: 가맹점의 상품 주문번호</td>
+                      </tr>
+		       <tr>
+                        <td>productDesc: 상품 설명</td>
+                      </tr>
+			<tr>
+                        <td>payMethod : 결제 수단 <br/>
+			    <li>TOSS_MONEY : 토스머니</li>
+			    <li>CARD : 카드 </li>
+			    <li>RESELLER_CARD : 리셀러 카드</li>
+			</td>
+                      </tr>
+			 <tr>
+                        <td>amount: 금액(결제는 '+', 환불은 '-'로 표시됨)</td>
+                      </tr>
+			 <tr>
+                        <td>fee: 수수료(수수료 부과는 '-', 전액 환불 등 사유로 수수료를 돌려드리는 경우 '+'로 표시됨)</td>
+                      </tr>
+			 <tr>
+                        <td>vat: 부가세(부가세 부과는 '-', 전액 환불 등 사유로 부가세를 돌려드리는 경우 '+'로 표시됨)</td>
+                      </tr>
+			 <tr>
+                        <td>feeVatSum: 수수료 + 부가세</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    nextCursor
+                  </div>
+		 <span class="type">string</span>
+                  <div class="desc">
+                   API 호출 이후 다음 페이징 영역에 데이터가 존재하면 커서 값이 리턴된다. <br/>
+                   마지막 페이징이었다면 빈 스트링이 리턴된다. 
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    totalAmount
+                  </div>
+		<span class="type">Integer</span>
+                  <div class="desc">
+                    총 금액 합산 <br/> 
+		  (페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 금액 합산 
+                  </div>
+                </div>
+		<div class="field clearfix">
+                  <div class="key">
+                    totalFee
+                  </div>
+		<span class="type">Integer</span>
+                  <div class="desc">
+                    총 수수료 합산 <br/> 
+		   (페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 수수료 합산 
+                  </div>
+                </div>
+		      <div class="field clearfix">
+                  <div class="key">
+                    totalVat
+                  </div>
+		<span class="type">Integer</span>
+                  <div class="desc">
+                    총 부가세 합산 <br/> 
+                   (페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 부가세 합산 
+                  </div>
+                </div>
+		      <div class="field clearfix">
+                  <div class="key">
+                    totalFeeVatSum
+                  </div>
+		<span class="type">Integer</span>
+                  <div class="desc">
+                    총 수수료 + 부가세의 합산 (totalFee + totalVat) <br/>
+                   (페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 수수료+부가세 합산 
+                  </div>
+                </div>
+                <div class="field clearfix">
+                  <div class="key">
+                    settleDateTime
+                  </div>
+                  <span class="type">string</span>
+                  <div class="desc">
+                  거래 처리 일시<br/>
+                  최종 거래 상태가 승인(PAY) 일 경우는 승인 처리 시각, 환불(REFUND) 일 경우는 환불 처리 시각이 yyyyMMddHHmmss 형태로 리턴됩니다.<br/>
+                   단, includeSettleDateTime=true 를 포함해서 호출한 경우에만 리턴합니다.
+                  </div>
+                </div>
             </div>
             <div class="method-example">
               <div class="title">Definition</div>
