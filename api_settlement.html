@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>결제 정산 API</title>
+    <title>토스 현금영수증 API</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="https://static.toss.im/tds/favicon/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="https://static.toss.im/tds/favicon/favicon-16x16.png" />
@@ -78,17 +78,29 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-TPTMLG');
     </script>
-
-
-    <!-- End Google Tag Manager -->
+  <!-- End Google Tag Manager -->
     <div id="guide">
-      <h1 class="logo">
-          <img src="https://static.toss.im/tds/icon/svg/logo-only-icon.svg" alt="toss developers logo"/>
-          <span>결제 정산 API v2</span>
-      </h1>
-      
+      <div class="logo">
+        <a href="index.html">
+          <img class="logo-img" src="https://static.toss.im/tds/icon/svg/logo-only-icon.svg" alt="">
+          <span>결제 연동 가이드</span>
+        </a>
+      </div>
+        <ul class="menu nav">
+            <h5>결제 정산 API</h5>
+            <li>
+                <a href="#intro">소개</a>
+            </li>
+	    <h5>용어</h5>
+            <li>
+                <a href="#terms">용어 및 정의</a>
+            </li>
+            <h5>API 목록</h5>
+            <li>
+                <a href="#settlementDetail">정산 API</a>
+            </li>
+        </ul>
     </div>
-
     <div id="api-docs">
       <div id="methods">
         <div class="languages">
@@ -102,7 +114,7 @@
         <div class="method" id="intro">
           <div class="method-section clearfix">
             <div class="method-description">
-              <h3>토스 정산 API v2 </h3>
+              <h3>토스 정산 API 소개 </h3>
               <p>
                토스 결제 서비스를 통한 매출과 정산 금액 확인을 위한 API 입니다.</br>
                페이징 개념을 적용하였고 페이징의 단위는 1,000 건으로 다음 페이징이 존재하면 nextCursor 라는 응답값이 리턴됩니다. 그 후 nextCursor 를 포함하여 호출하면 바로 다음의 페이징 데이터가 리턴됩니다.
@@ -321,8 +333,8 @@
 		 <span class="type">string</span>
 			</div>
                   <div class="desc">
-                   API 호출 이후 다음 페이징 영역에 데이터가 존재하면 커서 값이 리턴된다. <br/>
-                   마지막 페이징이었다면 빈 스트링이 리턴된다. 
+                   API 호출 이후 다음 페이징 영역에 데이터가 존재하면 커서 값이 리턴됩니다. <br/>
+                   마지막 페이징이었다면 빈 스트링이 리턴됩니다. 
                   </div>
                 </div>
                 <div class="field clearfix">
