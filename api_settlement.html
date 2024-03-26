@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>토스 현금영수증 API</title>
+    <title>결제 정산 API</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="https://static.toss.im/tds/favicon/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="https://static.toss.im/tds/favicon/favicon-16x16.png" />
@@ -186,7 +186,7 @@
                   </div>
                   <div class="desc">
                     가맹점 key<br/>
-                    Test apiKey도 입력은 가능하나 테스트 결제는 실제 지급되지 않기 때문에 정산 대상이 아니라서 수수료 계산(0원)이나 지급일자(빈값) 등 계산을 건너뛰게 됩니다.
+                    <span class="text-muted">Test apiKey도 입력은 가능하나 테스트 결제는 실제 지급되지 않기 때문에 정산 대상이 아니라서 수수료 계산(0원)이나 지급일자(빈값) 등 계산을 건너뛰게 됩니다.
                   </div>
                 </div>
                 <div class="field clearfix">
@@ -251,7 +251,7 @@
                   </div>
                   <div class="desc">
                     호출할 페이징의 cursor 값을 나타냅니다.  정산 API 호출 후 리턴되는 응답값을 다음의 정산 API 호출 시 파라미터로 사용하면 됩니다.</br> 
-                    해당 파라미터가 추가되지 않고 API 가 호출되면 무조건 첫 페이징 데이터가 리턴됩니다. (index : 0 ~ 999)
+                    <span class="text-muted">해당 파라미터가 추가되지 않고 API 가 호출되면 무조건 첫 페이징 데이터가 리턴됩니다. (index : 0 ~ 999)
                   </div>
                 </div>
               </div>
@@ -263,7 +263,7 @@
                   </div>
                   <div class="desc">
                    응답으로 '거래 처리 일시' 가 필요한 경우 URI query string 으로 includeSettleDateTime=true 를 넘겨주시면 됩니다.</br>
-                   호출 URI 예시) https://pay.toss.im/pay/api/v2/settlement-details?includeSettleDateTime=true
+                   <span class="text-muted">호출 URI 예시) https://pay.toss.im/pay/api/v2/settlement-details?includeSettleDateTime=true
                   </div>
                 </div>
               </div>
@@ -313,13 +313,13 @@
 			</td>
                       </tr>
 			 <tr>
-                        <td>amount: 금액(결제는 '+', 환불은 '-'로 표시됨)</td>
+                        <td>amount: 금액 (결제는 '+', 환불은 '-'로 표시됨)</td>
                       </tr>
 			 <tr>
-                        <td>fee: 수수료(수수료 부과는 '-', 전액 환불 등 사유로 수수료를 돌려드리는 경우 '+'로 표시됨)</td>
+                        <td>fee: 수수료 (수수료 부과는 '-', 전액 환불 등 사유로 수수료를 돌려드리는 경우 '+'로 표시됨)</td>
                       </tr>
 			 <tr>
-                        <td>vat: 부가세(부가세 부과는 '-', 전액 환불 등 사유로 부가세를 돌려드리는 경우 '+'로 표시됨)</td>
+                        <td>vat: 부가세 (부가세 부과는 '-', 전액 환불 등 사유로 부가세를 돌려드리는 경우 '+'로 표시됨)</td>
                       </tr>
 			 <tr>
                         <td>feeVatSum: 수수료 + 부가세</td>
@@ -334,7 +334,7 @@
 			</div>
                   <div class="desc">
                    API 호출 이후 다음 페이징 영역에 데이터가 존재하면 커서 값이 리턴됩니다. <br/>
-                   마지막 페이징이었다면 빈 스트링이 리턴됩니다. 
+                   <span class="text-muted">마지막 페이징이었다면 빈 스트링이 리턴됩니다. 
                   </div>
                 </div>
                 <div class="field clearfix">
@@ -344,7 +344,7 @@
 			</div>
                   <div class="desc">
                     총 금액 합산 <br/> 
-		  (페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 금액 합산 
+		  <span class="text-muted">(페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 금액 합산 
                   </div>
                 </div>
 		<div class="field clearfix">
@@ -354,7 +354,7 @@
 			</div>
                   <div class="desc">
                     총 수수료 합산 <br/> 
-		   (페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 수수료 합산 
+		   <span class="text-muted">(페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 수수료 합산 
                   </div>
                 </div>
 		      <div class="field clearfix">
@@ -364,7 +364,7 @@
 			      </div>
                   <div class="desc">
                     총 부가세 합산 <br/> 
-                   (페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 부가세 합산 
+                   <span class="text-muted">(페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 부가세 합산 
                   </div>
                 </div>
 		      <div class="field clearfix">
@@ -374,7 +374,7 @@
 			      </div>
                   <div class="desc">
                     총 수수료 + 부가세의 합산 (totalFee + totalVat) <br/>
-                   (페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 수수료+부가세 합산 
+                   <span class="text-muted">(페이징별 합산금액이 아닌) 조회된 전체 건에 대한 총 수수료+부가세 합산 
                   </div>
                 </div>
                 <div class="field clearfix">
@@ -384,8 +384,8 @@
 			</div>
                   <div class="desc">
                   거래 처리 일시<br/>
-                  최종 거래 상태가 승인(PAY) 일 경우는 승인 처리 시각, 환불(REFUND) 일 경우는 환불 처리 시각이 yyyyMMddHHmmss 형태로 리턴됩니다.<br/>
-                   단, includeSettleDateTime=true 를 포함해서 호출한 경우에만 리턴합니다.
+                  <span class="text-muted">최종 거래 상태가 승인(PAY) 일 경우는 승인 처리 시각, 환불(REFUND) 일 경우는 환불 처리 시각이 yyyyMMddHHmmss 형태로 리턴됩니다.<br/>
+                  <span class="text-muted">단, includeSettleDateTime=true 를 포함해서 호출한 경우에만 리턴합니다.
                   </div>
                 </div>
             </div>
