@@ -132,9 +132,9 @@
                 <div class="method-section clearfix">
                     <div class="method-description">
                         <h3>자동결제 flow</h3>
-                        <ul>
+                        <p>
                          <img src="../images/flow.png" alt="자동결제 flow" />
-                         </ul>
+                         </p>
                        </div>
                 </div>
             </div>
@@ -171,9 +171,6 @@
                                     <font color=#AA1212>테스트가 완료되면 운영 오픈 전 반드시 '실 거래용 Key'로 변경 후 체크해주세요!</font>
                                 </div>
                             </div>
-                          </div>
-                           <div class="info">
-                            <h4>parameters</h4>
                             <div class="field clearfix">
                                 <div class="key">
                                     userId
@@ -184,9 +181,24 @@
                                     가맹점 사용자 식별 값
                                     <br>
                                     <span class="text-muted">가맹점에서 사용자를 식별할 수 있는 유니크한 키</span><br>
-                                    <span class="text-muted">가맹점에 저장된 회원 아이디를 활용할 수 있다.</span><br>
-                                    <span class="text-muted">추후 결제 승인 정보와 매칭하기 위하여 필요하며 유니크한 값을 사용하길 권장한다.(결제 주문번호의 개념)</span><br>
-                                    <span class="text-muted">최대 50자로 지정하며 숫자, 영문자도 가능하되 특수문자는 _-:.^@= 만 허용한다.</span><br>
+                                    <span class="text-muted">가맹점에 저장된 회원 아이디를 활용할 수 있습니다.</span><br>
+                                    <span class="text-muted">추후 결제 승인 정보와 매칭하기 위하여 필요하며 유니크한 값을 사용하길 권장합니다.(결제 주문번호의 개념)</span><br>
+                                    <span class="text-muted">최대 50자로 지정하며 숫자, 영문자도 가능하되 특수문자는 _-:.^@= 만 허용합니다.</span><br>
+                                </div>
+                            </div>
+                           <div class="field clearfix">
+                                <div class="key">
+                                    displayId
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 50 </span>
+                                </div>
+                                <div class="desc">
+                                    다중 빌링키 식별 값
+                                    <br>
+                                    <span class="text-muted">빌링키의 경우 기본적으로 하나의 가맹점 - 하나의 토스 유저 - 하나의 빌링키 만 사용이 가능하지만, 가맹점에서 동일한 사람 (하나의 토스유저)이 여러개의 빌링키를 활용 이 가능 해야 한다면, 이 파라미터를 전달하여 여러개의 빌링키를 생성 할 수 있습니다.</span><br>
+                                    <span class="text-muted">해당 값은 userId 와 함께 발급된 빌링키를 특정할 수 있는 값 이므로, 유니크한 값을 사용하길 권장합니다.</span><br>
+                                    <span class="text-muted">최대 50자로 지정하며 숫자, 영문자도 가능하되 특수문자는 _-:.^@= 만 허용합니다.</span><br>
+                                    <font color=#AA1212>만약 동일한 결제수단을 여러 번 등록하길 원하는 경우, displayId를 보내면서 userId를 다르게 보내면 토스 쪽에서는 가맹점의 서로 다른 유저에 대한 빌링키 등록으로 인식되어 동일한 결제수단을 여러 번 등록할 수 있게 됩니다.(userId를 동일한 값으로 보내는 경우 동일한 결제수단의 등록은 제한됩니다.)</font>
                                 </div>
                             </div>
                           </div>
