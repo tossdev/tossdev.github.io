@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>토스 자동결제 연동 가이드</title>
+</head>
+<body>
+    <h1>토스 자동결제 연동 가이드</h1>
+
+    <h2>0. 개요</h2>
+    <p>빌링키 방식으로 자동결제를 연동할 수 있도록 신규 API를 구현하였습니다.</p>
+    <p>토스 결제서버는 가맹점의 빌링키 생성요청에 따라 구매자가 인증할 수 있는 유니크한 '결제 인증 URL'을 생성하고, 가맹점을 통해 구매자는 토스 앱을 통해 인증을 진행할 수 있습니다.</p>
+    <p>사용자의 유니크한 빌링키가 생성되며, 가맹점은 이 빌링키를 관리하고 필요 시 결제 승인 요청을 할 수 있습니다.</p>
+    <p>토스가 제공하는 자동결제는 '토스머니'와 '카드' 결제수단을 제공합니다. 해당 문서는 자동결제 각 API의 기능을 설명합니다.</p>
+    <p>테스트 계정 및 별도의 SDK 파일을 제공하지 않기에, '토스' 앱 설치 후 최신 버전 사용을 권장합니다. 결제 도메인은 운영환경으로 제공되며, 결제에서 사용하는 상점 apiKey 속성에 따라 실제 출금 여부를 판단합니다.</p>
+    <p>테스트 키(sk_test_xxx...)는 실제 출금되지 않으니 충분히 테스트할 수 있습니다.</p>
+    <p>양사 간 계약이 완료된 후 전용 상점정보를 전달하며, 그 전까지는 가이드에 기재된 테스트 apiKey로 진행할 수 있습니다. 라이브 apiKey는 별도 요청 시 제공됩니다.</p>
+    <p>각 API의 응답 필드 및 에러코드는 사전 예고 없이 추가될 수 있으니 추가되더라도 오류가 발생하지 않도록 주의가 필요합니다.</p>
+    
+    <h2>1. 자동결제 Flow</h2>
+    <!-- 추가 설명 및 내용 삽입 -->
+
+    <h2>2. 빌링키 생성 요청</h2>
+    <p>토스 자동결제를 등록하기 위해서는 사용자를 식별할 수 있는 고유한 빌링키를 생성해야 합니다. API 요청의 응답으로 성공 여부와 함께 토스 앱 인증 URL을 전달합니다.</p>
+    <p>빌링키 생성 요청 API 사양은 다음과 같습니다.</p>
+    <ul>
+        <li><strong>apiKey</strong>: 가맹점에 발급된 apiKey (String, 필수, 최대 50자)</li>
+        <li><strong>userId</strong>: 가맹점 사용자 식별 값 (String, 필수, 최대 50자)</li>
+        <li><strong>displayId</strong>: 표시 가능한 빌링키 식별 값 (String, 선택, 최대 50자)</li>
+        <li><strong>productDesc</strong>: 자동결제 상품명 (String, 필수, 최대 255자)</li>
+        <li><strong>resultCallback</strong>: 가맹점 설정 콜백 URL (String, 필수, 최대 500자)</li>
+        <li><strong>retAppScheme</strong>: 인증완료 후 연결할 가맹점의 앱 스킴 (String, 선택, 최대 1500자)</li>
+        <li><strong>returnSuccessUrl</strong>: 인증 성공 후 연결할 가맹점 성공 페이지 (String, 선택, 최대 1500자)</li>
+        <li><strong>returnFailureUrl</strong>: 인증 실패 시 연결할 가맹점 실패 페이지 (String, 선택, 최대 1500자)</li>
+        <li><strong>encryptedUserCi</strong>: 가맹점 유저의 CI값 (String, 선택, 최대 255자)</li>
+    </ul>
+    <p>API Endpoint: <code>POST https://pay.toss.im/api/v1/billing-key</code></p>
+    <p>응답 파라미터 목록:</p>
+    <ul>
+        <li><strong>code</strong>: 성공 여부 (0: 성공, -1: 실패)</li>
+        <li><strong>errorCode</strong>: 에러코드 (실패 시 전달)</li>
+        <li><strong>msg</strong>: 에러 메시지</li>
+        <li><strong>billingKey</strong>: 생성된 자동결제 사용자 빌링키</li>
+        <li><strong>checkoutAndroidUri</strong>: Android 구독 인증 URI</li>
+        <li><strong>checkoutIosUri</strong>: iOS 구독 인증 URI</li>
+        <li><strong>checkoutUri</strong>: 토스 앱 호출 링크</li>
+    </ul>
+</body>
+</html>
