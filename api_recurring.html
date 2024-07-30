@@ -1,12 +1,122 @@
-<!DOCTYPE html>
-<html lang="ko">
+ <!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>토스 자동결제 연동 가이드</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="https://static.toss.im/tds/favicon/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="16x16" href="https://static.toss.im/tds/favicon/favicon-16x16.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="https://static.toss.im/tds/favicon/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="48x48" href="https://static.toss.im/tds/favicon/favicon-48x48.png"/>
+<link rel="icon" type="image/png" sizes="196x196" href="https://static.toss.im/tds/favicon/favicon-196x196.png"/>
+<link rel="apple-touch-icon" sizes="57x57" href="https://static.toss.im/tds/favicon/apple-touch-icon-57x57.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="https://static.toss.im/tds/favicon/apple-touch-icon-72x72.png"/>
+<link rel="apple-touch-icon" sizes="114x114" href="https://static.toss.im/tds/favicon/apple-touch-icon-114x114.png"/>
+<link rel="apple-touch-icon" sizes="120x120" href="https://static.toss.im/tds/favicon/apple-touch-icon-120x120.png"/>
+<link rel="apple-touch-icon" sizes="144x144" href="https://static.toss.im/tds/favicon/apple-touch-icon-144x144.png"/>
+<link rel="apple-touch-icon" sizes="152x152" href="https://static.toss.im/tds/favicon/apple-touch-icon-152x152.png"/>
+<meta name="msapplication-TileImage" content="https://static.toss.im/tds/favicon/mstile-144x144.png"/>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://static.toss.im/tds/current/css/tds.min.css">
+    <link rel="stylesheet" type="text/css" href="css/prism.css" />
+    <link rel="stylesheet" type="text/css" href="css/tossdev.css" />
+
+    <!-- javascript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
-<body>
-    <h1>토스 자동결제 연동 가이드 (v.2024.07)</h1>
+
+<body id="docs" data-spy="scroll" data-target="#guide" oncontextmenu="return false" ondragstart="return false" >
+
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPTMLG" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TPTMLG');
+    </script>
+    <!-- End Google Tag Manager -->
+    <div id="guide">
+      <div class="logo">
+        <a href="index.html">
+          <img class="logo-img" src="https://static.toss.im/tds/icon/svg/logo-only-icon.svg" alt="">
+          <span>결제 연동 가이드</span>
+        </a>
+      </div>
+        <ul class="menu nav">
+            <h5>결제 API</h5>
+            <li>
+                <a href="#intro">소개</a>
+            </li>
+            <li>
+                <a href="#state">결제 상태</a>
+            </li>
+            <li>
+                <a href="#httpResponse">HTTP 응답코드</a>
+            </li>
+            <h5>API 목록</h5>
+            <li>
+                <a href="#payments">결제 생성</a>
+            </li>
+            <li>
+                <a href="#resultcallback">결제 결과 callback</a>
+            </li>
+            <li>
+                <a href="#execute">가맹점 승인</a>
+            </li>
+            <!--
+            <li>
+                <a href="#cancel">결제 취소</a>
+            </li>
+            -->
+            <li>
+                <a href="#refunds">결제 환불</a>
+            </li>
+            <li>
+                <a href="#status">결제 상태 확인</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="api-docs">
+        <div id="methods">
+            <div class="languages">
+                <a class="language selected" data-lang="curl" href="#">curl</a>
+                <a class="language" data-lang="java" href="#">Java</a>
+                <a class="language" data-lang="php" href="#">PHP</a>
+                <a class="language" data-lang="python" href="#">Python</a>
+                <a class="language" data-lang="ruby" href="#">Ruby</a>
+                <a class="language" data-lang="aspnet" href="#">ASP</a>
+            </div>
+           <div class="method" id="intro">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>토스 자동결제 연동 가이드</h3>
+                            <p>
+                            토스를 통한 자동 결제 서비스를 사용하기 위한 API입니다.<br>
+                            토스페이를 활용한 개발을 처음 시작하신다면, 좀 더 친절한 안내를 먼저 확인해보세요! <br><br>
+
+                            <strong>토스페이 개발 가이드는 수시로 업데이트 됩니다. 사전 예고없이 업데이트 될 수 있으니 지속적으로 확인해 주시길 부탁드립니다.</strong>
 
     <h2>0. 개요</h2>
     <p>빌링키 방식으로 자동결제를 연동할 수 있도록 신규 API를 구현하였습니다.</p>
