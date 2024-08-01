@@ -80,10 +80,10 @@
                 <a href="#resultcallback">빌링키 처리결과 callback</a>
             </li>
             <li>
-                <a href="#bill">자동결제(bill) 승인 요청</a>
+                <a href="#bill">자동결제 승인 요청</a>
             </li>
             <li>
-                <a href="#refunds">자동결제(bill) 환불 요청</a>
+                <a href="#refunds">자동결제 환불 요청</a>
             </li>
             <li>
                 <a href="#status">결제 상태조회</a>
@@ -93,9 +93,6 @@
             </li>
              <li>
                 <a href="#remove">빌링키 삭제</a>
-            </li>
-             <li>
-                <a href="#list">토스 은행 코드 리스트</a>
             </li>
               <li>
                 <a href="#errorcode">결제 에러코드</a>
@@ -118,10 +115,12 @@
                     <div class="method-description">
                         <h3>개요</h3>
                         <p>빌링키 방식으로 자동결제를 연동할 수 있도록 신규 API를 구현하였습니다.<br>
-                        토스 결제서버는 가맹점의 빌링키 생성요청에 따라 구매자가 인증할 수 있는 유니크한 '결제 인증 URL'을 생성하고, 가맹점을 통해 구매자는 토스 앱을 통해 인증을 진행할 수 있습니다.<br>
+                        토스 결제서버는 가맹점의 빌링키 생성요청에 따라 구매자가 인증할 수 있는 유니크한 '결제 인증 URL'을 생성하고,<br>
+                        가맹점을 통해 구매자는 토스 앱을 통해 인증을 진행할 수 있습니다.<br>
                         사용자의 유니크한 빌링키가 생성되며, 가맹점은 이 빌링키를 관리하고 필요 시 결제 승인 요청을 할 수 있습니다.<br>
                         토스가 제공하는 자동결제는 '토스머니'와 '카드' 결제수단을 제공합니다. 해당 문서는 자동결제 각 API의 기능을 설명합니다.<br>
-                        테스트 계정 및 별도의 SDK 파일을 제공하지 않기에, '토스' 앱 설치 후 최신 버전 사용을 권장합니다. 결제 도메인은 운영환경으로 제공되며, 결제에서 사용하는 상점 apiKey 속성에 따라 실제 출금 여부를 판단합니다.<br>
+                        테스트 계정 및 별도의 SDK 파일을 제공하지 않기에, '토스' 앱 설치 후 최신 버전 사용을 권장합니다. <br>
+			결제 도메인은 운영환경으로 제공되며, 결제에서 사용하는 상점 apiKey 속성에 따라 실제 출금 여부를 판단합니다.<br>
                         테스트 키(sk_test_xxx...)는 실제 출금되지 않으니 충분히 테스트할 수 있습니다.<br>
                         양사 간 계약이 완료된 후 전용 상점정보를 전달하며, 그 전까지는 가이드에 기재된 테스트 apiKey로 진행할 수 있습니다. 라이브 apiKey는 별도 요청 시 제공됩니다.<br>
                         각 API의 응답 필드 및 에러코드는 사전 예고 없이 추가될 수 있으니 추가되더라도 오류가 발생하지 않도록 주의가 필요합니다.<br>
@@ -284,20 +283,30 @@
         </div>
     </div>
                         </div>
-			    <div class="info">
-    <h4>PARAMETERS</h4>
-    <div class="field clearfix">
-        <div class="key">
-            code
-            <span class="type">string</span>
-            <span class="type">Max Length: 2</span>
-        </div>
-        <div class="desc">
-            성공여부
-            <br>
-            <span class="text-muted">0 : 성공, -1 : 실패</span><br>
-        </div>
-    </div>
+                        <div class="info">
+                            <h4>response</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    code
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 2 </span>
+                                </div>
+                                <div class="desc">
+                                    응답코드
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>0</td>
+                                            <td>성공</td>
+                                        </tr>
+                                        <tr>
+                                            <td>-1</td>
+                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
     <div class="field clearfix">
         <div class="key">
             errorCode
@@ -331,7 +340,8 @@
         <div class="desc">
             생성된 자동결제 사용자 빌링키
             <br>
-            <span class="text-muted">빌링키는 토스 사용자의 고유한 값으로, 한 상점에서 한 개의 빌링키만 허용한다. 사용자가 한 상점에서 2개 이상의 상점 계정을 사용하는 경우 혹은 그 외의 경우는 userId로 식별해야 합니다.</span><br>
+            <span class="text-muted">빌링키는 토스 사용자의 고유한 값으로, 한 상점에서 한 개의 빌링키만 허용합니다.<br> 
+		    사용자가 한 상점에서 2개 이상의 상점 계정을 사용하는 경우 혹은 그 외의 경우는 userId로 식별해야 합니다.</span><br>
         </div>
     </div>
     <div class="field clearfix">
@@ -343,7 +353,9 @@
         <div class="desc">
             Android 구독 인증 URI
             <br>
-            <span class="text-muted">생성된 자동결제를 인증할 앱 URL. 가맹점은 구매자의 디바이스 OS를 구분해서 해당 URL로 보내주면 됩니다. 앱 링크로 전달하는 이유는 토스앱이 미설치된 사용자에게는 설치를 위해 앱 스토어로 이동시키기 위함이며, 생성요청 시점부터 유효시간은 기본이 15분이며 변경이 불가합니다.(유효시간 만료 후 재사용 불가함)</span><br>
+            <span class="text-muted">생성된 자동결제를 인증할 앱 URL. <br> 
+		    가맹점은 구매자의 디바이스 OS를 구분해서 해당 URL로 보내주면 됩니다.<br> 
+		    앱 링크로 전달하는 이유는 토스앱이 미설치된 사용자에게는 설치를 위해 앱 스토어로 이동시키기 위함이며, 생성요청 시점부터 유효시간은 기본이 15분이며 변경이 불가합니다.(유효시간 만료 후 재사용 불가함)</span><br>
             <span class="text-muted">URI 형식은 추후 변경될 수 있으니 변경되더라도 오류가 발생하지 않도록 연동이 필요합니다.</span>
         </div>
     </div>
@@ -368,7 +380,9 @@
         <div class="desc">
             토스 앱 호출 링크
             <br>
-            <span class="text-muted">요청에서 retAppScheme 포함 여부에 따라 기능이 다른 링크를 생성합니다. retAppScheme가 포함된 경우, 가맹점에서 사용자 OS 구분이 어렵다면 혼용 가능한 onelink를 제공하며, retAppScheme가 포함되지 않은 경우 pay Server에서는 Web 결제로 인식하여 PC에서 호출 가능한 payfront 링크를 제공합니다. 토스 일반결제의 checkoutPage 기능과 같습니다.</span><br>
+            <span class="text-muted">요청에서 retAppScheme 포함 여부에 따라 기능이 다른 링크를 생성합니다.<br> 
+                                retAppScheme가 포함된 경우, 가맹점에서 사용자 OS 구분이 어렵다면 혼용 가능한 onelink를 제공하며, retAppScheme가 포함되지 않은 경우 pay Server에서는 Web 결제로 인식하여 PC에서 호출 가능한 payfront 링크를 제공합니다.<br>
+		                토스 일반결제의 checkoutPage 기능과 같습니다.</span><br>
         </div>
     </div>
 </div>
