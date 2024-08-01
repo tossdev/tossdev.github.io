@@ -237,7 +237,6 @@
         <div class="desc">
             인증완료 후 연결할 가맹점의 앱 스킴
             <br>
-            <span class="text-muted">토스 자동결제는 기본적으로 App 방식을 지원하지만 최근 PC 결제방식도 도입됐습니다.</span>
             <span class="text-muted">앱 스킴 선언 형식은 아래와 같습니다.</span><br>
             <span class="text-muted">앱 스킴 예시 : testshop://</span>
         </div>
@@ -381,8 +380,8 @@
             토스 앱 호출 링크
             <br>
             <span class="text-muted">요청에서 retAppScheme 포함 여부에 따라 기능이 다른 링크를 생성합니다.<br> 
-                                retAppScheme가 포함된 경우, 가맹점에서 사용자 OS 구분이 어렵다면 혼용 가능한 onelink를 제공하며, retAppScheme가 포함되지 않은 경우 pay Server에서는 Web 결제로 인식하여 PC에서 호출 가능한 payfront 링크를 제공합니다.<br>
-		                토스 일반결제의 checkoutPage 기능과 같습니다.</span><br>
+                                retAppScheme 가 포함된 경우 : 가맹점에서 사용자 OS 구분이 어렵다면 혼용 가능한 onelink 를 제공합니다. 가맹점 앱에서 토스 앱을 호출하는 기능입니다.<br> 
+		                retAppScheme 가 포함되지 않은 경우 : pay Server 에서는 Web 결제로 인식하여 PC에서 호출 가능한 payfront 링크를 제공합니다. 토스 일반결제의 checkoutPage 의 기능과 같습니다.</span><br>
         </div>
     </div>
 </div>
