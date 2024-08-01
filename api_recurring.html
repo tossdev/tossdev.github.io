@@ -418,14 +418,31 @@ p JSON.parse(response.body)</code></pre>
     "checkoutAndroidUri": "intent://pay/BillingKey?billingKey=example-billingKey#Intent;scheme=supertoss;package=viva.republica.toss;end",
     "checkoutIosUri": "https://ul.toss.im?scheme=supertoss%3A%2F%2Fpay/BillingKey%3FbillingKey%3Dexample-billingKey",
     "checkoutUri": "https://toss.onelink.me/3563614660?pid=referral&af_dp=supertoss%3A%2F%2Fpay%2FbillingKey%3FbillingKey%3Dexample-billingKey%26_minVerAos%3D4.64.0%26_minVerIos%3D4.51.0"
-}
-                        </code></div></pre>
+}</code>
+            </pre>
                     </div>
                 </div>
-                </div>
-            </div>  
-     </div>
-   </div>
- </div>
+            </div>
+
+
+    <script type="text/javascript">
+        $(function () {
+
+            // language toggle
+            var $languages = $(".languages .language");
+            $languages.click(function (e) {
+                e.preventDefault();
+                var lang = $(this).data("lang");
+                $languages.removeClass("selected");
+                $(this).addClass("selected");
+
+                $("pre code").hide();
+                $("pre code." + lang).css("display", "block");
+            });
+            $("pre code." + $(".language.selected").data("lang")).css("display", "block");
+        });
+    </script>
+    <script src="js/prism.js"></script>
 </body>
+
 </html>
