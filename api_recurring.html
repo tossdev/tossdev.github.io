@@ -285,11 +285,12 @@
 
 
      <div class="info">
-    <h4>응답 파라미터 목록</h4>
+    <h4>RESPONSE</h4>
     <div class="field clearfix">
         <div class="key">
             code
-            <span class="type">Integer <font color=#c25300>필수</font></span>
+            <span class="type">Integer</span>
+            <span class="type">Max Length: 2</span>
         </div>
         <div class="desc">
             성공여부
@@ -300,7 +301,8 @@
     <div class="field clearfix">
         <div class="key">
             errorCode
-            <span class="type">String <font color=#c25300>필수</font></span>
+            <span class="type">string</span>
+            <span class="type">Max Length: 40</span>
         </div>
         <div class="desc">
             에러코드
@@ -312,7 +314,8 @@
     <div class="field clearfix">
         <div class="key">
             msg
-            <span class="type">String <font color=#c25300>필수</font></span>
+            <span class="type">string</span>
+            <span class="type">Max Length: 120</span>
         </div>
         <div class="desc">
             에러메시지
@@ -332,7 +335,8 @@
     <div class="field clearfix">
         <div class="key">
             checkoutAndroidUri
-            <span class="type">String <font color=#c25300>필수</font></span>
+            <span class="type">string</span>
+            <span class="type">Max Length: 255</span>
         </div>
         <div class="desc">
             Android 구독 인증 URI
@@ -356,7 +360,8 @@
     <div class="field clearfix">
         <div class="key">
             checkoutUri
-            <span class="type">String <font color=#c25300>필수</font></span>
+            <span class="type">string</span>
+            <span class="type">Max Length: 255</span>
         </div>
         <div class="desc">
             토스 앱 호출 링크
