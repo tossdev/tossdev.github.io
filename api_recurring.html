@@ -423,9 +423,28 @@ p JSON.parse(response.body)</code></pre>
                     </div>
                 </div>
                 </div>
-            </div>  
-     </div>
-                            </div>
-            </div>  
+			                </div>
+		                     </div>
+					 </div>
+		                     </div>
+    <script type="text/javascript">
+        $(function () {
+
+            // language toggle
+            var $languages = $(".languages .language");
+            $languages.click(function (e) {
+                e.preventDefault();
+                var lang = $(this).data("lang");
+                $languages.removeClass("selected");
+                $(this).addClass("selected");
+
+                $("pre code").hide();
+                $("pre code." + lang).css("display", "block");
+            });
+            $("pre code." + $(".language.selected").data("lang")).css("display", "block");
+        });
+    </script>
+    <script src="js/prism.js"></script>
 </body>
+
 </html>
