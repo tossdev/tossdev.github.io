@@ -165,13 +165,13 @@
     <div class="field clearfix">
         <div class="key">
             apiKey
-            <span class="type">String <font color=#c25300>필수</font></span>
+            <span class="type">string <font color=#c25300>필수</font></span>
             <span class="type">Max Length: 30</span>
         </div>
         <div class="desc">
             결제 가맹점의 apiKey
             <br>
-            <span class="text-muted">결제 보안상 유의가 필요하며 웹 브라우저에 노출되지 않도록 가맹점의 관리가 필요하다.</span><br>
+            <span class="text-muted">결제 보안상 유의가 필요하며 웹 브라우저에 노출되지 않도록 가맹점의 관리가 필요합니다.</span><br>
             <span class="text-muted">테스트용 apiKey: sk_test_w5iNQvNqa5lNQe03nGx (상점 개선이 있을 때만 발송 예정)</span>
         </div>
     </div>
@@ -179,7 +179,7 @@
     <div class="field clearfix">
         <div class="key">
             userId
-            <span class="type">String <font color=#c25300>필수</font></span>
+            <span class="type">string <font color=#c25300>필수</font></span>
             <span class="type">Max Length: 50</span>
         </div>
         <div class="desc">
@@ -194,23 +194,23 @@
     <div class="field clearfix">
         <div class="key">
             displayId
-            <span class="type">String <font color=#c25300>선택</font></span>
+            <span class="type">string</span>
             <span class="type">Max Length: 50</span>
         </div>
         <div class="desc">
             다중 빌링키 식별 값
             <br>
-            <span class="text-muted">빌링키의 경우 기본적으로 하나의 가맹점 - 하나의 토스 유저 - 하나의 빌링키만 사용 가능하다. 만약 동일한 결제수단을 여러 번 등록하고 싶다면, displayId를 사용하여 여러 개의 빌링키를 생성할 수 있다.</span><br>
-            <span class="text-muted">해당 값은 userId와 함께 발급된 빌링키를 특정할 수 있는 값이므로, 유니크한 값을 사용하길 권장한다.</span><br>
-            <span class="text-muted">최대 50자로 지정하며 숫자, 영문자도 가능하되 특수문자는 _-:.^@= 만 허용한다.</span><br>
-            <span class="text-muted">만약 동일한 결제수단을 여러 번 등록하길 원한다면, displayId를 보내면서 userId를 다르게 보내야 한다. 토스에서는 가맹점의 서로 다른 유저에 대한 빌링키 등록으로 인식하여 동일한 결제수단을 여러 번 등록할 수 있게 된다. (userId를 동일한 값으로 보내는 경우 동일한 결제수단의 등록은 제한된다.)</span>
+            <span class="text-muted">빌링키의 경우 기본적으로 하나의 가맹점 - 하나의 토스 유저 - 하나의 빌링키만 사용 가능합니다. 만약 동일한 결제수단을 여러 번 등록하고 싶다면, displayId를 사용하여 여러 개의 빌링키를 생성할 수 있습니다.</span><br>
+            <span class="text-muted">해당 값은 userId와 함께 발급된 빌링키를 특정할 수 있는 값이므로, 유니크한 값을 사용하길 권장합니다.</span><br>
+            <span class="text-muted">최대 50자로 지정하며 숫자, 영문자도 가능하되 특수문자는 _-:.^@= 만 허용합니다.</span><br>
+            <span class="text-muted">만약 동일한 결제수단을 여러 번 등록하길 원한다면, displayId를 보내면서 userId를 다르게 보내야 합니다. 토스에서는 가맹점의 서로 다른 유저에 대한 빌링키 등록으로 인식하여 동일한 결제수단을 여러 번 등록할 수 있게 됩니다. (userId를 동일한 값으로 보내는 경우 동일한 결제수단의 등록은 제한됩니다.)</span>
         </div>
     </div>
 
     <div class="field clearfix">
         <div class="key">
             productDesc
-            <span class="type">String <font color=#c25300>필수</font></span>
+            <span class="type">string <font color=#c25300>필수</font></span>
             <span class="type">Max Length: 255</span>
         </div>
         <div class="desc">
@@ -229,64 +229,62 @@
         <div class="desc">
             가맹점 설정 콜백 URL
             <br>
-            <span class="text-muted">사용자가 토스 앱을 통해 인증을 완료한 후, 이 URL에 인증 결과 데이터를 전달한다.</span><br>
-            <span class="text-muted">콜백 서버는 보안상의 이유로 HTTPS를 권장하며, 80, 443 이외의 포트 사용은 불가하다.</span><br>
-            <span class="text-muted">웹훅 요청에 대한 자세한 설명은 3-6-B. 빌링키 처리결과 callback 설명 참고</span>
+            <span class="text-muted">사용자가 토스 앱을 통해 인증을 완료한 후, 이 URL에 인증 결과 데이터를 전달합니다.</span><br>
+            <span class="text-muted">콜백 서버는 보안상의 이유로 HTTPS를 권장하며, 80, 443 이외의 포트 사용은 불가합니다.</span><br>
+            <span class="text-muted">웹훅 요청에 대한 자세한 설명은 빌링키 처리결과 callback 설명 참고</span>
         </div>
     </div>
 
     <div class="field clearfix">
         <div class="key">
             retAppScheme
-            <span class="type">String <font color=#c25300>선택</font></span>
+            <span class="type">string</span>
             <span class="type">Max Length: 1500</span>
         </div>
         <div class="desc">
             인증완료 후 연결할 가맹점의 앱 스킴
             <br>
-            <span class="text-muted">토스 결제창 기본적으로 양방향 인증방식을 제공하지만 PC 결제에서는 Web(Web) 이라면 입력하지 않아도 된다.</span><br>
-            <span class="text-muted">모바일 사용자의 경우 리다이렉트 이후 가맹점 앱 실행을 위해 앱 스킴을 포함하는 것을 권장한다. 예시) `tossapp://`</span>
+            <span class="text-muted">토스 결제창 기본적으로 양방향 인증방식을 제공하지만 PC 결제에서는 Web(Web) 이라면 입력하지 않아도 됩니다.</span><br>
+            <span class="text-muted">모바일 사용자의 경우 리다이렉트 이후 가맹점 앱 실행을 위해 앱 스킴을 포함하는 것을 권장합니다. 예시) `tossapp://`</span>
         </div>
     </div>
 
     <div class="field clearfix">
         <div class="key">
             returnSuccessUrl
-            <span class="type">String <font color=#c25300>선택</font></span>
+            <span class="type">string</span>
             <span class="type">Max Length: 1500</span>
         </div>
         <div class="desc">
             인증성공 후 연결할 가맹점 성공 페이지
             <br>
-            <span class="text-muted">retAppScheme 선언되지 않으면 returnSuccessUrl, returnFailureUrl 은 필수 제출항목이다.</span><br>
-            <span class="text-muted">별도 요청이 완료된 URL로 이동시키며, 빌링키(status), 사용자 식별값(userId), 빌링키(billingKey), 실패 에러코드(errorCode)를 query string 파라미터로 함께 보낸다.</span>
+            <span class="text-muted">retAppScheme 선언되지 않으면 returnSuccessUrl, returnFailureUrl 은 필수로 보내주셔야 합니다.</span><br>
+            <span class="text-muted">별도 요청이 완료된 URL로 이동시키며, 빌링키(status), 사용자 식별값(userId), 빌링키(billingKey), 실패 에러코드(errorCode)를 query string 파라미터로 함께 보냅니다.</span>
         </div>
     </div>
 
     <div class="field clearfix">
         <div class="key">
             returnFailureUrl
-            <span class="type">String <font color=#c25300>선택</font></span>
+            <span class="type">string</span>
             <span class="type">Max Length: 1500</span>
         </div>
         <div class="desc">
             인증실패 시 연결할 가맹점 실패 페이지
-            <br>
-            <span class="text-muted">별도 요청이 완료된 URL로 이동시키며, 빌링키(status), 사용자 식별값(userId), 빌링키(billingKey), 실패 에러코드(errorCode)를 query string 파라미터로 함께 보낸다.</span>
         </div>
     </div>
 
     <div class="field clearfix">
         <div class="key">
             encryptedUserCi
-            <span class="type">String <font color=#c25300>선택</font></span>
+            <span class="type">string</span>
             <span class="type">Max Length: 255</span>
         </div>
         <div class="desc">
             가맹점 유저의 CI값
             <br>
-            <span class="text-muted">가맹점에서 자동결제를 등록하는 사용자의 실명확인을 통해 생성된 사용자 정보를 전달할 수 있다.</span><br>
-            <span class="text-muted">가맹점에서 직접 자동결제를 등록하는 경우 사용하지 않음. CI는 경우 특성 상 여러 값이 생성되지 않아 일회성으로 사용하지 않을 것을 권장한다. (RSA 암호화방식 지원)</span>
+            <span class="text-muted">가맹점에서 자동결제를 등록하는 사용자의 실명확인을 통해 생성된 사용자 정보를 전달할 수 있습니다.</span><br>
+            <span class="text-muted">가맹점에서 직접 자동결제를 등록하는 경우 사용하지 않습니다. CI는 경우 특성 상 여러 값이 생성되지 않아 일회성으로 사용하지 않을 것을 권장합니다.(RSA 암호화방식 지원)</span>
         </div>
     </div>
 </div>
