@@ -284,7 +284,96 @@
         </div>
     </div>
                         </div>
-			                            </div>
+			    <div class="info">
+    <h4>PARAMETERS</h4>
+    <div class="field clearfix">
+        <div class="key">
+            code
+            <span class="type">string</span>
+            <span class="type">Max Length: 2</span>
+        </div>
+        <div class="desc">
+            성공여부
+            <br>
+            <span class="text-muted">0 : 성공, -1 : 실패</span><br>
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            errorCode
+            <span class="type">string</span>
+            <span class="type">Max Length: 40</span>
+        </div>
+        <div class="desc">
+            에러코드
+            <br>
+            <span class="text-muted">code가 -1일 때만 에러코드와 실패 사유를 전달합니다.</span><br>
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            msg
+            <span class="type">string</span>
+            <span class="type">Max Length: 120</span>
+        </div>
+        <div class="desc">
+            에러메시지
+            <br>
+            <span class="text-muted">상세한 에러 설명</span><br>
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            billingKey
+            <span class="type">string</span>
+            <span class="type">Max Length: 50</span>
+        </div>
+        <div class="desc">
+            생성된 자동결제 사용자 빌링키
+            <br>
+            <span class="text-muted">빌링키는 토스 사용자의 고유한 값으로, 한 상점에서 한 개의 빌링키만 허용한다. 사용자가 한 상점에서 2개 이상의 상점 계정을 사용하는 경우 혹은 그 외의 경우는 userId로 식별해야 합니다.</span><br>
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            checkoutAndroidUri
+            <span class="type">string</span>
+            <span class="type">Max Length: 255</span>
+        </div>
+        <div class="desc">
+            Android 구독 인증 URI
+            <br>
+            <span class="text-muted">생성된 자동결제를 인증할 앱 URL. 가맹점은 구매자의 디바이스 OS를 구분해서 해당 URL로 보내주면 됩니다. 앱 링크로 전달하는 이유는 토스앱이 미설치된 사용자에게는 설치를 위해 앱 스토어로 이동시키기 위함이며, 생성요청 시점부터 유효시간은 기본이 15분이며 변경이 불가합니다.(유효시간 만료 후 재사용 불가함)</span><br>
+            <span class="text-muted">URI 형식은 추후 변경될 수 있으니 변경되더라도 오류가 발생하지 않도록 연동이 필요합니다.</span>
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            checkoutIosUri
+            <span class="type">string</span>
+            <span class="type">Max Length: 255</span>
+        </div>
+        <div class="desc">
+            iOS 구독 인증 URI
+            <br>
+            <span class="text-muted">iOS에서 사용되는 구독 인증 URI로, 토스앱이 설치된 사용자가 앱을 통해 인증을 완료할 수 있도록 합니다.</span><br>
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            checkoutUri
+            <span class="type">string</span>
+            <span class="type">Max Length: 255</span>
+        </div>
+        <div class="desc">
+            토스 앱 호출 링크
+            <br>
+            <span class="text-muted">요청에서 retAppScheme 포함 여부에 따라 기능이 다른 링크를 생성합니다. retAppScheme가 포함된 경우, 가맹점에서 사용자 OS 구분이 어렵다면 혼용 가능한 onelink를 제공하며, retAppScheme가 포함되지 않은 경우 pay Server에서는 Web 결제로 인식하여 PC에서 호출 가능한 payfront 링크를 제공합니다. 토스 일반결제의 checkoutPage 기능과 같습니다.</span><br>
+        </div>
+    </div>
+</div>
+	</div>		    
+
                                              <div class="method-example">
                         <div class="title">Definition</div>
                         <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/billing-key</code></pre>
