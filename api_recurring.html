@@ -562,40 +562,40 @@ p JSON.parse(response.body)</code></pre>
     <div class="field clearfix">
         <div class="key">
             processedTs
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             상태 처리시간
             <br>
-            <span class="text-muted">action 에 따라 각 상태의 처리시간을 전달한다.</span>
+            <span class="text-muted">action 에 따라 각 상태의 처리시간을 전달합니다.</span>
         </div>
     </div>
     <div class="field clearfix">
         <div class="key">
             userId
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             가맹점이 생성한 사용자 식별 값
             <br>
-            <span class="text-muted">가맹점의 요청 값 그대로를 전달한다.</span>
+            <span class="text-muted">가맹점의 요청 값 그대로를 전달합니다.</span>
         </div>
     </div>
     <div class="field clearfix">
         <div class="key">
             displayId
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             가맹점이 생성한 표시 가능한 빌링키 식별 값
             <br>
-            <span class="text-muted">가맹점의 요청 값 그대로를 전달한다.</span>
+            <span class="text-muted">가맹점의 요청 값 그대로를 전달합니다.</span>
         </div>
     </div>
     <div class="field clearfix">
         <div class="key">
             billingKey
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             활성화/삭제 자동결제 사용자 빌링키
@@ -604,29 +604,29 @@ p JSON.parse(response.body)</code></pre>
     <div class="field clearfix">
         <div class="key">
             payMethod
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             사용자가 토스에서 인증한 결제수단
             <br>
-            <span class="text-muted">선택한 결제수단에 따라 토스머니(TOSS_MONEY) 또는 카드(CARD)를 전달한다.</span>
+            <span class="text-muted">선택한 결제수단에 따라 토스머니(TOSS_MONEY) 또는 카드(CARD)를 전달합니다.</span>
         </div>
     </div>
     <div class="field clearfix">
         <div class="key">
             cardMethodType
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             승인된 카드의 타입을 구분
             <br>
-            <span class="text-muted">선택한 결제수단에 따라 신용카드(CREDIT) 또는 체크카드(CHECK) 또는 선불카드(PREPAYMENT)를 전달한다.</span>
+            <span class="text-muted">선택한 결제수단에 따라 신용카드(CREDIT) 또는 체크카드(CHECK) 또는 선불카드(PREPAYMENT)를 전달합니다.</span>
         </div>
     </div>
     <div class="field clearfix">
         <div class="key">
             cardUserType
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             카드 사용자 구분
@@ -646,24 +646,24 @@ p JSON.parse(response.body)</code></pre>
         <div class="desc">
             사용자가 선택한 카드의 카드코드
             <br>
-            <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '카드'인 경우 토스가 정의한 카드코드를 전달한다.</span>
+            <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '카드'인 경우 토스가 정의한 카드코드를 전달합니다.</span>
         </div>
     </div>
     <div class="field clearfix">
         <div class="key">
             cardCompanyName
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             사용자가 선택한 카드의 카드사명
             <br>
-            <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '카드'인 경우 카드사명을 함께 전달한다.</span>
+            <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '카드'인 경우 카드사명을 함께 전달합니다.</span>
         </div>
     </div>
     <div class="field clearfix">
         <div class="key">
             cardNumber
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             사용자가 선택한 카드의 번호
@@ -674,18 +674,18 @@ p JSON.parse(response.body)</code></pre>
     <div class="field clearfix">
         <div class="key">
             cardNum4Print
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             사용자가 선택한 카드의 끝 4자리
             <br>
-            <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '카드'인 경우 카드번호를 포함하여 전달한다.</span>
+            <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '카드'인 경우 카드번호를 포함하여 전달합니다.</span>
         </div>
     </div>
     <div class="field clearfix">
         <div class="key">
             cardBinNumber
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             카드사에서 준 카드 빈번호
@@ -696,12 +696,12 @@ p JSON.parse(response.body)</code></pre>
     <div class="field clearfix">
         <div class="key">
             accountBankCode
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             사용자가 선택한 계좌의 은행코드
             <br>
-            <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '토스머니'인 경우 토스가 정의한 은행코드를 전달한다.</span>
+            <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '토스머니'인 경우 토스가 정의한 은행코드를 전달합니다.</span>
         </div>
     </div>
     <div class="field clearfix">
@@ -712,18 +712,18 @@ p JSON.parse(response.body)</code></pre>
         <div class="desc">
             사용자가 선택한 계좌의 은행명
             <br>
-            <span class="text-muted">은행코드 리스트는 가이드 하단에서 확인가능</span>
+            <span class="text-muted">은행코드 리스트는 가이드 하단에서 확인 가능</span>
         </div>
     </div>
     <div class="field clearfix">
         <div class="key">
             accountNumber
-            <span class="type">String</span>
+            <span class="type">string</span>
         </div>
         <div class="desc">
             사용자가 선택한 계좌번호
             <br>
-            <span class="text-muted">계좌번호는 일부 마스킹을 포함할 수 있음</span>
+            <span class="text-muted">계좌번호는 일부 마스킹을 포함할 수 있습니다.</span>
         </div>
     </div>
 </div>
