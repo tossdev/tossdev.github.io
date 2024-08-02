@@ -543,22 +543,22 @@ p JSON.parse(response.body)</code></pre>
                            * callback 에 대한 응답의 http status code 가 200인 경우에만 '정상' 수신으로 간주하며, 그 외의 응답 코드는 미수신으로 실패한 것으로 인식하여 3분 간격으로 최대 4번 접근을 시도합니다.<br>
                            * 빌링키 생성결과 callback 의 Payload 는 다음과 같습니다.<br>
                         <font color="#AA1212"><strong>* 사전 예고 없이 field 가 추가될 수 있습니다. 추가되더라도 오류가 발생하지 않도록 연동 부탁드립니다.</strong></font>
-
-                        <div class="info">
-              <h4>response</h4>
-              <div class="field clearfix">
-             <div class="key">
+<div class="info">
+    <h4>response</h4>
+    <div class="field clearfix">
+        <div class="key">
             action
             <span class="type">String</span>
         </div>
         <div class="desc">
             요청 처리에 따른 빌링키 상태
             <br>
-            <span class="text-muted">• ACTIVATED : 빌링키 활성화 완료</span><br>
-            <span class="text-muted">• REMOVED : 빌링키 삭제 완료</span>
+            <span class="text-muted">• ACTIVATED : 빌링키 활성화 완료<br>
+            빌링키 생성요청에 따라, 토스 -> 가맹점으로 '정상처리'를 알리는 콜백</span><br>
+            <span class="text-muted">• REMOVED : 빌링키 삭제 완료<br>
+            토스 -> 가맹점으로 빌링키 삭제를 요청할 수 있다. 그 때, '삭제완료' 상태를 알리는 콜백</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             processedTs
@@ -570,7 +570,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">action 에 따라 각 상태의 처리시간을 전달한다.</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             userId
@@ -582,7 +581,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">가맹점의 요청 값 그대로를 전달한다.</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             displayId
@@ -594,7 +592,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">가맹점의 요청 값 그대로를 전달한다.</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             billingKey
@@ -604,7 +601,6 @@ p JSON.parse(response.body)</code></pre>
             활성화/삭제 자동결제 사용자 빌링키
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             payMethod
@@ -616,7 +612,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">선택한 결제수단에 따라 토스머니(TOSS_MONEY) 또는 카드(CARD)를 전달한다.</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             cardMethodType
@@ -628,7 +623,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">선택한 결제수단에 따라 신용카드(CREDIT) 또는 체크카드(CHECK) 또는 선불카드(PREPAYMENT)를 전달한다.</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             cardUserType
@@ -637,18 +631,17 @@ p JSON.parse(response.body)</code></pre>
         <div class="desc">
             카드 사용자 구분
             <br>
-            <span class="text-muted">• PERSONAL : 본인 카드</span><br>
-            <span class="text-muted">• PERSONAL_FAMILY : 가족 카드</span><br>
-            <span class="text-muted">• CORP_PERSONAL : 법인정 결제계좌 임직원</span><br>
-            <span class="text-muted">• CORP_PRIVATE : 법인 공용</span><br>
-            <span class="text-muted">• CORP_COMPANY : 법인정 결제계좌 회사(하나카드만)</span>
+            <span class="text-muted">• PERSONAL : 본인 카드<br>
+            • PERSONAL_FAMILY : 가족 카드<br>
+            • CORP_PERSONAL : 법인정 결제계좌 임직원<br>
+            • CORP_PRIVATE : 법인 공용<br>
+            • CORP_COMPANY : 법인정 결제계좌 회사(하나카드만)</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             cardCompanyNo
-            <span class="type">Integer</span>
+            <span class="type">integer</span>
         </div>
         <div class="desc">
             사용자가 선택한 카드의 카드코드
@@ -656,7 +649,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '카드'인 경우 토스가 정의한 카드코드를 전달한다.</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             cardCompanyName
@@ -668,7 +660,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '카드'인 경우 카드사명을 함께 전달한다.</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             cardNumber
@@ -680,7 +671,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">카드번호 16자리가 중간자리는 마스킹</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             cardNum4Print
@@ -692,7 +682,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '카드'인 경우 카드번호를 포함하여 전달한다.</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             cardBinNumber
@@ -704,7 +693,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">카드의 앞에 있을 수 있으며, 100% 신뢰는 불가</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             accountBankCode
@@ -716,7 +704,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '토스머니'인 경우 토스가 정의한 은행코드를 전달한다.</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             accountBankName
@@ -728,7 +715,6 @@ p JSON.parse(response.body)</code></pre>
             <span class="text-muted">은행코드 리스트는 가이드 하단에서 확인가능</span>
         </div>
     </div>
-
     <div class="field clearfix">
         <div class="key">
             accountNumber
