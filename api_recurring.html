@@ -542,12 +542,12 @@ p JSON.parse(response.body)</code></pre>
                            * 토스 쪽에서 삭제가 발생되는 경우 토스 pay Server 에서 삭제(REMOVED) callback 을 보낼 수 있음을 참고해야 합니다.<br>
                            * callback 에 대한 응답의 http status code 가 200인 경우에만 '정상' 수신으로 간주하며, 그 외의 응답 코드는 미수신으로 실패한 것으로 인식하여 3분 간격으로 최대 4번 접근을 시도합니다.<br>
                            * 빌링키 생성결과 callback 의 Payload 는 다음과 같습니다.<br>
-                        <font color="#AA1212"><strong>* 사전 예고 없이 field 가 추가될 수 있습니다. 추가되더라도 오류가 발생하지 않도록 연동 부탁드립니다.</strong></font	
-  <div class="info">
-    <h4>parameters</h4>
-    
-    <div class="field clearfix">
-        <div class="key">
+                        <font color="#AA1212"><strong>* 사전 예고 없이 field 가 추가될 수 있습니다. 추가되더라도 오류가 발생하지 않도록 연동 부탁드립니다.</strong></font>
+
+                        <div class="info">
+              <h4>response</h4>
+              <div class="field clearfix">
+             <div class="key">
             action
             <span class="type">String</span>
         </div>
