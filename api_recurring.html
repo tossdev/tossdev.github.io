@@ -537,8 +537,8 @@ p JSON.parse(response.body)</code></pre>
            <div class="method" id="resultcallback">
                 <div class="method-section clearfix">
                     <div class="method-description">
-                        <h3>개요</h3>
-                        <p>사용자가 토스 앱을 통해 빌링 등록을 '성공적'으로 완료한 경우 토스 Server 는 가맹점이 설정한  resultCallback URL 을 통해 결과를 전달합니다. (실패한 경우는 전달하지 않습니다.)<br>
+                        <h3>빌링키 처리결과 callback</h3>
+                        <p> 사용자가 토스 앱을 통해 빌링 등록을 '성공적'으로 완료한 경우 토스 Server 는 가맹점이 설정한  resultCallback URL 을 통해 결과를 전달합니다.(실패한 경우는 전달하지 않습니다.)<br>
                            * 토스 쪽에서 삭제가 발생되는 경우 토스 pay Server 에서 삭제(REMOVED) callback 을 보낼 수 있음을 참고해야 합니다.<br>
                            * callback 에 대한 응답의 http status code 가 200인 경우에만 '정상' 수신으로 간주하며, 그 외의 응답 코드는 미수신으로 실패한 것으로 인식하여 3분 간격으로 최대 4번 접근을 시도합니다.<br>
                            * 빌링키 생성결과 callback 의 Payload 는 다음과 같습니다.<br>
@@ -746,7 +746,29 @@ p JSON.parse(response.body)</code></pre>
         </div>
     </div>
 </div>
-	
+	     <div class="method-example">
+                        <div class="title">Definition</div>
+                        <pre><code class="language-bash always-visible">POST https://YOUR-SITE.COM/callback (결제 생성 시 가맹점에서 설정한 callback URL)
+Content-Type application/json;charset=UTF-8</code></pre>
+                        <div class="title">Example Request</div>
+                        <pre><code class="language-bash always-visible">{
+  "action": "ACTIVATED",
+  "processedTs" : "2020-04-01 12:34:11",
+  "userId": "TOSS-TEST-1",
+  //"displayId": "TEST_SERVICE_1",
+  "billingKey": "example-billingKey",
+  "payMethod" : "TOSS_MONEY",
+  "accountBankCode" : "88",
+  "accountBankName" : "신한은행",
+  "accountNumber" : "110******676"
+}                            
+                        </code></pre>
+
+
+
+                    </div>
+                </div>
+            </div>
     <script type="text/javascript">
         $(function () {
 
