@@ -2416,9 +2416,10 @@ p JSON.parse(response.body)</code></pre>
                                     <span class="type">Max Length: 7 </span>
                                 </div>
                                 <div class="desc">
-                                    환불요청 금액 중 실 차감된 즉시할인 금액<br>
-                                    <span class="text-muted">환불요청 시 전달한 amount 금액 중 토스 서버에서 자동 차감된 즉시할인 금액으로
-                                    차감액이 없으면 0으로 리턴됩니다.</span>
+                                    환불요청 금액 중 실 차감된 할인 금액<br>
+                                    <span class="text-muted">환불요청 시 전달한 amount 금액 중 토스 서버에서 자동 차감된 할인 금액으로
+                                    차감액이 없으면 0으로 리턴됩니다.<br>
+				    할인 금액에는 토스 앱에서 자동 적용되는 즉시할인과 토스 포인트 사용금액이 포함됩니다. </span>
                                 </div>
                             </div>
 			    <!--
