@@ -1,0 +1,208 @@
+ <div class="method" id="cancel">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>결제 취소</h3>
+                        <p>
+                            결제 대기 중인 결제 건을 취소합니다. (결제가 완료되어 구매자의 계좌에서 출금된 상태에서는 취소할 수 없으며 <a href="#refunds">환불</a> 처리해야 합니다)
+                        </p>
+                        <div class="info">
+                            <h4>endpoint</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    (POST)
+                                </div>
+                                <div class="desc">
+                                  https://pay.toss.im/api/v1/cancel </br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <h4>parameters</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    apiKey
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 30</span>
+                                </div>
+                                <div class="desc">
+                                    가맹점 key<br>
+                                    <span class="text-muted">웹 브라우저 혹은 외부에 노출되지 않도록 유의해 주시기 바랍니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    payToken
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 30</span>
+                                </div>
+                                <div class="desc">
+                                    Toss 결제 토큰
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    reason
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 255</span>
+                                </div>
+                                <div class="desc">
+                                    취소 사유
+                                    <br>
+                                    <span class="text-muted">환불 사유는 한글 및 숫자, 영문자, 특수문자 중 _-:.^@()[]#/!%?& 만 허용합니다.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <h4>response</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    code
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
+                                </div>
+                                <div class="desc">
+                                    응답코드
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>0</td>
+                                            <td>성공</td>
+                                        </tr>
+                                        <tr>
+                                            <td>-1</td>
+                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    msg
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 120</span>
+                                </div>
+                                <div class="desc">
+                                    응답이 성공이 아닌 경우 설명 메세지
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    errorCode
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 40</span>
+                                </div>
+                                <div class="desc">
+                                    에러 코드
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="method-example">
+                        <div class="title">Definition</div>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/cancel</code></pre>
+                        <div class="title">Example Request</div>
+                        <pre><code class="curl language-bash">curl "https://pay.toss.im/api/v1/cancel" \
+    -H "Content-Type: application/json" \
+    -d '{
+        "payToken":"example-payToken",
+        "apiKey":"sk_test_w5lNQylNqa5lNQe013Nq"
+        }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://pay.toss.im/api/v1/cancel");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+	jsonBody.put("payToken", "example-payToken");
+	jsonBody.put("reason", "재고 부족");
+	jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
+
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+    bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
+	bos.flush();
+	bos.close();
+
+    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
+$arrayBody["payToken"] = "example-payToken";
+$arrayBody["reason"] = "재고 부족";
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://pay.toss.im/api/v1/cancel');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+
+$result = curl_exec($ch);
+curl_close($ch);
+
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+​
+data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
+data = data & "&payToken=example-payToken"
+data = data & "&reason=SoldOut"
+​
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/cancel", False
+httpRequest.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+httpRequest.Send data
+​
+postResponse = httpRequest.ResponseText
+​
+Response.Write postResponse
+</code><code class="python language-python">import urllib, urllib2
+
+url = "https://pay.toss.im/api/v1/cancel"
+params = {
+    "payToken": "example-payToken",
+    "reason":"재고 부족",
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq"
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://pay.toss.im/api/v1/cancel")
+
+params = {
+        "payToken" => "example-payToken",
+        "reason" => "재고 부족",
+        "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
+                        <div class="title">Example Response</div>
+                        <pre><code class="language-javascript always-visible">{"code":0}</code>
+            </pre>
+                    </div>
+
+                </div>
+            </div>
