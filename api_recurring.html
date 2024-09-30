@@ -911,7 +911,7 @@ Content-Type application/json;charset=UTF-8</code></pre>
 	                <div class="field clearfix">
                                 <div class="key">
                                     cashReceiptTradeOption
-                                    <span class="type">String</span>
+                                    <span class="type">string</span>
                                     <span class="type">Max Length: 9 </span>
                                 </div>
                                 <div class="desc">
@@ -942,7 +942,91 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                 </div>
                             </div> 
   			</div>
-                </div>
+                        <div class="info">
+                            <h4>response</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    code
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 2 </span>
+                                </div>
+                                <div class="desc">
+                                    성공여부
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>0</td>
+                                            <td>성공</td>
+                                        </tr>
+                                        <tr>
+                                            <td>-1</td>
+                                            <td>실패 (실패사유는 msg와 errorCode로 제공)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+			  <div class="field clearfix">
+                                <div class="key">
+                                    mode
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 4</span>
+                                </div>
+                                <div class="desc">
+                                    결제환경
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>LIVE</td>
+                                            <td>실거래용</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TEST</td>
+                                            <td>테스트용</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+			<div class="field clearfix">
+                                <div class="key">
+                                    orderNo
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 50 </span>
+                                </div>
+                                <div class="desc">
+                                 결제 주문번호
+                                    <br>
+                                    <span class="text-muted">가맹점의 상품 주문번호<br>
+                                </div>
+                            </div>
+			    <div class="field clearfix">
+                                <div class="key">
+                                    errorCode
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 40</span>
+                                </div>
+                                <div class="desc">
+                                    에러코드
+				    <br>
+                                    <span class="text-muted">code 가 -1 일때만 에러코드와 실패 사유를 전달합니다.<br>
+				(errorCode 리스트는 추후 재 정의하며, 사전 예고없이 추가될 수 있으니 유의가 필요합니다.)</span>
+                                </div>
+                            </div>
+			 <div class="field clearfix">
+                                <div class="key">
+                                    msg
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 120</span>
+                                </div>
+                                <div class="desc">
+                                   에러메시지
+				<br>
+				<span class="text-muted"><font color=#c25300>'잔액부족' 등의 결제실패의 경우, 가맹점은 사용자에게 재 결제 시도를 요청해야 한다. 토스에서는 별도의 노티를 하지 않는다.</font></span>
+                                </div>
+                                </div>
+                            </div>
+
     <script type="text/javascript">
         $(function () {
 
