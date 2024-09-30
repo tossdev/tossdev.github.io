@@ -1289,9 +1289,9 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                     <span class="type">Max Length: 10</span>
                                 </div>
                                 <div class="desc">
-                                    카드 타입 <br>
+                                    카드 타입<br>
                                     <span class="text-muted">승인된 카드의 타입을 구분</span>
-                                    <br/>
+                                    <br>
                                     <table class="table">
                                         <tr>
                                             <td>CREDIT</td>
@@ -1386,6 +1386,181 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                 </div>
                             </div>
 		 </div>
+		</div>		    
+
+     <div class="method-example">
+                        <div class="title">Definition</div>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/billing-key/bill</code></pre>
+                        <div class="title">Example Request</div>
+                        <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/billing-key/bill \
+    -H "Content-Type: application/json" \
+    -d '{
+    "apiKey": "example_api_key",
+    "billingKey": "example-billingKey",
+    "orderNo": "TEST_billing_1",
+    "productDesc": "테스트샵 빌링 상품",
+    "amount" : 10000,
+    "amountTaxFree" : 0,
+    "spreadOut" : 7,
+    "cashReceipt" : true,
+    "sendFailPush" : true
+        }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://pay.toss.im/api/v1/billing-key/bill");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+jsonBody.put("apiKey", "example_api_key");
+jsonBody.put("billingKey", "example-billingKey");
+jsonBody.put("orderNo", "TEST_billing_1");
+jsonBody.put("productDesc", "테스트샵 빌링 상품");
+jsonBody.put("amount", "10000");
+jsonBody.put("amountTaxFree", "0");
+jsonBody.put("spreadOut", "7");
+jsonBody.put("cashReceipt", "true");
+jsonBody.put("sendFailPush", "true");
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	<!--bos.write(jsonBody.toJSONString().getBytes());-->
+    bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
+	bos.flush();
+	bos.close();
+
+	<!--BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));-->
+    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
+$arrayBody["apiKey"] = "example_api_key";
+$arrayBody["billingKey"] = "example-billingKey";
+$arrayBody["orderNo"] = "TEST_billing_1";
+$arrayBody["productDesc"] = "테스트샵 빌링 상품";
+$arrayBody["amount"] = "10000";
+$arrayBody["amountTaxFree"] = "0";
+$arrayBody["spreadOut"] = "7";
+$arrayBody["cashReceipt"] = "true";
+$arrayBody["sendFailPush"] = "true";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://pay.toss.im/api/v1/billing-key/bill');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+
+$result = curl_exec($ch);
+curl_close($ch);
+
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=example_api_key"
+data = data & "&billingKey=example-billingKey"
+data = data & "&orderNo=TEST_billing_1"
+data = data & "&productDesc=테스트샵 빌링 상품"
+data = data & "&amount=10000"
+data = data & "&amountTaxFree=0"
+data = data & "&spreadOut=7"
+data = data & "&cashReceipt=true"
+data = data & "&sendFailPush=true"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/billing-key/bill", False
+httpRequest.SetRequestHeader "Content-Type", "application/json"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://pay.toss.im/api/v1/billing-key/bill"
+params = {
+    "apiKey": "example_api_key",
+    "billingKey": "example-billingKey",
+    "orderNo": "TEST_billing_1",
+    "productDesc": "테스트샵 빌링 상품",
+    "amount" : 10000,
+    "amountTaxFree" : 0,
+    "spreadOut" : 7,
+    "cashReceipt" : true,
+    "sendFailPush" : true
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://pay.toss.im/api/v1/billing-key/bill")
+
+params = {
+    "apiKey" => "example_api_key",
+    "billingKey" => "example-billingKey",
+    "orderNo" => "TEST_billing_1",
+    "productDesc" => "테스트샵 빌링 상품",
+    "amount" => "10000",
+    "amountTaxFree" => "0",
+    "spreadOut" => "7",
+    "cashReceipt" => "true",
+    "sendFailPush" => "true"
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
+                        <div class="title">Example Response</div>
+                        <pre><code class="language-javascript always-visible">{
+    "code": 0,
+    "mode": "TEST",
+    "approvalTime": "2020-04-06 11:28:09",
+    "amount": "150000",
+    "payMethod": "CARD", //"TOSS_MONEY"
+    "payToken": "example-payToken",
+    "orderNo": "TEST_billing_1",
+    "transactionId": "3243c76e-e9cf-4669-881b-33a3b82ddf49",
+    "discountedAmount" : 0,
+    "paidAmount" : "15000",
+ 
+    //payMethod 가 CARD 일때
+   "cardCompanyName": "롯데",
+   "cardCompanyCode": 5,
+   "cardAuthorizationNo": "00000000",
+   "salesCheckLinkUrl": "https://alpha-pay.toss.im/payfront/web/external/sales-check?payToken=0PxriKdAz8Nsj7j5ZVO94b&amp;transactionId=5a8cf658-b60d-4ae3-a959-279c66fc6743",
+   "spreadOut": 0,
+   "noInterest": false,
+   "cardUserType": "PERSONAL",
+   "cardMethodType": "CREDIT",
+   "cardNumber": "534292******790*"
+   "cardNum4Print": "410*",
+   "cardBinNumber": "531764
+ 
+    //payMethod 가 TOSS_MONEY 일때
+    //"accountBankCode" : "88",
+    //"accountBankName" : "신한은행",
+    //"accountNumber" : "110******676"
+}</code>
+            </pre>
+                    </div>
+            </div>
+                </div>
     <script type="text/javascript">
         $(function () {
 
