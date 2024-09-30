@@ -1052,8 +1052,340 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                     <span class="text-muted">결제건이 실제 승인된 시간을 리턴합니다. (yyyy-MM-dd HH:mm:ss 형식)</span>
                                 </div>
                             </div>
+			 <div class="field clearfix">
+                                <div class="key">
+                                    amount
+                                    <span class="type">Integer</span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                 승인금액<br>
+                                  <span class="text-muted"><font color=#c25300>금액과 관련된 모든 파라미터는 Number 형태로 보내주셔야 에러가 발생하지 않습니다.</font></span>
+                                </div>
                             </div>
-
+				 <div class="field clearfix">
+                                <div class="key">
+                                    payMethod
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 10 </span>
+                                </div>
+                                <div class="desc">
+                                    승인된 결제수단
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>TOSS_MONEY</td>
+                                            <td>토스머니/계좌</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CARD</td>
+                                            <td>카드</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+			 <div class="field clearfix">
+                                <div class="key">
+                                    payToken
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 30 </span>
+                                </div>
+                                <div class="desc">
+                                 승인된 결제토큰<br>
+                                    <span class="text-muted">정상 승인처리 되었을 때, 토스 서버에서 매회 유니크한 결제 토큰 값을 전달합니다.<br>
+				    가맹점에서는 이 값을 반드시 저장해야 하며, 거래 환불요청 시 중요한 키 값이 될 수 있으니 관리가 필요합니다.<br></span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    transactionId
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 36</span>
+                                </div>
+                                <div class="desc">
+                                 거래 트랜잭션 코드<br>
+                                    <span class="text-muted">결제의 거래구분을 위하여 토스 서버에서는 매회 유니크한 값을 생성해서 리턴합니다.<br>
+                                    매출전표를 호출하거나 환불 진행 시 구분 값으로 활용할 수 있습니다.<br></span>
+                                </div>
+                            </div>
+			<div class="field clearfix">
+                                <div class="key">
+                                    discountedAmount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7</span>
+                                </div>
+                                <div class="desc">
+                                   토스부담 할인 금액<br>
+                                    <span class="text-muted">승인에서 할인이 적용된 금액을 전달하며 할인적용이 없을 경우 0으로 전달합니다.<br>
+                                    할인 금액에는 토스 앱에서 자동 적용되는 즉시할인과 토스 포인트 사용금액이 포함됩니다.<br></span>
+                                </div>
+                            </div>
+				   <div class="field clearfix">
+                                <div class="key">
+                                    paidAmount
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                    지불수단 승인금액<br>
+                                    <span class="text-muted">총 금액에서 할인금액 등을 제외한 순수한 지불수단 승인금액을 의미합니다.<br>
+                                    <strong>현금영수증 발행 또는 별도로 활용하는 경우 이 값을 참조할 수 있습니다.</strong>strong><br></span>
+                                </div>
+                            </div>
+			<div class="field clearfix">
+                                <div class="key">
+                                    cardUserType
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    카드 사용자 구분
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>PERSONAL</td>
+                                            <td>본인 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PERSONAL_FAMILY</td>
+                                            <td>가족 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PERSONAL</td>
+                                            <td>법인지정 결제계좌 임직원</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PRIVATE</td>
+                                            <td>법인 공용</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_COMPANY</td>
+                                            <td>법인지정 결제계좌 회사(하나카드만)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+			 <div class="field clearfix">
+                                <div class="key">
+                                    cardCompanyName
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 2</span>
+                                </div>
+                                <div class="desc">
+                                    승인된 카드사명<br>
+                                    <span class="text-muted">카드 결제의 경우만 전달되며, 승인된 카드사 명과 카드코드를 확인할 수 있습니다.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardCompanyCode
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
+                                </div>
+                                <div class="desc">
+                                    카드사 코드<br><span class="text-muted">토스에서 정의한 카드사 코드는 다음과 같으며, <br>
+                                    미지원 카드사는 현재 준비중입니다. (매입 카드사 기준입니다.)
+                                    </span><br><br>
+                                     <table class="table">
+                                        <tr>
+                                            <td>cardCompanyName</td>
+                                            <td>cardCompanyCode</td>
+                                        </tr>
+                                        <tr>
+                                            <td>신한</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>현대</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>삼성</td>
+                                            <td>3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>국민</td>
+                                            <td>4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>롯데</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>하나</td>
+                                            <td>6</td>
+                                        </tr>
+                                        <tr>
+                                            <td>우리</td>
+                                            <td>7</td>
+                                        </tr>
+                                        <tr>
+                                            <td>농협</td>
+                                            <td>8</td>
+                                        </tr>
+                                        <tr>
+                                            <td>씨티 (현재 미지원)</td>
+                                            <td>9</td>
+                                        </tr>
+                                        <tr>
+                                            <td>비씨(BC)</td>
+                                            <td>10</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+			 <div class="field clearfix">
+                                <div class="key">
+                                    cardAuthorizationNo
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 8</span>
+                                </div>
+                                <div class="desc">
+                                    구매자가 확인할 수 있는 카드사 승인번호 8자리<br>
+                                    <span class="text-muted">테스트 거래의 경우 00000000 으로 전달되며, 정상적인 카드사 승인번호는 라이브 키 결제에서 확인하실 수 있습니다.</span>
+                                </div>
+                            </div>
+			 <div class="field clearfix">
+                                <div class="key">
+                                    cardNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    마스킹된 카드번호<br>
+                                    <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹됩니다.</span>
+                                </div>
+                            </div>
+			  <div class="field clearfix">
+                                <div class="key">
+                                    cardNum4Print
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 4</span>
+                                </div>
+                                <div class="desc">
+                                    사용자가 선택한 카드의 끝 4자리<br>
+                                    <span class="text-muted">사용자가 선택한 결제수단(payMethod) 이 '카드' 인 경우 카드번호 끝 4자리를 전달(카드사에 따라 마스킹이 포함되어 있을 수 있습니다.)</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    cardBinNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 8</span>
+                                </div>
+                                <div class="desc">
+                                    카드 BIN 번호<br>
+                                    <span class="text-muted">카드사에서 준 카드 빈번호(마스킹 되어 있을 수 있습니다.)<br>
+                                                             100% 신뢰는 불가</span><br>
+                                </div>
+                            </div>
+			     <div class="field clearfix">
+                                <div class="key">
+                                    cardMethodType
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 10</span>
+                                </div>
+                                <div class="desc">
+                                    카드 타입 <br>
+                                    <span class="text-muted">승인된 카드의 타입을 구분</span>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>CREDIT</td>
+                                            <td>신용카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CHECK</td>
+                                            <td>체크카드</td>
+                                        </tr>
+					<tr>
+                                            <td>PREPAYMENT</td>
+                                            <td>선불카드</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>	
+                            <div class="field clearfix">
+                                <div class="key">
+                                    salesCheckLinkUrl
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 120</span>
+                                </div>
+                                <div class="desc">
+                                    신용카드 매출전표 호출URL<br>
+                                    <span class="text-muted">승인된 카드 결제건의 매출전표를 확인할 수 있는 URL</span>
+                                </div>
+                            </div>	
+			    <div class="field clearfix">
+                                <div class="key">
+                                    spreadOut
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 2</span>
+                                </div>
+                                <div class="desc">
+                                    카드 할부개월<br>
+                                    <span class="text-muted">승인요청에서 구매자가 선택한 할부개월이 리턴됩니다.(5만원 미만 금액 및 일시불 결제의 경우 0으로 리턴됩니다.)</span>
+                                </div>
+                            </div>
+			  <div class="field clearfix">
+                                <div class="key">
+                                    noInterest
+                                    <span class="type">boolean</span>
+                                    <span class="type">Max Length: 5</span>
+                                </div>
+                                <div class="desc">
+                                    카드 무이자 적용 여부
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>true</td>
+                                            <td>무이자</td>
+                                        </tr>
+                                        <tr>
+                                            <td>false</td>
+                                            <td>일반</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    accountBankCode
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 3</span>
+                                </div>
+                                <div class="desc">
+                                    은행 코드 <br>
+                                    <span class="text-muted">사용자가 선택한 결제수단(payMethod) 이 '토스머니' 인 경우 토스가 정의한 은행 코드를 전달합니다.</span>
+                                </div>
+                            </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    accountBankName
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    은행 명 <br>
+                                    <a href="qna.html#faq-8">은행코드 리스트</a>
+                                </div>
+                            </div>
+				<div class="field clearfix">
+                                <div class="key">
+                                    accountNumber
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 30</span>
+                                </div>
+                                <div class="desc">
+                                    계좌번호<br>
+                                    <span class="text-muted">계좌번호는 일부 마스킹을 포함하고 있습니다.</span>
+                                </div>
+                            </div>
+		 </div>
     <script type="text/javascript">
         $(function () {
 
