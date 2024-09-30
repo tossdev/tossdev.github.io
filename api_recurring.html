@@ -548,7 +548,8 @@ p JSON.parse(response.body)</code></pre>
     <div class="field clearfix">
         <div class="key">
             action
-            <span class="type">string</span>
+       <span class="type">string</span>
+       <span class="type">Max Length: 20 </span>
         </div>
         <div class="desc">
             요청 처리에 따른 빌링키 상태
@@ -562,7 +563,8 @@ p JSON.parse(response.body)</code></pre>
     <div class="field clearfix">
         <div class="key">
             processedTs
-            <span class="type">string</span>
+       <span class="type">string</span>
+       <span class="type">Max Length: 20 </span>
         </div>
         <div class="desc">
             상태 처리시간
@@ -574,6 +576,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             userId
             <span class="type">string</span>
+            <span class="type">Max Length: 50</span>
         </div>
         <div class="desc">
             가맹점이 생성한 사용자 식별 값
@@ -585,6 +588,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             displayId
             <span class="type">string</span>
+            <span class="type">Max Length: 50</span>
         </div>
         <div class="desc">
             가맹점이 생성한 표시 가능한 빌링키 식별 값
@@ -596,6 +600,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             billingKey
             <span class="type">string</span>
+            <span class="type">Max Length: 50</span>
         </div>
         <div class="desc">
             활성화/삭제 자동결제 사용자 빌링키
@@ -605,6 +610,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             payMethod
             <span class="type">string</span>
+            <span class="type">Max Length: 10</span>
         </div>
         <div class="desc">
             사용자가 토스에서 인증한 결제수단
@@ -616,6 +622,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             cardMethodType
             <span class="type">string</span>
+            <span class="type">Max Length: 10</span>
         </div>
         <div class="desc">
             승인된 카드의 타입을 구분
@@ -627,6 +634,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             cardUserType
             <span class="type">string</span>
+            <span class="type">Max Length: 20</span>
         </div>
         <div class="desc">
             카드 사용자 구분
@@ -641,7 +649,8 @@ p JSON.parse(response.body)</code></pre>
     <div class="field clearfix">
         <div class="key">
             cardCompanyNo
-            <span class="type">integer</span>
+         <span class="type">integer</span>
+         <span class="type">Max Length: 2</span>
         </div>
         <div class="desc">
             사용자가 선택한 카드의 카드코드
@@ -653,6 +662,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             cardCompanyName
             <span class="type">string</span>
+            <span class="type">Max Length: 2</span>
         </div>
         <div class="desc">
             사용자가 선택한 카드의 카드사명
@@ -664,6 +674,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             cardNumber
             <span class="type">string</span>
+            <span class="type">Max Length: 20</span>
         </div>
         <div class="desc">
             사용자가 선택한 카드의 번호
@@ -675,6 +686,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             cardNum4Print
             <span class="type">string</span>
+            <span class="type">Max Length: 4</span>
         </div>
         <div class="desc">
             사용자가 선택한 카드의 끝 4자리
@@ -686,6 +698,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             cardBinNumber
             <span class="type">string</span>
+            <span class="type">Max Length: 8</span>
         </div>
         <div class="desc">
             카드사에서 준 카드 빈번호
@@ -697,6 +710,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             accountBankCode
             <span class="type">string</span>
+            <span class="type">Max Length: 3</span>
         </div>
         <div class="desc">
             사용자가 선택한 계좌의 은행코드
@@ -708,6 +722,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             accountBankName
             <span class="type">string</span>
+            <span class="type">Max Length: 20</span>
         </div>
         <div class="desc">
             사용자가 선택한 계좌의 은행명
@@ -719,6 +734,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="key">
             accountNumber
             <span class="type">string</span>
+            <span class="type">Max Length: 30</span>
         </div>
         <div class="desc">
             사용자가 선택한 계좌번호
@@ -1022,9 +1038,20 @@ Content-Type application/json;charset=UTF-8</code></pre>
                                 <div class="desc">
                                    에러메시지
 				<br>
-				<span class="text-muted"><font color=#c25300>'잔액부족' 등의 결제실패의 경우, 가맹점은 사용자에게 재 결제 시도를 요청해야 한다. 토스에서는 별도의 노티를 하지 않는다.</font></span>
+				<span class="text-muted"><font color=#c25300>'잔액부족' 등의 결제실패의 경우, 가맹점은 사용자에게 재결제 시도를 요청해야 합니다. 토스에서는 별도의 노티를 하지 않습니다.</font></span>
                                 </div>
                                 </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    approvalTime
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20 </span>
+                                </div>
+                                <div class="desc">
+                                    결제건의 승인 처리 시간<br>
+                                    <span class="text-muted">결제건이 실제 승인된 시간을 리턴합니다. (yyyy-MM-dd HH:mm:ss 형식)</span>
+                                </div>
+                            </div>
                             </div>
 
     <script type="text/javascript">
