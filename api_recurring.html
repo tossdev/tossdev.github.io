@@ -668,7 +668,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="desc">
             사용자가 선택한 카드의 번호
             <br>
-            <span class="text-muted">카드번호 16자리가 중간자리는 마스킹</span>
+            <span class="text-muted">카드번호 16자리 중 중간자리는 마스킹</span>
         </div>
     </div>
     <div class="field clearfix">
@@ -782,8 +782,166 @@ Content-Type application/json;charset=UTF-8</code></pre>
 		                     그렇지 않으면 오류가 발생합니다.</span>
         </div>
     </div>
-
-                    </div>
+    <div class="field clearfix">
+        <div class="key">
+            billingKey
+           <span class="type">string <font color=#c25300>필수</font></span>
+            <span class="type">Max Length: 50</span>
+        </div>
+        <div class="desc">
+            자동결제 사용자 빌링키
+            <br>
+            <span class="text-muted">승인할 사용자의 빌링키</span>
+        </div>
+    </div>
+              <div class="field clearfix">
+                                <div class="key">
+                                    orderNo
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 50 </span>
+                                </div>
+                                <div class="desc">
+                                    결제 주문번호
+                                    <br>
+                                    <span class="text-muted">가맹점의 상품 주문번호<br>
+                                    • 최대 50자로 지정하며 숫자, 영문자도 가능하되 특수문자는 _-:.^@= 만 허용합니다.<br>
+                                    • 가맹점의 주문번호는 매회 유니크한 값으로 생성하길 권장드립니다. (테스트와 라이브 환경에서 중복되지 않아야 합니다.)<br>
+                                    </span>
+                                </div>
+                            </div> 
+	                      <div class="field clearfix">
+                                <div class="key">
+                                    productDesc
+                                    <span class="type">string <font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 255 </span>
+                                </div>
+                                <div class="desc">
+                                    상품 설명
+                                    <br>
+                                    <span class="text-muted">결제할 상품 설명</span>
+                                </div>
+                            </div>
+	                      <div class="field clearfix">
+                                <div class="key">
+                                    amount
+                                    <span class="type">Integer<font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                  총 결제 요청 금액
+                                    <br>
+                                    <span class="text-muted">가맹점의 상품 주문번호<br>
+                                    • 토스에서 금액과 관련된 모든 필드는 Number 형태로 선언합니다.<br>
+                                    • 필수 체크는 총금액(amount) 과 비과세 금액(amountTaxFree) 만 체크합니다. 판매 상품이 과세 상품이라면 amount 와 amountTaxFree 만 포함하면 되고, 이후 계산은 토스 서버에서 자동으로 계산됩니다.<br>
+                                    </span>
+                                </div>
+                            </div>	  
+	  	                      <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxFree
+                                    <span class="type">Integer<font color=#c25300>필수</font></span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                 요청 금액 중 비과세 금액
+                                    <br>
+                                    <span class="text-muted">판매하는 상품이 과세 품목이라면 해당 값을 0으로 선언합니다. 그 외의 과세 계산은 토스 서버에서 자동처리 합니다.<br>
+                                    • 토스에서 금액과 관련된 모든 필드는 Number 형태로 선언합니다. 필수 체크는 총금액과 비과세 금액만 체크합니다.<br>
+                                    </span>
+                                </div>
+                            </div>	
+	  	            <div class="field clearfix">
+                                <div class="key">
+                                    amountTaxable
+                                    <span class="type">Integer </span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                요청 금액 중 과세 금액
+                                </div>
+                            </div>
+	  	  	            <div class="field clearfix">
+                                <div class="key">
+                                    amountVat
+                                    <span class="type">Integer </span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                요청 금액 중 부가세
+                                </div>
+                            </div>
+	  	            <div class="field clearfix">
+                                <div class="key">
+                                    amountServiceFee
+                                    <span class="type">Integer </span>
+                                    <span class="type">Max Length: 7 </span>
+                                </div>
+                                <div class="desc">
+                                  요청 금액 중 봉사료
+                                </div>
+                            </div>
+	                  <div class="field clearfix">
+                                <div class="key">
+                                    spreadOut
+                                    <span class="type">Integer </span>
+                                    <span class="type">Max Length: 8 </span>
+                                </div>
+                                <div class="desc">
+                                  카드 할부개월
+                                    <br>
+                                    <span class="text-muted">사용자가 선택한 카드 할부개월 (5만원 미만은 기본 일시불 결제)<br>
+                                    • 0(일시불) ~ 12개월 까지 숫자형태로 선언합니다.<br>
+                                    </span>
+                                </div>
+                            </div>	  
+	  	          <div class="field clearfix">
+                                <div class="key">
+                                    cashReceipt
+                                    <span class="type">Boolean </span>
+                                    <span class="type">Max Length: 5 </span>
+                                </div>
+                                <div class="desc">
+                                  현금영수증 발급여부
+                                    <br>
+                                    <span class="text-muted">토스 현금영수증 자동발행 기능을 사용한다면 매회 결제 시 true 값을, 미 사용하는 경우(가맹점 자체 발행) false 로 선언하면 됩니다.<br>
+                                   반드시 true 또는 false 값을 전달해주셔야 하고 null과 같은 비정상 값을 전달할 경우 해당 필드는 명시적으로 false로 처리됩니다.<br>
+                                    </span>
+                                </div>
+                            </div>	
+	                <div class="field clearfix">
+                                <div class="key">
+                                    cashReceiptTradeOption
+                                    <span class="type">String</span>
+                                    <span class="type">Max Length: 9 </span>
+                                </div>
+                                <div class="desc">
+                                    현금영수증 발급타입
+                                    <br>
+                                    <span class="text-muted">문화비 관련 상품의 경우, 발급타입 설정이 필요합니다. 
+				    <br>
+                                    • CULTURE : 문화비<br>
+                                    • GENERAL : 일반(default)<br>
+				    • PUBLIC_TP : 교통비<br>
+                                    </span>
+                                </div>
+                            </div> 
+	  	                <div class="field clearfix">
+                                <div class="key">
+                                    sendFailPush
+                                    <span class="type">Boolean</span>
+                                    <span class="type">Max Length: 5 </span>
+                                </div>
+                                <div class="desc">
+                                 결제실패 푸시알람 사용여부
+                                    <br>
+                                    <span class="text-muted">빌링키 결제가 실패할 경우, 사용자에게 결제 실패 알람을 발송합니다.(기본값은 true)
+				    <br>
+                                    • 같은 빌링키로 다회 요청을 하더라도, 결제 실패 알람은 1시간 최대 1회 발송 가능합니다.<br>
+                                    • 고객에게 빌링 결제시 잔액부족 알람 발송을 희망하지 않을경우, 해당 파라미터 값을 false 로 선언합니다.<br>
+                                    </span>
+                                </div>
+                            </div> 
+  			</div>
                 </div>
     <script type="text/javascript">
         $(function () {
