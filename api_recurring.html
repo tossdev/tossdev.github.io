@@ -1,4 +1,15 @@
-
+// payMethod 가 TOSS_MONEY(계좌) 일때
+{
+    "code": 0,
+    "userId": "TEST=2023-07-03T14:29:00.201Z",
+    "displayId": "테스트777",
+    "billingKey": "8JZBi0gmKZlfxaV4Zm4762",
+    "status": "ACTIVE",
+    "payMethod": "TOSS_MONEY",
+    "accountBankName": "신한은행",
+    "accountBankCode": "088",
+    "accountNumber": "110******676" // 토스머니일 경우 "accountNumber":"토스머니"
+}
  <!DOCTYPE html>
 <html>
 
@@ -727,7 +738,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="desc">
             사용자가 선택한 계좌의 은행명
             <br>
-            <span class="text-muted">은행코드 리스트는 가이드 하단에서 확인 가능</span>
+           <a href="qna.html#faq-8">은행코드 리스트</a>
         </div>
     </div>
     <div class="field clearfix">
@@ -1629,7 +1640,7 @@ p JSON.parse(response.body)</code></pre>
             가맹점 사용자 식별 값
             <br>
             <span class="text-muted">가맹점이 생성한 사용자 식별 값</span><br>
-            <span class="text-muted"><a href="billing-key">빌링키 생성 요청</a> 에서 가맹점이 토스로 전달한 값</span>
+            <span class="text-muted"><a href="api_recurring.html#billing-key">빌링키 생성 요청</a> 에서 가맹점이 토스로 전달한 값</span>
         </div>
     </div>
 
@@ -1643,7 +1654,7 @@ p JSON.parse(response.body)</code></pre>
             가맹점이 생성한 표시 가능한 빌링키 식별 값
             <br>
             <span class="text-muted">가맹점이 생성한 표시 가능한 빌링키 식별 값, 존재 한다면 필수</span><br>
-            <span class="text-muted"><a href="billing-key">빌링키 생성 요청</a> 에서 가맹점이 토스로 전달한 값</span>       
+            <span class="text-muted"><a href="api_recurring.html#billing-key">빌링키 생성 요청</a> 에서 가맹점이 토스로 전달한 값</span>       
 	</div>
     </div>
 
@@ -1923,7 +1934,6 @@ p JSON.parse(response.body)</code></pre>
         </div>
     </div>
 </div>
-</div>    
 
                                              <div class="method-example">
                         <div class="title">Definition</div>
