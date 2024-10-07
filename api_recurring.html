@@ -703,7 +703,7 @@ p JSON.parse(response.body)</code></pre>
         <div class="desc">
             카드사에서 준 카드 빈번호
             <br>
-            <span class="text-muted">카드의 앞에 있을 수 있으며, 100% 신뢰는 불가</span>
+            <span class="text-muted">마스킹 되어 있을 수 있으며, 100% 신뢰는 불가</span>
         </div>
     </div>
     <div class="field clearfix">
@@ -1578,11 +1578,491 @@ p JSON.parse(response.body)</code></pre>
                        <h3>결제 상태조회</h3>
                         <p>
                         <a href="api.html#status">https://tossdev.github.io/api.html#status</a><br>
-			승인된 결제의 상태확인은 표준 개발가이드 링크를 참고하시면 되고, 생성된 빌링키 상태확인은 아래 빌링키 상태조회 부분을 참고 부탁드립니다.
+			승인된 결제의 상태확인은 표준 개발가이드 링크를 참고하시면 되고, 생성된 빌링키 상태확인은 아래 <a href="billing-key/status">빌링키 상태조회</a> 부분을 참고 부탁드립니다.
                         </p>
                         </div>
                 </div>
 		 </div>
+		                <div class="method" id="billing-key/status">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>빌링키 상태 조회</h3>
+                       <p>가맹점은 생성된 빌링키를 관리하고 회원 관리의 목적으로 빌링키의 상태를 조회할 수 있습니다. 사용자가 토스앱에서 결제수단을 변경한 경우 결제수단(payMethod) 정보가 업데이트 될 수 있습니다.<br>
+                          빌링키 조회 API spec 은 다음과 같습니다.<br>
+                          <font color="#AA1212"><strong>상태조회 응답은 가맹점 예고없이 추가될 수 있으니 오류가 발생하지 않도록 연동이 필요합니다.</strong></font>
+			  </p>
+                      <div class="info">
+                            <h4>endpoint</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    (POST)
+                                </div>
+                                <div class="desc">
+                                  https://pay.toss.im/api/v1/billing-key/status <br/>
+                                </div>
+                            </div>
+                        </div>
+  <div class="info">
+    <h4>parameters</h4>
+    
+    <div class="field clearfix">
+        <div class="key">
+            apiKey
+            <span class="type">string <font color=#c25300>필수</font></span>
+            <span class="type">Max Length: 30</span>
+        </div>
+        <div class="desc">
+            결제 가맹점의 apiKey
+            <br>
+            <span class="text-muted">가맹점에 발급된 apiKey</span><br>
+            <span class="text-muted">빌링키 생성요청 시 사용된 apiKey 와 동일해야 합니다. 그렇지 않으면 오류가 발생합니다.</span>
+        </div>
+    </div>
+
+    <div class="field clearfix">
+        <div class="key">
+            userId
+            <span class="type">string <font color=#c25300>필수</font></span>
+            <span class="type">Max Length: 50</span>
+        </div>
+        <div class="desc">
+            가맹점 사용자 식별 값
+            <br>
+            <span class="text-muted">가맹점이 생성한 사용자 식별 값</span><br>
+            <span class="text-muted"><a href="billing-key">빌링키 생성 요청</a> 에서 가맹점이 토스로 전달한 값</span>
+        </div>
+    </div>
+
+    <div class="field clearfix">
+        <div class="key">
+            displayId
+            <span class="type">string</span>
+            <span class="type">Max Length: 50</span>
+        </div>
+        <div class="desc">
+            가맹점이 생성한 표시 가능한 빌링키 식별 값
+            <br>
+            <span class="text-muted">가맹점이 생성한 표시 가능한 빌링키 식별 값, 존재 한다면 필수</span><br>
+            <span class="text-muted"><a href="billing-key">빌링키 생성 요청</a> 에서 가맹점이 토스로 전달한 값</span>       
+	</div>
+    </div>
+
+                        <div class="info">
+                            <h4>response</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    code
+                                    <span class="type">integer</span>
+                                    <span class="type">Max Length: 2 </span>
+                                </div>
+                                <div class="desc">
+                                    성공여부
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>0</td>
+                                            <td>성공</td>
+                                        </tr>
+                                        <tr>
+                                            <td>-1</td>
+                                            <td>실패 (실패 사유는 msg와 errorCode로 제공)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+    <div class="field clearfix">
+        <div class="key">
+            errorCode
+            <span class="type">string</span>
+            <span class="type">Max Length: 40</span>
+        </div>
+        <div class="desc">
+            에러코드
+            <br>
+            <span class="text-muted">code가 -1일 때만 에러코드와 실패 사유를 전달합니다.</span><br>
+	    <span class="text-muted">(errorCode는 사전 예고없이 추가될 수 있으니 유의가 필요합니다.)</span><br>
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            msg
+            <span class="type">string</span>
+            <span class="type">Max Length: 120</span>
+        </div>
+        <div class="desc">
+            에러 메시지
+            <br>
+            <span class="text-muted">한 가지 에러코드에 상황별로 다른 에러 메시지를 전달합니다.<br>
+	    <span class="text-muted">여러 상황이 발생할 수 있으니 되도록이면 전달되는 에러 메시지 그대로를 처리해주세요.</span><br>
+        </div>
+    </div>
+                 <div class="field clearfix">
+                                <div class="key">
+                                    status
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 30</span>
+                                </div>
+                                <div class="desc">
+                                    빌링키 상태 값
+                                    <br />
+                                    <br />
+                                    <table class="table">
+                                        <tr>
+                                            <td>ACTIVE</td>
+                                            <td>빌링키 활성화 (사용자의 인증이 완료되어 사용할 수 있는 상태)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CREATE</td>
+                                            <td>미인증</td>
+                                        </tr>
+                                        <tr>
+                                            <td>AUTH</td>
+                                            <td>인증</td>
+                                        </tr>
+                                        <tr>
+                                            <td>REMOVE</td>
+                                            <td>삭제</td>
+                                        </tr>
+                                        <tr>
+                                            <td>FAIL</td>
+                                            <td>실패</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CANCEL</td>
+                                            <td>취소</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+    <div class="field clearfix">
+        <div class="key">
+            userId
+            <span class="type">Max Length: 50</span>
+        </div>
+        <div class="desc">
+            가맹점 사용자 식별 값
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            displayId
+            <span class="type">Max Length: 50</span>
+        </div>
+        <div class="desc">
+            가맹점이 생성한 표시 가능한 빌링키 식별 값
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            billingKey
+            <span class="type">string</span>
+            <span class="type">Max Length: 50</span>
+        </div>
+        <div class="desc">
+           생성된 자동결제 사용자 빌링키
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            payMethod
+            <span class="type">string</span>
+            <span class="type">Max Length: 10</span>
+        </div>
+        <div class="desc">
+            사용자가 토스앱에서 인증한 결제수단
+            <br>
+            <span class="text-muted">토스 앱에서 선택한 결제수단에 따라 토스머니(TOSS_MONEY) 또는 카드(CARD)를 전달합니다.</span>
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            cardCompanyNo
+         <span class="type">integer</span>
+         <span class="type">Max Length: 2</span>
+        </div>
+        <div class="desc">
+         사용자가 선택한 카드의 카드코드
+            <br>
+            <span class="text-muted">결제수단이 카드인 경우에만 포함</span>
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            cardCompanyName
+            <span class="type">string</span>
+            <span class="type">Max Length: 2</span>
+        </div>
+        <div class="desc">
+            사용자가 선택한 카드의 카드사명
+            <br>
+            <span class="text-muted">사용자가 선택한 결제수단(payMethod)이 '카드'인 경우 카드사명을 함께 전달합니다.</span>
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            cardNumber
+            <span class="type">string</span>
+            <span class="type">Max Length: 20</span>
+        </div>
+        <div class="desc">
+            마스킹된 카드번호
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            cardNum4Print
+            <span class="type">string</span>
+            <span class="type">Max Length: 4</span>
+        </div>
+        <div class="desc">
+            사용자가 선택한 카드의 끝 4자리
+        </div>
+    </div>
+    <div class="field clearfix">
+        <div class="key">
+            cardBinNumber
+            <span class="type">string</span>
+            <span class="type">Max Length: 8</span>
+        </div>
+        <div class="desc">
+            카드사에서 준 카드 빈번호(마스킹 되어 있을 수도 있음)
+        </div>
+    </div>
+			<div class="field clearfix">
+                                <div class="key">
+                                    cardUserType
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    카드 사용자 구분
+                                    <br/>
+                                    <br/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>PERSONAL</td>
+                                            <td>본인 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PERSONAL_FAMILY</td>
+                                            <td>가족 카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PERSONAL</td>
+                                            <td>법인지정 결제계좌 임직원</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_PRIVATE</td>
+                                            <td>법인 공용</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORP_COMPANY</td>
+                                            <td>법인지정 결제계좌 회사(하나카드만)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+			<div class="field clearfix">
+                                <div class="key">
+                                    cardMethodType
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 10</span>
+                                </div>
+                                <div class="desc">
+                                    카드 타입<br>
+                                    <span class="text-muted">승인된 카드의 타입을 구분</span>
+                                    <br>
+                                    <table class="table">
+                                        <tr>
+                                            <td>CREDIT</td>
+                                            <td>신용카드</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CHECK</td>
+                                            <td>체크카드</td>
+                                        </tr>
+					<tr>
+                                            <td>PREPAYMENT</td>
+                                            <td>선불카드</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>	
+    <div class="field clearfix">
+        <div class="key">
+            accountBankCode
+            <span class="type">string</span>
+            <span class="type">Max Length: 3</span>
+        </div>
+        <div class="desc">
+            사용자가 선택한 계좌의 은행코드
+            <br>
+            <span class="text-muted">결제수단이 토스머니인 경우에만 포함</span>
+        </div>
+    </div>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    accountBankName
+                                    <span class="type">string</span>
+                                    <span class="type">Max Length: 20</span>
+                                </div>
+                                <div class="desc">
+                                    사용자가 선택한 계좌의 은행명 <br>
+                                    <a href="qna.html#faq-8">은행코드 리스트</a>
+                                </div>
+                            </div>
+    <div class="field clearfix">
+        <div class="key">
+            accountNumber
+            <span class="type">string</span>
+            <span class="type">Max Length: 30</span>
+        </div>
+        <div class="desc">
+            마스킹된 계좌번호
+        </div>
+    </div>
+</div>
+</div>    
+
+                                             <div class="method-example">
+                        <div class="title">Definition</div>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/billing-key/status</code></pre>
+                        <div class="title">Example Request</div>
+                        <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/billing-key/status \
+    -H "Content-Type: application/json" \
+    -d '{
+        "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
+         //"displayId": "TEST_SERVICE_1",
+        "userId": "TOSS-TEST-1"
+        }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://pay.toss.im/api/v1/billing-key/status");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
+// jsonBody.put("displayId", "TEST_SERVICE_1");
+jsonBody.put("userId", "TOSS-TEST-1");
+
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	<!--bos.write(jsonBody.toJSONString().getBytes());-->
+    bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
+	bos.flush();
+	bos.close();
+
+	<!--BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));-->
+    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
+//$arrayBody["displayId"] = "TEST_SERVICE_1";
+$arrayBody["userId"] = "TOSS-TEST-1";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://pay.toss.im/api/v1/billing-key/status');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+
+$result = curl_exec($ch);
+curl_close($ch);
+
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
+//data = data & "&displayId=TEST_SERVICE_1"
+data = data & "&userId=TOSS-TEST-1"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/billing-key/status", False
+httpRequest.SetRequestHeader "Content-Type", "application/json"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://pay.toss.im/api/v1/billing-key/status"
+params = {
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
+//    "displayId": "TEST_SERVICE_1",
+    "userId": "TOSS-TEST-1",
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://pay.toss.im/api/v1/billing-key/status")
+
+params = {
+    "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq",
+ //   "displayId" => "TEST_SERVICE_1",
+    "userId" => "TOSS-TEST-1",
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
+                        <div class="title">Example Response</div>
+                        <pre><code class="language-javascript always-visible">// payMethod 가 CARD 일때
+{
+    "code": 0,
+    "userId": "TEST=2023-07-03T14:29:00.201Z",
+    "displayId": "테스트777",
+    "billingKey": "8JZBi0gmKZlfxaV4Zm4762",
+    "status": "ACTIVE",
+    "payMethod": "CARD",
+    "cardMethodType": "CREDIT",
+    "cardUserType": "PERSONAL",
+    "cardCompanyNo": 7,
+    "cardCompanyName": "우리",
+    "cardNum4Print": "410*",
+    "cardNumber": "531764******410*",
+    "cardBinNumber": "531764"
+}
+
+// payMethod 가 TOSS_MONEY(계좌) 일때
+{
+    "code": 0,
+    "userId": "TEST=2023-07-03T14:29:00.201Z",
+    "displayId": "테스트777",
+    "billingKey": "8JZBi0gmKZlfxaV4Zm4762",
+    "status": "ACTIVE",
+    "payMethod": "TOSS_MONEY",
+    "accountBankName": "신한은행",
+    "accountBankCode": "088",
+    "accountNumber": "110******676" // 토스머니일 경우 "accountNumber":"토스머니"
+}
+</code>
+            </pre>
+                    </div>
+            </div>
+                </div>
 		<div class="method" id="errorcode">
                 <div class="method-section clearfix">
                     <div class="method-description">
