@@ -401,7 +401,7 @@
                         <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/billing-key \
     -H "Content-Type: application/json" \
     -d '{
-        "apiKey": "example_api_key",
+        "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
         "productDesc": "토스 자동결제 상품",
         "userId": "TOSS-TEST-1",
         "resultCallback": "https://YOUR-SITE.COM/callback",
@@ -421,7 +421,7 @@ try {
 	connection.setDoInput(true);
 
 	org.json.simple.JSONObject jsonBody = new JSONObject();
-jsonBody.put("apiKey", "example_api_key");
+jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
 jsonBody.put("productDesc", "토스 자동결제 상품");
 jsonBody.put("userId", "TOSS-TEST-1");
 jsonBody.put("resultCallback", "https://YOUR-SITE.COM/callback");
@@ -446,7 +446,7 @@ jsonBody.put("returnFailureUrl", "https://YOUR-SITE.COM/fail");
 	responseBody.append(e);
 }
 System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
-$arrayBody["apiKey"] = "example_api_key";
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
 $arrayBody["productDesc"] = "토스 자동결제 상품";
 $arrayBody["userId"] = "TOSS-TEST-1";
 $arrayBody["resultCallback"] = "https://YOUR-SITE.COM/callback";
@@ -470,7 +470,7 @@ curl_close($ch);
 
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
-data = "apiKey=example_api_key"
+data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
 data = data & "&productDesc=토스 자동결제 상품"
 data = data & "&userId=TOSS-TEST-1"
 data = data & "&resultCallback=https://YOUR-SITE.COM/callback"
@@ -489,7 +489,7 @@ Response.Write postResponse</code><code class="python language-python">import ur
 
 url = "https://pay.toss.im/api/v1/billing-key"
 params = {
-    "apiKey": "example_api_key",
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
     "productDesc": "토스 자동결제 상품",
     "userId": "TOSS-TEST-1",
     "resultCallback": "https://YOUR-SITE.COM/callback",
@@ -505,7 +505,7 @@ require 'json'
 uri = URI.parse("https://pay.toss.im/api/v1/billing-key")
 
 params = {
-    "apiKey" => "example_api_key",
+    "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq",
     "productDesc" => "토스 자동결제 상품",
     "userId" => "TOSS-TEST-1",
     "resultCallback" => "https://YOUR-SITE.COM/callback",
@@ -1395,7 +1395,7 @@ Content-Type application/json;charset=UTF-8</code></pre>
                         <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/billing-key/bill \
     -H "Content-Type: application/json" \
     -d '{
-    "apiKey": "example_api_key",
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
     "billingKey": "example-billingKey",
     "orderNo": "TEST_billing_1",
     "productDesc": "테스트샵 빌링 상품",
@@ -1417,7 +1417,7 @@ try {
 	connection.setDoInput(true);
 
 	org.json.simple.JSONObject jsonBody = new JSONObject();
-jsonBody.put("apiKey", "example_api_key");
+jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
 jsonBody.put("billingKey", "example-billingKey");
 jsonBody.put("orderNo", "TEST_billing_1");
 jsonBody.put("productDesc", "테스트샵 빌링 상품");
@@ -1443,7 +1443,7 @@ jsonBody.put("sendFailPush", "true");
 	responseBody.append(e);
 }
 System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
-$arrayBody["apiKey"] = "example_api_key";
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
 $arrayBody["billingKey"] = "example-billingKey";
 $arrayBody["orderNo"] = "TEST_billing_1";
 $arrayBody["productDesc"] = "테스트샵 빌링 상품";
@@ -1469,7 +1469,7 @@ curl_close($ch);
 
 echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
 
-data = "apiKey=example_api_key"
+data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
 data = data & "&billingKey=example-billingKey"
 data = data & "&orderNo=TEST_billing_1"
 data = data & "&productDesc=테스트샵 빌링 상품"
@@ -1490,7 +1490,7 @@ Response.Write postResponse</code><code class="python language-python">import ur
 
 url = "https://pay.toss.im/api/v1/billing-key/bill"
 params = {
-    "apiKey": "example_api_key",
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
     "billingKey": "example-billingKey",
     "orderNo": "TEST_billing_1",
     "productDesc": "테스트샵 빌링 상품",
@@ -1508,7 +1508,7 @@ require 'json'
 uri = URI.parse("https://pay.toss.im/api/v1/billing-key/bill")
 
 params = {
-    "apiKey" => "example_api_key",
+    "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq",
     "billingKey" => "example-billingKey",
     "orderNo" => "TEST_billing_1",
     "productDesc" => "테스트샵 빌링 상품",
@@ -1561,6 +1561,50 @@ p JSON.parse(response.body)</code></pre>
                     </div>
             </div>
                 </div>
+		               <div class="method" id="refunds">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                       <h3>자동결제 환불 요청</h3>
+                        <p>
+                        https://tossdev.github.io/gettingstarted.html#refund<br>
+			토스 결제 환불요청은 표준 개발 가이드에 기재된 Spec 과 동일하게 사용할 수 있습니다. 위 링크를 참조 부탁드립니다. (전체/부분환불 모두 가능)
+                        </p>
+                        </div>
+                    </div>
+                    <div class="method-example">
+                        <pre>
+              <code class="curl">
+              </code>
+              <code class="java">
+              </code>
+              <code class="pho">
+              </code>
+            </pre>
+                    </div>
+                </div>
+            </div>
+		<div class="method" id="status">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                       <h3>결제 상태조회</h3>
+                        <p>
+                        https://tossdev.github.io/api.html#status<br>
+			승인된 결제의 상태확인은 표준 개발가이드 링크를 참고하시면 되고, 생성된 빌링키 상태확인은 아래 빌링키 상태조회 부분을 참고 부탁드립니다.
+                        </p>
+                        </div>
+                    </div>
+                    <div class="method-example">
+                        <pre>
+              <code class="curl">
+              </code>
+              <code class="java">
+              </code>
+              <code class="pho">
+              </code>
+            </pre>
+                    </div>
+                </div>
+            </div>
     <script type="text/javascript">
         $(function () {
 
