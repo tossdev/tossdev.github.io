@@ -221,7 +221,7 @@
               가입 승인이 완료되면 가맹점 계정이 발급되고, 가맹점 관리에 로그인하여 상점을 관리할 수 있습니다.
             </p>
             <p>
-              토스 가맹점 관리자에 로그인하면 결제 상점의 <strong>API Key</strong>를 확인할 수 있습니다. (발급받은 API
+              토스 가맹점 관리자에 로그인하면 결제 상점의 <a href="https://tossdev.github.io/qna.html#faq-0">API Key</a>를 확인할 수 있습니다. (발급받은 API
               Key는 '가맹점 관리자 > 가맹점 정보'에서 확인할 수 있습니다)
             </p>
             <p>발급된 상점 API Key는 결제 생성 / 환불 등 모든 거래에서 인증 수단으로 활용합니다.</p>
@@ -386,10 +386,7 @@ echo "Response: ".$result;</code></pre>
                 aria-hidden="true"
                 style="margin-top:8px;margin-left:6px"
               ></i>
-              <p style="margin-left:10px">
-                앞서 말씀 드렸듯이, API Key는 절대 유출되어선 안됩니다.<br />
-                결제 요청 내용이 웹페이지에 그대로 드러나지 않게 다시 한번 주의해주세요!
-              </p>
+
             </div><br>
             <p>요청하신 결제 생성이 무사히 완료되면 토스는 아래와 같이 응답합니다.<br>
             <div class="method-example">
@@ -703,7 +700,7 @@ echo "Response: ".$result;</code></pre>
             <h4 id="cancel-2">필수 Parameters</h4>
             <p>필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 취소하는지만 알려주세요!</p>
             <ol>
-              <li><strong>상점 API Key</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
+              <li><strong>상점 API Key (apiKey)</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
               <li><strong>결제 고유 토큰 (payToken)</strong> : 결제 생성 완료 후 받은 결제 고유번호</li>
             </ol>
             <h4 id="cancel-3">취소 사유 남기기 (reason)</h4>
@@ -746,7 +743,7 @@ echo "Response: ".$result;</code></pre>
               '결제 승인'의 필수 파라미터는 2가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 승인하는지 알려주세요!
             </p>
             <ol>
-              <li><strong>상점 API Key</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
+              <li><strong>상점 API Key (apiKey)</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
               <li><strong>결제 고유 토큰 (payToken)</strong> : 결제 생성 완료 후 받은 결제 고유번호</li>
             </ol>
           </div>
@@ -785,7 +782,7 @@ echo "Response: ".$result;</code></pre>
               '결제 환불'의 필수 파라미터는 4가지 입니다. '어느 가맹점'에서 '어떤 결제건'을 환불하는지만 알려주세요!
             </p>
             <ol>
-              <li><strong>상점 API Key</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
+              <li><strong>상점 API Key (apiKey)</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
               <li><strong>결제 고유 토큰 (payToken)</strong> : 결제 생성 완료 후 받은 결제 고유번호</li>
               <li><strong>환불할 금액 (amount)</strong> : 환불 할 금액</li>
               <li><strong>환불할 비과세 금액 (amountTaxFree)</strong> : 환불할 금액중 비과세 금액</li>
@@ -841,7 +838,7 @@ echo "Response: ".$result;</code></pre>
             <h4 id="checkstatus-2">필수 Parameters</h4>
             <p>필수 파라미터는 딱 2가지 입니다. '어느 가맹점'에서 일어난 '어떤 결제건'을 조회하고 싶은지 알려주세요.</p>
             <ol>
-              <li><strong>상점 API Key</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
+              <li><strong>상점 API Key (apiKey)</strong> : 결제를 생성한 상점의 API key가 필요합니다.</li>
               <li><strong>결제 고유 토큰 (payToken)</strong> : 결제 생성 완료 후 받은 결제 고유번호</li>
             </ol>
             <p>* '결제 고유 토큰 (payToken)' 대신 '상점의 주문번호 (orderNo)'값을 사용할 수도 있습니다.</p>
