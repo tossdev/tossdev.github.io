@@ -2069,6 +2069,166 @@ p JSON.parse(response.body)</code></pre>
                     </div>
             </div>
                 </div>
+		                <div class="method" id="billing-key/remove">
+                <div class="method-section clearfix">
+                    <div class="method-description">
+                        <h3>빌링키 삭제</h3>
+                       <p>가맹점은 주체적으로 생성된 빌링키를 삭제할 수 있습니다. <br>
+                          빌링키 삭제 API spec 은 다음과 같습니다.<br>
+			  </p>
+                      <div class="info">
+                            <h4>endpoint</h4>
+                            <div class="field clearfix">
+                                <div class="key">
+                                    (POST)
+                                </div>
+                                <div class="desc">
+                                  https://pay.toss.im/api/v1/billing-key/remove <br/>
+                                </div>
+                            </div>
+                        </div>
+  <div class="info">
+    <h4>parameters</h4>
+    
+    <div class="field clearfix">
+        <div class="key">
+            apiKey
+            <span class="type">string <font color=#c25300>필수</font></span>
+            <span class="type">Max Length: 30</span>
+        </div>
+        <div class="desc">
+            결제 가맹점의 apiKey
+            <br>
+            <span class="text-muted">가맹점에 발급된 apiKey</span><br>
+            <span class="text-muted">빌링키 생성요청 시 사용된 apiKey 와 동일해야 합니다. 그렇지 않으면 오류가 발생합니다.</span>
+        </div>
+    </div>
+
+    <div class="field clearfix">
+        <div class="key">
+            billingKey
+            <span class="type">string <font color=#c25300>필수</font></span>
+            <span class="type">Max Length: 50</span>
+        </div>
+        <div class="desc">
+            가맹점 사용자 식별 값
+            <br>
+            <span class="text-muted">자동결제 사용자 빌링키</span><br>
+            <span class="text-muted">토스가 생성한 자동결제 사용자 빌링키</span>
+        </div>
+    </div>
+</div>
+ </div>
+ </div>
+
+                                             <div class="method-example">
+                        <div class="title">Definition</div>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/billing-key/status</code></pre>
+                        <div class="title">Example Request</div>
+                        <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/billing-key/status \
+    -H "Content-Type: application/json" \
+    -d '{
+        "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
+        "billingKey": "example-billingKey"
+        }'</code><code class="java language-java">import java.nio.charset.StandardCharsets;
+
+URL url = null;
+URLConnection connection = null;
+StringBuilder responseBody = new StringBuilder();
+try {
+	url = new URL("https://pay.toss.im/api/v1/billing-key/status");
+	connection = url.openConnection();
+	connection.addRequestProperty("Content-Type", "application/json");
+	connection.setDoOutput(true);
+	connection.setDoInput(true);
+
+	org.json.simple.JSONObject jsonBody = new JSONObject();
+jsonBody.put("apiKey", "sk_test_w5lNQylNqa5lNQe013Nq");
+jsonBody.put("billingKey", "example-billingKey");
+
+	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	<!--bos.write(jsonBody.toJSONString().getBytes());-->
+    bos.write(jsonBody.toJSONString().getBytes(StandardCharsets.UTF_8));
+	bos.flush();
+	bos.close();
+
+	<!--BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));-->
+    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+		responseBody.append(line);
+	}
+	br.close();
+} catch (Exception e) {
+	responseBody.append(e);
+}
+System.out.println(responseBody.toString());</code><code class="php language-php">$arrayBody = array();
+$arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
+$arrayBody["billingKey"] = "example-billingKey";
+$jsonBody = json_encode($arrayBody);
+
+$ch = curl_init('https://pay.toss.im/api/v1/billing-key/status');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($jsonBody))
+);
+
+$result = curl_exec($ch);
+curl_close($ch);
+
+echo "Response: ".$result;</code><code class="aspnet language-aspnet">Dim data, httpRequest, postResponse
+
+data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
+data = data & "&billingKey=example-billingKey"
+
+Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/billing-key/status", False
+httpRequest.SetRequestHeader "Content-Type", "application/json"
+httpRequest.Send data
+
+postResponse = httpRequest.ResponseText
+
+Response.Write postResponse</code><code class="python language-python">import urllib, urllib2
+
+url = "https://pay.toss.im/api/v1/billing-key/status"
+params = {
+    "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
+    "billingKey": "example-billingKey",
+}
+
+response = urllib.urlopen(url, urllib.urlencode(params))
+print(response.read())</code><code class="ruby language-ruby">require 'net/http'
+require 'json'
+
+uri = URI.parse("https://pay.toss.im/api/v1/billing-key/status")
+
+params = {
+    "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq",
+    "billingKey" => "example-billingKey",
+}
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(params)
+response = http.request(request)
+
+p JSON.parse(response.body)</code></pre>
+                        <div class="title">Example Response</div>
+                        <pre><code class="language-javascript always-visible">
+
+{
+    "code": 0
+}
+</code>
+            </pre>
+                    </div>
+            </div>
+                </div>ㅌ
 		<div class="method" id="errorcode">
                 <div class="method-section clearfix">
                     <div class="method-description">
