@@ -2120,9 +2120,9 @@ p JSON.parse(response.body)</code></pre>
             </div>
                                              <div class="method-example">
                         <div class="title">Definition</div>
-                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/billing-key/status</code></pre>
+                        <pre><code class="language-bash always-visible">POST https://pay.toss.im/api/v1/billing-key/remove</code></pre>
                         <div class="title">Example Request</div>
-                        <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/billing-key/status \
+                        <pre><code class="curl language-bash">curl https://pay.toss.im/api/v1/billing-key/remove \
     -H "Content-Type: application/json" \
     -d '{
         "apiKey": "sk_test_w5lNQylNqa5lNQe013Nq",
@@ -2133,7 +2133,7 @@ URL url = null;
 URLConnection connection = null;
 StringBuilder responseBody = new StringBuilder();
 try {
-	url = new URL("https://pay.toss.im/api/v1/billing-key/status");
+	url = new URL("https://pay.toss.im/api/v1/billing-key/remove");
 	connection = url.openConnection();
 	connection.addRequestProperty("Content-Type", "application/json");
 	connection.setDoOutput(true);
@@ -2164,7 +2164,7 @@ $arrayBody["apiKey"] = "sk_test_w5lNQylNqa5lNQe013Nq";
 $arrayBody["billingKey"] = "example-billingKey";
 $jsonBody = json_encode($arrayBody);
 
-$ch = curl_init('https://pay.toss.im/api/v1/billing-key/status');
+$ch = curl_init('https://pay.toss.im/api/v1/billing-key/remove');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonBody);
@@ -2183,7 +2183,7 @@ data = "apiKey=sk_test_w5lNQylNqa5lNQe013Nq"
 data = data & "&billingKey=example-billingKey"
 
 Set httpRequest = Server.CreateObject("MSXML2.ServerXMLHTTP")
-httpRequest.Open "POST", "https://pay.toss.im/api/v1/billing-key/status", False
+httpRequest.Open "POST", "https://pay.toss.im/api/v1/billing-key/remove", False
 httpRequest.SetRequestHeader "Content-Type", "application/json"
 httpRequest.Send data
 
@@ -2201,7 +2201,7 @@ response = urllib.urlopen(url, urllib.urlencode(params))
 print(response.read())</code><code class="ruby language-ruby">require 'net/http'
 require 'json'
 
-uri = URI.parse("https://pay.toss.im/api/v1/billing-key/status")
+uri = URI.parse("https://pay.toss.im/api/v1/billing-key/remove")
 
 params = {
     "apiKey" => "sk_test_w5lNQylNqa5lNQe013Nq",
@@ -2217,7 +2217,6 @@ response = http.request(request)
 p JSON.parse(response.body)</code></pre>
                         <div class="title">Example Response</div>
                         <pre><code class="language-javascript always-visible">
-
 {
     "code": 0
 }
